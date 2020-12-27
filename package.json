@@ -1,0 +1,25 @@
+{
+  "name": "blockbench-types",
+  "version": "3.7.0",
+  "description": "Blockbench typescript types",
+  "main": "",
+  "types": "types/index.d.ts",
+  "typeScriptVersion": "3.2",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JannisX11/blockbench-types.git"
+  },
+  "keywords": [
+    "blockbench"
+  ],
+  "author": "JannisX11",
+  "bugs": {
+    "url": "https://github.com/JannisX11/blockbench-types/issues"
+  },
+  "homepage": "https://github.com/JannisX11/blockbench-types#readme",
+  "devDependencies": {
+    "@types/jquery": "^3.5.4",
+    "three": "^0.123.0",
+    "vue": "^2.6.12"
+  }
+}
