@@ -28,6 +28,12 @@ interface FormatOptions {
 declare class ModelFormat extends Deletable {
 	constructor(options: FormatOptions)
 
+	id: string
+	icon: string
+	name?: string
+	description?: string
+	show_on_start_screen?: boolean
+
 	box_uv: boolean
 	optional_box_uv: boolean
 	single_texture: boolean

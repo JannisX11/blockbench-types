@@ -43,7 +43,8 @@ interface DialogOptions {
 		[formElement: string]: '_' | DialogFormElement
 	}
 	/**
-	 * Vue component. Requires Blockbench 3.8 or newer
+	 * Vue component
+	 * @experimental Requires Blockbench 3.8 or newer
 	 */
 	component: Vue.Component
 }

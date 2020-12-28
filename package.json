@@ -1,6 +1,6 @@
 {
   "name": "blockbench-types",
-  "version": "3.7.0",
+  "version": "3.7.1",
   "description": "Blockbench typescript types",
   "main": "",
   "types": "types/index.d.ts",
@@ -19,7 +19,8 @@
   "homepage": "https://github.com/JannisX11/blockbench-types#readme",
   "devDependencies": {
     "@types/jquery": "^3.5.4",
-    "three": "^0.123.0",
-    "vue": "^2.6.12"
+    "three": "^0.120.0",
+    "vue": "^2.6.12",
+    "wintersky": "^0.2.0"
   }
 }

@@ -1,5 +1,7 @@
 /// <reference types="vue" />
 /// <reference types="three" />
+/// <reference types="@types/jquery" />
+/// <reference types="wintersky" />
 
 /// <reference types="./action" />
 /// <reference types="./animation" />
