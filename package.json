@@ -1,6 +1,6 @@
 {
   "name": "blockbench-types",
-  "version": "3.7.1",
+  "version": "3.7.2",
   "description": "Blockbench typescript types",
   "main": "",
   "types": "types/index.d.ts",
@@ -17,7 +17,7 @@
     "url": "https://github.com/JannisX11/blockbench-types/issues"
   },
   "homepage": "https://github.com/JannisX11/blockbench-types#readme",
-  "devDependencies": {
+  "dependencies": {
     "@types/jquery": "^3.5.4",
     "three": "^0.120.0",
     "vue": "^2.6.12",
