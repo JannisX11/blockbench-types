@@ -62,6 +62,7 @@ type EventName = 'remove_animation'
 	| 'finished_edit'
 	| 'undo'
 	| 'redo'
+	| 'load_undo_save'
 	| 'select_mode'
 	| 'unselect_mode'
 

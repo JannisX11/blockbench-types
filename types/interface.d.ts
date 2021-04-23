@@ -1,5 +1,6 @@
 interface DialogFormElement {
 	label: string
+	description?: string
 	type: 'text' | 'number' | 'checkbox' | 'select' | 'radio' | 'textarea' | 'vector' | 'color' | 'file' | 'folder' | 'save' | 'info' 
 	nocolon?: boolean
 	readonly?: boolean
@@ -44,7 +45,6 @@ interface DialogOptions {
 	}
 	/**
 	 * Vue component
-	 * @experimental Requires Blockbench 3.8 or newer
 	 */
 	component: Vue.Component
 }

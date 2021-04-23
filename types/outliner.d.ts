@@ -5,16 +5,16 @@ type ArrayVector2 = [number, number]
 /**
  * @private
  */
-declare class OutlinerElement {
+declare class OutlinerNode {
 	constructor ()
 	uuid: string
 	export: boolean
 	locked: boolean
 	parent: Group | 'root'
 	init: () => this
-	addTo: (target?: OutlinerElement) => this
-	sortInBefore: (target?: OutlinerElement, index_modifier?: number) => this
-	getParentArray: () => OutlinerElement[]
+	addTo: (target?: OutlinerNode) => this
+	sortInBefore: (target?: OutlinerNode, index_modifier?: number) => this
+	getParentArray: () => OutlinerNode[]
 	/**
 	 * Unfolds the outliner and scrolls up or down if necessary to show the group or element.
 	 */
@@ -54,10 +54,10 @@ declare class OutlinerElement {
 /**
  * @private
  */
-declare class NonGroup extends OutlinerElement {
+declare class OutlinerElement extends OutlinerNode {
 	constructor ()
 	selected: boolean
-	static fromSave: (data: object, keep_uuid?: boolean) => NonGroup
+	static fromSave: (data: object, keep_uuid?: boolean) => OutlinerElement
 	static isParent: false
 }
 
@@ -82,13 +82,13 @@ interface GroupOptions {
 	autouv: 0 | 1 | 2
 }
 
-declare class Group extends OutlinerElement {
+declare class Group extends OutlinerNode {
 	constructor (options: Partial<GroupOptions>)
 	static selected: Group
 	static all: Group[]
 
 	name: string
-	children: OutlinerElement[]
+	children: OutlinerNode[]
 	reset: boolean
 	shade: boolean
 	selected: boolean
@@ -115,7 +115,7 @@ declare class Group extends OutlinerElement {
 	/**
 	 * Remove the group and leave all of its children in the parent array.
 	 */
-	resolve: () => OutlinerElement[]
+	resolve: () => OutlinerNode[]
 	/**
 	 * Move the origin of a bone to a specific location without visually affecting the position of it's content.
 	 */
@@ -131,7 +131,7 @@ declare class Group extends OutlinerElement {
 	getSaveCopy: () => object
 	getChildlessCopy: () => Group
 	compile: (undo: boolean) => object
-	forEachChild(callback: (object: OutlinerElement) => void, type?: any, for_self?: boolean)
+	forEachChild(callback: (object: OutlinerNode) => void, type?: any, for_self?: boolean)
 }
 
 interface CubeOptions {
@@ -151,7 +151,7 @@ interface CubeOptions {
 	 */
 	uv_offset: ArrayVector2
 }
-declare class Cube extends NonGroup {
+declare class Cube extends OutlinerElement {
 	constructor (options: Partial<CubeOptions>, uuid?: string)
 	autouv: 1 | 2 | 3
 	shade: boolean
@@ -179,7 +179,7 @@ interface LocatorOptions {
 
 }
 
-declare class Locator extends NonGroup {
+declare class Locator extends OutlinerElement {
 	constructor (options: Partial<LocatorOptions>, uuid?: string)
 
 	extend(options: Partial<LocatorOptions>)
@@ -193,9 +193,9 @@ declare class Locator extends NonGroup {
 
 
 declare namespace Outliner {
-	const root: OutlinerElement[]
-	const elements: NonGroup[]
-	const selected: NonGroup[]
+	const root: OutlinerNode[]
+	const elements: OutlinerElement[]
+	const selected: OutlinerElement[]
 }
 
 declare const markerColors: {

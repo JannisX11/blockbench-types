@@ -41,9 +41,14 @@ declare class Codec extends Deletable {
 	write?(content: any, path: string): void
 	afterDownload?(path): void
 	afterSave?(path): void
-	on?(event_name: string, callback: (data: object) => void): void
+	on(event_name: string, callback: (data: object) => void): void
+	removeListener(event_name: string, callback: (data: object) => void): void
 	dispatchEvent(data: object): void
 	
+	name: string
+	extension: string
+	remember: boolean
+	export_action?: Action
 
 	static getAllExtensions(): string[]
 }
