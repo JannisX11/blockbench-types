@@ -1,3 +1,43 @@
+interface UpdateViewOptions {
+    /**
+     * List of elements to update
+     */
+    elements?: OutlinerElement[]
+    /**
+     * Which aspects of the elements to update
+     */
+    element_aspects?: {
+        /**
+         * Update visibility of elements
+         */
+        visibility?: boolean
+        /**
+         * Update the position and geometry
+         */
+        geometry?: boolean
+        /**
+         * Update the mesh faces
+         */
+        faces?: boolean
+        /**
+         * Update the UV mapping
+         */
+        uv?: boolean
+        /**
+         * Update the painting grid
+         */
+        painting_grid?: boolean
+    }
+    /**
+     * Groups to update
+     */
+    groups?: Group[]
+    /**
+     * Whether to update the selection (updates the selection outlines and interface)
+     */
+    selection?: boolean
+}
+
 declare const Canvas: {
     materials: {
         [uuid: string]: THREE.Material
@@ -34,6 +74,11 @@ declare const Canvas: {
      * Clear all elements from the scene
      */
     clear(): void;
+    /**
+     * Updates selected aspects of the preview
+     * @param options 
+     */
+    updateView(options: UpdateViewOptions): void; 
     /**
      * Regenerate all elements in the scene. Very unoptimized, use with care
      */

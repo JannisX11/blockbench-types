@@ -37,6 +37,10 @@ declare class Menu extends Deletable {
  */
 declare class BarMenu extends Menu {
     constructor(id: string, structure: MenuItem[], condition?: any)
+    /**
+     * Visually highlights an action within the menu, until the user opens the menu
+     */
+    highlight(action: Action): void
 }
 
 declare namespace MenuBar {

@@ -14,6 +14,8 @@ interface DialogFormElement {
 	height?: number
 	options?: object
 }
+
+type FormResultValue = string|number|boolean|[]
 interface DialogOptions {
 	title: string
 	id: string
@@ -30,13 +32,29 @@ interface DialogOptions {
 	 */
 	cancelEnabled?: boolean
 	/**
+	 * Default button to press to confirm the dialog. Defaults to the first button.
+	 */
+	confirmIndex?: number
+	/**
+	 * Default button to press to cancel the dialog. Defaults to the last button.
+	 */
+	cancelIndex?: number
+	/**
 	 *  Function to execute when the user confirms the dialog
 	 */
 	onConfirm?: (formResult: object) => void
 	/**
-	 *  Function to execute when the user cancels the dialog
+	 * Function to execute when the user cancels the dialog
 	 */
 	onCancel?: () => void
+	/**
+	 * Triggered when the user presses a specific button
+	 */
+	onButton?: (button_index: number, event?: Event) => void
+	/**
+	 * Function to run when anything in the form is changed
+	 */
+	onFormChange?: (form_result: {[key: string]: FormResultValue}) => void
 	/**
 	 * Creates a form in the dialog
 	 */
@@ -56,10 +74,24 @@ declare class Dialog {
 	/**
 	 * Triggers the confirm event of the dialog.
 	 */
-	confirm: () => void
+	confirm: (event?: Event) => void
 	/**
 	 * Triggers the cancel event of the dialog.
 	 */
-	cancel: () => void
-
+	cancel: (event?: Event) => void
+	/**
+	 * Closes the dialog using the index of the pressed button
+	 */
+	close: (button: number, event?: Event) => void
+	/**
+	 * If the dialog contains a form, return the current values of the form
+	 */
+	getFormResult(): {
+		[key: string]: FormResultValue
+	}
+	/**
+	 * Delete the dialog object, causing it to be re-build from scratch on next open
+	 */
+	delete(): void
+	
 }

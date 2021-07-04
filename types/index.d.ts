@@ -268,3 +268,22 @@ declare function updateSelection(): void
  * @param arguments Array of arguments that replace anchors (%0, etc.) in the translation. Items can be strings or anything that can be converted to strings
  */
 declare function tl(key: string, arguments?: any[]): string
+
+declare namespace Language {
+	/**
+	 * Translation data for the current language
+	 */
+	const data: {
+		[key: string]: string
+	}
+	/**
+	 * Two letter code indicating the currently selected language
+	 */
+	const code: string
+	/**
+	 * Add translations for custom translation strings
+	 * @param language Two letter language code, e. G. 'en'
+	 * @param strings Object listing the translation keys and values
+	 */
+	function addTranslations(language: string, strings: {[key: string]: string})
+}

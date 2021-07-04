@@ -10,19 +10,43 @@ interface PluginOptions {
 	 */
 	about?: string
 	icon: string
+	/**
+	 * Plugin tags that will show up in the plugin store. You can provide up to 3 tags.
+	 */
+	tags?: [string, string?, string?]
+	/**
+	 * Where the plugin can be installed. Desktop refers to the electron app, web refers to the web app and PWA
+	 */
 	variant: 'both' | 'desktop' | 'web'
+	/**
+	 * Minimum Blockbench version in which the plugin can be installed
+	 */
 	min_version?: string
+	/**
+	 * Maximum Blockbench version in which the plugin can be installed
+	 */
 	max_version?: string
+	/**
+	 * Set to true if the plugin must finish loading before a project is opened, i. e. because it adds a format
+	 */
+	await_loading?: string
+	/**
+	 * Runs when the plugin loads
+	 */
 	onload?(): void
+	/**
+	 * Runs when the plugin unloads
+	 */
 	onunload?(): void
+	/**
+	 * Runs when the user manually installs the plugin
+	 */
 	oninstall?(): void
+	/**
+	 * Runs when the user manually uninstalls the plugin
+	 */
 	onuninstall?(): void
 }
-
-/**
- * Blockbench Plugin
- * @deprecated This won't work in 3.8.4 or earlier
- */
 declare class BBPlugin {
 	constructor(id: string, options: PluginOptions)
 
@@ -44,6 +68,7 @@ declare class BBPlugin {
 	variant: 'both' | 'desktop' | 'web'
 	min_version: string
 	max_version: string
+	tags: string[]
 	onload(): void
 	onunload(): void
 	oninstall(): void
