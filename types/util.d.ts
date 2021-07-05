@@ -19,7 +19,6 @@ declare class oneLiner {
 }
 
 declare const templog: (...args: any) => void
-}
 
 /**
  * If the input event is a touch event, convert touch event to a compatible mouse event
