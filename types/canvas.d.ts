@@ -40,13 +40,13 @@ interface UpdateViewOptions {
 
 declare const Canvas: {
     materials: {
-        [uuid: string]: THREE.Material
+        [uuid: UUID]: THREE.Material
     };
     meshes: {
-        [uuid: string]: THREE.Mesh
+        [uuid: UUID]: THREE.Mesh
     };
     bones: {
-        [uuid: string]: THREE.Object3D
+        [uuid: UUID]: THREE.Object3D
     };
     /**
      * The material used for all selection outlines

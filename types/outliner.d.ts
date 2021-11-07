@@ -7,7 +7,7 @@ type ArrayVector2 = [number, number]
  */
 declare class OutlinerNode {
 	constructor ()
-	uuid: string
+	uuid: UUID
 	export: boolean
 	locked: boolean
 	parent: Group | 'root'

@@ -16,13 +16,17 @@ interface DialogFormElement {
 }
 
 type FormResultValue = string|number|boolean|[]
+
+interface ActionInterface {
+	name: string
+	description?: string
+	icon: string,
+	click: (event: Event) => void
+	condition: Condition
+}
 interface DialogOptions {
 	title: string
 	id: string
-	/**
-	 * Array of HTML object strings for each line of content in the dialog.
-	 */
-	lines: string[]
 	/**
 	 *  If false, the confirm button of the dialog is disabled
 	 */
@@ -56,6 +60,10 @@ interface DialogOptions {
 	 */
 	onFormChange?: (form_result: {[key: string]: FormResultValue}) => void
 	/**
+	 * Array of HTML object strings for each line of content in the dialog.
+	 */
+	lines?: (string|HTMLElement)[]
+	/**
 	 * Creates a form in the dialog
 	 */
 	form?: {
@@ -64,11 +72,60 @@ interface DialogOptions {
 	/**
 	 * Vue component
 	 */
-	component: Vue.Component
+	component?: Vue.Component
+	/**
+	 * Order that the different interface types appear in the dialog. Default is 'form', 'lines', 'component'.
+	 */
+	part_order?: string[]
+	form_first?: boolean
+	/**
+	 * Creates a dialog sidebar
+	 */
+	sidebar?: DialogSidebarOptions
+	/**
+	 * Menu in the handle bar
+	 */
+	title_menu?: Menu
+	/**
+	 * If true, the dialog will only have one button to close it
+	 */
+	singleButton?: boolean
+	/**
+	 * List of buttons
+	 */
+	buttons?: string[]
+}
+
+interface DialogSidebarOptions {
+	pages?: {
+		[key: string]: string
+	}
+	page?: string
+	actions?: (Action|ActionInterface|string)[],
+	onPageSwitch?: (page: string) => void
+}
+declare class DialogSidebar {
+	constructor(options: DialogSidebarOptions)
+
+	pages: {
+		[key: string]: string
+	}
+	page: string
+	actions: (Action|string)[]
+	onPageSwitch(page: string): void
+	build(): void
+	toggle(state?: boolean): void
+	setPage(page: string): void
 }
 
 declare class Dialog {
 	constructor (options: DialogOptions)
+
+	id: string
+	component: Vue.Component
+	sidebar: DialogSidebar | null
+
+
 	show: () => Dialog
 	hide: () => Dialog
 	/**
@@ -90,8 +147,16 @@ declare class Dialog {
 		[key: string]: FormResultValue
 	}
 	/**
+	 * Set the values of the dialog form inputs
+	 */
+	setFormValues(values: {[key: string]: FormResultValue}): void
+	/**
 	 * Delete the dialog object, causing it to be re-build from scratch on next open
 	 */
 	delete(): void
-	
+
+	/**
+	 * Currently opened dialog
+	 */
+	static open: Dialog | null
 }

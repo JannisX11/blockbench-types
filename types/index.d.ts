@@ -7,22 +7,28 @@
 /// <reference types="./animation" />
 /// <reference types="./canvas" />
 /// <reference types="./codec" />
+/// <reference types="./file_system" />
 /// <reference types="./format" />
+/// <reference types="./global" />
 /// <reference types="./interface" />
 /// <reference types="./keyframe" />
 /// <reference types="./legacy" />
 /// <reference types="./menu" />
 /// <reference types="./outliner" />
+/// <reference types="./plugin" />
 /// <reference types="./preview" />
+/// <reference types="./project" />
 /// <reference types="./settings" />
 /// <reference types="./textures" />
 /// <reference types="./timeline" />
+/// <reference types="./undo" />
 /// <reference types="./util" />
 
 
 declare class Deletable {
 	delete: () => void
 }
+type UUID = string
 
 /**
  * True if Blockbench runs as a native app
