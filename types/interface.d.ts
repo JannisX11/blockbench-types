@@ -1,7 +1,7 @@
 interface DialogFormElement {
 	label: string
 	description?: string
-	type: 'text' | 'number' | 'checkbox' | 'select' | 'radio' | 'textarea' | 'vector' | 'color' | 'file' | 'folder' | 'save' | 'info' 
+	type: 'text' | 'number' | 'checkbox' | 'select' | 'radio' | 'textarea' | 'vector' | 'color' | 'file' | 'folder' | 'save' | 'info'
 	nocolon?: boolean
 	readonly?: boolean
 	value?: any
@@ -27,14 +27,6 @@ interface ActionInterface {
 interface DialogOptions {
 	title: string
 	id: string
-	/**
-	 *  If false, the confirm button of the dialog is disabled
-	 */
-	confirmEnabled?: boolean
-	/**
-	 *  If false, the cancel button of the dialog is disabled
-	 */
-	cancelEnabled?: boolean
 	/**
 	 * Default button to press to confirm the dialog. Defaults to the first button.
 	 */
