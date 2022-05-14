@@ -1,7 +1,21 @@
 interface CustomMenuItem {
     name: string
+    id: string
+    icon: IconString
+    color?: string
+    description?: string
+    /**
+     * Keybind or string to display in the menu, won't work as an actual keybinding by default
+     */
+    keybind?: Keybind | string
+    /**
+     * Adds a search bar to the menu or submenu
+     */
+    searchable?: boolean
+    children?: MenuItem[] | (() => MenuItem[])
+    click?: (context?: any, event: Event)
 }
-type MenuItem = CustomMenuItem | Action | string;
+type MenuItem = CustomMenuItem | Action | BarSelect | string;
 
 /**
  * Creates a new context menu

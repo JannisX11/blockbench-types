@@ -11,6 +11,7 @@
 /// <reference types="./format" />
 /// <reference types="./global" />
 /// <reference types="./interface" />
+/// <reference types="./panel" />
 /// <reference types="./keyframe" />
 /// <reference types="./legacy" />
 /// <reference types="./menu" />
@@ -204,25 +205,6 @@ declare class Plugin {
 }
 
 type Condition = any
-
-interface PanelOptions {
-	id: string
-	icon: string
-	menu?: any
-	growable?: boolean
-	name: string
-	selection_only?: boolean
-	condition?: Condition
-	onResize: () => void
-	toolbars: object
-	component: Vue.Component
-	default_side: any
-	insert_before: any
-	insert_after: any
-}
-declare class Panel {
-	constructor (options: PanelOptions)
-}
 
 
 interface PropertyOptions {

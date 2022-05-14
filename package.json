@@ -1,6 +1,6 @@
 {
   "name": "blockbench-types",
-  "version": "4.0.0",
+  "version": "4.2.0",
   "description": "Blockbench typescript types",
   "main": "",
   "types": "types/index.d.ts",
@@ -21,6 +21,6 @@
     "@types/jquery": "^3.5.4",
     "three": "^0.129.0",
     "vue": "^2.6.14",
-    "wintersky": "^1.0.2"
+    "wintersky": "^1.1.0"
   }
 }

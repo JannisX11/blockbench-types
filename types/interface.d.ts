@@ -98,7 +98,7 @@ interface DialogOptions {
 
 interface DialogSidebarOptions {
 	pages?: {
-		[key: string]: string
+		[key: string]: string | {label: string, icon: IconString, color?: string}
 	}
 	page?: string
 	actions?: (Action|ActionInterface|string)[],

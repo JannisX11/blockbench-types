@@ -13,12 +13,17 @@ interface FormatOptions {
 	centered_grid?: boolean
 	rotate_cubes?: boolean
 	integer_size?: boolean
+	meshes?: boolean
+	texture_meshes?: boolean
 	locators?: boolean
 	canvas_limit?: boolean
 	rotation_limit?: boolean
 	uv_rotation?: boolean
 	display_mode?: boolean
 	animation_mode?: boolean
+	animation_files?: boolean
+	pose_mode?: boolean
+	texture_folder?: boolean
 
 	codec?: Codec
 	onActivation?(): void

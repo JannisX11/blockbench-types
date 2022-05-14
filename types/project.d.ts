@@ -73,6 +73,8 @@ declare class ModelProject {
     select(): boolean;
     unselect(): void;
     close(force: any): Promise<boolean>;
+
+	static all: ModelProject[]
 }
 
 declare const Project: ModelProject | null

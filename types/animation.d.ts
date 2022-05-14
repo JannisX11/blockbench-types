@@ -8,7 +8,7 @@ interface AnimationOptions {
     snapping?: number
 }
 
-class Animation {
+declare class Animation {
     constructor(data: AnimationOptions);
     extend(data: AnimationOptions): this;
     getUndoCopy(options: any, save: any): {
@@ -62,3 +62,65 @@ namespace Animator {
 
 
 }
+
+interface AddChannelOptions {
+    name?: string
+    transform?: boolean
+    mutable?: boolean
+    max_data_points?: number
+}
+declare class GeneralAnimator {
+    constructor(uuid: string, animation: Animation)
+    keyframes: Keyframe[]
+    select(): this
+    addToTimeline(): this
+    addKeyframe(data: KeyframeOptions, uuid: string): Keyframe
+    createKeyframe(): Keyframe
+    getOrMakeKeyframe(): {before: Keyframe, result: Keyframe}
+    toggleMuted(channel: string): this
+    scrollTo(): this
+
+    static addChannel(channel: string, options: AddChannelOptions)
+}
+
+declare class BoneAnimator extends GeneralAnimator {
+    name: string
+    uuid: string
+    rotations: Keyframe[]
+    position: Keyframe[]
+    scale: Keyframe[]
+    getGroup(): Group
+    select
+    fillValues
+    pushKeyframe
+    doRender
+    displayRotation
+    displayPosition
+    displayScale
+    interpolate
+    displayFrame
+}
+declare class NullObjectAnimator extends GeneralAnimator {
+    name: string
+    uuid: string
+    rotations: Keyframe[]
+    position: Keyframe[]
+    scale: Keyframe[]
+    getElement(): NullObject
+    select
+    doRender
+    displayPosition
+    displayIK
+    displayFrame
+}
+declare class EffectAnimator extends GeneralAnimator {
+    name: string
+    uuid: string
+    rotations: Keyframe[]
+    position: Keyframe[]
+    scale: Keyframe[]
+    pushKeyframe(keyframe): this
+    displayFrame(in_loop): this
+    startPreviousSounds
+}
+
