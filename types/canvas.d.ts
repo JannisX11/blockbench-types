@@ -49,17 +49,36 @@ declare const Canvas: {
         [uuid: UUID]: THREE.Object3D
     };
     /**
+     * Main scene, shared across all tabs
+     */
+    scene: THREE.Scene
+    /**
+     * List of the gizmos (control and UI elements) in the 3D scene
+     */
+    gizmos: []
+    /**
      * The material used for all selection outlines
      */
     outlineMaterial: THREE.LineBasicMaterial;
+    meshOutlineMaterial: THREE.LineBasicMaterial;
     /**
      * The material used for the wireframe view
      */
     wireframeMaterial: THREE.MeshBasicMaterial;
+    solidMaterial: THREE.ShaderMaterial;
+    normalHelperMaterial: THREE.ShaderMaterial;
+    uvHelperMaterial: THREE.ShaderMaterial;
+    meshVertexMaterial: THREE.PointsMaterial;
     /**
      * The material used for the grids
      */
     gridMaterial: THREE.LineBasicMaterial;
+
+    pivot_marker: THREE.Object3D
+
+    global_light_color: THREE.Color
+    global_light_side: number
+
     face_order: string[];
 
     /**
@@ -74,6 +93,8 @@ declare const Canvas: {
      * Clear all elements from the scene
      */
     clear(): void;
+    buildGrid(): void;
+    updateShading(): void;
     /**
      * Updates selected aspects of the preview
      * @param options 
@@ -161,6 +182,10 @@ declare const Canvas: {
      * @param animation Whether to display the current animated texture frame
      */
     updateUV(cube: Cube, animation?: boolean): any;
+    /**
+     * Update the materials of marker colors if new colors were added
+     */
+    updateMarkerColorMaterials(): void;
     /**
      * Create an additional outline around the specified cubes
      * @param arr List of cubes to outline

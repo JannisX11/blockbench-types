@@ -11,6 +11,7 @@
 /// <reference types="./format" />
 /// <reference types="./global" />
 /// <reference types="./interface" />
+/// <reference types="./dialog" />
 /// <reference types="./panel" />
 /// <reference types="./keyframe" />
 /// <reference types="./legacy" />
@@ -55,7 +56,10 @@ type EventName = 'remove_animation'
 	| 'reset_project'
 	| 'close_project'
 	| 'add_cube'
+	| 'add_mesh'
 	| 'add_group'
+	| 'add_texture_mesh'
+	| 'group_elements'
 	| 'update_selection'
 	| 'update_keyframe_selection'
 	| 'select_all'
@@ -72,6 +76,19 @@ type EventName = 'remove_animation'
 	| 'load_undo_save'
 	| 'select_mode'
 	| 'unselect_mode'
+	| 'change_active_panel'
+	| 'resize_window'
+	| 'press_key'
+	| 'convert_format'
+	| 'select_project'
+	| 'unselect_project'
+	| 'setup_project'
+	| 'update_project_resolution'
+	| 'update_project_settings'
+	| 'merge_project'
+	| 'update_view'
+	| 'update_camera_position'
+	| 'render_frame'
 
 type IconString = string;
 

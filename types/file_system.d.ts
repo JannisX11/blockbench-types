@@ -135,7 +135,7 @@ declare namespace Blockbench {
          */
         propagate?: boolean
     }
-    export function addDragHandler(id: string, options: DragHandlerOptions, callback?: () => void): void
+    export function addDragHandler(id: string, options: DragHandlerOptions, callback?: () => void): Deletable
     export function removeDragHandler(id: string): void
 
 }

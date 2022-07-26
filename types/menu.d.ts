@@ -62,9 +62,12 @@ declare namespace MenuBar {
         file: Menu
         edit: Menu
         transform: Menu
-        display: Menu
-        filter: Menu
+        uv: Menu
+        texture: Menu
         animation: Menu
+        keyframe: Menu
+        display: Menu
+        tools: Menu
         view: Menu
         help: Menu
         [id: string]: Menu

@@ -1,154 +1,81 @@
-interface DialogFormElement {
-	label: string
-	description?: string
-	type: 'text' | 'number' | 'checkbox' | 'select' | 'radio' | 'textarea' | 'vector' | 'color' | 'file' | 'folder' | 'save' | 'info'
-	nocolon?: boolean
-	readonly?: boolean
-	value?: any
-	placeholder?: string
-	text?: string
-	colorpicker?: any
-	min?: number
-	max?: number
-	step?: number
-	height?: number
-	options?: object
+interface ResizeLineOptions {
+	condition?: Condition
+	horizontal?: boolean
+	position(): void
+	get(): void
+	set(): void
 }
-
-type FormResultValue = string|number|boolean|[]
-
-interface ActionInterface {
-	name: string
-	description?: string
-	icon: string,
-	click: (event: Event) => void
-	condition: Condition
-}
-interface DialogOptions {
-	title: string
-	id: string
-	/**
-	 * Default button to press to confirm the dialog. Defaults to the first button.
-	 */
-	confirmIndex?: number
-	/**
-	 * Default button to press to cancel the dialog. Defaults to the last button.
-	 */
-	cancelIndex?: number
-	/**
-	 *  Function to execute when the user confirms the dialog
-	 */
-	onConfirm?: (formResult: object) => void
-	/**
-	 * Function to execute when the user cancels the dialog
-	 */
-	onCancel?: () => void
-	/**
-	 * Triggered when the user presses a specific button
-	 */
-	onButton?: (button_index: number, event?: Event) => void
-	/**
-	 * Function to run when anything in the form is changed
-	 */
-	onFormChange?: (form_result: {[key: string]: FormResultValue}) => void
-	/**
-	 * Array of HTML object strings for each line of content in the dialog.
-	 */
-	lines?: (string|HTMLElement)[]
-	/**
-	 * Creates a form in the dialog
-	 */
-	form?: {
-		[formElement: string]: '_' | DialogFormElement
-	}
-	/**
-	 * Vue component
-	 */
-	component?: Vue.Component
-	/**
-	 * Order that the different interface types appear in the dialog. Default is 'form', 'lines', 'component'.
-	 */
-	part_order?: string[]
-	form_first?: boolean
-	/**
-	 * Creates a dialog sidebar
-	 */
-	sidebar?: DialogSidebarOptions
-	/**
-	 * Menu in the handle bar
-	 */
-	title_menu?: Menu
-	/**
-	 * If true, the dialog will only have one button to close it
-	 */
-	singleButton?: boolean
-	/**
-	 * List of buttons
-	 */
-	buttons?: string[]
-}
-
-interface DialogSidebarOptions {
-	pages?: {
-		[key: string]: string | {label: string, icon: IconString, color?: string}
-	}
-	page?: string
-	actions?: (Action|ActionInterface|string)[],
-	onPageSwitch?: (page: string) => void
-}
-declare class DialogSidebar {
-	constructor(options: DialogSidebarOptions)
-
-	pages: {
-		[key: string]: string
-	}
-	page: string
-	actions: (Action|string)[]
-	onPageSwitch(page: string): void
-	build(): void
-	toggle(state?: boolean): void
-	setPage(page: string): void
-}
-
-declare class Dialog {
-	constructor (options: DialogOptions)
+declare class ResizeLine {
+	constructor(id: string, options: ResizeLineOptions)
 
 	id: string
-	component: Vue.Component
-	sidebar: DialogSidebar | null
+	horizontal: boolean
+	condition?: Condition
+	width: number
+	get(): void
+	set(): void
+	node: HTMLElement
+	update(): void
+	setPosition(data: {top?: number, bottom?: number, left?: number, right?: number}): void
+}
 
+declare namespace Interface {
+	function createElement(type: keyof HTMLElementTagNameMap, attributes?: {}, content?: string | HTMLElement | HTMLElement[]): HTMLElement
 
-	show: () => Dialog
-	hide: () => Dialog
-	/**
-	 * Triggers the confirm event of the dialog.
-	 */
-	confirm: (event?: Event) => void
-	/**
-	 * Triggers the cancel event of the dialog.
-	 */
-	cancel: (event?: Event) => void
-	/**
-	 * Closes the dialog using the index of the pressed button
-	 */
-	close: (button: number, event?: Event) => void
-	/**
-	 * If the dialog contains a form, return the current values of the form
-	 */
-	getFormResult(): {
-		[key: string]: FormResultValue
+	const data: {
+		left_bar_width: number
+		right_bar_width: number
+		quad_view_x: number
+		quad_view_y: number
+		timeline_head: number
+		left_bar: string[]
+		right_bar: string[]
 	}
-	/**
-	 * Set the values of the dialog form inputs
-	 */
-	setFormValues(values: {[key: string]: FormResultValue}): void
-	/**
-	 * Delete the dialog object, causing it to be re-build from scratch on next open
-	 */
-	delete(): void
+	let left_bar_width: number
+	let right_bar_width: number
+	let top_panel_height: number
+	let bottom_panel_height: number
+	function getTopPanel(): Panel[]
+	function getBottomPanel(): Panel[]
+	function getLeftPanels(): Panel[]
+	function getRightPanels(): Panel[]
+	const Resizers: {
+		left: ResizeLine
+		right: ResizeLine
+		quad_view_x: ResizeLine
+		quad_view_y: ResizeLine
+		top: ResizeLine
+		bottom: ResizeLine
+		timeline_head: ResizeLine
+	}
+	const status_bar: {
+		menu: Menu
+		vue: Vue
+	}
+	const Panels: {
+		(key: string): Panel
+	}
+	function toggleSidebar(side, status): void
 
-	/**
-	 * Currently opened dialog
-	 */
-	static open: Dialog | null
+	const text_edit_menu: Menu
+
+	function addSuggestedModifierKey(key: 'ctrl' | 'shift' | 'alt', text: string): void
+	function removeSuggestedModifierKey(key: 'ctrl' | 'shift' | 'alt', text: string): void
+
+	const center_screen: HTMLElement
+	const page_wrapper: HTMLElement
+	const preview: HTMLElement
+	const work_screen: HTMLElement
+	const right_bar: HTMLElement
+	const left_bar: HTMLElement
+
+	namespace CustomElements {
+		function SelectInput(id: string, options: {
+			value?: string
+			default?: string
+			options: {key: string, value: string}
+			onChange?(): void
+		}): HTMLElement
+		const ResizeLine;
+	}
 }

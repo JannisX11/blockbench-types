@@ -11,6 +11,7 @@ declare class ModelProject {
 	name: string
 	uuid: UUID
 	selected: boolean
+	model_identifier: string
 	/**
 	 * When set to true, the project tab can no longer be selected or unselected
 	 */
