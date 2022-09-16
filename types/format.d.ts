@@ -9,6 +9,28 @@ interface FormatPage {
 	} | string)[]
 	button_text?: string
 }
+interface CubeSizeLimiter {
+	/**
+	 * Test whether the cube with the optionally provided values violates the size restrictions
+	 */
+	test: (cube: Cube, values?: {from: ArrayVector3, to: ArrayVector3, inflate: number}) => boolean
+	/**
+	 * Move the cube back into the restructions
+	 */
+	move: (cube: Cube, values?: {from: ArrayVector3, to: ArrayVector3, inflate: number}) => void
+	/**
+	 * Clamp the cube to fit into the restrictions. When an axis and direction is provided, clamp the element on that side to prevent wandering.
+	 */
+	clamp: (cube: Cube, values?: {from: ArrayVector3, to: ArrayVector3, inflate: number}, axis?: number, direction?: boolean | null) => void
+	/**
+	 * Set to true to tell Blockbench to check and adjust the cube limit after rotating a cube
+	 */
+	rotation_affected?: boolean,
+	/**
+	 * Optionally set the coordinate limits of cubes in local space
+	 */
+	coordinate_limits?: [number, number]
+}
 
 interface FormatOptions {
 	id: string
@@ -24,25 +46,34 @@ interface FormatOptions {
 	onFormatPage?(): void
 	onStart?(): void
 
-	box_uv?: boolean
-	optional_box_uv?: boolean
-	single_texture?: boolean
-	animated_textures?: boolean
-	bone_rig?: boolean
-	centered_grid?: boolean
-	rotate_cubes?: boolean
-	integer_size?: boolean
-	meshes?: boolean
-	texture_meshes?: boolean
-	locators?: boolean
-	canvas_limit?: boolean
-	rotation_limit?: boolean
-	uv_rotation?: boolean
+	box_uv: boolean
+	optional_box_uv: boolean
+	single_texture: boolean
+	model_identifier: boolean
+	parent_model_id: boolean
+	vertex_color_ambient_occlusion: boolean
+	animated_textures: boolean
+	bone_rig: boolean
+	centered_grid: boolean
+	rotate_cubes: boolean
+	integer_size: boolean
+	meshes: boolean
+	texture_meshes: boolean
+	locators: boolean
+	rotation_limit: boolean
+	uv_rotation: boolean
+	java_face_properties: boolean
+	select_texture_for_particles: boolean
+	bone_binding_expression: boolean
+	animation_files: boolean
+	texture_folder: boolean
+	edit_mode?: boolean
+	paint_mode?: boolean
 	display_mode?: boolean
 	animation_mode?: boolean
-	animation_files?: boolean
 	pose_mode?: boolean
-	texture_folder?: boolean
+
+	cube_size_limiter?: CubeSizeLimiter
 
 	codec?: Codec
 	onActivation?(): void
@@ -80,18 +111,20 @@ declare class ModelFormat extends Deletable {
 	meshes: boolean
 	texture_meshes: boolean
 	locators: boolean
-	canvas_limit: boolean
 	rotation_limit: boolean
 	uv_rotation: boolean
 	java_face_properties: boolean
 	select_texture_for_particles: boolean
 	bone_binding_expression: boolean
 	animation_files: boolean
-	pose_mode: boolean
-	display_mode: boolean
-	animation_mode: boolean
 	texture_folder: boolean
+	edit_mode?: boolean
+	paint_mode?: boolean
+	display_mode?: boolean
+	animation_mode?: boolean
+	pose_mode?: boolean
 
+	cube_size_limiter?: CubeSizeLimiter
 	/**
 	 * Selects the format
 	 */

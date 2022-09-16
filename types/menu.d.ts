@@ -13,15 +13,21 @@ interface CustomMenuItem {
      */
     searchable?: boolean
     children?: MenuItem[] | (() => MenuItem[])
-    click?: (context?: any, event: Event)
+    click?: (context?: any, event?: Event) => void
 }
 type MenuItem = CustomMenuItem | Action | BarSelect | string;
-
+interface MenuOptions {
+    onOpen?: (position: MouseEvent | HTMLElement, context?: any) => void
+    onClose?: () => void
+    keep_open?: boolean
+    searchable?: boolean
+}
 /**
  * Creates a new context menu
  */
 declare class Menu extends Deletable {
-    constructor(template: MenuItem[])
+    constructor(id: string, template: MenuItem[] | ((context?: any) => MenuItem[]), options?: MenuOptions)
+    constructor(template: MenuItem[] | ((context?: any) => MenuItem[]), options?: MenuOptions)
 
     /**
      * Opens the menu somewhere

@@ -1,8 +1,10 @@
 /// <reference types="vue" />
 /// <reference types="three" />
+/// <reference types="@types/tinycolor2" />
 /// <reference types="@types/jquery" />
 /// <reference types="wintersky" />
 
+/// <reference types="./textures" />
 /// <reference types="./action" />
 /// <reference types="./animation" />
 /// <reference types="./canvas" />
@@ -21,9 +23,9 @@
 /// <reference types="./preview" />
 /// <reference types="./project" />
 /// <reference types="./settings" />
-/// <reference types="./textures" />
 /// <reference types="./timeline" />
 /// <reference types="./undo" />
+/// <reference types="./validator" />
 /// <reference types="./util" />
 
 
@@ -79,16 +81,26 @@ type EventName = 'remove_animation'
 	| 'change_active_panel'
 	| 'resize_window'
 	| 'press_key'
+	| 'select_format'
 	| 'convert_format'
+	| 'construct_format'
+	| 'delete_format'
 	| 'select_project'
 	| 'unselect_project'
 	| 'setup_project'
 	| 'update_project_resolution'
-	| 'update_project_settings'
 	| 'merge_project'
 	| 'update_view'
 	| 'update_camera_position'
 	| 'render_frame'
+	| 'construct_model_loader'
+	| 'delete_model_loader'
+	| 'update_recent_project_data'
+	| 'update_recent_project_thumbnail'
+	| 'load_from_recent_project_data'
+	| 'edit_animation_properties'
+	| 'select_preview_scene'
+	| 'unselect_preview_scene'
 
 type IconString = string;
 
@@ -107,6 +119,12 @@ interface MessageBoxOptions {
 	message?: string
 	icon?: string
 	width: number
+	/**
+	 * Display a list of actions to do in the dialog. When clicked, the message box closes with the string ID of the command as first argument.
+	 */
+	commands?: {
+		[id: string]: string | {text: string}
+	}
 }
 
 declare namespace Blockbench {
@@ -167,7 +185,7 @@ declare namespace Blockbench {
 	/**
 	 * Opens a message box
 	 */
-	function showMessageBox(options: MessageBoxOptions, callback: (buttonID: number) => void): void
+	function showMessageBox(options: MessageBoxOptions, callback: (buttonID: number | string) => void): void
 
 	function textPrompt(title: string, value: string, callback: (value: string) => void): void
 	/**

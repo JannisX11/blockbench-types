@@ -13,7 +13,17 @@ interface PreviewOptions {
     antialias?: boolean
 }
 
-class Preview extends Deletable {
+type RaycastResult = {
+    type: 'keyframe' | 'vertex' | 'cube'
+    event: Event
+    cube?: Cube
+    intersects?: object[]
+    face?: string
+    vertex: any
+    keyframe: Keyframe
+}
+
+declare class Preview extends Deletable {
     constructor(options: PreviewOptions)
 
     id: string
@@ -45,15 +55,7 @@ class Preview extends Deletable {
     }
     raycaster: THREE.Raycaster
 
-    raycast(event: MouseEvent): false | {
-        type: 'keyframe' | 'vertex' | 'cube'
-        event: Event
-        cube?: Cube
-        intersects?: object[]
-        face?: string
-        vertex: any
-        keyframe: Keyframe
-    }
+    raycast(event: MouseEvent): false | RaycastResult
     render(): void
     setProjectionMode(orthographic: boolean): this
     setFOV(fov: number): void
