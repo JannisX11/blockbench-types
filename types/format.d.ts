@@ -67,6 +67,7 @@ interface FormatOptions {
 	bone_binding_expression?: boolean
 	animation_files?: boolean
 	texture_folder?: boolean
+	image_editor?: boolean
 	edit_mode?: boolean
 	paint_mode?: boolean
 	display_mode?: boolean
@@ -118,6 +119,7 @@ declare class ModelFormat extends Deletable {
 	bone_binding_expression: boolean
 	animation_files: boolean
 	texture_folder: boolean
+	image_editor: boolean
 	edit_mode: boolean
 	paint_mode: boolean
 	display_mode: boolean

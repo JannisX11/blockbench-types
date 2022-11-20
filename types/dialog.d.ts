@@ -1,8 +1,9 @@
 interface DialogFormElement {
 	label: string
 	description?: string
-	type: 'text' | 'number' | 'checkbox' | 'select' | 'radio' | 'textarea' | 'vector' | 'color' | 'file' | 'folder' | 'save' | 'info'
+	type: 'text' | 'number' | 'range' | 'checkbox' | 'select' | 'radio' | 'textarea' | 'vector' | 'color' | 'file' | 'folder' | 'save' | 'info'
 	nocolon?: boolean
+	full_width?: boolean
 	readonly?: boolean
 	value?: any
 	placeholder?: string
@@ -54,7 +55,7 @@ interface DialogOptions {
 	/**
 	 * Array of HTML object strings for each line of content in the dialog.
 	 */
-	lines?: (string|HTMLElement)[]
+	lines?: (HTMLElement | {label?: string, widget?: Widget|(() => Widget), nocolon?: boolean} | string)[]
 	/**
 	 * Creates a form in the dialog
 	 */
@@ -86,6 +87,10 @@ interface DialogOptions {
 	 * List of buttons
 	 */
 	buttons?: string[]
+	/**
+	 * Unless set to false, clicking on the darkened area outside of the dialog will cancel the dialog.
+	 */
+	cancel_on_click_outside?: boolean
 }
 
 interface DialogSidebarOptions {

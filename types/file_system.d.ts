@@ -25,6 +25,10 @@ declare namespace Blockbench {
      * Reads the content from the specified files. Desktop app only.
      */
     export function read(files: string[], options?: ReadOptions, callback?: (files: FileResult[]) => void): void
+    /**
+     * Reads the content from the specified files. Desktop app only.
+     */
+    export function readFile(files: string[], options?: ReadOptions, callback?: (files: FileResult[]) => void): void
 
 
 
