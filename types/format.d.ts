@@ -46,27 +46,27 @@ interface FormatOptions {
 	onFormatPage?(): void
 	onStart?(): void
 
-	box_uv: boolean
-	optional_box_uv: boolean
-	single_texture: boolean
-	model_identifier: boolean
-	parent_model_id: boolean
-	vertex_color_ambient_occlusion: boolean
-	animated_textures: boolean
-	bone_rig: boolean
-	centered_grid: boolean
-	rotate_cubes: boolean
-	integer_size: boolean
-	meshes: boolean
-	texture_meshes: boolean
-	locators: boolean
-	rotation_limit: boolean
-	uv_rotation: boolean
-	java_face_properties: boolean
-	select_texture_for_particles: boolean
-	bone_binding_expression: boolean
-	animation_files: boolean
-	texture_folder: boolean
+	box_uv?: boolean
+	optional_box_uv?: boolean
+	single_texture?: boolean
+	model_identifier?: boolean
+	parent_model_id?: boolean
+	vertex_color_ambient_occlusion?: boolean
+	animated_textures?: boolean
+	bone_rig?: boolean
+	centered_grid?: boolean
+	rotate_cubes?: boolean
+	integer_size?: boolean
+	meshes?: boolean
+	texture_meshes?: boolean
+	locators?: boolean
+	rotation_limit?: boolean
+	uv_rotation?: boolean
+	java_face_properties?: boolean
+	select_texture_for_particles?: boolean
+	bone_binding_expression?: boolean
+	animation_files?: boolean
+	texture_folder?: boolean
 	edit_mode?: boolean
 	paint_mode?: boolean
 	display_mode?: boolean
@@ -118,11 +118,11 @@ declare class ModelFormat extends Deletable {
 	bone_binding_expression: boolean
 	animation_files: boolean
 	texture_folder: boolean
-	edit_mode?: boolean
-	paint_mode?: boolean
-	display_mode?: boolean
-	animation_mode?: boolean
-	pose_mode?: boolean
+	edit_mode: boolean
+	paint_mode: boolean
+	display_mode: boolean
+	animation_mode: boolean
+	pose_mode: boolean
 
 	cube_size_limiter?: CubeSizeLimiter
 	/**

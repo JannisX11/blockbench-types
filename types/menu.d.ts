@@ -22,10 +22,10 @@ interface MenuOptions {
     keep_open?: boolean
     searchable?: boolean
 }
-/**
- * Creates a new context menu
- */
 declare class Menu extends Deletable {
+    /**
+     * Creates a new context menu
+     */
     constructor(id: string, template: MenuItem[] | ((context?: any) => MenuItem[]), options?: MenuOptions)
     constructor(template: MenuItem[] | ((context?: any) => MenuItem[]), options?: MenuOptions)
 

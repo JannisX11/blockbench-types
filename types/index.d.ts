@@ -40,7 +40,7 @@ type UUID = string
 declare const isApp: boolean
 
 type EventName = 'remove_animation'
-	| 'display_animation_fram'
+	| 'display_animation_frame'
 	| 'before_closing'
 	| 'create_session'
 	| 'join_session'
@@ -215,7 +215,7 @@ declare namespace Blockbench {
 	function addListener(event_names: EventName, callback: (data: object) => void): void
 	function on(event_names: EventName, callback: (data: object) => void): void
 
-	function removeEventListener(event_names: EventName): void
+	function removeListener(event_names: EventName): void
 }
 
 

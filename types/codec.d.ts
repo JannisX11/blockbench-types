@@ -1,8 +1,8 @@
 interface CodecOptions {
 	name: string
 	load?(model: any, file: object, add?: boolean): void
-	compile?(): void
-	parse?(): void
+	compile?(options?: object): void
+	parse?(data: any, path: string): void
 	export?(): void
 	/**
 	 * Generate a file name to suggest when exporting
@@ -10,6 +10,7 @@ interface CodecOptions {
 	fileName?(): string
 	startPath?(): string
 	write?(content: any, path: string): void
+	overwrite?(content: any, path: string, callback: ((path) => void)): void
 	afterDownload?(path): void
 	afterSave?(path): void
 
@@ -30,8 +31,8 @@ declare class Codec extends Deletable {
 	constructor(id: string, options: CodecOptions)
 
 	load?(model: any, file: object, add?: boolean): void
-	compile?(): any
-	parse?(model): void
+	compile?(options?: object): any
+	parse?(data: any, path: string): void
 	export?(): void
 	/**
 	 * Generate a file name to suggest when exporting
@@ -39,6 +40,7 @@ declare class Codec extends Deletable {
 	fileName?(): string
 	startPath?(): string
 	write?(content: any, path: string): void
+	overwrite?(content: any, path: string, callback: ((path) => void)): void
 	afterDownload?(path): void
 	afterSave?(path): void
 	on(event_name: string, callback: (data: object) => void): void
