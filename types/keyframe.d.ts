@@ -12,6 +12,14 @@ type axisLetter = 'x' | 'y' | 'z'
 
 declare class Keyframe {
     constructor(options: KeyframeOptions, uuid: any);
+
+    animator: GeneralAnimator;
+    bezier_left_time: ArrayVector3;
+    bezier_right_time: ArrayVector3;
+    bezier_left_value: ArrayVector3;
+    bezier_right_value: ArrayVector3;
+
+
     extend(data: KeyframeOptions): this;
     get(axis: axisLetter, data_point?: number): any;
     calc(axis: axisLetter, data_point?: number): any;

@@ -209,3 +209,39 @@ declare const TickUpdates: {
     keyframe_selection: undefined | true
     keybind_conflicts: undefined | true
 }
+
+interface NodePreviewControllerOptions {
+    setup?: (element: OutlinerNode) => void
+    remove?: (element: OutlinerNode) => void
+    updateAll?: (element: OutlinerNode) => void
+    updateTransform?: (element: OutlinerNode) => void
+    updateVisibility?: (element: OutlinerNode) => void
+    updateSelection?: (element: OutlinerNode) => void
+    updateGeometry?: (element: OutlinerNode) => void
+    updateUV?: (element: OutlinerNode) => void
+    updateFaces?: (element: OutlinerNode) => void
+    updatePaintingGrid?: (element: OutlinerNode) => void
+    updateHighlight?: (element: OutlinerNode) => void
+}
+declare class NodePreviewController {
+    constructor(type: typeof OutlinerNode, options: NodePreviewControllerOptions)
+    type: typeof OutlinerNode
+    events: {
+        [event_name: string]: ((data) => void)[]
+    }
+    dispatchEvent(event_name: string, data: object)
+    on(event_name: string, cb: (data) => void)
+    removeListener(event_name: string, cb: (data) => void)
+
+    setup(element: OutlinerNode): void
+    remove(element: OutlinerNode): void
+    updateAll(element: OutlinerNode): void
+    updateTransform(element: OutlinerNode): void
+    updateVisibility(element: OutlinerNode): void
+    updateSelection(element: OutlinerNode): void
+    updateGeometry(instance: OutlinerNode): void
+    updateUV(instance: OutlinerNode): void
+    updateFaces(instance: OutlinerNode): void
+    updatePaintingGrid(instance: OutlinerNode): void
+    updateHighlight(instance: OutlinerNode): void
+}

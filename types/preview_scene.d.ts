@@ -14,7 +14,7 @@ interface PreviewModelCubeTemplate {
 }
 
 interface PreviewModelOptions {
-	condition?: Condition
+	condition?: ConditionResolvable
 	cubes: PreviewModelCubeTemplate[]
 	/**
 	 * Source of the model's texture
@@ -75,7 +75,7 @@ interface PreviewSceneOptions {
 	description?: string
 	light_color?: string
 	light_side?: number
-	condition?: Condition
+	condition?: ConditionResolvable
 	preview_models?: string[]
 }
 
@@ -95,7 +95,7 @@ declare class PreviewScene extends Deletable {
 	description: string
 	light_color: string
 	light_side: number
-	condition?: Condition
+	condition?: ConditionResolvable
 	preview_models: string[]
 
 	/**

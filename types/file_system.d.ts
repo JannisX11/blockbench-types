@@ -129,7 +129,7 @@ declare namespace Blockbench {
         /**
          * Whether or not to enable the drag handler
          */
-        condition?: Condition
+        condition?: ConditionResolvable
         /**
          * Drop target element
          */

@@ -58,6 +58,8 @@ declare class OutlinerNode {
 declare class OutlinerElement extends OutlinerNode {
 	constructor ()
 	selected: boolean
+	readonly mesh: THREE.Object3D | THREE.Mesh
+	getMesh: () => THREE.Object3D | THREE.Mesh
 	static fromSave: (data: object, keep_uuid?: boolean) => OutlinerElement
 	static isParent: false
 }
@@ -90,6 +92,8 @@ declare class Group extends OutlinerNode {
 
 	name: string
 	children: OutlinerNode[]
+	origin: ArrayVector3
+	rotation: ArrayVector3
 	reset: boolean
 	shade: boolean
 	selected: boolean
@@ -135,51 +139,12 @@ declare class Group extends OutlinerNode {
 	forEachChild(callback: (object: OutlinerNode) => void, type?: any, for_self?: boolean)
 }
 
-interface CubeOptions {
-	name: string
-	autouv: 1 | 2 | 3
-	shade: boolean
-	mirror_uv: boolean
-	inflate: number
-	color: number
-	visibility: boolean
-	from: ArrayVector3
-	to: ArrayVector3
-	rotation: ArrayVector3
-	origin: ArrayVector3
-	/**
-	 * UV position for box UV mode
-	 */
-	uv_offset: ArrayVector2
-}
-declare class Cube extends OutlinerElement {
-	constructor (options: Partial<CubeOptions>, uuid?: string)
-	autouv: 1 | 2 | 3
-	shade: boolean
-	mirror_uv: boolean
-	inflate: number
-	visibility: boolean
-	from: ArrayVector3
-	to: ArrayVector3
-	rotation: ArrayVector3
-	origin: ArrayVector3
-	/**
-	 * UV position for box UV mode
-	 */
-	uv_offset: ArrayVector2
-	extend(options: Partial<CubeOptions>): this
-
-	static all: Cube[]
-	static selected: Cube[]
-}
-
 
 interface LocatorOptions {
 	name: string
 	from: ArrayVector3
 
 }
-
 declare class Locator extends OutlinerElement {
 	constructor (options: Partial<LocatorOptions>, uuid?: string)
 
@@ -189,6 +154,52 @@ declare class Locator extends OutlinerElement {
 
 	static all: Locator[]
 	static selected: Locator[]
+}
+
+
+interface NullObjectOptions {
+	name?: string
+	position?: ArrayVector3
+	ik_target?: string
+	lock_ik_target_rotation?: boolean
+
+}
+declare class NullObject extends OutlinerElement {
+	constructor (options: Partial<NullObjectOptions>, uuid?: string)
+	position: ArrayVector3
+	ik_target: string
+	lock_ik_target_rotation: boolean
+
+	extend(options: Partial<NullObjectOptions>)
+	flip(axis: number, center: number): this
+	getWorldCenter(): THREE.Vector3
+
+	static all: NullObject[]
+	static selected: NullObject[]
+}
+
+
+interface TextureMeshOptions {
+	name?: string
+	texture_name?: string
+	origin?: ArrayVector3
+	local_pivot?: ArrayVector3
+	rotation?: ArrayVector3
+	scale?: ArrayVector3
+}
+declare class TextureMesh extends OutlinerElement {
+	constructor (options: Partial<TextureMeshOptions>, uuid?: string)
+	texture_name: string
+	local_pivot: ArrayVector3
+	scale: ArrayVector3
+
+	extend(options: Partial<TextureMeshOptions>)
+	flip(axis: number, center: number): this
+	getWorldCenter(): THREE.Vector3
+	moveVector(offset: ArrayVector3 | THREE.Vector3, axis: number, update?: boolean): void
+
+	static all: TextureMesh[]
+	static selected: TextureMesh[]
 }
 
 

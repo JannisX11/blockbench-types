@@ -5,8 +5,8 @@ interface PanelOptions {
 	menu?: any
 	growable?: boolean
 	selection_only?: boolean
-	condition?: Condition
-	display_condition?: Condition
+	condition?: ConditionResolvable
+	display_condition?: ConditionResolvable
 	expand_button: boolean
 	toolbars: {
 		[id: string]: Toolbar

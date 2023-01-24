@@ -1,19 +1,22 @@
 interface DialogFormElement {
 	label: string
 	description?: string
-	type: 'text' | 'number' | 'range' | 'checkbox' | 'select' | 'radio' | 'textarea' | 'vector' | 'color' | 'file' | 'folder' | 'save' | 'info'
+	type: 'text' | 'number' | 'range' | 'checkbox' | 'select' | 'radio' | 'textarea' | 'vector' | 'color' | 'file' | 'folder' | 'save' | 'info' | 'buttons'
 	nocolon?: boolean
 	full_width?: boolean
 	readonly?: boolean
 	value?: any
 	placeholder?: string
 	text?: string
+	editable_range_label?: boolean
 	colorpicker?: any
 	min?: number
 	max?: number
 	step?: number
 	height?: number
 	options?: object
+	buttons?: string[]
+	click?: (button_index: number) => void
 }
 
 type FormResultValue = string|number|boolean|[]
@@ -23,7 +26,7 @@ interface ActionInterface {
 	description?: string
 	icon: string,
 	click: (event: Event) => void
-	condition: Condition
+	condition: ConditionResolvable
 }
 interface DialogOptions {
 	title: string
@@ -116,11 +119,13 @@ declare class DialogSidebar {
 }
 
 declare class Dialog {
-	constructor (options: DialogOptions)
+	constructor(id: string, options: DialogOptions)
+	constructor(options: DialogOptions)
 
 	id: string
 	component: Vue.Component
 	sidebar: DialogSidebar | null
+	content_vue: Vue | null
 
 
 	show: () => Dialog
@@ -156,4 +161,73 @@ declare class Dialog {
 	 * Currently opened dialog
 	 */
 	static open: Dialog | null
+	static stack: Dialog[]
+}
+
+interface ShapelessDialogOptions {
+	title: string
+	/**
+	 * Default button to press to confirm the dialog. Defaults to the first button.
+	 */
+	confirmIndex?: number
+	/**
+	 * Default button to press to cancel the dialog. Defaults to the last button.
+	 */
+	cancelIndex?: number
+	/**
+	 *  Function to execute when the user confirms the dialog
+	 */
+	onConfirm?: (formResult: object) => void
+	/**
+	 * Function to execute when the user cancels the dialog
+	 */
+	onCancel?: () => void
+	/**
+	 * Triggered when the user presses a specific button
+	 */
+	onClose?: (button_index: number, event?: Event) => void
+	/**
+	 * Vue component
+	 */
+	component?: Vue.Component
+	/**
+	 * Unless set to false, clicking on the darkened area outside of the dialog will cancel the dialog.
+	 */
+	cancel_on_click_outside?: boolean
+}
+declare class ShapelessDialog extends Dialog {
+	constructor (id: string, options: ShapelessDialogOptions)
+
+	id: string
+	component: Vue.Component
+
+
+	show: () => Dialog
+	hide: () => Dialog
+	/**
+	 * Triggers the confirm event of the dialog.
+	 */
+	confirm: (event?: Event) => void
+	/**
+	 * Triggers the cancel event of the dialog.
+	 */
+	cancel: (event?: Event) => void
+	/**
+	 * Closes the dialog using the index of the pressed button
+	 */
+	close: (button: number, event?: Event) => void
+	/**
+	 * If the dialog contains a form, return the current values of the form
+	 */
+	getFormResult(): {
+		[key: string]: FormResultValue
+	}
+	/**
+	 * Set the values of the dialog form inputs
+	 */
+	setFormValues(values: {[key: string]: FormResultValue}): void
+	/**
+	 * Delete the dialog object, causing it to be re-build from scratch on next open
+	 */
+	delete(): void
 }

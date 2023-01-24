@@ -41,9 +41,13 @@ declare class ModelProject {
 	elements: OutlinerElement[]
 	groups: Group[]
 	selected_elements: OutlinerElement[]
-	selected_group: Group | null;
-	selected_vertices: {
-		[element_key: string]: string[]
+	selected_group: Group | null
+	mesh_selection: {
+		[element_key: string]: {
+			vertices: string[]
+			edges: string[]
+			faces: string[]
+		}
 	};
 	selected_faces: []
 	textures: Texture[]

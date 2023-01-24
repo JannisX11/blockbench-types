@@ -32,7 +32,7 @@ interface ValidatorCheckOptions {
 	 * Names of events that automatically trigger this check
 	 */
 	update_triggers?: EventName[]
-	condition?: Condition
+	condition?: ConditionResolvable
 }
 interface WarningOrError {
 	message: string

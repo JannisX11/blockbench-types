@@ -68,6 +68,23 @@ declare class Action extends BarItem {
      */
     side_menu?: Menu
 }
+interface ToggleOptions extends ActionOptions {
+    /**
+     * Default value of the toggle
+     */
+    default?: boolean
+    /**
+     * Method that gets called when the user changes the value of the toggle
+     */
+    onChange?(value: boolean): void
+}
+declare class Toggle extends Action {
+    constructor(id: string, options: ToggleOptions);
+    /**
+     * Updates the state of the toggle in the UI
+     */
+    updateEnabledState(): void
+}
 
 type RGBAColor = {r: number, g: number, b: number, a: number}
 type ViewMode = 'textured' | 'solid' | 'wireframe' | 'uv' | 'normal'
@@ -273,3 +290,7 @@ declare namespace Keybinds {
     function save (): void;
     function reset (): void;
 }
+declare class _ToolToolbar extends Toolbar {
+    selected: Tool
+}
+declare const Toolbox: _ToolToolbar;

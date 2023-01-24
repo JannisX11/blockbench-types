@@ -40,7 +40,7 @@ interface FormatOptions {
 	category?: string
 	target?: string | string[]
 	confidential?: boolean
-	condition?: Condition
+	condition?: ConditionResolvable
 	show_on_start_screen?: boolean
 	format_page?: FormatPage
 	onFormatPage?(): void
@@ -92,7 +92,7 @@ declare class ModelFormat extends Deletable {
 	category: string
 	target: string | string[]
 	confidential: boolean
-	condition?: Condition
+	condition?: ConditionResolvable
 	show_on_start_screen: boolean
 	format_page?: FormatPage
 	onFormatPage?(): void
@@ -155,7 +155,7 @@ interface ModelLoaderOptions {
 	category?: string
 	target?: string | string[]
 	confidential?: boolean
-	condition?: Condition
+	condition?: ConditionResolvable
 	format_page?: FormatPage
 	onFormatPage?(): void
 	onStart?(): void
@@ -172,7 +172,7 @@ declare class ModelLoader extends Deletable {
 	category: string
 	target: string | string[]
 	confidential: boolean
-	condition?: Condition
+	condition?: ConditionResolvable
 	show_on_start_screen: boolean
 	format_page?: FormatPage
 	onFormatPage?(): void

@@ -7,6 +7,7 @@
 /// <reference types="./textures" />
 /// <reference types="./action" />
 /// <reference types="./animation" />
+/// <reference types="./animation_controller" />
 /// <reference types="./canvas" />
 /// <reference types="./codec" />
 /// <reference types="./file_system" />
@@ -19,117 +20,32 @@
 /// <reference types="./legacy" />
 /// <reference types="./menu" />
 /// <reference types="./outliner" />
+/// <reference types="./cube" />
 /// <reference types="./plugin" />
 /// <reference types="./preview" />
 /// <reference types="./project" />
+/// <reference types="./mode" />
 /// <reference types="./settings" />
 /// <reference types="./timeline" />
 /// <reference types="./undo" />
+/// <reference types="./painter" />
+/// <reference types="./screencam" />
 /// <reference types="./validator" />
+/// <reference types="./display_mode" />
+/// <reference types="./misc" />
 /// <reference types="./util" />
 
 
-declare class Deletable {
-	delete: () => void
-}
-type UUID = string
-
-/**
- * True if Blockbench runs as a native app
- */
-declare const isApp: boolean
-
-type EventName = 'remove_animation'
-	| 'display_animation_frame'
-	| 'before_closing'
-	| 'create_session'
-	| 'join_session'
-	| 'quit_session'
-	| 'send_session_data'
-	| 'receive_session_data'
-	| 'user_joins_session'
-	| 'user_leaves_session'
-	| 'process_chat_message'
-	| 'update_settings'
-	| 'update_project_settings'
-	| 'save_project'
-	| 'load_project'
-	| 'new_project'
-	| 'reset_project'
-	| 'close_project'
-	| 'add_cube'
-	| 'add_mesh'
-	| 'add_group'
-	| 'add_texture_mesh'
-	| 'group_elements'
-	| 'update_selection'
-	| 'update_keyframe_selection'
-	| 'select_all'
-	| 'added_to_selection'
-	| 'invert_selection'
-	| 'canvas_select'
-	| 'canvas_click'
-	| 'change_texture_path'
-	| 'add_texture'
-	| 'finish_edit'
-	| 'finished_edit'
-	| 'undo'
-	| 'redo'
-	| 'load_undo_save'
-	| 'select_mode'
-	| 'unselect_mode'
-	| 'change_active_panel'
-	| 'resize_window'
-	| 'press_key'
-	| 'select_format'
-	| 'convert_format'
-	| 'construct_format'
-	| 'delete_format'
-	| 'select_project'
-	| 'unselect_project'
-	| 'setup_project'
-	| 'update_project_resolution'
-	| 'merge_project'
-	| 'update_view'
-	| 'update_camera_position'
-	| 'render_frame'
-	| 'construct_model_loader'
-	| 'delete_model_loader'
-	| 'update_recent_project_data'
-	| 'update_recent_project_thumbnail'
-	| 'load_from_recent_project_data'
-	| 'edit_animation_properties'
-	| 'select_preview_scene'
-	| 'unselect_preview_scene'
-
-type IconString = string;
-
-interface MessageBoxOptions {
-	/**
-	 * Index of the confirm button within the buttons array
-	 */
-	confirm: number
-	/**
-	 * Index of the cancel button within the buttons array
-	 */
-	cancel: number
-	buttons: string[]
-	translateKey?: string
-	title?: string
-	message?: string
-	icon?: string
-	width: number
-	/**
-	 * Display a list of actions to do in the dialog. When clicked, the message box closes with the string ID of the command as first argument.
-	 */
-	commands?: {
-		[id: string]: string | {text: string}
-	}
-}
-
 declare namespace Blockbench {
 	const platform: 'web' | 'win32' | 'darwin' | 'linux'
+	/**
+	 * Blockbench version number
+	 */
 	const version: string
+	/**
+	 * URL queries when opened as web app using a link that contained queries
+	 */
+	const queries: {[key: string]: string} | undefined
 	/**
 	 * Time when Blockbench was opened
 	 */
@@ -218,95 +134,123 @@ declare namespace Blockbench {
 	function removeListener(event_names: EventName): void
 }
 
-
-interface PluginData {
-	title: string
-	author: string
-	description: string
-	icon: string
-	variant: 'desktop' | 'web' | 'both'
-	about?: string
-	min_version: string
-	max_version: string
-	onload: () => void
-	onunload: () => void
-	oninstall: () => void
-	onuninstall: () => void
-}
-
-declare class Plugin {
-	static register(id: string, data: PluginData): Plugin
-	constructor()
-}
-
-type Condition = any
-
-
-interface PropertyOptions {
-	default?: any
-	condition?: any
-	exposed?: boolean
-	label?: string
-	/**
-	 * Options used for select types
-	 */
-	options?: object
-	merge?: (instance: any, data: object) => void
-	reset?: (instance: any) => void
-	merge_validation?: (value: any) => boolean
-}
-/**
- * Creates a new property on the specified target class
- */
-declare class Property extends Deletable {
-    constructor(target_class: any, type: string, name: string, options?: PropertyOptions);
-    class: any;
-    name: string;
-    type: string;
-	default: any;
-	
-    isString: boolean;
-    isMolang: boolean;
-    isNumber: boolean;
-    isBoolean: boolean;
-    isArray: boolean;
-    isVector: boolean;
-	isVector2: boolean;
-	
-    merge_validation: undefined | ((value: any) => boolean);
-    condition: any;
-    exposed: boolean;
-    label: any;
-	merge: (instance: any, data: object) => void
-	reset: (instance: any) => void
-    getDefault(instance: any): any;
-    copy(instance: any, target: any): void;
-}
-
-declare function updateSelection(): void
-
-/**
- * Returns a translated string in the current language
- * @param key Translation key
- * @param arguments Array of arguments that replace anchors (%0, etc.) in the translation. Items can be strings or anything that can be converted to strings
- */
-declare function tl(key: string, arguments?: any[]): string
-
-declare namespace Language {
-	/**
-	 * Translation data for the current language
-	 */
-	const data: {
-		[key: string]: string
-	}
-	/**
-	 * Two letter code indicating the currently selected language
-	 */
-	const code: string
-	/**
-	 * Add translations for custom translation strings
-	 * @param language Two letter language code, e. G. 'en'
-	 * @param strings Object listing the translation keys and values
-	 */
-	function addTranslations(language: string, strings: {[key: string]: string})
+type BlockbenchTypeOutliner = typeof Outliner
+type BlockbenchTypeOutlinerNode = typeof OutlinerNode
+type BlockbenchTypeOutlinerElement = typeof OutlinerElement
+type BlockbenchTypeGroup = typeof Group
+type BlockbenchTypeCube = typeof Cube
+type BlockbenchTypeMesh = typeof Mesh
+type BlockbenchTypeLocator = typeof Locator
+type BlockbenchTypeNullObject = typeof NullObject
+type BlockbenchTypeTextureMesh = typeof TextureMesh
+type BlockbenchTypeFace = typeof Face
+type BlockbenchTypeCubeFace = typeof CubeFace
+type BlockbenchTypeMeshFace = typeof MeshFace
+type BlockbenchTypeNodePreviewController = typeof NodePreviewController
+type BlockbenchTypeAnimator = typeof Animator
+type BlockbenchTypeTimeline = typeof Timeline
+type BlockbenchTypeAnimationItem = typeof AnimationItem
+type BlockbenchTypeAnimation = typeof Animation
+type BlockbenchTypeAnimationController = typeof AnimationController
+type BlockbenchTypeKeyframe = typeof Keyframe
+type BlockbenchTypeKeyframeDataPoint = typeof KeyframeDataPoint
+type BlockbenchTypeBoneAnimator = typeof BoneAnimator
+type BlockbenchTypeNullObjectAnimator = typeof NullObjectAnimator
+type BlockbenchTypeEffectAnimator = typeof EffectAnimator
+type BlockbenchTypeTimelineMarker = typeof TimelineMarker
+type BlockbenchTypePanel = typeof Panel
+type BlockbenchTypeMode = typeof Mode
+type BlockbenchTypeDialog = typeof Dialog
+type BlockbenchTypeSetting = typeof Setting
+type BlockbenchTypePlugin = typeof Plugin
+type BlockbenchTypePreview = typeof Preview
+type BlockbenchTypeToolbar = typeof Toolbar
+type BlockbenchTypeLanguage = typeof Language
+type BlockbenchTypePainter = typeof Painter
+type BlockbenchTypeScreencam = typeof Screencam
+type BlockbenchTypeSettings = typeof Settings
+type BlockbenchTypeTextureAnimator = typeof TextureAnimator
+type BlockbenchTypeToolbox = typeof Toolbox
+type BlockbenchTypeBarItems = typeof BarItems
+type BlockbenchTypeBarItem = typeof BarItem
+type BlockbenchTypeAction = typeof Action
+type BlockbenchTypeTool = typeof Tool
+type BlockbenchTypeToggle = typeof Toggle
+type BlockbenchTypeWidget = typeof Widget
+type BlockbenchTypeBarSelect = typeof BarSelect
+type BlockbenchTypeBarSlider = typeof BarSlider
+type BlockbenchTypeBarText = typeof BarText
+type BlockbenchTypeNumSlider = typeof NumSlider
+type BlockbenchTypeColorPicker = typeof ColorPicker
+type BlockbenchTypeKeybind = typeof Keybind
+type BlockbenchTypeKeybindItem = typeof KeybindItem
+type BlockbenchTypeMenu = typeof Menu
+type BlockbenchTypeBarMenu = typeof BarMenu
+type BlockbenchTypeResizeLine = typeof ResizeLine
+type BlockbenchTypeModelProject = typeof ModelProject
+type BlockbenchTypeModelFormat = typeof ModelFormat
+type BlockbenchTypeCodec = typeof Codec
+type BlockbenchTypeDisplaySlot = typeof DisplaySlot
+type BlockbenchTypeReusable = typeof Reusable
+type BlockbenchTypeTexture = typeof Texture
+declare namespace Blockbench {
+	const Outliner: BlockbenchTypeOutliner
+	const OutlinerNode: BlockbenchTypeOutlinerNode
+	const OutlinerElement: BlockbenchTypeOutlinerElement
+	const Group: BlockbenchTypeGroup
+	const Cube: BlockbenchTypeCube
+	const Mesh: BlockbenchTypeMesh
+	const Locator: BlockbenchTypeLocator
+	const NullObject: BlockbenchTypeNullObject
+	const TextureMesh: BlockbenchTypeTextureMesh
+	const Face: BlockbenchTypeFace
+	const CubeFace: BlockbenchTypeCubeFace
+	const MeshFace: BlockbenchTypeMeshFace
+	const NodePreviewController: BlockbenchTypeNodePreviewController
+	const Animator: BlockbenchTypeAnimator
+	const Timeline: BlockbenchTypeTimeline
+	const AnimationItem: BlockbenchTypeAnimationItem
+	const Animation: BlockbenchTypeAnimation
+	const AnimationController: BlockbenchTypeAnimationController
+	const Keyframe: BlockbenchTypeKeyframe
+	const KeyframeDataPoint: BlockbenchTypeKeyframeDataPoint
+	const BoneAnimator: BlockbenchTypeBoneAnimator
+	const NullObjectAnimator: BlockbenchTypeNullObjectAnimator
+	const EffectAnimator: BlockbenchTypeEffectAnimator
+	const TimelineMarker: BlockbenchTypeTimelineMarker
+	const Panel: BlockbenchTypePanel
+	const Mode: BlockbenchTypeMode
+	const Dialog: BlockbenchTypeDialog
+	const Setting: BlockbenchTypeSetting
+	const Plugin: BlockbenchTypePlugin
+	const Preview: BlockbenchTypePreview
+	const Toolbar: BlockbenchTypeToolbar
+	const Language: BlockbenchTypeLanguage
+	const Painter: BlockbenchTypePainter
+	const Screencam: BlockbenchTypeScreencam
+	const Settings: BlockbenchTypeSettings
+	const TextureAnimator: BlockbenchTypeTextureAnimator
+	const Toolbox: BlockbenchTypeToolbox
+	const BarItems: BlockbenchTypeBarItems
+	const BarItem: BlockbenchTypeBarItem
+	const Action: BlockbenchTypeAction
+	const Tool: BlockbenchTypeTool
+	const Toggle: BlockbenchTypeToggle
+	const Widget: BlockbenchTypeWidget
+	const BarSelect: BlockbenchTypeBarSelect
+	const BarSlider: BlockbenchTypeBarSlider
+	const BarText: BlockbenchTypeBarText
+	const NumSlider: BlockbenchTypeNumSlider
+	const ColorPicker: BlockbenchTypeColorPicker
+	const Keybind: BlockbenchTypeKeybind
+	const KeybindItem: BlockbenchTypeKeybindItem
+	const Menu: BlockbenchTypeMenu
+	const BarMenu: BlockbenchTypeBarMenu
+	const ResizeLine: BlockbenchTypeResizeLine
+	const ModelProject: BlockbenchTypeModelProject
+	const ModelFormat: BlockbenchTypeModelFormat
+	const Codec: BlockbenchTypeCodec
+	const DisplaySlot: BlockbenchTypeDisplaySlot
+	const Reusable: BlockbenchTypeReusable
+	const Texture: BlockbenchTypeTexture
 }

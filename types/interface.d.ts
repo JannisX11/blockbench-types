@@ -1,5 +1,5 @@
 interface ResizeLineOptions {
-	condition?: Condition
+	condition?: ConditionResolvable
 	horizontal?: boolean
 	position(): void
 	get(): void
@@ -10,7 +10,7 @@ declare class ResizeLine {
 
 	id: string
 	horizontal: boolean
-	condition?: Condition
+	condition?: ConditionResolvable
 	width: number
 	get(): void
 	set(): void

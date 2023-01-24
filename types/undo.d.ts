@@ -41,7 +41,7 @@ type UndoEntry = {
     time: number
 }
 interface AmendEditForm {
-    condition?: Condition
+    condition?: ConditionResolvable
     type?: 'number'
     label: string
     interval_type: 'position' | 'rotation'

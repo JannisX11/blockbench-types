@@ -1,3 +1,8 @@
+declare class AnimationItem {
+    static all: AnimationItem[]
+    static selected: AnimationItem | null
+}
+
 interface AnimationOptions {
     name?: string
     loop?: string
@@ -8,7 +13,7 @@ interface AnimationOptions {
     snapping?: number
 }
 
-declare class Animation {
+declare class Animation extends AnimationItem {
     constructor(data: AnimationOptions);
     extend(data: AnimationOptions): this;
     getUndoCopy(options: any, save: any): {
@@ -37,9 +42,32 @@ declare class Animation {
     setLoop(value: any, undo: any): void;
     calculateSnappingFromKeyframes(): any;
     propertiesDialog(): void;
+
+    name: string
+    loop: string
+    override: boolean
+    anim_time_update: string
+    blend_weight: string
+    length: number
+    snapping: number
+    loop_delay: string
+    start_delay: string
+    path: string
+    playing: boolean
+    saved: boolean
+
+    markers: TimelineMarker[]
+    animators: {
+        [id: string]: GeneralAnimator
+    }
+    saved_name?: string
+    selected: boolean
+    type: string
+    uuid: string
 }
 
-namespace Animator {
+
+declare namespace Animator {
     const open: boolean
     const MolangParser: object
     const motion_trail: THREE.Object3D
@@ -90,15 +118,14 @@ declare class BoneAnimator extends GeneralAnimator {
     position: Keyframe[]
     scale: Keyframe[]
     getGroup(): Group
-    select
-    fillValues
-    pushKeyframe
-    doRender
-    displayRotation
-    displayPosition
-    displayScale
-    interpolate
-    displayFrame
+    fillValues: () => void
+    pushKeyframe: () => void
+    doRender: () => boolean
+    displayRotation: () => void
+    displayPosition: () => void
+    displayScale: () => void
+    interpolate: () => void
+    displayFrame: () => void
 }
 declare class NullObjectAnimator extends GeneralAnimator {
     name: string
@@ -107,11 +134,10 @@ declare class NullObjectAnimator extends GeneralAnimator {
     position: Keyframe[]
     scale: Keyframe[]
     getElement(): NullObject
-    select
-    doRender
-    displayPosition
-    displayIK
-    displayFrame
+    doRender: () => void
+    displayPosition: () => void
+    displayIK: () => void
+    displayFrame: () => void
 }
 declare class EffectAnimator extends GeneralAnimator {
     name: string
@@ -121,6 +147,11 @@ declare class EffectAnimator extends GeneralAnimator {
     scale: Keyframe[]
     pushKeyframe(keyframe): this
     displayFrame(in_loop): this
-    startPreviousSounds
+    startPreviousSounds: () => void
+}
+
+declare class TimelineMarker {
+    color: number
+    time: number
 }
 

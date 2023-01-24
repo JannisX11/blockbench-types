@@ -34,6 +34,8 @@ interface TextureEditOptions {
      * If true, the texture is not updated visually
      */
     no_update?: boolean
+    no_undo_init?: boolean
+    no_undo_finish?: boolean
 }
 
 declare class Texture {
