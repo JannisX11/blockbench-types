@@ -1,7 +1,8 @@
+/// <reference path="./index.d.ts"/>
 interface CodecOptions {
 	name: string
-	load?(model: any, file: object, add?: boolean): void
-	compile?(options?: object): void
+	load?(model: any, file: any, add?: boolean): void
+	compile?(options?: any): string | ArrayBuffer | any
 	parse?(data: any, path: string): void
 	export?(): void
 	/**
@@ -10,7 +11,7 @@ interface CodecOptions {
 	fileName?(): string
 	startPath?(): string
 	write?(content: any, path: string): void
-	overwrite?(content: any, path: string, callback: ((path) => void)): void
+	overwrite?(content: any, path: string, callback: (path) => void): void
 	afterDownload?(path): void
 	afterSave?(path): void
 
@@ -40,13 +41,13 @@ declare class Codec extends Deletable {
 	fileName?(): string
 	startPath?(): string
 	write?(content: any, path: string): void
-	overwrite?(content: any, path: string, callback: ((path) => void)): void
+	overwrite?(content: any, path: string, callback: (path) => void): void
 	afterDownload?(path): void
 	afterSave?(path): void
 	on(event_name: string, callback: (data: object) => void): void
 	removeListener(event_name: string, callback: (data: object) => void): void
 	dispatchEvent(data: object): void
-	
+
 	name: string
 	extension: string
 	remember: boolean

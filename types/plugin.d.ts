@@ -1,3 +1,4 @@
+/// <reference path="./index.d.ts"/>
 interface PluginOptions {
 	title: string
 	author: string

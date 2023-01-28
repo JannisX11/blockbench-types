@@ -1,12 +1,11 @@
+/// <reference path="./index.d.ts"/>
 type OccupationMatrix = {
 	[x: number]: {
 		[y: number]: boolean
 	}
 }
 type MeshEdge = [string, string]
-interface MeshFaceOptions extends FaceOptions {
-
-}
+interface MeshFaceOptions extends FaceOptions {}
 declare class MeshFace extends Face {
 	constructor(mesh: Mesh, data: MeshFaceOptions)
 	/**
@@ -25,7 +24,11 @@ declare class MeshFace extends Face {
 	/**
 	 * Calculates which pixels the UV face occupies, and returns them as a map
 	 */
-	getOccupationMatrix: (texture_space?: boolean, start_offset?: ArrayVector2, matrix?: OccupationMatrix) => OccupationMatrix
+	getOccupationMatrix: (
+		texture_space?: boolean,
+		start_offset?: ArrayVector2,
+		matrix?: OccupationMatrix
+	) => OccupationMatrix
 	/**
 	 * Get the keys of this face and all faces that are connected with it on the UV map
 	 */
@@ -49,7 +52,9 @@ declare class MeshFace extends Face {
 	/**
 	 * Get the adjacent face in the specified side
 	 */
-	getAdjacentFace: (side_index: number) => {face: MeshFace, key: string, edge: MeshEdge, index: number} | null
+	getAdjacentFace: (
+		side_index: number
+	) => { face: MeshFace; key: string; edge: MeshEdge; index: number } | null
 	/**
 	 * Returns the face key
 	 */
@@ -80,7 +85,7 @@ interface MeshOptions {
 	}
 }
 declare class Mesh extends OutlinerElement {
-	constructor (options: Partial<MeshOptions>, uuid?: string)
+	constructor(options: Partial<MeshOptions>, uuid?: string)
 
 	visibility: boolean
 	color: number
@@ -106,7 +111,7 @@ declare class Mesh extends OutlinerElement {
 	 * Get selected edges as vertex key pairs
 	 * @param can_write If true, the array can safely be modified to update the selection
 	 */
-	getSelectedEdges(can_write: boolean): ([string, string])[]
+	getSelectedEdges(can_write: boolean): [string, string][]
 	/**
 	 * Get selected faces as face keys
 	 * @param can_write If true, the array can safely be modified to update the selection
@@ -129,7 +134,13 @@ declare class Mesh extends OutlinerElement {
 	roll(axis: number, steps: number, origin?: ArrayVector3): void
 	flip(axis: number): void
 	moveVector(offset: ArrayVector3, axis: number, update?: boolean): void
-	resize(val: number, axis: number, negative: boolean, allow_negative: boolean, bidirectional?: boolean): void
+	resize(
+		val: number,
+		axis: number,
+		negative: boolean,
+		allow_negative: boolean,
+		bidirectional?: boolean
+	): void
 	applyTexture(texture: Texture, faces?: true | undefined | string[]): void
 
 	static all: Mesh[]

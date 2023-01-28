@@ -1,3 +1,4 @@
+/// <reference path="./index.d.ts"/>
 interface ModelProjectOptions {
 	format: ModelFormat
 }
@@ -48,10 +49,10 @@ declare class ModelProject {
 			edges: string[]
 			faces: string[]
 		}
-	};
+	}
 	selected_faces: []
 	textures: Texture[]
-	selected_texture: Texture | null;
+	selected_texture: Texture | null
 	outliner: OutlinerNode[]
 	animations: Animation[]
 	timeline_animators: []
@@ -62,32 +63,32 @@ declare class ModelProject {
 			scale: [number, number, number]
 			mirror: [boolean, boolean, boolean]
 		}
-	};
+	}
 
-	get model_3d(): THREE.Object3D;
-    get materials(): {
+	get model_3d(): THREE.Object3D
+	get materials(): {
 		[uuid: UUID]: THREE.ShaderMaterial
-	};
-    get nodes_3d(): {
+	}
+	get nodes_3d(): {
 		[uuid: UUID]: THREE.Object3D
-	};
+	}
 
-    getDisplayName(): string;
-    openSettings(): void;
-    whenNextOpen(callback: () => void): void;
-    select(): boolean;
-    unselect(): void;
-    close(force: any): Promise<boolean>;
+	getDisplayName(): string
+	openSettings(): void
+	whenNextOpen(callback: () => void): void
+	select(): boolean
+	unselect(): void
+	close(force: any): Promise<boolean>
 
 	static all: ModelProject[]
 }
 
 declare const Project: ModelProject | null
 
-declare function setupProject(format: ModelFormat | string): boolean;
-declare function newProject(format: ModelFormat | string): boolean;
-declare function setProjectResolution(width: number, height: number, modify_uv?: boolean): void;
-declare function updateProjectResolution(): void;
+declare function setupProject(format: ModelFormat | string): boolean
+declare function newProject(format: ModelFormat | string): boolean
+declare function setProjectResolution(width: number, height: number, modify_uv?: boolean): void
+declare function updateProjectResolution(): void
 
 declare class EditSession {
 	constructor()
@@ -105,19 +106,19 @@ declare class EditSession {
 	join(username: string, token: string)
 	quit(): void
 	setState(active: boolean): void
-	copyToken(): void;
-    initNewModel(force?: boolean): void;
-    initConnection(conn: any): void;
-    sendAll(type: string, data: any): void;
-    sendEdit(entry: UndoEntry): void;
-    receiveData(tag: object): void;
-    processData(tag: object): void;
-    catchUp(): void;
+	copyToken(): void
+	initNewModel(force?: boolean): void
+	initConnection(conn: any): void
+	sendAll(type: string, data: any): void
+	sendEdit(entry: UndoEntry): void
+	receiveData(tag: object): void
+	processData(tag: object): void
+	catchUp(): void
 	/**
 	 * Send a chat message
 	 * @param text Text to send. If omitted, the current text in the chat panel input is sent
 	 */
-    sendChat(text?: string): void;
-    addChatMessage(message: any): any;
-    processChatMessage(data: any): void;
+	sendChat(text?: string): void
+	addChatMessage(message: any): any
+	processChatMessage(data: any): void
 }

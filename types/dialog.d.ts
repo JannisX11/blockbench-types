@@ -1,7 +1,23 @@
+/// <reference path="./index.d.ts"/>
+
 interface DialogFormElement {
 	label: string
 	description?: string
-	type: 'text' | 'number' | 'range' | 'checkbox' | 'select' | 'radio' | 'textarea' | 'vector' | 'color' | 'file' | 'folder' | 'save' | 'info' | 'buttons'
+	type:
+		| 'text'
+		| 'number'
+		| 'range'
+		| 'checkbox'
+		| 'select'
+		| 'radio'
+		| 'textarea'
+		| 'vector'
+		| 'color'
+		| 'file'
+		| 'folder'
+		| 'save'
+		| 'info'
+		| 'buttons'
 	nocolon?: boolean
 	full_width?: boolean
 	readonly?: boolean
@@ -19,12 +35,12 @@ interface DialogFormElement {
 	click?: (button_index: number) => void
 }
 
-type FormResultValue = string|number|boolean|[]
+type FormResultValue = string | number | boolean | []
 
 interface ActionInterface {
 	name: string
 	description?: string
-	icon: string,
+	icon: string
 	click: (event: Event) => void
 	condition: ConditionResolvable
 }
@@ -54,11 +70,19 @@ interface DialogOptions {
 	/**
 	 * Function to run when anything in the form is changed
 	 */
-	onFormChange?: (form_result: {[key: string]: FormResultValue}) => void
+	onFormChange?: (form_result: { [key: string]: FormResultValue }) => void
 	/**
 	 * Array of HTML object strings for each line of content in the dialog.
 	 */
-	lines?: (HTMLElement | {label?: string, widget?: Widget|(() => Widget), nocolon?: boolean} | string)[]
+	lines?: (
+		| HTMLElement
+		| {
+				label?: string
+				widget?: Widget | (() => Widget)
+				nocolon?: boolean
+		  }
+		| string
+	)[]
 	/**
 	 * Creates a form in the dialog
 	 */
@@ -68,7 +92,7 @@ interface DialogOptions {
 	/**
 	 * Vue component
 	 */
-	component?: Vue.Component
+	component?: typeof Vue.Component
 	/**
 	 * Order that the different interface types appear in the dialog. Default is 'form', 'lines', 'component'.
 	 */
@@ -98,10 +122,10 @@ interface DialogOptions {
 
 interface DialogSidebarOptions {
 	pages?: {
-		[key: string]: string | {label: string, icon: IconString, color?: string}
+		[key: string]: string | { label: string; icon: IconString; color?: string }
 	}
 	page?: string
-	actions?: (Action|ActionInterface|string)[],
+	actions?: (Action | ActionInterface | string)[]
 	onPageSwitch?: (page: string) => void
 }
 declare class DialogSidebar {
@@ -111,7 +135,7 @@ declare class DialogSidebar {
 		[key: string]: string
 	}
 	page: string
-	actions: (Action|string)[]
+	actions: (Action | string)[]
 	onPageSwitch(page: string): void
 	build(): void
 	toggle(state?: boolean): void
@@ -123,10 +147,9 @@ declare class Dialog {
 	constructor(options: DialogOptions)
 
 	id: string
-	component: Vue.Component
+	component: typeof Vue.Component
 	sidebar: DialogSidebar | null
-	content_vue: Vue | null
-
+	content_vue: typeof Vue.Component | null
 
 	show: () => Dialog
 	hide: () => Dialog
@@ -151,7 +174,7 @@ declare class Dialog {
 	/**
 	 * Set the values of the dialog form inputs
 	 */
-	setFormValues(values: {[key: string]: FormResultValue}): void
+	setFormValues(values: { [key: string]: FormResultValue }): void
 	/**
 	 * Delete the dialog object, causing it to be re-build from scratch on next open
 	 */
@@ -189,18 +212,17 @@ interface ShapelessDialogOptions {
 	/**
 	 * Vue component
 	 */
-	component?: Vue.Component
+	component?: typeof Vue.Component
 	/**
 	 * Unless set to false, clicking on the darkened area outside of the dialog will cancel the dialog.
 	 */
 	cancel_on_click_outside?: boolean
 }
 declare class ShapelessDialog extends Dialog {
-	constructor (id: string, options: ShapelessDialogOptions)
+	constructor(id: string, options: ShapelessDialogOptions)
 
 	id: string
-	component: Vue.Component
-
+	component: typeof Vue.Component
 
 	show: () => Dialog
 	hide: () => Dialog
@@ -225,7 +247,7 @@ declare class ShapelessDialog extends Dialog {
 	/**
 	 * Set the values of the dialog form inputs
 	 */
-	setFormValues(values: {[key: string]: FormResultValue}): void
+	setFormValues(values: { [key: string]: FormResultValue }): void
 	/**
 	 * Delete the dialog object, causing it to be re-build from scratch on next open
 	 */

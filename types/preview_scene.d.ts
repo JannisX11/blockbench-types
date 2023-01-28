@@ -1,15 +1,16 @@
+/// <reference path="./index.d.ts"/>
 interface PreviewModelCubeTemplate {
 	position: ArrayVector3
 	size: ArrayVector3
 	origin?: ArrayVector3
 	rotation?: ArrayVector3
 	faces: {
-		north?: {uv: ArrayVector4}
-		east?: {uv: ArrayVector4}
-		west?: {uv: ArrayVector4}
-		south?: {uv: ArrayVector4}
-		up?: {uv: ArrayVector4}
-		down?: {uv: ArrayVector4}
+		north?: { uv: ArrayVector4 }
+		east?: { uv: ArrayVector4 }
+		west?: { uv: ArrayVector4 }
+		south?: { uv: ArrayVector4 }
+		up?: { uv: ArrayVector4 }
+		down?: { uv: ArrayVector4 }
 	}
 }
 
@@ -38,12 +39,12 @@ interface PreviewModelOptions {
 
 declare class PreviewModel extends Deletable {
 	constructor(id: string, options: PreviewModelOptions)
-	
+
 	static models: {
 		(id: string): PreviewModel
 	}
 	static getActiveModels(): PreviewModel[]
-	
+
 	id: string
 	model_3d: THREE.Object3D
 	cubes: PreviewModelCubeTemplate[]
@@ -52,7 +53,7 @@ declare class PreviewModel extends Deletable {
 	shading: boolean
 	render_side: number
 	texture_size: [number, number]
-	onUpdate?:() => void
+	onUpdate?: () => void
 	/**
 	 * Enables the model in the preview
 	 */
@@ -67,8 +68,6 @@ declare class PreviewModel extends Deletable {
 	update(): void
 	buildModel(): void
 }
-
-
 
 interface PreviewSceneOptions {
 	name?: string
@@ -89,7 +88,7 @@ declare class PreviewScene extends Deletable {
 	select_options: {
 		(id: string): string
 	}
-	
+
 	id: string
 	name: string
 	description: string

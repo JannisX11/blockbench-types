@@ -1,4 +1,4 @@
-
+/// <reference path="./index.d.ts"/>
 
 declare class Deletable {
 	delete: () => void
@@ -10,7 +10,8 @@ type UUID = string
  */
 declare const isApp: boolean
 
-type EventName = 'remove_animation'
+type EventName =
+	| 'remove_animation'
 	| 'display_animation_frame'
 	| 'before_closing'
 	| 'create_session'
@@ -75,7 +76,7 @@ type EventName = 'remove_animation'
 	| 'select_preview_scene'
 	| 'unselect_preview_scene'
 
-type IconString = string;
+type IconString = string
 
 interface MessageBoxOptions {
 	/**
@@ -96,11 +97,9 @@ interface MessageBoxOptions {
 	 * Display a list of actions to do in the dialog. When clicked, the message box closes with the string ID of the command as first argument.
 	 */
 	commands?: {
-		[id: string]: string | {text: string}
+		[id: string]: string | { text: string }
 	}
 }
-
-
 
 interface PropertyOptions {
 	default?: any
@@ -119,28 +118,28 @@ interface PropertyOptions {
  * Creates a new property on the specified target class
  */
 declare class Property extends Deletable {
-    constructor(target_class: any, type: string, name: string, options?: PropertyOptions);
-    class: any;
-    name: string;
-    type: string;
-	default: any;
-	
-    isString: boolean;
-    isMolang: boolean;
-    isNumber: boolean;
-    isBoolean: boolean;
-    isArray: boolean;
-    isVector: boolean;
-	isVector2: boolean;
-	
-    merge_validation: undefined | ((value: any) => boolean);
-    condition: any;
-    exposed: boolean;
-    label: any;
+	constructor(target_class: any, type: string, name: string, options?: PropertyOptions)
+	class: any
+	name: string
+	type: string
+	default: any
+
+	isString: boolean
+	isMolang: boolean
+	isNumber: boolean
+	isBoolean: boolean
+	isArray: boolean
+	isVector: boolean
+	isVector2: boolean
+
+	merge_validation: undefined | ((value: any) => boolean)
+	condition: any
+	exposed: boolean
+	label: any
 	merge: (instance: any, data: object) => void
 	reset: (instance: any) => void
-    getDefault(instance: any): any;
-    copy(instance: any, target: any): void;
+	getDefault(instance: any): any
+	copy(instance: any, target: any): void
 }
 
 declare function updateSelection(): void
@@ -168,5 +167,5 @@ declare namespace Language {
 	 * @param language Two letter language code, e. G. 'en'
 	 * @param strings Object listing the translation keys and values
 	 */
-	function addTranslations(language: string, strings: {[key: string]: string})
+	function addTranslations(language: string, strings: { [key: string]: string })
 }

@@ -1,3 +1,4 @@
+/// <reference path="./index.d.ts"/>
 interface PanelOptions {
 	id: string
 	name: string
@@ -18,7 +19,7 @@ interface PanelOptions {
 		height: number
 		folded: boolean
 	}
-	component: Vue.Component
+	component: typeof Vue.Component
 	default_side: 'right' | 'left'
 	insert_before: string
 	insert_after: string
@@ -28,8 +29,8 @@ interface PanelOptions {
 type PanelEvent = 'drag' | 'fold' | 'change_zindex' | 'move_to' | 'moved_to' | 'update'
 
 declare class Panel {
-	constructor (id: string, options: PanelOptions)
-	constructor (options: PanelOptions)
+	constructor(id: string, options: PanelOptions)
+	constructor(options: PanelOptions)
 	isVisible(): boolean
 	isInSidebar(): boolean
 	slot: string

@@ -1,31 +1,44 @@
+/// <reference path="./index.d.ts"/>
+
 interface FormatPage {
-	component?: Vue.Component
-	content?: ({
-		type: 'image' | 'h2' | 'h3' | 'h4' | 'text' | 'label' | 'image' | ''
-		text?: string
-		source?: string
-		width?: number
-		height?: number
-	} | string)[]
+	component?: typeof Vue.Component
+	content?: (
+		| {
+				type: 'image' | 'h2' | 'h3' | 'h4' | 'text' | 'label' | 'image' | ''
+				text?: string
+				source?: string
+				width?: number
+				height?: number
+		  }
+		| string
+	)[]
 	button_text?: string
 }
 interface CubeSizeLimiter {
 	/**
 	 * Test whether the cube with the optionally provided values violates the size restrictions
 	 */
-	test: (cube: Cube, values?: {from: ArrayVector3, to: ArrayVector3, inflate: number}) => boolean
+	test: (
+		cube: Cube,
+		values?: { from: ArrayVector3; to: ArrayVector3; inflate: number }
+	) => boolean
 	/**
 	 * Move the cube back into the restructions
 	 */
-	move: (cube: Cube, values?: {from: ArrayVector3, to: ArrayVector3, inflate: number}) => void
+	move: (cube: Cube, values?: { from: ArrayVector3; to: ArrayVector3; inflate: number }) => void
 	/**
 	 * Clamp the cube to fit into the restrictions. When an axis and direction is provided, clamp the element on that side to prevent wandering.
 	 */
-	clamp: (cube: Cube, values?: {from: ArrayVector3, to: ArrayVector3, inflate: number}, axis?: number, direction?: boolean | null) => void
+	clamp: (
+		cube: Cube,
+		values?: { from: ArrayVector3; to: ArrayVector3; inflate: number },
+		axis?: number,
+		direction?: boolean | null
+	) => void
 	/**
 	 * Set to true to tell Blockbench to check and adjust the cube limit after rotating a cube
 	 */
-	rotation_affected?: boolean,
+	rotation_affected?: boolean
 	/**
 	 * Optionally set the coordinate limits of cubes in local space
 	 */
@@ -145,7 +158,6 @@ declare class ModelFormat extends Deletable {
  * The current format
  */
 declare const Format: ModelFormat
-
 
 interface ModelLoaderOptions {
 	id?: string

@@ -1,3 +1,4 @@
+/// <reference path="./index.d.ts"/>
 interface ScreenshotOptions {
 	crop?: boolean
 	width?: number
@@ -38,9 +39,13 @@ declare namespace Screencam {
 	 */
 	const recording_timelapse: boolean
 	const gif_options_dialog: Dialog
-	const gif_crop: {top: number, left: number, right: number, bottom: number}
+	const gif_crop: { top: number; left: number; right: number; bottom: number }
 
-	function screenshotPreview(preview: Preview, options: ScreenshotOptions, cb: ScreenshotReturn): void
+	function screenshotPreview(
+		preview: Preview,
+		options: ScreenshotOptions,
+		cb: ScreenshotReturn
+	): void
 
 	function fullScreen(options: ScreenshotOptions, cb: ScreenshotReturn): void
 

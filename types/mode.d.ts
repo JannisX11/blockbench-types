@@ -1,3 +1,5 @@
+/// <reference path="./index.d.ts"/>
+
 interface ModeOptions {
 	name: string
 	default_tool?: string
@@ -10,7 +12,7 @@ interface ModeOptions {
 	hide_sidebars?: boolean
 	hide_status_bar?: boolean
 	condition?: ConditionResolvable
-	component?: Vue.Component
+	component?: typeof Vue.Component
 	onSelect?: () => void
 	onUnselect?: () => void
 }

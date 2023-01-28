@@ -1,13 +1,13 @@
+/// <reference path="./index.d.ts"/>
 type ArrayVector4 = [number, number, number, number]
 type ArrayVector3 = [number, number, number]
 type ArrayVector2 = [number, number]
-
 
 /**
  * @private
  */
 declare class OutlinerNode {
-	constructor ()
+	constructor()
 	uuid: UUID
 	export: boolean
 	locked: boolean
@@ -44,7 +44,7 @@ declare class OutlinerNode {
 	 * Checks of the group or element is a child of `group`.
 	 * @param max_levels The maximum number of generations that can be between the element and the group
 	 */
-	isChildOf: ( group: Group, max_levels: number ) => boolean
+	isChildOf: (group: Group, max_levels: number) => boolean
 	/**
 	 * Displays the context menu of the element
 	 * @param event Mouse event, determines where the context menu spawns.
@@ -56,7 +56,7 @@ declare class OutlinerNode {
  * @private
  */
 declare class OutlinerElement extends OutlinerNode {
-	constructor ()
+	constructor()
 	selected: boolean
 	readonly mesh: THREE.Object3D | THREE.Mesh
 	getMesh: () => THREE.Object3D | THREE.Mesh
@@ -86,7 +86,7 @@ interface GroupOptions {
 }
 
 declare class Group extends OutlinerNode {
-	constructor (options: Partial<GroupOptions>)
+	constructor(options: Partial<GroupOptions>)
 	static selected: Group
 	static all: Group[]
 
@@ -139,14 +139,12 @@ declare class Group extends OutlinerNode {
 	forEachChild(callback: (object: OutlinerNode) => void, type?: any, for_self?: boolean)
 }
 
-
 interface LocatorOptions {
 	name: string
 	from: ArrayVector3
-
 }
 declare class Locator extends OutlinerElement {
-	constructor (options: Partial<LocatorOptions>, uuid?: string)
+	constructor(options: Partial<LocatorOptions>, uuid?: string)
 
 	extend(options: Partial<LocatorOptions>)
 	flip(axis: number, center: number): this
@@ -156,16 +154,14 @@ declare class Locator extends OutlinerElement {
 	static selected: Locator[]
 }
 
-
 interface NullObjectOptions {
 	name?: string
 	position?: ArrayVector3
 	ik_target?: string
 	lock_ik_target_rotation?: boolean
-
 }
 declare class NullObject extends OutlinerElement {
-	constructor (options: Partial<NullObjectOptions>, uuid?: string)
+	constructor(options: Partial<NullObjectOptions>, uuid?: string)
 	position: ArrayVector3
 	ik_target: string
 	lock_ik_target_rotation: boolean
@@ -178,7 +174,6 @@ declare class NullObject extends OutlinerElement {
 	static selected: NullObject[]
 }
 
-
 interface TextureMeshOptions {
 	name?: string
 	texture_name?: string
@@ -188,7 +183,7 @@ interface TextureMeshOptions {
 	scale?: ArrayVector3
 }
 declare class TextureMesh extends OutlinerElement {
-	constructor (options: Partial<TextureMeshOptions>, uuid?: string)
+	constructor(options: Partial<TextureMeshOptions>, uuid?: string)
 	texture_name: string
 	local_pivot: ArrayVector3
 	scale: ArrayVector3
@@ -201,8 +196,6 @@ declare class TextureMesh extends OutlinerElement {
 	static all: TextureMesh[]
 	static selected: TextureMesh[]
 }
-
-
 
 declare namespace Outliner {
 	const root: OutlinerNode[]

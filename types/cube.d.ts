@@ -1,6 +1,6 @@
+/// <reference path="./index.d.ts"/>
 interface FaceOptions {
 	texture?: Texture
-
 }
 declare class Face {
 	constructor()
@@ -42,7 +42,7 @@ declare class CubeFace extends Face {
 	cullface: CubeFaceDirection | ''
 	material_name: string
 	enabled: boolean
-	
+
 	extend(data: CubeFaceOptions)
 	getVertexIndices: () => [number, number, number, number]
 }
@@ -65,7 +65,7 @@ interface CubeOptions {
 	uv_offset: ArrayVector2
 }
 declare class Cube extends OutlinerElement {
-	constructor (options: Partial<CubeOptions>, uuid?: string)
+	constructor(options: Partial<CubeOptions>, uuid?: string)
 	autouv: 1 | 2 | 3
 	shade: boolean
 	mirror_uv: boolean
@@ -76,7 +76,7 @@ declare class Cube extends OutlinerElement {
 	rotation: ArrayVector3
 	origin: ArrayVector3
 	faces: {
-		[fkey: string]: CubeFaces
+		[fkey: string]: CubeFace
 	}
 	/**
 	 * UV position for box UV mode
@@ -101,9 +101,14 @@ declare class Cube extends OutlinerElement {
 	applyTexture: (texture: Texture, faces: true | undefined | CubeFaceDirection[]) => void
 	mapAutoUV: () => void
 	moveVector: (offset: ArrayVector3, axis: number, update?: boolean) => void
-	resize: (value: number, axis: number, negative: boolean, allow_negative?: boolean, bidirectional?: boolean) => void
+	resize: (
+		value: number,
+		axis: number,
+		negative: boolean,
+		allow_negative?: boolean,
+		bidirectional?: boolean
+	) => void
 
 	static all: Cube[]
 	static selected: Cube[]
 }
-

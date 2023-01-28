@@ -1,3 +1,4 @@
+/// <reference path="./index.d.ts"/>
 interface DisplaySlotOptions {
 	rotation?: ArrayVector3
 	translation?: ArrayVector3
@@ -25,11 +26,13 @@ declare class DisplaySlot {
 	/**
 	 * Generate the values of the slot for export
 	 */
-	export: () => {
-		rotation: ArrayVector3
-		translation: ArrayVector3
-		scale: ArrayVector3
-	} | undefined
+	export: () =>
+		| {
+				rotation: ArrayVector3
+				translation: ArrayVector3
+				scale: ArrayVector3
+		  }
+		| undefined
 	/**
 	 * Visually update the UI with the data from this slot if selected
 	 */

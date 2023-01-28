@@ -1,5 +1,6 @@
+/// <reference path="./index.d.ts"/>
 declare namespace Validator {
-    const checks: ValidatorCheck[]
+	const checks: ValidatorCheck[]
 
 	const warnings: []
 	const errors: []
@@ -16,7 +17,7 @@ declare namespace Validator {
 	/**
 	 * Cached trigger IDs
 	 */
-    const triggers: EventName[]
+	const triggers: EventName[]
 	/**
 	 * Update the cached triggers list
 	 */

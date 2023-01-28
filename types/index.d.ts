@@ -1,40 +1,41 @@
-/// <reference types="vue" />
-/// <reference types="three" />
 /// <reference types="@types/tinycolor2" />
 /// <reference types="@types/jquery" />
 /// <reference types="wintersky" />
 
-/// <reference types="./textures" />
-/// <reference types="./action" />
-/// <reference types="./animation" />
-/// <reference types="./animation_controller" />
-/// <reference types="./canvas" />
-/// <reference types="./codec" />
-/// <reference types="./file_system" />
-/// <reference types="./format" />
-/// <reference types="./global" />
-/// <reference types="./interface" />
-/// <reference types="./dialog" />
-/// <reference types="./panel" />
-/// <reference types="./keyframe" />
-/// <reference types="./legacy" />
-/// <reference types="./menu" />
-/// <reference types="./outliner" />
-/// <reference types="./cube" />
-/// <reference types="./plugin" />
-/// <reference types="./preview" />
-/// <reference types="./project" />
-/// <reference types="./mode" />
-/// <reference types="./settings" />
-/// <reference types="./timeline" />
-/// <reference types="./undo" />
-/// <reference types="./painter" />
-/// <reference types="./screencam" />
-/// <reference types="./validator" />
-/// <reference types="./display_mode" />
-/// <reference types="./misc" />
-/// <reference types="./util" />
-
+/// <reference path="./textures.d.ts" />
+/// <reference path="./action.d.ts" />
+/// <reference path="./animation.d.ts" />
+/// <reference path="./animation_controller.d.ts" />
+/// <reference path="./canvas.d.ts" />
+/// <reference path="./codec.d.ts" />
+/// <reference path="./desktop.d.ts" />
+/// <reference path="./dialog.d.ts" />
+/// <reference path="./file_system.d.ts" />
+/// <reference path="./format.d.ts" />
+/// <reference path="./global.d.ts" />
+/// <reference path="./interface.d.ts" />
+/// <reference path="./dialog.d.ts" />
+/// <reference path="./panel.d.ts" />
+/// <reference path="./keyframe.d.ts" />
+/// <reference path="./legacy.d.ts" />
+/// <reference path="./menu.d.ts" />
+/// <reference path="./mesh.d.ts" />
+/// <reference path="./outliner.d.ts" />
+/// <reference path="./cube.d.ts" />
+/// <reference path="./plugin.d.ts" />
+/// <reference path="./preview.d.ts" />
+/// <reference path="./project.d.ts" />
+/// <reference path="./mode.d.ts" />
+/// <reference path="./settings.d.ts" />
+/// <reference path="./timeline.d.ts" />
+/// <reference path="./undo.d.ts" />
+/// <reference path="./painter.d.ts" />
+/// <reference path="./screencam.d.ts" />
+/// <reference path="./validator.d.ts" />
+/// <reference path="./display_mode.d.ts" />
+/// <reference path="./misc.d.ts" />
+/// <reference path="./util.d.ts" />
+/// <reference path="./vue.d.ts" />
 
 declare namespace Blockbench {
 	const platform: 'web' | 'win32' | 'darwin' | 'linux'
@@ -45,7 +46,7 @@ declare namespace Blockbench {
 	/**
 	 * URL queries when opened as web app using a link that contained queries
 	 */
-	const queries: {[key: string]: string} | undefined
+	const queries: { [key: string]: string } | undefined
 	/**
 	 * Time when Blockbench was opened
 	 */
@@ -53,32 +54,32 @@ declare namespace Blockbench {
 	function reload(): void
 	/**
 	 * checks if Blockbench is newer than the specified version
-	 * 
+	 *
 	 * @param version
 	 * semver string
 	 */
 	function isNewerThan(version: string): boolean
 	/**
 	 * checks if Blockbench is older than the specified version
-	 * 
+	 *
 	 * @param version
 	 * semver string
 	 */
 	function isOlderThan(version: string): boolean
 	/**
 	 * Resolves an icon string as a HTML element
-	 * @param icon 
+	 * @param icon
 	 * Material Icons, Fontawesome or custom icon string
-	 * @param color 
+	 * @param color
 	 * CSS color
 	 */
 	function getIconNode(icon: IconString, color?: string): HTMLElement
 	/**
 	 * Shows a passing message in the middle of the screen
-	 * 
-	 * @param message 
+	 *
+	 * @param message
 	 * Message
-	 * @param time 
+	 * @param time
 	 * Time in miliseconds that the message stays up
 	 */
 	function showQuickMessage(message: string, time?: number): void
@@ -88,10 +89,10 @@ declare namespace Blockbench {
 	function setStatusBarText(text?: string): void
 	/**
 	 * Set the value of a progress bar
-	 * 
-	 * @param progress 
+	 *
+	 * @param progress
 	 * Progress of the bar between 0 and 1
-	 * @param time 
+	 * @param time
 	 * Time over which the bar is animated, in miliseconds
 	 * @param bar
 	 * ID of the bar element. If omitted, the main status bar will be selected
@@ -101,7 +102,10 @@ declare namespace Blockbench {
 	/**
 	 * Opens a message box
 	 */
-	function showMessageBox(options: MessageBoxOptions, callback: (buttonID: number | string) => void): void
+	function showMessageBox(
+		options: MessageBoxOptions,
+		callback: (buttonID: number | string) => void
+	): void
 
 	function textPrompt(title: string, value: string, callback: (value: string) => void): void
 	/**
@@ -139,7 +143,7 @@ type BlockbenchTypeOutlinerNode = typeof OutlinerNode
 type BlockbenchTypeOutlinerElement = typeof OutlinerElement
 type BlockbenchTypeGroup = typeof Group
 type BlockbenchTypeCube = typeof Cube
-type BlockbenchTypeMesh = typeof Mesh
+type BlockbenchTypeMesh = typeof THREE.Mesh
 type BlockbenchTypeLocator = typeof Locator
 type BlockbenchTypeNullObject = typeof NullObject
 type BlockbenchTypeTextureMesh = typeof TextureMesh
@@ -152,7 +156,7 @@ type BlockbenchTypeTimeline = typeof Timeline
 type BlockbenchTypeAnimationItem = typeof AnimationItem
 type BlockbenchTypeAnimation = typeof Animation
 type BlockbenchTypeAnimationController = typeof AnimationController
-type BlockbenchTypeKeyframe = typeof Keyframe
+// type BlockbenchTypeKeyframe = typeof Keyframe
 type BlockbenchTypeKeyframeDataPoint = typeof KeyframeDataPoint
 type BlockbenchTypeBoneAnimator = typeof BoneAnimator
 type BlockbenchTypeNullObjectAnimator = typeof NullObjectAnimator
@@ -210,9 +214,9 @@ declare namespace Blockbench {
 	const Animator: BlockbenchTypeAnimator
 	const Timeline: BlockbenchTypeTimeline
 	const AnimationItem: BlockbenchTypeAnimationItem
-	const Animation: BlockbenchTypeAnimation
+	// const Animation: BlockbenchTypeAnimation
 	const AnimationController: BlockbenchTypeAnimationController
-	const Keyframe: BlockbenchTypeKeyframe
+	// const Keyframe: BlockbenchTypeKeyframe
 	const KeyframeDataPoint: BlockbenchTypeKeyframeDataPoint
 	const BoneAnimator: BlockbenchTypeBoneAnimator
 	const NullObjectAnimator: BlockbenchTypeNullObjectAnimator
