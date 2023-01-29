@@ -1,14 +1,14 @@
-export function initializeDesktopApp(): void
-export function loadOpenWithBlockbenchFile(): void
-export function updateRecentProjects(): void
-export function addRecentProject(data: any): void
-export function updateRecentProjectData(): void
-export function updateRecentProjectThumbnail(): Promise<void>
-export function loadDataFromModelMemory(): void
-export function updateWindowState(e: any, type: any): void
-export function changeImageEditor(texture: any, from_settings: any): void
-export function selectImageEditorFile(texture: any): void
-export function openDefaultTexturePath(): void
-export function findExistingFile(paths: string[]): any
-export function createBackup(init: any): void
-export function closeBlockbenchWindow(): any
+declare function initializeDesktopApp(): void
+declare function loadOpenWithBlockbenchFile(): void
+declare function updateRecentProjects(): void
+declare function addRecentProject(data: any): void
+declare function updateRecentProjectData(): void
+declare function updateRecentProjectThumbnail(): Promise<void>
+declare function loadDataFromModelMemory(): void
+declare function updateWindowState(e: any, type: any): void
+declare function changeImageEditor(texture: any, from_settings: any): void
+declare function selectImageEditorFile(texture: any): void
+declare function openDefaultTexturePath(): void
+declare function findExistingFile(paths: string[]): any
+declare function createBackup(init: any): void
+declare function closeBlockbenchWindow(): any

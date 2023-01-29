@@ -51,7 +51,7 @@ declare namespace Blockbench {
 	interface WriteOptions {
 		content: string | ArrayBuffer
 		savetype?: WriteType | ((file: string) => WriteType)
-		custom_writer(content: string | ArrayBuffer, file_path: string): undefined
+		custom_writer?: (content: string | ArrayBuffer, file_path: string) => void
 	}
 	/**
 	 * Writes a file to the file system. Desktop app only.
