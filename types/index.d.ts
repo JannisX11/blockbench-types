@@ -166,7 +166,7 @@ type BlockbenchTypePanel = typeof Panel
 type BlockbenchTypeMode = typeof Mode
 type BlockbenchTypeDialog = typeof Dialog
 type BlockbenchTypeSetting = typeof Setting
-type BlockbenchTypePlugin = typeof Plugin
+type BlockbenchTypePlugin = typeof BBPlugin
 type BlockbenchTypePreview = typeof Preview
 type BlockbenchTypeToolbar = typeof Toolbar
 type BlockbenchTypeLanguage = typeof Language
@@ -198,63 +198,62 @@ type BlockbenchTypeDisplaySlot = typeof DisplaySlot
 type BlockbenchTypeReusable = typeof Reusable
 type BlockbenchTypeTexture = typeof Texture
 declare namespace Blockbench {
-	const Outliner: BlockbenchTypeOutliner
-	const OutlinerNode: BlockbenchTypeOutlinerNode
-	const OutlinerElement: BlockbenchTypeOutlinerElement
-	const Group: BlockbenchTypeGroup
-	const Cube: BlockbenchTypeCube
-	const Mesh: BlockbenchTypeMesh
-	const Locator: BlockbenchTypeLocator
-	const NullObject: BlockbenchTypeNullObject
-	const TextureMesh: BlockbenchTypeTextureMesh
-	const Face: BlockbenchTypeFace
-	const CubeFace: BlockbenchTypeCubeFace
-	const MeshFace: BlockbenchTypeMeshFace
-	const NodePreviewController: BlockbenchTypeNodePreviewController
-	const Animator: BlockbenchTypeAnimator
-	const Timeline: BlockbenchTypeTimeline
-	const AnimationItem: BlockbenchTypeAnimationItem
-	// const Animation: BlockbenchTypeAnimation
-	const AnimationController: BlockbenchTypeAnimationController
-	// const Keyframe: BlockbenchTypeKeyframe
-	const KeyframeDataPoint: BlockbenchTypeKeyframeDataPoint
-	const BoneAnimator: BlockbenchTypeBoneAnimator
-	const NullObjectAnimator: BlockbenchTypeNullObjectAnimator
-	const EffectAnimator: BlockbenchTypeEffectAnimator
-	const TimelineMarker: BlockbenchTypeTimelineMarker
-	const Panel: BlockbenchTypePanel
-	const Mode: BlockbenchTypeMode
-	const Dialog: BlockbenchTypeDialog
-	const Setting: BlockbenchTypeSetting
-	const Plugin: BlockbenchTypePlugin
-	const Preview: BlockbenchTypePreview
-	const Toolbar: BlockbenchTypeToolbar
-	const Language: BlockbenchTypeLanguage
-	const Painter: BlockbenchTypePainter
-	const Screencam: BlockbenchTypeScreencam
-	const Settings: BlockbenchTypeSettings
-	const TextureAnimator: BlockbenchTypeTextureAnimator
-	const Toolbox: BlockbenchTypeToolbox
-	const BarItems: BlockbenchTypeBarItems
-	const BarItem: BlockbenchTypeBarItem
+	const Animation: BlockbenchTypeAnimation
 	const Action: BlockbenchTypeAction
-	const Tool: BlockbenchTypeTool
-	const Toggle: BlockbenchTypeToggle
-	const Widget: BlockbenchTypeWidget
+	const AnimationController: BlockbenchTypeAnimationController
+	const AnimationItem: BlockbenchTypeAnimationItem
+	const Animator: BlockbenchTypeAnimator
+	const BarItem: BlockbenchTypeBarItem
+	const BarItems: BlockbenchTypeBarItems
+	const BarMenu: BlockbenchTypeBarMenu
 	const BarSelect: BlockbenchTypeBarSelect
 	const BarSlider: BlockbenchTypeBarSlider
 	const BarText: BlockbenchTypeBarText
-	const NumSlider: BlockbenchTypeNumSlider
+	const BoneAnimator: BlockbenchTypeBoneAnimator
+	const Codec: BlockbenchTypeCodec
 	const ColorPicker: BlockbenchTypeColorPicker
+	const Cube: BlockbenchTypeCube
+	const CubeFace: BlockbenchTypeCubeFace
+	const Dialog: BlockbenchTypeDialog
+	const DisplaySlot: BlockbenchTypeDisplaySlot
+	const EffectAnimator: BlockbenchTypeEffectAnimator
+	const Face: BlockbenchTypeFace
+	const Group: BlockbenchTypeGroup
 	const Keybind: BlockbenchTypeKeybind
 	const KeybindItem: BlockbenchTypeKeybindItem
+	const KeyframeDataPoint: BlockbenchTypeKeyframeDataPoint
+	const Language: BlockbenchTypeLanguage
+	const Locator: BlockbenchTypeLocator
 	const Menu: BlockbenchTypeMenu
-	const BarMenu: BlockbenchTypeBarMenu
-	const ResizeLine: BlockbenchTypeResizeLine
-	const ModelProject: BlockbenchTypeModelProject
+	const Mesh: BlockbenchTypeMesh
+	const MeshFace: BlockbenchTypeMeshFace
+	const Mode: BlockbenchTypeMode
 	const ModelFormat: BlockbenchTypeModelFormat
-	const Codec: BlockbenchTypeCodec
-	const DisplaySlot: BlockbenchTypeDisplaySlot
+	const ModelProject: BlockbenchTypeModelProject
+	const NodePreviewController: BlockbenchTypeNodePreviewController
+	const NullObject: BlockbenchTypeNullObject
+	const NullObjectAnimator: BlockbenchTypeNullObjectAnimator
+	const NumSlider: BlockbenchTypeNumSlider
+	const Outliner: BlockbenchTypeOutliner
+	const OutlinerElement: BlockbenchTypeOutlinerElement
+	const OutlinerNode: BlockbenchTypeOutlinerNode
+	const Painter: BlockbenchTypePainter
+	const Panel: BlockbenchTypePanel
+	const Plugin: BlockbenchTypePlugin
+	const Preview: BlockbenchTypePreview
+	const ResizeLine: BlockbenchTypeResizeLine
 	const Reusable: BlockbenchTypeReusable
+	const Screencam: BlockbenchTypeScreencam
+	const Setting: BlockbenchTypeSetting
+	const Settings: BlockbenchTypeSettings
 	const Texture: BlockbenchTypeTexture
+	const TextureAnimator: BlockbenchTypeTextureAnimator
+	const TextureMesh: BlockbenchTypeTextureMesh
+	const Timeline: BlockbenchTypeTimeline
+	const TimelineMarker: BlockbenchTypeTimelineMarker
+	const Toggle: BlockbenchTypeToggle
+	const Tool: BlockbenchTypeTool
+	const Toolbar: BlockbenchTypeToolbar
+	const Toolbox: BlockbenchTypeToolbox
+	const Widget: BlockbenchTypeWidget
 }
