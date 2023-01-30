@@ -139,7 +139,7 @@ declare namespace Blockbench {
 }
 
 type BlockbenchTypeAction = typeof Action
-type BlockbenchTypeAnimation = typeof Animation
+type BlockbenchTypeAnimation = typeof BBAnimation
 type BlockbenchTypeAnimationController = typeof AnimationController
 type BlockbenchTypeAnimationItem = typeof AnimationItem
 type BlockbenchTypeAnimator = typeof Animator

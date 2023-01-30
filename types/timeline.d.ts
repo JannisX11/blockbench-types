@@ -28,7 +28,7 @@ declare namespace Timeline {
 	 * @param time Input time in seconds
 	 * @param animation Animation to use the snapping setting from. If unspecified, uses the selected animation
 	 */
-	function snapTime(time: number, animation?: Animation): number
+	function snapTime(time: number, animation?: BBAnimation): number
 	/**
 	 * Returns the time between two snapping points
 	 */

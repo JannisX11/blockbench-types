@@ -14,8 +14,8 @@ interface AnimationOptions {
 	length?: number
 	snapping?: number
 }
-// @ts-ignore
-class Animation extends AnimationItem {
+
+declare class BBAnimation extends AnimationItem {
 	constructor(data: AnimationOptions)
 	extend(data: AnimationOptions): this
 	getUndoCopy(
@@ -36,7 +36,7 @@ class Animation extends AnimationItem {
 	save(): this | undefined
 	select(): this | undefined
 	setLength(length: number): void
-	createUniqueName(references: Animation[]): any
+	createUniqueName(references: BBAnimation[]): any
 	rename(): this
 	togglePlayingState(state: any): any
 	showContextMenu(event: any): this
@@ -100,7 +100,7 @@ interface AddChannelOptions {
 	max_data_points?: number
 }
 declare class GeneralAnimator {
-	constructor(uuid: string, animation: Animation)
+	constructor(uuid: string, animation: BBAnimation)
 	keyframes: Keyframe[]
 	select(): this
 	addToTimeline(): this

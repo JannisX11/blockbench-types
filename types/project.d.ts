@@ -54,7 +54,7 @@ declare class ModelProject {
 	textures: Texture[]
 	selected_texture: Texture | null
 	outliner: OutlinerNode[]
-	animations: Animation[]
+	animations: BBAnimation[]
 	timeline_animators: []
 	display_settings: {
 		[slot: string]: {

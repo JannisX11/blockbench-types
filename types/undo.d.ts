@@ -9,7 +9,7 @@ interface UndoAspects {
 	selected_texture?: boolean
 	settings?: {}
 	uv_mode?: boolean
-	animations?: Animation[]
+	animations?: BBAnimation[]
 	keyframes?: Keyframe[]
 	display_slots?: string[]
 	exploded_view?: boolean
