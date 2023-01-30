@@ -138,68 +138,69 @@ declare namespace Blockbench {
 	function removeListener(event_names: EventName): void
 }
 
-type BlockbenchTypeOutliner = typeof Outliner
-type BlockbenchTypeOutlinerNode = typeof OutlinerNode
-type BlockbenchTypeOutlinerElement = typeof OutlinerElement
-type BlockbenchTypeGroup = typeof Group
-type BlockbenchTypeCube = typeof Cube
-type BlockbenchTypeMesh = typeof THREE.Mesh
-type BlockbenchTypeLocator = typeof Locator
-type BlockbenchTypeNullObject = typeof NullObject
-type BlockbenchTypeTextureMesh = typeof TextureMesh
-type BlockbenchTypeFace = typeof Face
-type BlockbenchTypeCubeFace = typeof CubeFace
-type BlockbenchTypeMeshFace = typeof MeshFace
-type BlockbenchTypeNodePreviewController = typeof NodePreviewController
-type BlockbenchTypeAnimator = typeof Animator
-type BlockbenchTypeTimeline = typeof Timeline
-type BlockbenchTypeAnimationItem = typeof AnimationItem
+type BlockbenchTypeAction = typeof Action
 type BlockbenchTypeAnimation = typeof Animation
 type BlockbenchTypeAnimationController = typeof AnimationController
-// type BlockbenchTypeKeyframe = typeof Keyframe
-type BlockbenchTypeKeyframeDataPoint = typeof KeyframeDataPoint
-type BlockbenchTypeBoneAnimator = typeof BoneAnimator
-type BlockbenchTypeNullObjectAnimator = typeof NullObjectAnimator
-type BlockbenchTypeEffectAnimator = typeof EffectAnimator
-type BlockbenchTypeTimelineMarker = typeof TimelineMarker
-type BlockbenchTypePanel = typeof Panel
-type BlockbenchTypeMode = typeof Mode
-type BlockbenchTypeDialog = typeof Dialog
-type BlockbenchTypeSetting = typeof Setting
-type BlockbenchTypePlugin = typeof BBPlugin
-type BlockbenchTypePreview = typeof Preview
-type BlockbenchTypeToolbar = typeof Toolbar
-type BlockbenchTypeLanguage = typeof Language
-type BlockbenchTypePainter = typeof Painter
-type BlockbenchTypeScreencam = typeof Screencam
-type BlockbenchTypeSettings = typeof Settings
-type BlockbenchTypeTextureAnimator = typeof TextureAnimator
-type BlockbenchTypeToolbox = typeof Toolbox
-type BlockbenchTypeBarItems = typeof BarItems
+type BlockbenchTypeAnimationItem = typeof AnimationItem
+type BlockbenchTypeAnimator = typeof Animator
 type BlockbenchTypeBarItem = typeof BarItem
-type BlockbenchTypeAction = typeof Action
-type BlockbenchTypeTool = typeof Tool
-type BlockbenchTypeToggle = typeof Toggle
-type BlockbenchTypeWidget = typeof Widget
+type BlockbenchTypeBarItems = typeof BarItems
+type BlockbenchTypeBarMenu = typeof BarMenu
 type BlockbenchTypeBarSelect = typeof BarSelect
 type BlockbenchTypeBarSlider = typeof BarSlider
 type BlockbenchTypeBarText = typeof BarText
-type BlockbenchTypeNumSlider = typeof NumSlider
+type BlockbenchTypeBoneAnimator = typeof BoneAnimator
+type BlockbenchTypeCodec = typeof Codec
 type BlockbenchTypeColorPicker = typeof ColorPicker
+type BlockbenchTypeCube = typeof Cube
+type BlockbenchTypeCubeFace = typeof CubeFace
+type BlockbenchTypeDialog = typeof Dialog
+type BlockbenchTypeDisplaySlot = typeof DisplaySlot
+type BlockbenchTypeEffectAnimator = typeof EffectAnimator
+type BlockbenchTypeFace = typeof Face
+type BlockbenchTypeGroup = typeof Group
 type BlockbenchTypeKeybind = typeof Keybind
 type BlockbenchTypeKeybindItem = typeof KeybindItem
+type BlockbenchTypeKeyframe = typeof BBKeyframe
+type BlockbenchTypeKeyframeDataPoint = typeof KeyframeDataPoint
+type BlockbenchTypeLanguage = typeof Language
+type BlockbenchTypeLocator = typeof Locator
 type BlockbenchTypeMenu = typeof Menu
-type BlockbenchTypeBarMenu = typeof BarMenu
-type BlockbenchTypeResizeLine = typeof ResizeLine
-type BlockbenchTypeModelProject = typeof ModelProject
+type BlockbenchTypeMesh = typeof THREE.Mesh
+type BlockbenchTypeMeshFace = typeof MeshFace
+type BlockbenchTypeMode = typeof Mode
 type BlockbenchTypeModelFormat = typeof ModelFormat
-type BlockbenchTypeCodec = typeof Codec
-type BlockbenchTypeDisplaySlot = typeof DisplaySlot
+type BlockbenchTypeModelProject = typeof ModelProject
+type BlockbenchTypeNodePreviewController = typeof NodePreviewController
+type BlockbenchTypeNullObject = typeof NullObject
+type BlockbenchTypeNullObjectAnimator = typeof NullObjectAnimator
+type BlockbenchTypeNumSlider = typeof NumSlider
+type BlockbenchTypeOutliner = typeof Outliner
+type BlockbenchTypeOutlinerElement = typeof OutlinerElement
+type BlockbenchTypeOutlinerNode = typeof OutlinerNode
+type BlockbenchTypePainter = typeof Painter
+type BlockbenchTypePanel = typeof Panel
+type BlockbenchTypePlugin = typeof BBPlugin
+type BlockbenchTypePreview = typeof Preview
+type BlockbenchTypeResizeLine = typeof ResizeLine
 type BlockbenchTypeReusable = typeof Reusable
+type BlockbenchTypeScreencam = typeof Screencam
+type BlockbenchTypeSetting = typeof Setting
+type BlockbenchTypeSettings = typeof Settings
 type BlockbenchTypeTexture = typeof Texture
+type BlockbenchTypeTextureAnimator = typeof TextureAnimator
+type BlockbenchTypeTextureMesh = typeof TextureMesh
+type BlockbenchTypeTimeline = typeof Timeline
+type BlockbenchTypeTimelineMarker = typeof TimelineMarker
+type BlockbenchTypeToggle = typeof Toggle
+type BlockbenchTypeTool = typeof Tool
+type BlockbenchTypeToolbar = typeof Toolbar
+type BlockbenchTypeToolbox = typeof Toolbox
+type BlockbenchTypeWidget = typeof Widget
+
 declare namespace Blockbench {
-	const Animation: BlockbenchTypeAnimation
 	const Action: BlockbenchTypeAction
+	const Animation: BlockbenchTypeAnimation
 	const AnimationController: BlockbenchTypeAnimationController
 	const AnimationItem: BlockbenchTypeAnimationItem
 	const Animator: BlockbenchTypeAnimator
@@ -221,6 +222,7 @@ declare namespace Blockbench {
 	const Group: BlockbenchTypeGroup
 	const Keybind: BlockbenchTypeKeybind
 	const KeybindItem: BlockbenchTypeKeybindItem
+	const Keyframe: BlockbenchTypeKeyframe
 	const KeyframeDataPoint: BlockbenchTypeKeyframeDataPoint
 	const Language: BlockbenchTypeLanguage
 	const Locator: BlockbenchTypeLocator
