@@ -158,6 +158,9 @@ declare class ModelFormat extends Deletable {
  * The current format
  */
 declare const Format: ModelFormat
+declare const Formats: {
+	[id: string]: ModelFormat
+}
 
 interface ModelLoaderOptions {
 	id?: string
