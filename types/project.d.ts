@@ -5,6 +5,10 @@ interface ModelProjectOptions {
 declare class ModelProject {
 	constructor(options: ModelProjectOptions)
 
+	static properties: {
+		[key: string]: Property
+	}
+
 	box_uv: boolean
 	texture_width: number
 	texture_height: number

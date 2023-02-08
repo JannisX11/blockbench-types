@@ -133,9 +133,13 @@ declare class Property extends Deletable {
 	isVector2: boolean
 
 	merge_validation: undefined | ((value: any) => boolean)
-	condition: any
-	exposed: boolean
-	label: any
+	condition?: any
+	exposed?: boolean
+	export?: boolean
+	label?: any
+	description?: any
+	options?: any
+
 	merge: (instance: any, data: object) => void
 	reset: (instance: any) => void
 	getDefault(instance: any): any
