@@ -2,7 +2,6 @@
 interface ModelProjectOptions {
 	format: ModelFormat
 }
-
 declare class ModelProject {
 	constructor(options: ModelProjectOptions)
 
@@ -103,7 +102,7 @@ declare class EditSession {
 
 	updateClientCound(): void
 	start(username?: string): void
-	join(username: string, token: string)
+	join(username: string, token: string): void
 	quit(): void
 	setState(active: boolean): void
 	copyToken(): void
