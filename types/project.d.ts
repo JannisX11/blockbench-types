@@ -67,7 +67,7 @@ declare class ModelProject {
 			mirror: [boolean, boolean, boolean]
 		}
 	}
-
+	overrides?: any
 	get model_3d(): THREE.Object3D
 	get materials(): {
 		[uuid: UUID]: THREE.ShaderMaterial
