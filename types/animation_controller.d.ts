@@ -86,7 +86,7 @@ interface AnimationControllerOptions {
 }
 
 declare class AnimationController extends AnimationItem {
-	constructor(data: AnimationControllerOptions)
+	constructor(data?: AnimationControllerOptions)
 	name: string
 	path: string
 	uuid: string
@@ -104,8 +104,8 @@ declare class AnimationController extends AnimationItem {
 	select(): this | undefined
 	createUniqueName(references: AnimationController[]): any
 	rename(): this
-	add(undo: any): this
-	remove(undo: any, remove_from_file?: boolean): this
+	add(undo?: boolean): this
+	remove(undo?: boolean, remove_from_file?: boolean): this
 	propertiesDialog(): void
 	/**
 	 * Updates the preview of the controller, including updating the animations and switching states if preview mode is set to play

@@ -3,6 +3,7 @@
 declare class AnimationItem {
 	static all: AnimationItem[]
 	static selected: AnimationItem | null
+	getUndoCopy?(options?: any, save?: any): any
 }
 
 interface AnimationOptions {
@@ -16,8 +17,8 @@ interface AnimationOptions {
 }
 
 declare class BBAnimation extends AnimationItem {
-	constructor(data: AnimationOptions)
-	extend(data: AnimationOptions): this
+	constructor(data?: AnimationOptions)
+	extend(data?: AnimationOptions): this
 	getUndoCopy(
 		options: any,
 		save: any
@@ -41,14 +42,15 @@ declare class BBAnimation extends AnimationItem {
 	togglePlayingState(state: any): any
 	showContextMenu(event: any): this
 	getBoneAnimator(group: any): any
-	add(undo: any): this
-	remove(undo: any, remove_from_file?: boolean): this
+	add(undo?: boolean): this
+	remove(undo: boolean, remove_from_file?: boolean): this
 	getMaxLength(): any
 	setLoop(value: any, undo: any): void
 	calculateSnappingFromKeyframes(): any
 	propertiesDialog(): void
 
 	name: string
+	uuid: string
 	loop: string
 	override: boolean
 	anim_time_update: string
@@ -68,7 +70,6 @@ declare class BBAnimation extends AnimationItem {
 	saved_name?: string
 	selected: boolean
 	type: string
-	uuid: string
 }
 
 declare namespace Animator {

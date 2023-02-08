@@ -15,6 +15,8 @@ interface CodecOptions {
 	afterDownload?(path): void
 	afterSave?(path): void
 
+	dispatchEvent?(event_name: string, data: any): void
+
 	extension: string
 	/**
 	 * Whether to remember the models exported using this codec
@@ -46,7 +48,7 @@ declare class Codec extends Deletable {
 	afterSave?(path): void
 	on(event_name: string, callback: (data: object) => void): void
 	removeListener(event_name: string, callback: (data: object) => void): void
-	dispatchEvent(data: object): void
+	dispatchEvent(data: any): void
 
 	name: string
 	extension: string

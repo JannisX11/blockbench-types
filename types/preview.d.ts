@@ -73,6 +73,7 @@ declare class Preview extends Deletable {
 
 	occupyTransformer(): this
 	showContextMenu(event: Event | HTMLElement): this
+	loadBackground(): void
 
 	/**
 	 * List of all previews

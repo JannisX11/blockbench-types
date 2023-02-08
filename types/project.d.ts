@@ -53,7 +53,7 @@ declare class ModelProject {
 			faces: string[]
 		}
 	}
-	selected_faces: []
+	selected_faces: any[]
 	textures: Texture[]
 	selected_texture: Texture | null
 	outliner: OutlinerNode[]
@@ -65,9 +65,21 @@ declare class ModelProject {
 			rotation: [number, number, number]
 			scale: [number, number, number]
 			mirror: [boolean, boolean, boolean]
+			export?: (...args: any[]) => any
 		}
 	}
 	overrides?: any
+	exploded_view: boolean
+	tool: string
+	uv_viewport: {
+		zoom: number
+		offset: [number, number]
+		[key: string]: any
+	}
+	backgrounds: {
+		[key: string]: any
+	}
+
 	get model_3d(): THREE.Object3D
 	get materials(): {
 		[uuid: UUID]: THREE.ShaderMaterial
@@ -83,6 +95,8 @@ declare class ModelProject {
 	unselect(): void
 	close(force: any): Promise<boolean>
 
+	saveEditorState(): void
+	loadEditorState(): void
 	static all: ModelProject[]
 }
 

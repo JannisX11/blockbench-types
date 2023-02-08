@@ -59,7 +59,7 @@ declare namespace Interface {
 		vue: typeof Vue.Component
 	}
 	const Panels: {
-		(key: string): Panel
+		[key: string]: Panel
 	}
 	function toggleSidebar(side, status): void
 

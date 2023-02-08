@@ -104,7 +104,7 @@ declare namespace Blockbench {
 	 */
 	function showMessageBox(
 		options: MessageBoxOptions,
-		callback: (buttonID: number | string) => void
+		callback?: (buttonID: number | string) => void
 	): void
 
 	function textPrompt(title: string, value: string, callback: (value: string) => void): void

@@ -89,7 +89,7 @@ declare function getRectangle(
 	h: number
 }
 declare function doRectanglesOverlap(rect1: any, rect2: any): boolean
-declare function omitKeys(obj: any, keys: any, dual_level: any): {}
+declare function omitKeys(obj: any, keys: any, dual_level?: boolean): {}
 declare function get(options: any, name: any, defaultValue: any): any
 declare function getKeyByValue(object: any, value: any): any
 declare function onVueSetup(func: any): void
@@ -133,14 +133,14 @@ declare namespace Objector {
 	function keyLength(obj: any): number
 }
 declare namespace Merge {
-	export function number(obj: any, source: any, index: any): void
-	export function string(obj: any, source: any, index: any, validate: any): void
-	export function molang(obj: any, source: any, index: any): void
-	export function boolean(obj: any, source: any, index: any, validate: any): void
-	export function _function(obj: any, source: any, index: any, validate: any): void
+	export function number(obj: any, source: any, index?: any): void
+	export function string(obj: any, source: any, index?: any, validate?: boolean): void
+	export function molang(obj: any, source: any, index?: any): void
+	export function boolean(obj: any, source: any, index?: any, validate?: boolean): void
+	export function _function(obj: any, source: any, index?: any, validate?: boolean): void
 	export { _function as function }
-	export function arrayVector(obj: any, source: any, index: any, validate: any): void
-	export function arrayVector2(obj: any, source: any, index: any, validate: any): void
+	export function arrayVector(obj: any, source: any, index?: any, validate?: boolean): void
+	export function arrayVector2(obj: any, source: any, index?: any, validate?: boolean): void
 }
 
 declare namespace Reusable {

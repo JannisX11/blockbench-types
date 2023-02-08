@@ -106,6 +106,9 @@ declare class UndoSystem {
 	 * @param mode The load save modes
 	 */
 	loadSave(save: UndoSave, reference: UndoSave, mode?: 'session'): void
+
+	history: UndoEntry[]
+	index: number
 }
 /**
  * Blockbench's system to register edits to the project and switch between them

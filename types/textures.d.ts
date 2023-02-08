@@ -127,6 +127,14 @@ declare class Texture {
 		options: TextureEditOptions
 	): void
 	menu: Menu
+	uuid: string
+	selected?: boolean
+	path?: string
+	relative_path?: string
+	source?: string
+	mode?: 'bitmap' | string
+
+	getUndoCopy(): Texture
 
 	static all: Texture[]
 	static getDefault: () => Texture

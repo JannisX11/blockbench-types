@@ -125,7 +125,6 @@ declare class Mesh extends OutlinerElement {
 	addFaces(...MeshFace): string[]
 	extend(data: MeshOptions): void
 	getUndoCopy(aspects?: object): object
-	getSaveCopy(project?: boolean): object
 	getSelectionRotation(): THREE.Euler
 	getCenter(global: boolean): THREE.Vector3
 	forAllFaces(callback: (face: MeshFace, key: string) => void): void

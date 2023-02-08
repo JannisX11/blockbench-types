@@ -90,7 +90,7 @@ declare class Cube extends OutlinerElement {
 	size: (axis?: number, floored?: boolean) => number | ArrayVector3
 	rotationAxis: () => void
 	getUndoCopy: (aspects?: object) => void
-	getSaveCopy: (project?: boolean) => void
+	getSaveCopy: (project?: boolean) => Cube
 	roll: (axis: number, steps: number, origin: ArrayVector3) => void
 	flip: (axis: number, center: number, skipUV?: boolean) => void
 	transferOrigin: (origin: ArrayVector3, update?: boolean) => void

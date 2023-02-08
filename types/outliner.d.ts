@@ -62,12 +62,14 @@ declare class OutlinerElement extends OutlinerNode {
 	getMesh: () => THREE.Object3D | THREE.Mesh
 	static fromSave: (data: object, keep_uuid?: boolean) => OutlinerElement
 	static isParent: false
+	getSaveCopy?: (project?: boolean) => OutlinerElement
 }
 
 interface GroupOptions {
 	/**Group name */
 	name: string
-	/**Array of the group pivot point */
+	/**Array of
+	 * declare function compileGroups(undo: boolean, lut?: ) the group pivot point */
 	origin: ArrayVector3
 	/**Array of the group rotation */
 	rotation: ArrayVector3
@@ -208,3 +210,7 @@ declare const markerColors: {
 	standard: string
 	name: string
 }[]
+
+declare function compileGroups(undo: boolean, lut?: { [index: number]: number }): any[]
+
+declare function parseGroups(array: any[], import_reference?: any, startIndex?: number): void

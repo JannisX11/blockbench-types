@@ -6,6 +6,12 @@ declare global {
 		 * Returns a timestamp in the format 16:30
 		 */
 		getTimestamp(): string
+		getDateArray(): number[]
+		getDateString(): string
+		dayOfYear(): number
+	}
+	interface Number {
+		toDigitString(digits: number): string
 	}
 	interface Event {
 		readonly ctrlOrCmd: boolean
@@ -44,13 +50,18 @@ declare global {
 		 */
 		safePush(...items: any): boolean
 		equals(array: Array<any>): boolean
+		replace(items: T[]): boolean
+		allAre(callback: (item: T, index: number) => boolean): boolean
+		findInArray(key: string, value: any): number
+		positiveItems(): number
 		/**
 		 * Empties the array
 		 */
 		empty(): this
-		last(): any
-		allEqual(item: any): boolean
+		last(): T
+		allEqual(item: T): boolean
 		random(): T
+		toggle(item: T, state?: boolean): boolean
 		/**
 		 * Same as forEach, but in reverse order
 		 */
