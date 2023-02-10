@@ -2,7 +2,7 @@
 interface CodecOptions {
 	name: string
 	load?(model: any, file: any, add?: boolean): void
-	compile?(options?: any): string | ArrayBuffer | any
+	compile?(options?: any): string | ArrayBuffer
 	parse?(data: any, path: string): void
 	export?(): void
 	/**
