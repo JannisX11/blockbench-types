@@ -60,7 +60,7 @@ declare class OutlinerElement extends OutlinerNode {
 	selected: boolean
 	readonly mesh: THREE.Object3D | THREE.Mesh
 	getMesh: () => THREE.Object3D | THREE.Mesh
-	static fromSave: (data: object, keep_uuid?: boolean) => OutlinerElement
+	static fromSave: (data: any, keep_uuid?: boolean) => OutlinerElement
 	static isParent: false
 	getSaveCopy?: (project?: boolean) => OutlinerElement
 }
@@ -135,10 +135,10 @@ declare class Group extends OutlinerNode {
 	 * Duplicate the group
 	 */
 	duplicate: () => Group
-	getSaveCopy: () => object
+	getSaveCopy: () => any
 	getChildlessCopy: () => Group
-	compile: (undo: boolean) => object
-	forEachChild(callback: (object: OutlinerNode) => void, type?: any, for_self?: boolean)
+	compile: (undo: boolean) => any
+	forEachChild(callback: (any: OutlinerNode) => void, type?: any, for_self?: boolean)
 }
 
 interface LocatorOptions {

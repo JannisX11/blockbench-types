@@ -128,8 +128,8 @@ declare class EditSession {
 	initConnection(conn: any): void
 	sendAll(type: string, data: any): void
 	sendEdit(entry: UndoEntry): void
-	receiveData(tag: object): void
-	processData(tag: object): void
+	receiveData(tag: any): void
+	processData(tag: any): void
 	catchUp(): void
 	/**
 	 * Send a chat message

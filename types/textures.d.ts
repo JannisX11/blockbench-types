@@ -123,7 +123,7 @@ declare class Texture {
 	 * @param options Editing options
 	 */
 	edit(
-		callback: (instance: HTMLCanvasElement | object) => void | HTMLCanvasElement,
+		callback: (instance: HTMLCanvasElement | any) => void | HTMLCanvasElement,
 		options: TextureEditOptions
 	): void
 	menu: Menu

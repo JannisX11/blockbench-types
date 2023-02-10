@@ -1,6 +1,6 @@
 /// <reference path="./index.d.ts"/>
 declare namespace Timeline {
-	const animators: object[]
+	const animators: any[]
 	const selected: Keyframe[]
 	const playing_sounds: any[]
 	let playback_speed: number

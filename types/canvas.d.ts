@@ -230,7 +230,7 @@ declare class NodePreviewController {
 	events: {
 		[event_name: string]: ((data) => void)[]
 	}
-	dispatchEvent(event_name: string, data: object)
+	dispatchEvent(event_name: string, data: any)
 	on(event_name: string, cb: (data) => void)
 	removeListener(event_name: string, cb: (data) => void)
 

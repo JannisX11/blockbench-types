@@ -109,8 +109,8 @@ interface PropertyOptions {
 	/**
 	 * Options used for select types
 	 */
-	options?: object
-	merge?: (instance: any, data: object) => void
+	options?: any
+	merge?: (instance: any, data: any) => void
 	reset?: (instance: any) => void
 	merge_validation?: (value: any) => boolean
 }
@@ -140,7 +140,7 @@ declare class Property extends Deletable {
 	description?: any
 	options?: any
 
-	merge: (instance: any, data: object) => void
+	merge: (instance: any, data: any) => void
 	reset: (instance: any) => void
 	getDefault(instance: any): any
 	copy(instance: any, target: any): void

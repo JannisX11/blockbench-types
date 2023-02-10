@@ -47,7 +47,7 @@ interface ActionOptions extends BarItemOptions {
 	click(event: Event): void
 	color?: string
 	linked_setting?: string
-	children?: object[]
+	children?: any[]
 	/**
 	 * Show the full label in toolbars
 	 */
@@ -175,7 +175,7 @@ interface BrushOptions {
 		texture: Texture
 		x: number
 		y: number
-		uv?: object
+		uv?: any
 		event: PointerEvent
 		raycast_data: RaycastResult
 	}): boolean
@@ -187,7 +187,7 @@ interface BrushOptions {
 		texture: Texture
 		x: number
 		y: number
-		uv?: object
+		uv?: any
 		event: PointerEvent
 		raycast_data: RaycastResult
 	}): boolean
@@ -199,7 +199,7 @@ interface BrushOptions {
 		texture: Texture
 		x: number
 		y: number
-		uv?: object
+		uv?: any
 		raycast_data: RaycastResult
 	})
 	/**
@@ -234,10 +234,10 @@ declare class Tool extends Action {
 	trigger(event: Event): boolean
 }
 declare class Widget extends BarItem {
-	constructor(id: string, options: object)
+	constructor(id: string, options: any)
 }
 declare class NumSlider extends Widget {
-	constructor(id: string, options: object)
+	constructor(id: string, options: any)
 	startInput(event: Event): void
 	setWidth(width: any): this
 	getInterval(event: Event): any
@@ -252,13 +252,13 @@ declare class NumSlider extends Widget {
 	update(): void
 }
 declare class BarSlider extends Widget {
-	constructor(id: string, options: object)
+	constructor(id: string, options: any)
 	change(event: Event): void
 	set(value: any): void
 	get(): any
 }
 declare class BarSelect extends Widget {
-	constructor(id: string, options: object)
+	constructor(id: string, options: any)
 	open(event: Event): void
 	trigger(event: Event): boolean | undefined
 	change(event: Event): this
@@ -267,13 +267,13 @@ declare class BarSelect extends Widget {
 	get(): any
 }
 declare class BarText extends Widget {
-	constructor(id: string, options: object)
+	constructor(id: string, options: any)
 	set(text: any): this
 	update(): this
 	trigger(event: Event): boolean
 }
 declare class ColorPicker extends Widget {
-	constructor(id: string, options: object)
+	constructor(id: string, options: any)
 	change(color: any): void
 	hide(): void
 	confirm(): void

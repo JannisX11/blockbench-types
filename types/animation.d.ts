@@ -33,7 +33,7 @@ declare class BBAnimation extends AnimationItem {
 		snapping: any
 		selected: any
 	}
-	compileBedrockAnimation(): object
+	compileBedrockAnimation(): any
 	save(): this | undefined
 	select(): this | undefined
 	setLength(length: number): void
@@ -74,10 +74,10 @@ declare class BBAnimation extends AnimationItem {
 
 declare namespace Animator {
 	const open: boolean
-	const MolangParser: object
+	const MolangParser: any
 	const motion_trail: THREE.Object3D
 	const motion_trail_lock: boolean
-	const particle_effects: object
+	const particle_effects: any
 	function showDefaultPose(no_matrix_update?: boolean): void
 	function resetParticles(): void
 	function showMotionTrail(target?: Group): void
@@ -88,10 +88,10 @@ declare namespace Animator {
 	function loadParticleEmitter(path: string, content: string): void
 	/**
 	 * Import a Bedrock animation file
-	 * @param file File object
+	 * @param file File any
 	 * @param animation_filter List of names of animations to import
 	 */
-	function loadFile(file: object, animation_filter?: string[])
+	function loadFile(file: any, animation_filter?: string[])
 }
 
 interface AddChannelOptions {

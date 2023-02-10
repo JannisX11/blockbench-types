@@ -33,8 +33,8 @@ interface CodecOptions {
 declare class Codec extends Deletable {
 	constructor(id: string, options: CodecOptions)
 
-	load?(model: any, file: object, add?: boolean): void
-	compile?(options?: object): any
+	load?(model: any, file: any, add?: boolean): void
+	compile?(options?: any): any
 	parse?(data: any, path: string): void
 	export?(): void
 	/**
@@ -46,8 +46,8 @@ declare class Codec extends Deletable {
 	overwrite?(content: any, path: string, callback: (path) => void): void
 	afterDownload?(path): void
 	afterSave?(path): void
-	on(event_name: string, callback: (data: object) => void): void
-	removeListener(event_name: string, callback: (data: object) => void): void
+	on(event_name: string, callback: (data: any) => void): void
+	removeListener(event_name: string, callback: (data: any) => void): void
 	dispatchEvent(data: any): void
 
 	name: string

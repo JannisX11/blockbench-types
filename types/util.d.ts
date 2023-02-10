@@ -29,7 +29,7 @@ type ConditionResolvable =
 
 /**
  * Tests if a condition is truthy of falsy. Returns true if the condition is unspecified
- * @param condition Boolean, function, object or anything else
+ * @param condition Boolean, function, any or anything else
  */
 declare function Condition(condition: any): boolean
 
@@ -37,7 +37,7 @@ declare function Condition(condition: any): boolean
  * Wrapper for objects that tells the custom JSON exporter to write in one line
  */
 declare class oneLiner {
-	constructor(data: object)
+	constructor(data: any)
 }
 
 declare const templog: (...args: any) => void
@@ -91,10 +91,10 @@ declare function getRectangle(
 declare function doRectanglesOverlap(rect1: any, rect2: any): boolean
 declare function omitKeys(obj: any, keys: any, dual_level?: boolean): {}
 declare function get(options: any, name: any, defaultValue: any): any
-declare function getKeyByValue(object: any, value: any): any
+declare function getKeyByValue(any: any, value: any): any
 declare function onVueSetup(func: any): void
 declare function capitalizeFirstLetter(string: any): any
-declare function autoStringify(object: any): string
+declare function autoStringify(any: any): string
 declare function pluralS(arr: any): '' | 's'
 declare function pathToName(path: string, extension: boolean): string | ''
 declare function pathToExtension(path: string): string | ''
@@ -120,7 +120,7 @@ declare function cameraTargetToRotation(position: any, target: any): any[]
 declare function cameraRotationToTarget(position: any, rotation: any): any
 /**
  *
- * @param {*} condition Input condition. Can be undefined, a boolean, a function or a condition object
+ * @param {*} condition Input condition. Can be undefined, a boolean, a function or a condition any
  * @param {*} context
  */
 declare function Condition(condition: any, context: any): boolean

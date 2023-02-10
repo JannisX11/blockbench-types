@@ -30,7 +30,7 @@ interface DialogFormElement {
 	max?: number
 	step?: number
 	height?: number
-	options?: object
+	options?: any
 	buttons?: string[]
 	click?: (button_index: number) => void
 }
@@ -58,7 +58,7 @@ interface DialogOptions {
 	/**
 	 *  Function to execute when the user confirms the dialog
 	 */
-	onConfirm?: (formResult: object) => void
+	onConfirm?: (formResult: any) => void
 	/**
 	 * Function to execute when the user cancels the dialog
 	 */
@@ -72,7 +72,7 @@ interface DialogOptions {
 	 */
 	onFormChange?: (form_result: { [key: string]: FormResultValue }) => void
 	/**
-	 * Array of HTML object strings for each line of content in the dialog.
+	 * Array of HTML any strings for each line of content in the dialog.
 	 */
 	lines?: (
 		| HTMLElement
@@ -176,7 +176,7 @@ declare class Dialog {
 	 */
 	setFormValues(values: { [key: string]: FormResultValue }): void
 	/**
-	 * Delete the dialog object, causing it to be re-build from scratch on next open
+	 * Delete the dialog any, causing it to be re-build from scratch on next open
 	 */
 	delete(): void
 
@@ -200,7 +200,7 @@ interface ShapelessDialogOptions {
 	/**
 	 *  Function to execute when the user confirms the dialog
 	 */
-	onConfirm?: (formResult: object) => void
+	onConfirm?: (formResult: any) => void
 	/**
 	 * Function to execute when the user cancels the dialog
 	 */
@@ -249,7 +249,7 @@ declare class ShapelessDialog extends Dialog {
 	 */
 	setFormValues(values: { [key: string]: FormResultValue }): void
 	/**
-	 * Delete the dialog object, causing it to be re-build from scratch on next open
+	 * Delete the dialog any, causing it to be re-build from scratch on next open
 	 */
 	delete(): void
 }

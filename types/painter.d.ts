@@ -3,12 +3,12 @@
 declare namespace Painter {
 	const currentPixel: ArrayVector2
 	const brushChanges: boolean
-	const current: object
-	const selection: object
+	const current: any
+	const selection: any
 	const mirror_painting: boolean
 	const lock_alpha: boolean
 	const erase_mode: boolean
-	const default_brush_presets: object[]
+	const default_brush_presets: any[]
 
 	function edit(
 		texture: Texture,
@@ -63,5 +63,5 @@ declare namespace Painter {
 		editPx: (RGBAColor, opacity: number, px: number, py: number) => RGBAColor
 	): void
 	function openBrushOptions(): void
-	function loadBrushPreset(preset: object): void
+	function loadBrushPreset(preset: any): void
 }

@@ -18,7 +18,7 @@ type RaycastResult = {
 	type: 'keyframe' | 'vertex' | 'cube'
 	event: Event
 	cube?: Cube
-	intersects?: object[]
+	intersects?: any[]
 	face?: string
 	vertex: any
 	keyframe: Keyframe
@@ -43,8 +43,8 @@ declare class Preview extends Deletable {
 	readonly camera: THREE.PerspectiveCamera | THREE.OrthographicCamera
 	camPers: THREE.PerspectiveCamera
 	camOrtho: THREE.OrthographicCamera
-	controls: object
-	annotations: object
+	controls: any
+	annotations: any
 	renderer: THREE.WebGLRenderer
 	background: {
 		name: string

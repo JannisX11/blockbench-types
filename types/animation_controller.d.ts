@@ -21,9 +21,9 @@ type StateAnimation = {
 interface AnimationControllerStateOptions {
 	name?: string
 	animations?: StateAnimationInput[]
-	transitions?: object[]
-	sounds?: object[]
-	particles?: object[]
+	transitions?: any[]
+	sounds?: any[]
+	particles?: any[]
 	on_entry?: string
 	on_exit?: string
 	blend_transition?: number
@@ -49,17 +49,17 @@ declare class AnimationControllerState {
 	}
 	playing_sounds: HTMLAudioElement[]
 	animations: StateAnimation[]
-	transitions: object[]
-	sounds: object[]
-	particles: object[]
+	transitions: any[]
+	sounds: any[]
+	particles: any[]
 	on_entry: string
 	on_exit: string
 	blend_transition: number
 	blend_via_shortest_path: boolean
 
 	extend: (data: AnimationControllerStateOptions) => void
-	getUndoCopy: () => object
-	compileForBedrock: () => object
+	getUndoCopy: () => any
+	compileForBedrock: () => any
 	select: (force?: boolean) => void
 	unselect: () => void
 	playEffects: () => void
@@ -98,8 +98,8 @@ declare class AnimationController extends AnimationItem {
 	initial_state: string
 	selected_state: null | AnimationControllerState
 	extend(data: AnimationControllerOptions): this
-	getUndoCopy(): object
-	compileForBedrock(): object
+	getUndoCopy(): any
+	compileForBedrock(): any
 	save(): this | undefined
 	select(): this | undefined
 	createUniqueName(references: AnimationController[]): any
