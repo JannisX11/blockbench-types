@@ -138,7 +138,11 @@ declare class Group extends OutlinerNode {
 	getSaveCopy: () => any
 	getChildlessCopy: () => Group
 	compile: (undo: boolean) => any
-	forEachChild(callback: (any: OutlinerNode) => void, type?: any, for_self?: boolean)
+	forEachChild<Type extends OutlinerNode>(
+		callback: (child: Type) => void,
+		type?: Type,
+		for_self?: boolean
+	): void
 }
 
 interface LocatorOptions {
