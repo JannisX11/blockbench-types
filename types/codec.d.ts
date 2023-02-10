@@ -34,7 +34,7 @@ declare class Codec extends Deletable {
 	constructor(id: string, options: CodecOptions)
 
 	load?(model: any, file: any, add?: boolean): void
-	compile?(options?: any): any
+	compile?(options?: any): string | ArrayBuffer
 	parse?(data: any, path: string): void
 	export?(): void
 	/**
