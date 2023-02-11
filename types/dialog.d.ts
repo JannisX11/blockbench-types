@@ -1,10 +1,13 @@
 interface DialogFormElement {
-	label: string
-	description?: string
 	type: 'text' | 'number' | 'range' | 'checkbox' | 'select' | 'radio' | 'textarea' | 'vector' | 'color' | 'file' | 'folder' | 'save' | 'info' | 'buttons'
+	label?: string
+	description?: string
 	nocolon?: boolean
 	full_width?: boolean
+	/** Set the input to read-only */
 	readonly?: boolean
+	/** Add buttons to allow copying and sharing the text or link */
+	share_text?: boolean
 	value?: any
 	placeholder?: string
 	text?: string
@@ -46,7 +49,7 @@ interface DialogOptions {
 	/**
 	 * Function to execute when the user cancels the dialog
 	 */
-	onCancel?: () => void
+	onCancel?(): void
 	/**
 	 * Triggered when the user presses a specific button
 	 */
@@ -96,28 +99,6 @@ interface DialogOptions {
 	cancel_on_click_outside?: boolean
 }
 
-interface DialogSidebarOptions {
-	pages?: {
-		[key: string]: string | {label: string, icon: IconString, color?: string}
-	}
-	page?: string
-	actions?: (Action|ActionInterface|string)[],
-	onPageSwitch?: (page: string) => void
-}
-declare class DialogSidebar {
-	constructor(options: DialogSidebarOptions)
-
-	pages: {
-		[key: string]: string
-	}
-	page: string
-	actions: (Action|string)[]
-	onPageSwitch(page: string): void
-	build(): void
-	toggle(state?: boolean): void
-	setPage(page: string): void
-}
-
 declare class Dialog {
 	constructor(id: string, options: DialogOptions)
 	constructor(options: DialogOptions)
@@ -128,20 +109,20 @@ declare class Dialog {
 	content_vue: Vue | null
 
 
-	show: () => Dialog
-	hide: () => Dialog
+	show(): this
+	hide(): this
 	/**
 	 * Triggers the confirm event of the dialog.
 	 */
-	confirm: (event?: Event) => void
+	confirm(event?: Event): void
 	/**
 	 * Triggers the cancel event of the dialog.
 	 */
-	cancel: (event?: Event) => void
+	cancel(event?: Event): void
 	/**
 	 * Closes the dialog using the index of the pressed button
 	 */
-	close: (button: number, event?: Event) => void
+	close(button: number, event?: Event): void
 	/**
 	 * If the dialog contains a form, return the current values of the form
 	 */
@@ -181,7 +162,7 @@ interface ShapelessDialogOptions {
 	/**
 	 * Function to execute when the user cancels the dialog
 	 */
-	onCancel?: () => void
+	onCancel?(): void
 	/**
 	 * Triggered when the user presses a specific button
 	 */
@@ -202,20 +183,20 @@ declare class ShapelessDialog extends Dialog {
 	component: Vue.Component
 
 
-	show: () => Dialog
-	hide: () => Dialog
+	show(): this
+	hide(): this
 	/**
 	 * Triggers the confirm event of the dialog.
 	 */
-	confirm: (event?: Event) => void
+	confirm(event?: Event): void
 	/**
 	 * Triggers the cancel event of the dialog.
 	 */
-	cancel: (event?: Event) => void
+	cancel(event?: Event): void
 	/**
 	 * Closes the dialog using the index of the pressed button
 	 */
-	close: (button: number, event?: Event) => void
+	close(button: number, event?: Event): void
 	/**
 	 * If the dialog contains a form, return the current values of the form
 	 */
@@ -230,4 +211,26 @@ declare class ShapelessDialog extends Dialog {
 	 * Delete the dialog object, causing it to be re-build from scratch on next open
 	 */
 	delete(): void
+}
+
+interface DialogSidebarOptions {
+	pages?: {
+		[key: string]: string | {label: string, icon: IconString, color?: string}
+	}
+	page?: string
+	actions?: (Action|ActionInterface|string)[],
+	onPageSwitch?: (page: string) => void
+}
+declare class DialogSidebar {
+	constructor(options: DialogSidebarOptions)
+
+	pages: {
+		[key: string]: string
+	}
+	page: string
+	actions: (Action|string)[]
+	onPageSwitch(page: string): void
+	build(): void
+	toggle(state?: boolean): void
+	setPage(page: string): void
 }

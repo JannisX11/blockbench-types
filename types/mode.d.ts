@@ -11,18 +11,18 @@ interface ModeOptions {
 	hide_status_bar?: boolean
 	condition?: ConditionResolvable
 	component?: Vue.Component
-	onSelect?: () => void
-	onUnselect?: () => void
+	onSelect?(): void
+	onUnselect?(): void
 }
 declare class Mode extends KeybindItem {
 	constructor(id: string, options: ModeOptions)
 
 	/**Selects the mode */
-	select: () => void
+	select(): void
 	/**Unselects the mode */
-	unselect: () => void
+	unselect(): void
 	/**Activates the mode */
-	trigger: () => void
+	trigger(): void
 
 	static selected: Mode
 }

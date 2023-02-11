@@ -52,26 +52,26 @@ declare class AnimationControllerState {
     blend_transition: number
     blend_via_shortest_path: boolean
 
-    extend: (data: AnimationControllerStateOptions) => void
-    getUndoCopy: () => object
-    compileForBedrock: () => object
-    select: (force?: boolean) => void
-    unselect: () => void
-    playEffects: () => void
-    scrollTo: () => void
-    rename: () => void
-    remove: (undo?: boolean) => void
-    createUniqueName: () => void
+    extend(data: AnimationControllerStateOptions): void
+    getUndoCopy(): object
+    compileForBedrock(): object
+    select(force?: boolean): void
+    unselect(): void
+    playEffects(): void
+    scrollTo(): void
+    rename(): void
+    remove(undo?: boolean): void
+    createUniqueName(): void
 
-    addAnimation: (animation?: Animation) => void
-    addTransition: (target_uuid?: string) => void
-    addParticle: (options?: {effect: string}) => void
-    addSound: (options?: {effect: string, file: string}) => void
-    openMenu: (event: Event) => void
+    addAnimation(animation?: Animation): void
+    addTransition(target_uuid?: string): void
+    addParticle(options?: {effect: string}): void
+    addSound(options?: {effect: string, file: string}): void
+    openMenu(event: Event): void
     /**
      * Returns the current animation time of the state in seconds
      */
-    getStateTime: () => number
+    getStateTime(): number
 }
 
 interface AnimationControllerOptions {
@@ -106,7 +106,7 @@ declare class AnimationController extends AnimationItem {
     /**
      * Updates the preview of the controller, including updating the animations and switching states if preview mode is set to play
      */
-    updatePreview: () => void
-    togglePlayingState: (state?: boolean) => boolean
-    showContextMenu: (event: Event | HTMLElement) => void
+    updatePreview(): void
+    togglePlayingState(state?: boolean): boolean
+    showContextMenu(event: Event | HTMLElement): void
 }

@@ -38,190 +38,190 @@ interface UpdateViewOptions {
     selection?: boolean
 }
 
-declare const Canvas: {
-    materials: {
+declare namespace Canvas {
+    const materials: {
         [uuid: UUID]: THREE.Material
     };
-    meshes: {
+    const meshes: {
         [uuid: UUID]: THREE.Mesh
     };
-    bones: {
+    const bones: {
         [uuid: UUID]: THREE.Object3D
     };
     /**
      * Main scene, shared across all tabs
      */
-    scene: THREE.Scene
+    const scene: THREE.Scene
     /**
      * List of the gizmos (control and UI elements) in the 3D scene
      */
-    gizmos: []
+    const gizmos: []
     /**
      * The material used for all selection outlines
      */
-    outlineMaterial: THREE.LineBasicMaterial;
-    meshOutlineMaterial: THREE.LineBasicMaterial;
+    const outlineMaterial: THREE.LineBasicMaterial;
+    const meshOutlineMaterial: THREE.LineBasicMaterial;
     /**
      * The material used for the wireframe view
      */
-    wireframeMaterial: THREE.MeshBasicMaterial;
-    solidMaterial: THREE.ShaderMaterial;
-    normalHelperMaterial: THREE.ShaderMaterial;
-    uvHelperMaterial: THREE.ShaderMaterial;
-    meshVertexMaterial: THREE.PointsMaterial;
+    const wireframeMaterial: THREE.MeshBasicMaterial;
+    const solidMaterial: THREE.ShaderMaterial;
+    const normalHelperMaterial: THREE.ShaderMaterial;
+    const uvHelperMaterial: THREE.ShaderMaterial;
+    const meshVertexMaterial: THREE.PointsMaterial;
     /**
      * The material used for the grids
      */
-    gridMaterial: THREE.LineBasicMaterial;
+    const gridMaterial: THREE.LineBasicMaterial;
 
-    pivot_marker: THREE.Object3D
+    const pivot_marker: THREE.Object3D
 
-    global_light_color: THREE.Color
-    global_light_side: number
+    const global_light_color: THREE.Color
+    const global_light_side: number
 
-    face_order: string[];
+    const face_order: string[];
 
     /**
      * Raycast on the currently selected preview
      */
-    raycast(event: MouseEvent): any;
+    function raycast(event: MouseEvent): any;
     /**
      * Execute the callback function without any gizmos, grids and helpers visible
      */
-    withoutGizmos(cb: () => void): void;
+    function withoutGizmos(cb: () => void): void;
     /**
      * Clear all elements from the scene
      */
-    clear(): void;
-    buildGrid(): void;
-    updateShading(): void;
+    function clear(): void;
+    function buildGrid(): void;
+    function updateShading(): void;
     /**
      * Updates selected aspects of the preview
      * @param options 
      */
-    updateView(options: UpdateViewOptions): void; 
+    function updateView(options: UpdateViewOptions): void; 
     /**
      * Regenerate all elements in the scene. Very unoptimized, use with care
      */
-    updateAll(): void;
+    function updateAll(): void;
     /**
      * Update the position and shape of all elements
      */
-    updateAllPositions(): void;
+    function updateAllPositions(): void;
     /**
      * Update the visibility of all elements
      */
-    updateVisibility(): void;
+    function updateVisibility(): void;
     /**
      * Update all faces in the scene
      * @param texture Texture filter. If specified, only faces with this texture will be updated
      */
-    updateAllFaces(texture: Texture): void;
+    function updateAllFaces(texture: Texture): void;
     /**
      * Update all UV maps in the scene
      */
-    updateAllUVs(): void;
+    function updateAllUVs(): void;
     /**
      * Returns the three.js render sides based on the current settings and state
      */
-    getRenderSide(): number;
+    function getRenderSide(): number;
     /**
      * Update render sides of all materials
      */
-    updateRenderSides(): void;
+    function updateRenderSides(): void;
     /**
      * Redraw the selected elements in the scene
      * @param arr Optionally specify an array of elements to update
      */
     
-    updateSelected(arr: any): void;
+    function updateSelected(arr: any): void;
     /**
      * Update positions and shapes of the selected elements
      */
-    updatePositions(y): void;
+    function updatePositions(y): void;
     /**
      * Update the faces of all selected elements (material, UV map)
      */
-    updateSelectedFaces(): void;
+    function updateSelectedFaces(): void;
     /**
      * Update the UV maps of all selected elements
      */
-    updateUVs(): void;
+    function updateUVs(): void;
     /**
      * Update the hierarchy and position of all bones
      */
-    updateAllBones(): void;
+    function updateAllBones(): void;
     /**
      * Update the position of the origin / pivot point gizmo
      */
-    updateOrigin(): boolean;
+    function updateOrigin(): boolean;
     /**
      * Update the position and shape of the specified cube
      * @param cube Cube to update
      * @param mesh Mesh instance of the cube
      */
-    adaptObjectPosition(cube: Cube, mesh?: THREE.Mesh): void;
+    function adaptObjectPosition(cube: Cube, mesh?: THREE.Mesh): void;
     /**
      * Update the geometry faces of the specified cube
      * @param cube Cube to update
      */
-    adaptObjectFaceGeo(cube: any): void;
+    function adaptObjectFaceGeo(cube: any): void;
     /**
      * Update the faces (material) of the specified cube
      * @param cube Cube to update
      * @param mesh Mesh instance of the cube
      */
-    adaptObjectFaces(cube: any, mesh: any): void;
+    function adaptObjectFaces(cube: any, mesh: any): void;
     /**
      * Update the layered or not layered material of all elements
      */
-    updateLayeredTextures(): void;
+    function updateLayeredTextures(): void;
     /**
      * Update the UV map of the specified cube
      * @param cube Cube to update
      * @param animation Whether to display the current animated texture frame
      */
-    updateUV(cube: Cube, animation?: boolean): any;
+    function updateUV(cube: Cube, animation?: boolean): any;
     /**
      * Update the materials of marker colors if new colors were added
      */
-    updateMarkerColorMaterials(): void;
+    function updateMarkerColorMaterials(): void;
     /**
      * Create an additional outline around the specified cubes
      * @param arr List of cubes to outline
      */
-    outlineObjects(arr: Cube[]): void;
+    function outlineObjects(arr: Cube[]): void;
     /**
      * Calculate the size of the model, in the currently displayed shape. Returns [width, height] in blockbench units
      */
-    getModelSize(): [number, number];
-};
+    function getModelSize(): [number, number];
+}
 
 /**
  * Marks a specific aspect of the interface to be updated in the next tick. Useful to avoid an update function getting called multiple times in the same task.
  */
-declare const TickUpdates: {
-    outliner: undefined | true
-    selection: undefined | true
-    main_uv: undefined | true
-    texture_list: undefined | true
-    keyframes: undefined | true
-    keyframe_selection: undefined | true
-    keybind_conflicts: undefined | true
+declare namespace TickUpdates {
+    const outliner: undefined | true
+    const selection: undefined | true
+    const main_uv: undefined | true
+    const texture_list: undefined | true
+    const keyframes: undefined | true
+    const keyframe_selection: undefined | true
+    const keybind_conflicts: undefined | true
 }
 
 interface NodePreviewControllerOptions {
-    setup?: (element: OutlinerNode) => void
-    remove?: (element: OutlinerNode) => void
-    updateAll?: (element: OutlinerNode) => void
-    updateTransform?: (element: OutlinerNode) => void
-    updateVisibility?: (element: OutlinerNode) => void
-    updateSelection?: (element: OutlinerNode) => void
-    updateGeometry?: (element: OutlinerNode) => void
-    updateUV?: (element: OutlinerNode) => void
-    updateFaces?: (element: OutlinerNode) => void
-    updatePaintingGrid?: (element: OutlinerNode) => void
-    updateHighlight?: (element: OutlinerNode) => void
+    setup?(element: OutlinerNode): void
+    remove?(element: OutlinerNode): void
+    updateAll?(element: OutlinerNode): void
+    updateTransform?(element: OutlinerNode): void
+    updateVisibility?(element: OutlinerNode): void
+    updateSelection?(element: OutlinerNode): void
+    updateGeometry?(element: OutlinerNode): void
+    updateUV?(element: OutlinerNode): void
+    updateFaces?(element: OutlinerNode): void
+    updatePaintingGrid?(element: OutlinerNode): void
+    updateHighlight?(element: OutlinerNode): void
 }
 declare class NodePreviewController {
     constructor(type: typeof OutlinerNode, options: NodePreviewControllerOptions)

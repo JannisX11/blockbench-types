@@ -48,6 +48,11 @@ declare namespace Screencam {
 
 	function returnScreenshot(dataUrl, cb: ScreenshotReturn, blob): void
 
+	/**
+	 * Runs callback in a clean canvas, where only the model is visible and the control gizmos are hidden
+	 * @param options 
+	 * @param cb 
+	 */
 	function cleanCanvas(options, cb: ScreenshotReturn): void
 
 	function createGif(options: RecordGIFOptions, cb: ScreenshotReturn): void

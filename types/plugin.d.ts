@@ -47,6 +47,10 @@ interface PluginOptions {
 	 */
 	onuninstall?(): void
 }
+
+/**
+ * A Blockbench plugin. "BBPlugin" is the Typescript alias to the regular name "Plugin", which is also valid in Javascript projects.
+ */
 declare class BBPlugin {
 	constructor(id: string, options: PluginOptions)
 

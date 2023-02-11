@@ -1,7 +1,7 @@
 
 
 declare class Deletable {
-	delete: () => void
+	delete(): void
 }
 type UUID = string
 
@@ -104,7 +104,7 @@ interface MessageBoxOptions {
 
 interface PropertyOptions {
 	default?: any
-	condition?: any
+	condition?: ConditionResolvable
 	exposed?: boolean
 	label?: string
 	/**
@@ -134,11 +134,11 @@ declare class Property extends Deletable {
 	isVector2: boolean;
 	
     merge_validation: undefined | ((value: any) => boolean);
-    condition: any;
+    condition: ConditionResolvable;
     exposed: boolean;
     label: any;
-	merge: (instance: any, data: object) => void
-	reset: (instance: any) => void
+	merge(instance: any, data: object): void
+	reset(instance: any): void
     getDefault(instance: any): any;
     copy(instance: any, target: any): void;
 }

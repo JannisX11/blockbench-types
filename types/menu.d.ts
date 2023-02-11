@@ -18,14 +18,11 @@ interface CustomMenuItem {
 type MenuItem = CustomMenuItem | Action | BarSelect | string;
 interface MenuOptions {
     onOpen?: (position: MouseEvent | HTMLElement, context?: any) => void
-    onClose?: () => void
+    onClose?(): void
     keep_open?: boolean
     searchable?: boolean
 }
 declare class Menu extends Deletable {
-    /**
-     * Creates a new context menu
-     */
     constructor(id: string, template: MenuItem[] | ((context?: any) => MenuItem[]), options?: MenuOptions)
     constructor(template: MenuItem[] | ((context?: any) => MenuItem[]), options?: MenuOptions)
 
@@ -56,7 +53,7 @@ declare class Menu extends Deletable {
  * Creates a new menu in the menu bar
  */
 declare class BarMenu extends Menu {
-    constructor(id: string, structure: MenuItem[], condition?: any)
+    constructor(id: string, structure: MenuItem[], condition?: ConditionResolvable)
     /**
      * Visually highlights an action within the menu, until the user opens the menu
      */

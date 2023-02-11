@@ -10,7 +10,6 @@
 /// <reference types="./animation_controller" />
 /// <reference types="./canvas" />
 /// <reference types="./codec" />
-/// <reference types="./file_system" />
 /// <reference types="./format" />
 /// <reference types="./global" />
 /// <reference types="./interface" />
@@ -20,7 +19,9 @@
 /// <reference types="./legacy" />
 /// <reference types="./menu" />
 /// <reference types="./outliner" />
+/// <reference types="./group" />
 /// <reference types="./cube" />
+/// <reference types="./mesh" />
 /// <reference types="./plugin" />
 /// <reference types="./preview" />
 /// <reference types="./project" />
@@ -36,35 +37,137 @@
 /// <reference types="./util" />
 
 
+	
+/**
+ * The resource identifier group, used to allow the file dialog (open and save) to remember where it was last used
+ */
+type ResourceID = string | 'texture' | 'minecraft_skin' | 'dev_plugin' | 'animation' | 'animation_particle' | 'animation_audio' | 'theme' | 'model' | 'gltf' | 'obj' | 'preview_background' | 'screenshot' | 'palette'
+
+
+interface FileResult {
+	name: string
+	path: string
+	content: string | ArrayBuffer
+}
+type ReadType = 'buffer' | 'binary' | 'text' | 'image'
+interface ReadOptions {
+	readtype?: ReadType | ((file: string) => ReadType)
+	errorbox?: boolean
+}
+type WriteType = 'buffer' | 'text' | 'zip' | 'image'
+interface WriteOptions {
+	content: string | ArrayBuffer
+	savetype?: WriteType | ((file: string) => WriteType)
+	custom_writer(content: string | ArrayBuffer, file_path: string): void
+}
+interface PickDirOptions {
+	/**Location where the file dialog starts off
+	 */
+	startpath?: string
+	/** The resource identifier group, used to allow the file dialog (open and save) to remember where it was last used
+	 */
+	resource_id?: ResourceID
+	/** Window title for the file picker
+	 */
+	title?: string
+}
+interface ImportOptions extends ReadOptions {
+	/** Name of the file type
+	 */
+	type: string
+	/** File Extensions
+	 */
+	extensions: string[]
+	/** Allow selection of multiple elements
+	 */
+	multiple?: boolean
+	/** File picker start path
+	 */
+	startpath?: string
+	/** The resource identifier group, used to allow the file dialog (open and save) to remember where it was last used
+	 */
+	resource_id?: ResourceID
+	/** Title of the file picker window
+	 */
+	title?: string
+	/** 
+	 */
+}
+interface ExportOptions extends WriteOptions {
+	/** 
+	 * Name of the file type
+	 */
+	type: string
+	/** 
+	 * File extensions
+	 */
+	extensions: string[]
+	/** 
+	 * Suggested file name
+	 */
+	name?: string
+	/** 
+	 * Location where the file dialog starts
+	 */
+	startpath?: string
+	/** 
+	 * The resource identifier group, used to allow the file dialog (open and save) to remember where it was last used
+	 */
+	resource_id?: string
+}
+interface DragHandlerOptions extends ReadOptions {
+	/**
+	 * Allowed file extensions
+	 */
+	extensions: string[] | (() => string[])
+	/**
+	 * Whether or not to enable the drag handler
+	 */
+	condition?: ConditionResolvable
+	/**
+	 * Drop target element
+	 */
+	element?: string | HTMLElement | (() => string | HTMLElement)
+	/**
+	 * If true, the drop will work on all child elements of the specified element
+	 */
+	propagate?: boolean
+}
+
+
 declare namespace Blockbench {
-	const platform: 'web' | 'win32' | 'darwin' | 'linux'
+	export const platform: 'web' | 'win32' | 'darwin' | 'linux'
 	/**
 	 * Blockbench version number
 	 */
-	const version: string
+	export const version: string
 	/**
 	 * URL queries when opened as web app using a link that contained queries
 	 */
-	const queries: {[key: string]: string} | undefined
+	export const queries: {[key: string]: string} | undefined
 	/**
 	 * Time when Blockbench was opened
 	 */
-	const openTime: Date
-	function reload(): void
+	export const openTime: Date
+
+	/**
+	 * Reloads the Blockbench window
+	 */
+	export function reload(): void
 	/**
 	 * checks if Blockbench is newer than the specified version
 	 * 
 	 * @param version
 	 * semver string
 	 */
-	function isNewerThan(version: string): boolean
+	export function isNewerThan(version: string): boolean
 	/**
 	 * checks if Blockbench is older than the specified version
 	 * 
 	 * @param version
 	 * semver string
 	 */
-	function isOlderThan(version: string): boolean
+	export function isOlderThan(version: string): boolean
 	/**
 	 * Resolves an icon string as a HTML element
 	 * @param icon 
@@ -72,7 +175,7 @@ declare namespace Blockbench {
 	 * @param color 
 	 * CSS color
 	 */
-	function getIconNode(icon: IconString, color?: string): HTMLElement
+	export function getIconNode(icon: IconString, color?: string): HTMLElement
 	/**
 	 * Shows a passing message in the middle of the screen
 	 * 
@@ -81,11 +184,11 @@ declare namespace Blockbench {
 	 * @param time 
 	 * Time in miliseconds that the message stays up
 	 */
-	function showQuickMessage(message: string, time?: number): void
+	export function showQuickMessage(message: string, time?: number): void
 
-	function showStatusMessage(message: string, time?: number): void
+	export function showStatusMessage(message: string, time?: number): void
 
-	function setStatusBarText(text?: string): void
+	export function setStatusBarText(text?: string): void
 	/**
 	 * Set the value of a progress bar
 	 * 
@@ -96,18 +199,18 @@ declare namespace Blockbench {
 	 * @param bar
 	 * ID of the bar element. If omitted, the main status bar will be selected
 	 */
-	function setProgress(progress: number, time?: number, bar?: string): void
+	export function setProgress(progress: number, time?: number, bar?: string): void
 
 	/**
 	 * Opens a message box
 	 */
-	function showMessageBox(options: MessageBoxOptions, callback: (buttonID: number | string) => void): void
+	export function showMessageBox(options: MessageBoxOptions, callback: (buttonID: number | string) => void): void
 
-	function textPrompt(title: string, value: string, callback: (value: string) => void): void
+	export function textPrompt(title: string, value: string, callback: (value: string) => void): void
 	/**
 	 * Opens the specified link in the browser or in a new tab
 	 */
-	function openLink(link: URL): void
+	export function openLink(link: URL): void
 
 	/**
 	 * Shows a system notification
@@ -115,23 +218,70 @@ declare namespace Blockbench {
 	 * @param text Text
 	 * @param icon Url or data url pointing to an icon. Defaults to Blockbench icon
 	 */
-	function notification(title: string, text: string, icon?: string): void
+	export function notification(title: string, text: string, icon?: string): void
 	/**
 	 * Adds custom CSS code to Blockbench, globally. Returns an object that is deletable
 	 * @param css CSS string
 	 */
-	function addCSS(css: string): Deletable
+	export function addCSS(css: string): Deletable
 
-	function addFlag(flag: string): void
-	function removeFlag(flag: string): void
-	function hasFlag(flag: string): boolean
+	export function addFlag(flag: string): void
+	export function removeFlag(flag: string): void
+	export function hasFlag(flag: string): boolean
 
-	function dispatchEvent(event_name: EventName, data: object): void
+	export function dispatchEvent(event_name: EventName, data: object): void
 
-	function addListener(event_names: EventName, callback: (data: object) => void): void
-	function on(event_names: EventName, callback: (data: object) => void): void
+	export function addListener(event_names: EventName, callback: (data: object) => void): void
+	export function on(event_names: EventName, callback: (data: object) => void): void
 
-	function removeListener(event_names: EventName): void
+	export function removeListener(event_names: EventName): void
+
+
+
+
+	/**
+	 * Reads the content from the specified files. Desktop app only.
+	 */
+	export function read(files: string[], options?: ReadOptions, callback?: (files: FileResult[]) => void): void
+	/**
+	 * Reads the content from the specified files. Desktop app only.
+	 */
+	export function readFile(files: string[], options?: ReadOptions, callback?: (files: FileResult[]) => void): void
+
+
+
+	
+	/**
+	 * Writes a file to the file system. Desktop app only.
+	 */
+	export function writeFile(file_path: string, options: WriteOptions, callback?: (file_path: string) => void): void
+
+
+
+	/**
+	 * Pick a directory. Desktop app only.
+	 */
+	export function pickDirectory(options: PickDirOptions)
+
+
+
+	export function _import(options: ImportOptions, callback?: (files: FileResult[]) => void): any;
+	export { _import as import };
+
+
+
+	export function _export(options: ExportOptions, callback?: (file_path: string) => void): any;
+	export { _export as export };
+
+
+
+	/**
+	 * Adds a drag handler that handles dragging and dropping files into Blockbench
+	 */
+	export function addDragHandler(id: string, options: DragHandlerOptions, callback?: () => void): Deletable
+	
+	export function removeDragHandler(id: string): void
+
 }
 
 type BlockbenchTypeOutliner = typeof Outliner
@@ -150,9 +300,9 @@ type BlockbenchTypeNodePreviewController = typeof NodePreviewController
 type BlockbenchTypeAnimator = typeof Animator
 type BlockbenchTypeTimeline = typeof Timeline
 type BlockbenchTypeAnimationItem = typeof AnimationItem
-type BlockbenchTypeAnimation = typeof Animation
+type BlockbenchTypeAnimation = typeof _Animation
 type BlockbenchTypeAnimationController = typeof AnimationController
-type BlockbenchTypeKeyframe = typeof Keyframe
+type BlockbenchTypeKeyframe = typeof _Keyframe
 type BlockbenchTypeKeyframeDataPoint = typeof KeyframeDataPoint
 type BlockbenchTypeBoneAnimator = typeof BoneAnimator
 type BlockbenchTypeNullObjectAnimator = typeof NullObjectAnimator

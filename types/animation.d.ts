@@ -13,7 +13,7 @@ interface AnimationOptions {
     snapping?: number
 }
 
-declare class Animation extends AnimationItem {
+declare class _Animation extends AnimationItem {
     constructor(data: AnimationOptions);
     extend(data: AnimationOptions): this;
     getUndoCopy(options: any, save: any): {
@@ -118,14 +118,14 @@ declare class BoneAnimator extends GeneralAnimator {
     position: Keyframe[]
     scale: Keyframe[]
     getGroup(): Group
-    fillValues: () => void
-    pushKeyframe: () => void
-    doRender: () => boolean
-    displayRotation: () => void
-    displayPosition: () => void
-    displayScale: () => void
-    interpolate: () => void
-    displayFrame: () => void
+    fillValues(): void
+    pushKeyframe(): void
+    doRender(): boolean
+    displayRotation(): void
+    displayPosition(): void
+    displayScale(): void
+    interpolate(): void
+    displayFrame(): void
 }
 declare class NullObjectAnimator extends GeneralAnimator {
     name: string
@@ -134,10 +134,10 @@ declare class NullObjectAnimator extends GeneralAnimator {
     position: Keyframe[]
     scale: Keyframe[]
     getElement(): NullObject
-    doRender: () => void
-    displayPosition: () => void
-    displayIK: () => void
-    displayFrame: () => void
+    doRender(): void
+    displayPosition(): void
+    displayIK(): void
+    displayFrame(): void
 }
 declare class EffectAnimator extends GeneralAnimator {
     name: string
@@ -147,7 +147,7 @@ declare class EffectAnimator extends GeneralAnimator {
     scale: Keyframe[]
     pushKeyframe(keyframe): this
     displayFrame(in_loop): this
-    startPreviousSounds: () => void
+    startPreviousSounds(): void
 }
 
 declare class TimelineMarker {

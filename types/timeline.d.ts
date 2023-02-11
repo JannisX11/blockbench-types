@@ -1,8 +1,11 @@
 declare namespace Timeline {
-    const animators: object[]
+    const animators: GeneralAnimator[]
     const selected: Keyframe[]
     const playing_sounds: any[]
     let playback_speed: number
+    /**
+     * Current time
+     */
     let time: number
     let playing: boolean
 

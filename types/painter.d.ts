@@ -9,9 +9,9 @@ declare namespace Painter {
 	const erase_mode: boolean
 	const default_brush_presets: object[]
 
-	function edit(texture: Texture, callback: (canvas: HTMLCanvasElement) => void, options: TextureEditOptions)
-	function setAlphaMatrix(texture: Texture, x, y, val)
-	function getAlphaMatrix(texture: Texture, x, y)
+	function edit(texture: Texture, callback: (canvas: HTMLCanvasElement) => void, options: TextureEditOptions): void
+	function setAlphaMatrix(texture: Texture, x: number, y: number, val: number): void
+	function getAlphaMatrix(texture: Texture, x: number, y: number): number
 
 	function combineColors(base: RGBAColor, added: RGBAColor, opacity: number): RGBAColor
 	function blendColors(base: RGBAColor, added: RGBAColor, opacity: number, blend_mode: string): RGBAColor

@@ -1,5 +1,5 @@
 declare class KeyframeDataPoint {
-    constructor(keyframe: Keyframe);
+    constructor(keyframe: _Keyframe);
     extend(data: any): void;
     getUndoCopy(): {};
 }
@@ -9,8 +9,7 @@ interface KeyframeOptions {
 }
 type axisLetter = 'x' | 'y' | 'z'
 
-
-declare class Keyframe {
+declare class _Keyframe {
     constructor(options: KeyframeOptions, uuid: any);
 
     animator: GeneralAnimator;
@@ -27,7 +26,7 @@ declare class Keyframe {
     offset(axis: axisLetter, amount: any, data_point?: number): any;
     flip(axis: axisLetter): this;
     getLerp(other: any, axis: axisLetter, amount: any, allow_expression: any): any;
-    getCatmullromLerp(before_plus: Keyframe, before: Keyframe, after: Keyframe, after_plus: Keyframe, axis: axisLetter, alpha: number): any;
+    getCatmullromLerp(before_plus: _Keyframe, before: _Keyframe, after: _Keyframe, after_plus: _Keyframe, axis: axisLetter, alpha: number): any;
     getArray(data_point?: number): any[];
     getFixed(data_point?: number): any;
     getTimecodeString(): string;
@@ -37,7 +36,7 @@ declare class Keyframe {
     callPlayhead(): this;
     showContextMenu(event: Event): this;
     remove(): void;
-    forSelected(callback: (keyframe: Keyframe) => void, undo_tag: any): this[];
+    forSelected(callback: (keyframe: _Keyframe) => void, undo_tag: any): this[];
     getUndoCopy(save: any): {
         animator: any;
         channel?: string | null;

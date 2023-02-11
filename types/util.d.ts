@@ -26,7 +26,7 @@ type ConditionResolvable = undefined | boolean | ((context) => boolean) | Partia
  * Tests if a condition is truthy of falsy. Returns true if the condition is unspecified
  * @param condition Boolean, function, object or anything else
  */
-declare function Condition(condition: any): boolean
+declare function Condition(condition: ConditionResolvable): boolean
 
 /**
  * Wrapper for objects that tells the custom JSON exporter to write in one line
@@ -34,8 +34,6 @@ declare function Condition(condition: any): boolean
 declare class oneLiner {
 	constructor(data: object)
 }
-
-declare const templog: (...args: any) => void
 
 /**
  * If the input event is a touch event, convert touch event to a compatible mouse event

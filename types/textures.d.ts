@@ -126,7 +126,7 @@ declare class Texture {
     menu: Menu
 
     static all: Texture[]
-    static getDefault: () => Texture
+    static getDefault(): Texture
 }
 /**
  * Saves all textures
