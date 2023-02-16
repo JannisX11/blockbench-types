@@ -118,6 +118,7 @@ interface DialogOptions {
 	 * Unless set to false, clicking on the darkened area outside of the dialog will cancel the dialog.
 	 */
 	cancel_on_click_outside?: boolean
+	width?: number
 }
 
 interface DialogSidebarOptions {
