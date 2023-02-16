@@ -11,9 +11,9 @@ interface CodecOptions {
 	fileName?(): string
 	startPath?(): string
 	write?(content: any, path: string): void
-	overwrite?(content: any, path: string, callback: (path) => void): void
-	afterDownload?(path): void
-	afterSave?(path): void
+	overwrite?(content: any, path: string, callback: (path: any) => void): void
+	afterDownload?(path: any): void
+	afterSave?(path: any): void
 
 	dispatchEvent?(event_name: string, data: any): void
 
@@ -54,6 +54,8 @@ declare class Codec extends Deletable {
 	extension: string
 	remember: boolean
 	export_action?: Action
+
+	format: ModelFormat
 
 	static getAllExtensions(): string[]
 }

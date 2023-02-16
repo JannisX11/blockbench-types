@@ -68,6 +68,7 @@ declare class Action extends BarItem {
 	 * Provide a menu that belongs to the action, and gets displayed as a small arrow next to it in toolbars.
 	 */
 	side_menu?: Menu
+	click: ActionOptions['click']
 }
 interface ToggleOptions extends ActionOptions {
 	/**
