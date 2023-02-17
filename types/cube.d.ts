@@ -40,7 +40,7 @@ declare class Cube extends OutlinerElement {
 	 * Calculates and returns the size of a cube across a certain axis. If the axis argument is omitted, it returns all sizes as an array vector.
 	 */
 	size(axis?: number, floored?: boolean): number | ArrayVector3
-	rotationAxis(): void
+	rotationAxis(): string
 	getUndoCopy(aspects?: any): void
 	getSaveCopy(project?: boolean): Cube
 	roll(axis: number, steps: number, origin: ArrayVector3): void
