@@ -36,7 +36,7 @@ declare class _Keyframe {
 	getArray(data_point?: number): any[]
 	getFixed(data_point?: number): any
 	getTimecodeString(): string
-	compileBedrockKeyframe(): object
+	compileBedrockKeyframe(): any
 	replaceOthers(save: any): void
 	select(event: any): this
 	callPlayhead(): this
@@ -46,6 +46,6 @@ declare class _Keyframe {
 	getUndoCopy(save: any): {
 		animator: any
 		channel?: string | null
-		data_points: object[]
+		data_points: any[]
 	}
 }

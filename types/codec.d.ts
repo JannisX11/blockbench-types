@@ -47,12 +47,12 @@ declare class Codec extends Deletable {
 	 * @param file
 	 * @param add
 	 */
-	load(model: any, file: object, add?: boolean): void
+	load(model: any, file: any, add?: boolean): void
 	/**
 	 * Compiles the file content
 	 * @param options
 	 */
-	compile(options?: object): any
+	compile(options?: any): any
 	/**
 	 * Takes the content of a file, and loads the model into the current Blockbench project
 	 * @param data File content
@@ -86,14 +86,14 @@ declare class Codec extends Deletable {
 	 * @param event_name The event type to listen for
 	 * @param callback
 	 */
-	on(event_name: string, callback: (data: object) => void): void
+	on(event_name: string, callback: (data: any) => void): void
 	/**
 	 * Removes an event listener from the codec
 	 * @param event_name
 	 * @param callback
 	 */
-	removeListener(event_name: string, callback: (data: object) => void): void
-	dispatchEvent(data: object): void
+	removeListener(event_name: string, callback: (data: any) => void): void
+	dispatchEvent(event_name: string, data: any): void
 
 	/**
 	 * The display name of the codec

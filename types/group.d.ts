@@ -67,8 +67,8 @@ declare class Group extends OutlinerNode {
 	 * Duplicate the group
 	 */
 	duplicate(): Group
-	getSaveCopy(): object
+	getSaveCopy(): any
 	getChildlessCopy(): Group
-	compile(undo: boolean): object
-	forEachChild(callback: (object: OutlinerNode) => void, type?: any, for_self?: boolean)
+	compile(undo: boolean): any
+	forEachChild(callback: (any: OutlinerNode) => void, type?: any, for_self?: boolean)
 }

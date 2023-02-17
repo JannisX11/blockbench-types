@@ -136,7 +136,7 @@ declare class Property extends Deletable {
 	condition: ConditionResolvable
 	exposed: boolean
 	label: any
-	merge(instance: any, data: object): void
+	merge(instance: any, data: any): void
 	reset(instance: any): void
 	getDefault(instance: any): any
 	copy(instance: any, target: any): void

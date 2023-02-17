@@ -237,7 +237,7 @@ declare namespace Blockbench {
 	 */
 	export function notification(title: string, text: string, icon?: string): void
 	/**
-	 * Adds custom CSS code to Blockbench, globally. Returns an object that is deletable
+	 * Adds custom CSS code to Blockbench, globally. Returns an any that is deletable
 	 * @param css CSS string
 	 */
 	export function addCSS(css: string): Deletable
@@ -246,10 +246,10 @@ declare namespace Blockbench {
 	export function removeFlag(flag: string): void
 	export function hasFlag(flag: string): boolean
 
-	export function dispatchEvent(event_name: EventName, data: object): void
+	export function dispatchEvent(event_name: EventName, data: any): void
 
-	export function addListener(event_names: EventName, callback: (data: object) => void): void
-	export function on(event_names: EventName, callback: (data: object) => void): void
+	export function addListener(event_names: EventName, callback: (data: any) => void): void
+	export function on(event_names: EventName, callback: (data: any) => void): void
 
 	export function removeListener(event_names: EventName): void
 

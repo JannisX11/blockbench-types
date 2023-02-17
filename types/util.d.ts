@@ -19,7 +19,7 @@ type ConditionResolvable =
 				cube?: boolean
 				mesh?: boolean
 				locator?: boolean
-				null_object?: boolean
+				null_any?: boolean
 				texture_mesh?: boolean
 				outliner?: boolean
 			}
@@ -34,7 +34,7 @@ type ConditionResolvable =
 declare function Condition(condition: ConditionResolvable): boolean
 
 /**
- * Wrapper for objects that tells the custom JSON exporter to write in one line
+ * Wrapper for anys that tells the custom JSON exporter to write in one line
  */
 declare class oneLiner {
 	constructor(data: any)
