@@ -20,7 +20,7 @@ interface GroupOptions {
 }
 
 declare class Group extends OutlinerNode {
-	constructor (options: Partial<GroupOptions>)
+	constructor(options: Partial<GroupOptions>)
 	static selected: Group
 	static all: Group[]
 

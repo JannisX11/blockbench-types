@@ -1,4 +1,4 @@
-/// <reference path="./index.d.ts"/>
+/// <reference path="./blockbench.d.ts"/>
 
 declare class AnimationItem {
 	static all: AnimationItem[]
@@ -16,7 +16,7 @@ interface AnimationOptions {
 	snapping?: number
 }
 
-declare class BBAnimation extends AnimationItem {
+declare class _Animation extends AnimationItem {
 	constructor(data?: AnimationOptions)
 	extend(data?: AnimationOptions): this
 	getUndoCopy(
@@ -37,7 +37,7 @@ declare class BBAnimation extends AnimationItem {
 	save(): this | undefined
 	select(): this | undefined
 	setLength(length: number): void
-	createUniqueName(references: BBAnimation[]): any
+	createUniqueName(references: _Animation[]): any
 	rename(): this
 	togglePlayingState(state: any): any
 	showContextMenu(event: any): this
@@ -101,7 +101,7 @@ interface AddChannelOptions {
 	max_data_points?: number
 }
 declare class GeneralAnimator {
-	constructor(uuid: string, animation: BBAnimation)
+	constructor(uuid: string, animation: _Animation)
 	keyframes: Keyframe[]
 	select(): this
 	addToTimeline(): this

@@ -1,7 +1,7 @@
 /**
  * Registry of all toolbar items, such as actions, tools, etc.
  */
-/// <reference path="./index.d.ts"/>
+/// <reference path="./blockbench.d.ts"/>
 declare const BarItems: {
 	[id: string]: BarItem
 }

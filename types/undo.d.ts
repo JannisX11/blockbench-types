@@ -1,4 +1,4 @@
-/// <reference path="./index.d.ts"/>
+/// <reference path="./blockbench.d.ts"/>
 interface UndoAspects {
 	selection?: boolean
 	elements?: OutlinerElement[]
@@ -9,7 +9,7 @@ interface UndoAspects {
 	selected_texture?: boolean
 	settings?: {}
 	uv_mode?: boolean
-	animations?: BBAnimation[]
+	animations?: _Animation[]
 	keyframes?: Keyframe[]
 	display_slots?: string[]
 	exploded_view?: boolean
@@ -46,7 +46,7 @@ interface AmendEditForm {
 	type?: 'number'
 	label: string
 	interval_type: 'position' | 'rotation'
-	getInterval?: (Event) => number
+	getInterval?(Event): number
 	value?: number | string
 	min?: number
 	max?: number

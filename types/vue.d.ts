@@ -1,3 +1,4 @@
 declare namespace Vue {
-	const Component: any
+	type Component = any
 }
+declare class Vue {}

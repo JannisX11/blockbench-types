@@ -1,4 +1,4 @@
-/// <reference path="./index.d.ts"/>
+/// <reference path="./blockbench.d.ts"/>
 interface DisplaySlotOptions {
 	rotation?: ArrayVector3
 	translation?: ArrayVector3

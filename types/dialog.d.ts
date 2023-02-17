@@ -1,4 +1,4 @@
-/// <reference path="./index.d.ts"/>
+/// <reference path="./blockbench.d.ts"/>
 
 interface DialogFormElement {
 	label?: string
@@ -35,7 +35,7 @@ interface DialogFormElement {
 	height?: number
 	options?: any
 	buttons?: string[]
-	click?: (button_index: number) => void
+	click?(button_index: number): void
 }
 
 type FormResultValue = string | number | boolean | []
@@ -44,7 +44,7 @@ interface ActionInterface {
 	name: string
 	description?: string
 	icon: string
-	click: (event: Event) => void
+	click(event: Event): void
 	condition: ConditionResolvable
 }
 interface DialogOptions {
@@ -61,7 +61,7 @@ interface DialogOptions {
 	/**
 	 *  Function to execute when the user confirms the dialog
 	 */
-	onConfirm?: (formResult: any) => void
+	onConfirm?(formResult: any): void
 	/**
 	 * Function to execute when the user cancels the dialog
 	 */
@@ -69,11 +69,11 @@ interface DialogOptions {
 	/**
 	 * Triggered when the user presses a specific button
 	 */
-	onButton?: (button_index: number, event?: Event) => void
+	onButton?(button_index: number, event?: Event): void
 	/**
 	 * Function to run when anything in the form is changed
 	 */
-	onFormChange?: (form_result: { [key: string]: FormResultValue }) => void
+	onFormChange?(form_result: { [key: string]: FormResultValue }): void
 	/**
 	 * Array of HTML any strings for each line of content in the dialog.
 	 */
@@ -95,7 +95,7 @@ interface DialogOptions {
 	/**
 	 * Vue component
 	 */
-	component?: typeof Vue.Component
+	component?: Vue.Component
 	/**
 	 * Order that the different interface types appear in the dialog. Default is 'form', 'lines', 'component'.
 	 */
@@ -130,7 +130,7 @@ interface DialogSidebarOptions {
 	}
 	page?: string
 	actions?: (Action | ActionInterface | string)[]
-	onPageSwitch?: (page: string) => void
+	onPageSwitch?(page: string): void
 }
 declare class DialogSidebar {
 	constructor(options: DialogSidebarOptions)
@@ -151,7 +151,7 @@ declare class Dialog {
 	constructor(options: DialogOptions)
 
 	id: string
-	component: typeof Vue.Component
+	component: Vue.Component
 	sidebar: DialogSidebar | null
 	content_vue: Vue | null
 
@@ -204,7 +204,7 @@ interface ShapelessDialogOptions {
 	/**
 	 *  Function to execute when the user confirms the dialog
 	 */
-	onConfirm?: (formResult: any) => void
+	onConfirm?(formResult: any): void
 	/**
 	 * Function to execute when the user cancels the dialog
 	 */
@@ -212,11 +212,11 @@ interface ShapelessDialogOptions {
 	/**
 	 * Triggered when the user presses a specific button
 	 */
-	onClose?: (button_index: number, event?: Event) => void
+	onClose?(button_index: number, event?: Event): void
 	/**
 	 * Vue component
 	 */
-	component?: typeof Vue.Component
+	component?: Vue.Component
 	/**
 	 * Unless set to false, clicking on the darkened area outside of the dialog will cancel the dialog.
 	 */
@@ -264,18 +264,5 @@ interface DialogSidebarOptions {
 	}
 	page?: string
 	actions?: (Action | ActionInterface | string)[]
-	onPageSwitch?: (page: string) => void
-}
-declare class DialogSidebar {
-	constructor(options: DialogSidebarOptions)
-
-	pages: {
-		[key: string]: string
-	}
-	page: string
-	actions: (Action | string)[]
-	onPageSwitch(page: string): void
-	build(): void
-	toggle(state?: boolean): void
-	setPage(page: string): void
+	onPageSwitch?(page: string): void
 }

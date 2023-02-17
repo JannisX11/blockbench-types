@@ -1,4 +1,4 @@
-/// <reference path="./index.d.ts"/>
+/// <reference path="./blockbench.d.ts"/>
 
 declare class Deletable {
 	delete(): void
@@ -110,9 +110,9 @@ interface PropertyOptions {
 	 * Options used for select types
 	 */
 	options?: any
-	merge?: (instance: any, data: any) => void
-	reset?: (instance: any) => void
-	merge_validation?: (value: any) => boolean
+	merge?(instance: any, data: any): void
+	reset?(instance: any): void
+	merge_validation?(value: any): boolean
 }
 /**
  * Creates a new property on the specified target class

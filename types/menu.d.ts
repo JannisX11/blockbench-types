@@ -1,4 +1,4 @@
-/// <reference path="./index.d.ts"/>
+/// <reference path="./blockbench.d.ts"/>
 interface CustomMenuItem {
 	name: string
 	id: string
@@ -14,11 +14,11 @@ interface CustomMenuItem {
 	 */
 	searchable?: boolean
 	children?: MenuItem[] | (() => MenuItem[])
-	click?: (context?: any, event?: Event) => void
+	click?(context?: any, event?: Event): void
 }
 type MenuItem = CustomMenuItem | Action | BarSelect | string
 interface MenuOptions {
-	onOpen?: (position: MouseEvent | HTMLElement, context?: any) => void
+	onOpen?(position: MouseEvent | HTMLElement, context?: any): void
 	onClose?(): void
 	keep_open?: boolean
 	searchable?: boolean

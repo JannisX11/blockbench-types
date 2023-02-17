@@ -1,4 +1,4 @@
-/// <reference path="./index.d.ts"/>
+/// <reference path="./blockbench.d.ts"/>
 type OccupationMatrix = {
 	[x: number]: {
 		[y: number]: boolean
@@ -16,61 +16,61 @@ declare class MeshFace extends Face {
 	uv: {
 		[vertex: string]: ArrayVector2
 	}
-	extend: (data: MeshFaceOptions) => void
+	extend(data: MeshFaceOptions): void
 	/**
 	 * Returns the face normal in mesh space as calculated from the vertex positions
 	 */
-	getNormal: (normalize) => ArrayVector3
+	getNormal(normalize): ArrayVector3
 	/**
 	 * Calculates which pixels the UV face occupies, and returns them as a map
 	 */
-	getOccupationMatrix: (
+	getOccupationMatrix(
 		texture_space?: boolean,
 		start_offset?: ArrayVector2,
 		matrix?: OccupationMatrix
-	) => OccupationMatrix
+	): OccupationMatrix
 	/**
 	 * Get the keys of this face and all faces that are connected with it on the UV map
 	 */
-	getUVIsland: () => string[]
+	getUVIsland(): string[]
 	/**
 	 * Returns the angle between two faces in degrees
 	 */
-	getAngleTo: (other_face: MeshFace) => number
+	getAngleTo(other_face: MeshFace): number
 	/**
 	 * Inverts the direction of the face
 	 */
-	invert: () => void
+	invert(): void
 	/**
 	 * Returns whether the face is selected
 	 */
-	isSelected: () => boolean
+	isSelected(): boolean
 	/**
 	 * Returns the vertices of a quad in an order that creates a convex quad shape if possible. If the face has less than 4 vertices, it just returns the vertices in original order.
 	 */
-	getSortedVertices: () => string[]
+	getSortedVertices(): string[]
 	/**
 	 * Get the adjacent face in the specified side
 	 */
-	getAdjacentFace: (
+	getAdjacentFace(
 		side_index: number
-	) => { face: MeshFace; key: string; edge: MeshEdge; index: number } | null
+	): { face: MeshFace; key: string; edge: MeshEdge; index: number } | null
 	/**
 	 * Returns the face key
 	 */
-	getFaceKey: () => string
+	getFaceKey(): string
 	/**
 	 * Takes a UV coordinate and turns it into a 3D space coordinate in local space of the mesh. On quads, the first triangle is used for calculation, so the coordinates on warped quads may be inaccurate.
 	 */
-	UVToLocal: (uv: ArrayVector2) => THREE.Vector3
+	UVToLocal(uv: ArrayVector2): THREE.Vector3
 	/**
 	 * Takes a 3D coordinate in local space of the mesh, and turns it into a coordinate on the UV map using barycentric coordinates. On quads, the first triangle is used for calculation, so the coordinates on warped quads may be inaccurate.
 	 */
-	localToUV: (vector: THREE.Vector3) => ArrayVector2
+	localToUV(vector: THREE.Vector3): ArrayVector2
 	/**
 	 * Get the face center by weight in local space
 	 */
-	getCenter: () => ArrayVector3
+	getCenter(): ArrayVector3
 }
 
 type MeshSeamValue = 'auto' | 'divide' | 'join'
@@ -147,69 +147,3 @@ declare class Mesh extends OutlinerElement {
 }
 
 interface MeshFaceOptions extends FaceOptions {}
-declare class MeshFace extends Face {
-	constructor(mesh: Mesh, data: MeshFaceOptions)
-	/**
-	 * The vertices that make up the face, as vertex keys. The vertices go around the face counter-clockwise when looking at the front side of the face. That also means that reversing the vertex order reverses the face direction.
-	 */
-	vertices: string[]
-	mesh: Mesh
-	uv: {
-		[vertex: string]: ArrayVector2
-	}
-	extend(data: MeshFaceOptions): void
-	/**
-	 * Returns the face normal in mesh space as calculated from the vertex positions
-	 */
-	getNormal(normalize): ArrayVector3
-	/**
-	 * Calculates which pixels the UV face occupies, and returns them as a map
-	 */
-	getOccupationMatrix(
-		texture_space?: boolean,
-		start_offset?: ArrayVector2,
-		matrix?: OccupationMatrix
-	): OccupationMatrix
-	/**
-	 * Get the keys of this face and all faces that are connected with it on the UV map
-	 */
-	getUVIsland(): string[]
-	/**
-	 * Returns the angle between two faces in degrees
-	 */
-	getAngleTo(other_face: MeshFace): number
-	/**
-	 * Inverts the direction of the face
-	 */
-	invert(): void
-	/**
-	 * Returns whether the face is selected
-	 */
-	isSelected(): boolean
-	/**
-	 * Returns the vertices of a quad in an order that creates a convex quad shape if possible. If the face has less than 4 vertices, it just returns the vertices in original order.
-	 */
-	getSortedVertices(): string[]
-	/**
-	 * Get the adjacent face in the specified side
-	 */
-	getAdjacentFace(
-		side_index: number
-	): { face: MeshFace; key: string; edge: MeshEdge; index: number } | null
-	/**
-	 * Returns the face key
-	 */
-	getFaceKey(): string
-	/**
-	 * Takes a UV coordinate and turns it into a 3D space coordinate in local space of the mesh. On quads, the first triangle is used for calculation, so the coordinates on warped quads may be inaccurate.
-	 */
-	UVToLocal(uv: ArrayVector2): THREE.Vector3
-	/**
-	 * Takes a 3D coordinate in local space of the mesh, and turns it into a coordinate on the UV map using barycentric coordinates. On quads, the first triangle is used for calculation, so the coordinates on warped quads may be inaccurate.
-	 */
-	localToUV(vector: THREE.Vector3): ArrayVector2
-	/**
-	 * Get the face center by weight in local space
-	 */
-	getCenter(): ArrayVector3
-}

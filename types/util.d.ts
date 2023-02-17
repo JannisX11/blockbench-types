@@ -1,4 +1,4 @@
-/// <reference path="./index.d.ts"/>
+/// <reference path="./blockbench.d.ts"/>
 type ConditionResolvable =
 	| undefined
 	| boolean
@@ -24,7 +24,7 @@ type ConditionResolvable =
 				outliner?: boolean
 			}
 			project: boolean
-			method: (context: any) => boolean
+			method(context: any): boolean
 	  }>
 
 /**

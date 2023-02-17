@@ -1,4 +1,4 @@
-/// <reference path="./index.d.ts"/>
+/// <reference path="./blockbench.d.ts"/>
 interface PanelOptions {
 	id: string
 	name: string
@@ -19,7 +19,7 @@ interface PanelOptions {
 		height: number
 		folded: boolean
 	}
-	component: typeof Vue.Component
+	component: Vue.Component
 	default_side: 'right' | 'left'
 	insert_before: string
 	insert_after: string
@@ -36,7 +36,7 @@ declare class Panel {
 	slot: string
 	folded: boolean
 	fold(state?: boolean): this
-	inside_vue: typeof Vue.Component
+	inside_vue: Vue.Component
 	/**
 	 * If the panel is floating, move it up to the front
 	 */

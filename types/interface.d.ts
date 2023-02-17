@@ -1,4 +1,4 @@
-/// <reference path="./index.d.ts"/>
+/// <reference path="./blockbench.d.ts"/>
 
 interface ResizeLineOptions {
 	condition?: ConditionResolvable
@@ -56,7 +56,7 @@ declare namespace Interface {
 	}
 	const status_bar: {
 		menu: Menu
-		vue: typeof Vue.Component
+		vue: Vue.Component
 	}
 	const Panels: {
 		[key: string]: Panel

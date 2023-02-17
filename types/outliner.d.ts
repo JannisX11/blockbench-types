@@ -1,4 +1,4 @@
-/// <reference path="./index.d.ts"/>
+/// <reference path="./blockbench.d.ts"/>
 type ArrayVector4 = [number, number, number, number]
 type ArrayVector3 = [number, number, number]
 type ArrayVector2 = [number, number]
@@ -63,9 +63,9 @@ declare class OutlinerElement extends OutlinerNode {
 	selected: boolean
 	readonly mesh: THREE.Object3D | THREE.Mesh
 	getMesh(): THREE.Object3D | THREE.Mesh
-	static fromSave: (data: any, keep_uuid?: boolean) => OutlinerElement
+	static fromSave(data: any, keep_uuid?: boolean): OutlinerElement
 	static isParent: false
-	getSaveCopy?: (project?: boolean) => OutlinerElement
+	getSaveCopy?(project?: boolean): OutlinerElement
 }
 
 interface GroupOptions {
@@ -88,64 +88,6 @@ interface GroupOptions {
 	export: boolean
 	/**Auto UV setting for the children. Can be 0, 1 or 2. */
 	autouv: 0 | 1 | 2
-}
-
-declare class Group extends OutlinerNode {
-	constructor(options: Partial<GroupOptions>)
-	static selected: Group
-	static all: Group[]
-
-	name: string
-	children: OutlinerNode[]
-	origin: ArrayVector3
-	rotation: ArrayVector3
-	reset: boolean
-	shade: boolean
-	selected: boolean
-	visibility: boolean
-	autouv: 1 | 2 | 3
-	isOpen: boolean
-	ik_enabled: boolean
-	ik_chain_length: number
-
-	extend: (options: Partial<GroupOptions>) => this
-	selectChildren: (event: Event) => this
-	selectLow: (highlight: boolean) => this
-	unselect: () => this
-	matchesSelection: () => boolean
-	/**
-	 * Opens theOpens the group and all of its ancestor groups.
-	 */
-	openUp: () => this
-	/**
-	 * Removes the group
-	 * @param undo If true, an undo point will be created.
-	 */
-	remove: (undo?: boolean) => this
-	/**
-	 * Remove the group and leave all of its children in the parent array.
-	 */
-	resolve: () => OutlinerNode[]
-	/**
-	 * Move the origin of a bone to a specific location without visually affecting the position of it's content.
-	 */
-	transferOrigin: (origin: ArrayVector3) => this
-	/**
-	 * Sort the content of the group alphabetically. This will automatically create an undo point.
-	 */
-	sortContent: () => this
-	/**
-	 * Duplicate the group
-	 */
-	duplicate: () => Group
-	getSaveCopy: () => any
-	getChildlessCopy: () => Group
-	compile: (undo: boolean) => any
-	forEachChild<Type extends OutlinerNode>(
-		callback: (child: Type) => void,
-		type?: Type,
-		for_self?: boolean
-	): void
 }
 
 interface LocatorOptions {

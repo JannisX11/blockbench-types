@@ -1,4 +1,4 @@
-/// <reference path="./index.d.ts"/>
+/// <reference path="./blockbench.d.ts"/>
 declare namespace Timeline {
 	const animators: GeneralAnimator[]
 	const selected: Keyframe[]
@@ -31,7 +31,7 @@ declare namespace Timeline {
 	 * @param time Input time in seconds
 	 * @param animation Animation to use the snapping setting from. If unspecified, uses the selected animation
 	 */
-	function snapTime(time: number, animation?: BBAnimation): number
+	function snapTime(time: number, animation?: _Animation): number
 	/**
 	 * Returns the time between two snapping points
 	 */

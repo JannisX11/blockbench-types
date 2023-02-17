@@ -1,7 +1,7 @@
-/// <reference path="./index.d.ts"/>
+/// <reference path="./blockbench.d.ts"/>
 
 interface FormatPage {
-	component?: typeof Vue.Component
+	component?: Vue.Component
 	content?: (
 		| {
 				type: 'image' | 'h2' | 'h3' | 'h4' | 'text' | 'label' | 'image' | ''
@@ -25,7 +25,7 @@ interface CubeSizeLimiter {
 	/**
 	 * Move the cube back into the restructions
 	 */
-	move: (cube: Cube, values?: { from: ArrayVector3; to: ArrayVector3; inflate: number }) => void
+	move(cube: Cube, values?: { from: ArrayVector3; to: ArrayVector3; inflate: number }): void
 	/**
 	 * Clamp the cube to fit into the restrictions. When an axis and direction is provided, clamp the element on that side to prevent wandering.
 	 */

@@ -1,4 +1,4 @@
-/// <reference path="./index.d.ts"/>
+/// <reference path="./blockbench.d.ts"/>
 interface ModelProjectOptions {
 	format: ModelFormat
 }
@@ -57,7 +57,7 @@ declare class ModelProject {
 	textures: Texture[]
 	selected_texture: Texture | null
 	outliner: OutlinerNode[]
-	animations: BBAnimation[]
+	animations: _Animation[]
 	timeline_animators: []
 	display_settings: {
 		[slot: string]: {
@@ -65,7 +65,7 @@ declare class ModelProject {
 			rotation: [number, number, number]
 			scale: [number, number, number]
 			mirror: [boolean, boolean, boolean]
-			export?: (...args: any[]) => any
+			export?(...args: any[]): any
 		}
 	}
 	overrides?: any

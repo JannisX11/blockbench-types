@@ -1,4 +1,4 @@
-/// <reference path="./index.d.ts"/>
+/// <reference path="./blockbench.d.ts"/>
 declare const settings: {
 	[id: string]: Setting
 }
@@ -19,7 +19,7 @@ interface SettingOptions {
 	options?: {
 		[id: string]: string
 	}
-	onChange?: (value: any) => void
+	onChange?(value: any): void
 }
 
 declare class Setting extends Deletable {

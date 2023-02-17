@@ -284,12 +284,6 @@ declare namespace Blockbench {
 	 */
 	export function pickDirectory(options: PickDirOptions)
 
-	export function _import(options: ImportOptions, callback?: (files: FileResult[]) => void): any
-	export { _import as import }
-
-	export function _export(options: ExportOptions, callback?: (file_path: string) => void): any
-	export { _export as export }
-
 	/**
 	 * Adds a drag handler that handles dragging and dropping files into Blockbench
 	 */

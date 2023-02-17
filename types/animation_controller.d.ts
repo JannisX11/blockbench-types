@@ -1,4 +1,4 @@
-/// <reference path="./index.d.ts"/>
+/// <reference path="./blockbench.d.ts"/>
 
 type StateAnimationInput =
 	| string
@@ -68,7 +68,7 @@ declare class AnimationControllerState {
 	remove(undo?: boolean): void
 	createUniqueName(): void
 
-	addAnimation(animation?: BBAnimation): void
+	addAnimation(animation?: _Animation): void
 	addTransition(target_uuid?: string): void
 	addParticle(options?: { effect: string }): void
 	addSound(options?: { effect: string; file: string }): void
@@ -110,7 +110,7 @@ declare class AnimationController extends AnimationItem {
 	/**
 	 * Updates the preview of the controller, including updating the animations and switching states if preview mode is set to play
 	 */
-	updatePreview: () => void
-	togglePlayingState: (state?: boolean) => boolean
-	showContextMenu: (event: Event | HTMLElement) => void
+	updatePreview(): void
+	togglePlayingState(state?: boolean): boolean
+	showContextMenu(event: Event | HTMLElement): void
 }
