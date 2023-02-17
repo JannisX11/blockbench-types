@@ -74,6 +74,7 @@ interface FormatOptions {
 	texture_meshes?: boolean
 	locators?: boolean
 	rotation_limit?: boolean
+	rotation_snap?: boolean
 	uv_rotation?: boolean
 	java_face_properties?: boolean
 	select_texture_for_particles?: boolean
@@ -126,6 +127,7 @@ declare class ModelFormat extends Deletable {
 	texture_meshes: boolean
 	locators: boolean
 	rotation_limit: boolean
+	rotation_snap: boolean
 	uv_rotation: boolean
 	java_face_properties: boolean
 	select_texture_for_particles: boolean

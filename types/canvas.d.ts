@@ -28,6 +28,10 @@ interface UpdateViewOptions {
 		 * Update the painting grid
 		 */
 		painting_grid?: boolean
+		/**
+		 * Update the transform of elements
+		 */
+		transform?: boolean
 	}
 	/**
 	 * Groups to update
