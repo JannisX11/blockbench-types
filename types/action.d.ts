@@ -1,3 +1,6 @@
+/**
+ * Registry of all toolbar items, such as actions, tools, etc.
+ */
 /// <reference path="./index.d.ts"/>
 declare const BarItems: {
 	[id: string]: BarItem
@@ -13,6 +16,9 @@ declare interface KeybindKeys {
 	alt?: boolean | null
 	meta?: boolean | null
 }
+/**
+ * A customizable keybind
+ */
 declare class Keybind {
 	constructor(keys: KeybindKeys)
 }
@@ -30,10 +36,13 @@ interface BarItemOptions extends KeybindItemOptions {
 	name?: string
 	description?: string
 	icon: string
-	condition?: any
+	condition?: ConditionResolvable
 	category?: string
 	keybind?: Keybind
 }
+/**
+ * Anything that can go into a toolbar, including actions, tools, toggles, widgets etc.
+ */
 declare class BarItem extends KeybindItem {
 	constructor(id: string, options: BarItemOptions)
 	conditionMet(): boolean
@@ -53,6 +62,9 @@ interface ActionOptions extends BarItemOptions {
 	 */
 	label?: boolean
 }
+/**
+ * Actions can be triggered to run something, they can be added to menus, toolbars, assigned a keybinding, or run via Action Control
+ */
 declare class Action extends BarItem {
 	constructor(id: string, options: ActionOptions)
 	/**
@@ -80,6 +92,9 @@ interface ToggleOptions extends ActionOptions {
 	 */
 	onChange?(value: boolean): void
 }
+/**
+ * A toggle is a type of action that can be on or off. The state is not persistent between restarts by default.
+ */
 declare class Toggle extends Action {
 	constructor(id: string, options: ToggleOptions)
 	/**
@@ -229,6 +244,9 @@ interface ToolOptions extends ActionOptions {
 	paintTool?: boolean
 	brush?: BrushOptions
 }
+/**
+ * A tool, such as mvoe tool, vertex snap tool, or paint brush
+ */
 declare class Tool extends Action {
 	constructor(id: string, options: ToolOptions)
 	select(): this | undefined
@@ -305,6 +323,9 @@ declare namespace BARS {
 	function updateConditions(): void
 	function updateToolToolbar(): void
 }
+/**
+ * A dialog-based interface to search and trigger actions and other things
+ */
 declare namespace ActionControl {
 	const open: boolean
 	const type: string
@@ -317,6 +338,9 @@ declare namespace ActionControl {
 	function click(action: any, event: Event): void
 	function handleKeys(event: Event): boolean
 }
+/**
+ * Stores and handles keybinds
+ */
 declare namespace Keybinds {
 	const actions: BarItem[]
 	const stored: {}

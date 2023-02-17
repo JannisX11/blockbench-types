@@ -111,7 +111,18 @@ declare class UndoSystem {
 	index: number
 }
 /**
- * Blockbench's system to register edits to the project and switch between them
+ * Blockbench's undo system of the current project to register edits to the project and switch between them
+
+## Example
+
+```javascript
+Undo.initEdit({elements: []});
+
+var new_cube = new Cube({name: 'kevin'}).init();
+var other_cube = new Cube({name: 'lars'}).init();
+
+Undo.finishEdit('add new cubes', {elements: [new_cube, other_cube]});
+```
  */
 declare let Undo: UndoSystem
 interface CompileJSONOptions {

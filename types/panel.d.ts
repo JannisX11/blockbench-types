@@ -23,8 +23,8 @@ interface PanelOptions {
 	default_side: 'right' | 'left'
 	insert_before: string
 	insert_after: string
-	onResize: () => void
-	onFold: () => void
+	onResize(): void
+	onFold(): void
 }
 type PanelEvent = 'drag' | 'fold' | 'change_zindex' | 'move_to' | 'moved_to' | 'update'
 

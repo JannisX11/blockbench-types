@@ -17,7 +17,8 @@
 		"url": "https://github.com/JannisX11/blockbench-types/issues"
 	},
 	"scripts": {
-		"lint": "prettier -w ."
+		"lint": "prettier -w .",
+		"generate": "node ./scripts/generate_docs.js"
 	},
 	"homepage": "https://github.com/JannisX11/blockbench-types#readme",
 	"dependencies": {},
@@ -26,6 +27,8 @@
 		"@types/three": "^0.148.1",
 		"@types/tinycolor2": "^1.4.3",
 		"prettier": "^2.8.3",
+		"typescript": "^4.9.5",
+		"typedoc": "^0.23.24",
 		"vue": "^3.2.45",
 		"wintersky": "^1.2.1"
 	}

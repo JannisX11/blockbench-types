@@ -7,7 +7,7 @@ interface SettingOptions {
 	name: string
 	type?: 'number' | 'string' | 'boolean' | 'password' | 'select' | 'click'
 	value: boolean | number | string
-	condition?: any
+	condition?: ConditionResolvable
 	category: string
 	description?: string
 	//launch_setting?: boolean
@@ -15,7 +15,7 @@ interface SettingOptions {
 	max?: number
 	step?: number
 	icon?: string
-	click?: () => void
+	click?(): void
 	options?: {
 		[id: string]: string
 	}
@@ -25,14 +25,14 @@ interface SettingOptions {
 declare class Setting extends Deletable {
 	constructor(id: string, options: SettingOptions)
 }
-declare const Settings: {
-	structure: {}
-	stored: {}
+declare namespace Settings {
+	const structure: {}
+	const stored: {}
 	/**
 	 * Opens the settings dialog
 	 * @param options
 	 */
-	open(
+	function open(
 		options?: Partial<{
 			search: string
 			tab: 'setting' | 'keybindings' | 'layout_settings' | 'credits'
@@ -41,13 +41,13 @@ declare const Settings: {
 	/**
 	 * Save all settings to the local storage
 	 */
-	saveLocalStorages(): void
+	function saveLocalStorages(): void
 	/**
 	 * Save the settings and apply changes
 	 */
-	save(): void
+	function save(): void
 	/**
 	 * Returns the value of the specified setting
 	 */
-	get(setting_id: string): any
+	function get(setting_id: string): any
 }

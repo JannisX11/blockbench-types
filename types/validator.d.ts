@@ -2,8 +2,8 @@
 declare namespace Validator {
 	const checks: ValidatorCheck[]
 
-	const warnings: []
-	const errors: []
+	const warnings: WarningOrError[]
+	const errors: WarningOrError[]
 	/**
 	 * Run the validator
 	 * @param trigger ID of the Blockbench event that triggered the call

@@ -14,9 +14,9 @@ declare namespace Painter {
 		texture: Texture,
 		callback: (canvas: HTMLCanvasElement) => void,
 		options: TextureEditOptions
-	)
-	function setAlphaMatrix(texture: Texture, x, y, val)
-	function getAlphaMatrix(texture: Texture, x, y)
+	): void
+	function setAlphaMatrix(texture: Texture, x: number, y: number, val: number): void
+	function getAlphaMatrix(texture: Texture, x: number, y: number): number
 
 	function combineColors(base: RGBAColor, added: RGBAColor, opacity: number): RGBAColor
 	function blendColors(

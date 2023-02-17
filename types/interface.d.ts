@@ -41,8 +41,8 @@ declare namespace Interface {
 	let right_bar_width: number
 	let top_panel_height: number
 	let bottom_panel_height: number
-	function getTopPanel(): Panel[]
-	function getBottomPanel(): Panel[]
+	function getTopPanel(): Panel
+	function getBottomPanel(): Panel
 	function getLeftPanels(): Panel[]
 	function getRightPanels(): Panel[]
 	const Resizers: {

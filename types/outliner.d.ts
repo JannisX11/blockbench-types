@@ -12,44 +12,47 @@ declare class OutlinerNode {
 	export: boolean
 	locked: boolean
 	parent: Group | 'root'
-	init: () => this
-	addTo: (target?: OutlinerNode) => this
-	sortInBefore: (target?: OutlinerNode, index_modifier?: number) => this
-	getParentArray: () => OutlinerNode[]
+	/**
+	 * Initializes the node. This should always be called when creating nodes that will be used in the outliner.
+	 */
+	init(): this
+	addTo(target?: OutlinerNode): this
+	sortInBefore(target?: OutlinerNode, index_modifier?: number): this
+	getParentArray(): OutlinerNode[]
 	/**
 	 * Unfolds the outliner and scrolls up or down if necessary to show the group or element.
 	 */
-	showInOutliner: () => this
+	showInOutliner(): this
 	/**
 	 * Updates the Vue node of the element. This is only necessary in some rare situations
 	 */
-	updateElement: () => this
+	updateElement(): this
 	/**
 	 * Removes the element.
 	 */
-	remove: () => this
+	remove(): this
 	/**
 	 * Marks the name of the group or element in the outliner for renaming.
 	 */
-	rename: () => this
+	rename(): this
 	/**
 	 * Saves the changed name of the element by creating an undo point and making the name unique if necessary.
 	 */
-	saveName: () => this
+	saveName(): this
 	/**
 	 * Create a unique name for the group or element by adding a number at the end or increasing it.
 	 */
-	createUniqueName: () => this
+	createUniqueName(): this
 	/**
 	 * Checks of the group or element is a child of `group`.
 	 * @param max_levels The maximum number of generations that can be between the element and the group
 	 */
-	isChildOf: (group: Group, max_levels: number) => boolean
+	isChildOf(group: Group, max_levels: number): boolean
 	/**
 	 * Displays the context menu of the element
 	 * @param event Mouse event, determines where the context menu spawns.
 	 */
-	showContexnu: (event: Event | HTMLElement) => this
+	showContexnu(event: Event | HTMLElement): this
 }
 
 /**
@@ -59,7 +62,7 @@ declare class OutlinerElement extends OutlinerNode {
 	constructor()
 	selected: boolean
 	readonly mesh: THREE.Object3D | THREE.Mesh
-	getMesh: () => THREE.Object3D | THREE.Mesh
+	getMesh(): THREE.Object3D | THREE.Mesh
 	static fromSave: (data: any, keep_uuid?: boolean) => OutlinerElement
 	static isParent: false
 	getSaveCopy?: (project?: boolean) => OutlinerElement

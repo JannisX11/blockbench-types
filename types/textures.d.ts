@@ -137,7 +137,7 @@ declare class Texture {
 	getUndoCopy(): Texture
 
 	static all: Texture[]
-	static getDefault: () => Texture
+	static getDefault(): Texture
 }
 /**
  * Saves all textures
