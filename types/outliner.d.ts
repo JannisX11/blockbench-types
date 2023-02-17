@@ -68,28 +68,6 @@ declare class OutlinerElement extends OutlinerNode {
 	getSaveCopy?(project?: boolean): OutlinerElement
 }
 
-interface GroupOptions {
-	/**Group name */
-	name: string
-	/**Array of
-	 * declare function compileGroups(undo: boolean, lut?: ) the group pivot point */
-	origin: ArrayVector3
-	/**Array of the group rotation */
-	rotation: ArrayVector3
-	/**If a bone, whether to reset the informations of inherited bones in bedrock edition. */
-	reset: boolean
-	/**Whether to shade the contents of the group */
-	shade: boolean
-	/**Whether the group is selected */
-	selected: boolean
-	/**Whether the group is visible */
-	visibility: boolean
-	/**Whether to export the entire group */
-	export: boolean
-	/**Auto UV setting for the children. Can be 0, 1 or 2. */
-	autouv: 0 | 1 | 2
-}
-
 interface LocatorOptions {
 	name: string
 	from: ArrayVector3

@@ -3,7 +3,7 @@ const fs = require('fs')
 const PathModule = require('path')
 
 //const out_path = '../docs/';
-const out_path = '../../blockbench.net/content/api/'
+const out_path = '../generated/'
 
 async function main() {
 	const app = new TypeDoc.Application()
