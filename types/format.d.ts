@@ -139,6 +139,8 @@ declare class ModelFormat extends Deletable {
 	animation_mode: boolean
 	pose_mode: boolean
 
+	codec?: Codec
+
 	cube_size_limiter?: CubeSizeLimiter
 	/**
 	 * Selects the format

@@ -58,7 +58,7 @@ declare class Codec extends Deletable {
 	 * @param data File content
 	 * @param path File path
 	 */
-	parse(data: any, path: string): void
+	parse?(data: any, path: string): void
 	/**
 	 * Opens the file browser to export a file of this type
 	 */
