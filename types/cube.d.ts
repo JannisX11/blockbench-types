@@ -32,6 +32,8 @@ declare class Cube extends OutlinerElement {
 	faces: {
 		[fkey: string]: CubeFace
 	}
+	rescale?: boolean
+	rotation_axis: 'x' | 'y' | 'z'
 	/**
 	 * UV position for box UV mode
 	 */

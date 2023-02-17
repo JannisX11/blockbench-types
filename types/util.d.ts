@@ -37,7 +37,8 @@ declare function Condition(condition: ConditionResolvable): boolean
  * Wrapper for anys that tells the custom JSON exporter to write in one line
  */
 declare class oneLiner {
-	constructor(data: any)
+	constructor(data?: any)
+	[key: string]: any
 }
 
 /**
