@@ -3,7 +3,7 @@ interface CodecOptions {
 	name: string
 	load?(model: any, file: any, add?: boolean): void
 	compile?(options?: any): string | ArrayBuffer
-	parse?(data: any, path: string): void
+	parse?(data: any, path: string, add?: boolean): void
 	export?(): void
 	/**
 	 * Generate a file name to suggest when exporting
@@ -58,7 +58,7 @@ declare class Codec extends Deletable {
 	 * @param data File content
 	 * @param path File path
 	 */
-	parse?(data: any, path: string): void
+	parse?(data: any, path: string, add?: boolean): void
 	/**
 	 * Opens the file browser to export a file of this type
 	 */
