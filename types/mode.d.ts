@@ -18,6 +18,7 @@ interface ModeOptions {
 }
 declare class Mode extends KeybindItem {
 	constructor(id: string, options: ModeOptions)
+	id: string
 	name: string
 
 	/**Selects the mode */
