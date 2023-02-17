@@ -64,6 +64,7 @@ interface FileResult {
 	name: string
 	path: string
 	content: string | ArrayBuffer
+	no_file?: boolean
 }
 type ReadType = 'buffer' | 'binary' | 'text' | 'image'
 interface ReadOptions {
