@@ -6,7 +6,9 @@
 		"outDir": "out",
 		"lib": ["dom", "ES2020"],
 		"sourceMap": true,
-		"rootDir": "."
+		"rootDir": ".",
+		"strict": true,
+		"noImplicitAny": true
 	},
 	"exclude": ["./node_modules/**/*"]
 }

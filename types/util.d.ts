@@ -2,7 +2,7 @@
 type ConditionResolvable =
 	| undefined
 	| boolean
-	| ((context) => boolean)
+	| ((context: any) => boolean)
 	| Partial<{
 			modes: string[]
 			formats: string[]
@@ -57,7 +57,7 @@ declare function addEventListeners(
 	events: string,
 	func: (event: Event) => void,
 	option?: any
-)
+): void
 
 declare function compareVersions(string1: any, string2: any): boolean
 declare function convertTouchEvent(event: any): any

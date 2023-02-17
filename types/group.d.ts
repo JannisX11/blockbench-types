@@ -70,5 +70,5 @@ declare class Group extends OutlinerNode {
 	getSaveCopy(): any
 	getChildlessCopy(): Group
 	compile(undo: boolean): any
-	forEachChild(callback: (any: OutlinerNode) => void, type?: any, for_self?: boolean)
+	forEachChild(callback: (any: OutlinerNode) => void, type?: any, for_self?: boolean): void
 }

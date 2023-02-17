@@ -91,7 +91,7 @@ declare namespace Animator {
 	 * @param file File any
 	 * @param animation_filter List of names of animations to import
 	 */
-	function loadFile(file: any, animation_filter?: string[])
+	function loadFile(file: any, animation_filter?: string[]): void
 }
 
 interface AddChannelOptions {
@@ -111,7 +111,7 @@ declare class GeneralAnimator {
 	toggleMuted(channel: string): this
 	scrollTo(): this
 
-	static addChannel(channel: string, options: AddChannelOptions)
+	static addChannel(channel: string, options: AddChannelOptions): void
 }
 
 declare class BoneAnimator extends GeneralAnimator {
@@ -148,8 +148,8 @@ declare class EffectAnimator extends GeneralAnimator {
 	rotations: Keyframe[]
 	position: Keyframe[]
 	scale: Keyframe[]
-	pushKeyframe(keyframe): this
-	displayFrame(in_loop): this
+	pushKeyframe(keyframe: _Keyframe): this
+	displayFrame(in_loop: _Keyframe): this
 	startPreviousSounds(): void
 }
 

@@ -47,8 +47,8 @@ declare class Panel {
 	/**
 	 * Add an event listener
 	 */
-	on(event_name: PanelEvent, callback: (data?) => void): void
-	removeListener(event_name: PanelEvent, callback: (data?) => void): void
+	on(event_name: PanelEvent, callback: (data?: any) => void): void
+	removeListener(event_name: PanelEvent, callback: (data?: any) => void): void
 	delete(): void
 }
 

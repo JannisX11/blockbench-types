@@ -75,7 +75,7 @@ interface LocatorOptions {
 declare class Locator extends OutlinerElement {
 	constructor(options: Partial<LocatorOptions>, uuid?: string)
 
-	extend(options: Partial<LocatorOptions>)
+	extend(options: Partial<LocatorOptions>): void
 	flip(axis: number, center: number): this
 	getWorldCenter(): THREE.Vector3
 
@@ -95,7 +95,7 @@ declare class NullObject extends OutlinerElement {
 	ik_target: string
 	lock_ik_target_rotation: boolean
 
-	extend(options: Partial<NullObjectOptions>)
+	extend(options: Partial<NullObjectOptions>): void
 	flip(axis: number, center: number): this
 	getWorldCenter(): THREE.Vector3
 
@@ -117,7 +117,7 @@ declare class TextureMesh extends OutlinerElement {
 	local_pivot: ArrayVector3
 	scale: ArrayVector3
 
-	extend(options: Partial<TextureMeshOptions>)
+	extend(options: Partial<TextureMeshOptions>): void
 	flip(axis: number, center: number): this
 	getWorldCenter(): THREE.Vector3
 	moveVector(offset: ArrayVector3 | THREE.Vector3, axis: number, update?: boolean): void

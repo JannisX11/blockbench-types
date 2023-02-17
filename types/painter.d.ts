@@ -52,7 +52,7 @@ declare namespace Painter {
 		y: number,
 		r: number,
 		softness: number,
-		editPx: (RGBAColor, opacity: number, px: number, py: number) => RGBAColor
+		editPx: (RGBAColor: any, opacity: number, px: number, py: number) => RGBAColor
 	): void
 	function editSquare(
 		ctx: CanvasRenderingContext2D,
@@ -60,7 +60,7 @@ declare namespace Painter {
 		y: number,
 		r: number,
 		softness: number,
-		editPx: (RGBAColor, opacity: number, px: number, py: number) => RGBAColor
+		editPx: (RGBAColor: any, opacity: number, px: number, py: number) => RGBAColor
 	): void
 	function openBrushOptions(): void
 	function loadBrushPreset(preset: any): void

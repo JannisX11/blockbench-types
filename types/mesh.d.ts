@@ -20,7 +20,7 @@ declare class MeshFace extends Face {
 	/**
 	 * Returns the face normal in mesh space as calculated from the vertex positions
 	 */
-	getNormal(normalize): ArrayVector3
+	getNormal(normalize: boolean): ArrayVector3
 	/**
 	 * Calculates which pixels the UV face occupies, and returns them as a map
 	 */
@@ -118,11 +118,11 @@ declare class Mesh extends OutlinerElement {
 	 */
 	getSelectedVertices(can_write: boolean): string[]
 
-	setSeam(edge: MeshEdge, value)
+	setSeam(edge: MeshEdge, value: any): void
 	getSeam(edge: MeshEdge): MeshSeamValue
 	getWorldCenter(ignore_mesh_selection?: boolean): THREE.Vector3
-	addVertices(...ArrayVector3): string[]
-	addFaces(...MeshFace): string[]
+	addVertices(...ArrayVector3: ArrayVector3[]): string[]
+	addFaces(...MeshFace: MeshFace[]): string[]
 	extend(data: MeshOptions): void
 	getUndoCopy(aspects?: any): any
 	getSelectionRotation(): THREE.Euler

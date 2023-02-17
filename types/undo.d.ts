@@ -46,7 +46,7 @@ interface AmendEditForm {
 	type?: 'number'
 	label: string
 	interval_type: 'position' | 'rotation'
-	getInterval?(Event): number
+	getInterval?(event: Event): number
 	value?: number | string
 	min?: number
 	max?: number
@@ -97,7 +97,7 @@ declare class UndoSystem {
 	/**
 	 * Provides a menu to amend the latest edit with slightly changed values
 	 */
-	amendEdit(form: AmendEditForm, callback: (values: {}, form: {}) => void)
+	amendEdit(form: AmendEditForm, callback: (values: any, form: any) => void): void
 
 	/**
 	 * Loads a specific undo save

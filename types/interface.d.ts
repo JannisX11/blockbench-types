@@ -61,7 +61,7 @@ declare namespace Interface {
 	const Panels: {
 		[key: string]: Panel
 	}
-	function toggleSidebar(side, status): void
+	function toggleSidebar(side: any, status: any): void
 
 	const text_edit_menu: Menu
 
@@ -85,6 +85,6 @@ declare namespace Interface {
 				onChange?(): void
 			}
 		): HTMLElement
-		const ResizeLine
+		const ResizeLine: any
 	}
 }

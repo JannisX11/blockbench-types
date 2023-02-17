@@ -288,7 +288,7 @@ declare namespace Blockbench {
 	/**
 	 * Pick a directory. Desktop app only.
 	 */
-	export function pickDirectory(options: PickDirOptions)
+	export function pickDirectory(options: PickDirOptions): any
 
 	/**
 	 * Adds a drag handler that handles dragging and dropping files into Blockbench

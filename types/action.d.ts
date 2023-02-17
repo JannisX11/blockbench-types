@@ -70,7 +70,7 @@ declare class Action extends BarItem {
 	/**
 	 * Trigger to run or select the action. This is the equivalent of clicking or using a keybind to trigger it. Also checks if the condition is met.
 	 */
-	trigger(event: Event): boolean
+	trigger(event?: Event): boolean
 	updateKeybindingLabel(): this
 	/** Change the icon of the action */
 	setIcon(icon: IconString): void
@@ -178,7 +178,7 @@ interface BrushOptions {
 	 */
 	changePixel(
 		pixel_x: number,
-		pixel_y,
+		pixel_y: number,
 		pixel_color: RGBAColor,
 		local_opacity: number,
 		PaintContext: PaintContext
@@ -217,7 +217,7 @@ interface BrushOptions {
 		y: number
 		uv?: any
 		raycast_data: RaycastResult
-	})
+	}): void
 	/**
 	 * Alternative way to create a custom brush, mutually exclusive with the changePixel() function. Draw runs once every time the brush starts or moves, and also along the bath on lines.
 	 * @param context
@@ -230,7 +230,7 @@ interface BrushOptions {
 		softness: number
 		texture: Texture
 		event: PointerEvent
-	})
+	}): void
 }
 interface ToolOptions extends ActionOptions {
 	selectFace?: boolean

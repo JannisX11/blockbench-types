@@ -167,7 +167,7 @@ declare namespace Language {
 	 * @param language Two letter language code, e. G. 'en'
 	 * @param strings Object listing the translation keys and values
 	 */
-	function addTranslations(language: string, strings: { [key: string]: string })
+	function addTranslations(language: string, strings: { [key: string]: string }): void
 }
 
 declare const DisplayMode: any

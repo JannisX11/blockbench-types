@@ -139,7 +139,7 @@ declare namespace Canvas {
 	/**
 	 * Update positions and shapes of the selected elements
 	 */
-	function updatePositions(y): void
+	function updatePositions(y: number): void
 	/**
 	 * Update the faces of all selected elements (material, UV map)
 	 */
@@ -228,11 +228,11 @@ declare class NodePreviewController {
 	constructor(type: typeof OutlinerNode, options: NodePreviewControllerOptions)
 	type: typeof OutlinerNode
 	events: {
-		[event_name: string]: ((data) => void)[]
+		[event_name: string]: ((data: any) => void)[]
 	}
-	dispatchEvent(event_name: string, data: any)
-	on(event_name: string, cb: (data) => void)
-	removeListener(event_name: string, cb: (data) => void)
+	dispatchEvent(event_name: string, data: any): void
+	on(event_name: string, cb: (data: any) => void): void
+	removeListener(event_name: string, cb: (data: any) => void): void
 
 	setup(element: OutlinerNode): void
 	remove(element: OutlinerNode): void
