@@ -100,6 +100,7 @@ declare namespace Blockbench {
 		/**
 		 */
 	}
+	// @ts-ignore
 	function _import(options: ImportOptions, callback?: (files: FileResult[]) => void): any
 	export { _import as import }
 
