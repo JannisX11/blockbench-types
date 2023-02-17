@@ -21,14 +21,14 @@
 		"generate": "node ./scripts/generate_docs.js"
 	},
 	"homepage": "https://github.com/JannisX11/blockbench-types#readme",
-	"dependencies": {},
 	"devDependencies": {
+		"@babel/types": "^7.20.7",
 		"@types/jquery": "^3.5.4",
 		"@types/three": "^0.148.1",
 		"@types/tinycolor2": "^1.4.3",
 		"prettier": "^2.8.3",
-		"typescript": "^4.9.5",
 		"typedoc": "^0.23.24",
+		"typescript": "^4.9.5",
 		"vue": "^3.2.45",
 		"wintersky": "^1.2.1"
 	}

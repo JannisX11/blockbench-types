@@ -396,11 +396,9 @@ async function main() {
 			addLine()
 		}
 
-		fs.writeFileSync(
-			PathModule.resolve(__dirname, out_path, `${file_name}.md`),
-			markdown_lines.join('\r\n'),
-			'utf-8'
-		)
+		const path = PathModule.resolve(__dirname, out_path, `${file_name}.md`)
+		fs.mkdirSync(PathModule.dirname(path), { recursive: true })
+		fs.writeFileSync(path, markdown_lines.join('\r\n'), 'utf-8')
 		num_files++
 	}
 
