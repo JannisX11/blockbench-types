@@ -114,3 +114,7 @@ declare class UndoSystem {
  * Blockbench's system to register edits to the project and switch between them
  */
 declare let Undo: UndoSystem
+interface CompileJSONOptions {
+	small?: boolean
+}
+declare function compileJSON(json: any, options?: CompileJSONOptions): string | ArrayBuffer
