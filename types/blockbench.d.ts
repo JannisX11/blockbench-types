@@ -361,6 +361,7 @@ type BlockbenchTypeCodec = typeof Codec
 type BlockbenchTypeDisplaySlot = typeof DisplaySlot
 type BlockbenchTypeReusable = typeof Reusable
 type BlockbenchTypeTexture = typeof Texture
+type BlockbenchTypeUVEditor = typeof UVEditor
 declare namespace Blockbench {
 	const Outliner: BlockbenchTypeOutliner
 	const OutlinerNode: BlockbenchTypeOutlinerNode
@@ -421,4 +422,5 @@ declare namespace Blockbench {
 	const DisplaySlot: BlockbenchTypeDisplaySlot
 	const Reusable: BlockbenchTypeReusable
 	const Texture: BlockbenchTypeTexture
+	const UVEditor: UVEditor
 }
