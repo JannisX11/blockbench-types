@@ -123,6 +123,7 @@ declare class Property extends Deletable {
 	name: string
 	type: string
 	default: any
+	export?: boolean
 
 	isString: boolean
 	isMolang: boolean
