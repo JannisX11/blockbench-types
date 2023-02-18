@@ -223,7 +223,7 @@ declare namespace Blockbench {
 	 */
 	export function showMessageBox(
 		options: MessageBoxOptions,
-		callback: (buttonID: number | string) => void
+		callback?: (buttonID: number | string) => void
 	): void
 
 	export function textPrompt(

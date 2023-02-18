@@ -3,6 +3,7 @@ type ArrayVector4 = [number, number, number, number]
 type ArrayVector3 = [number, number, number]
 type ArrayVector2 = [number, number]
 
+declare const elements: OutlinerNode[]
 /**
  * @private
  */
@@ -53,6 +54,7 @@ declare class OutlinerNode {
 	 * @param event Mouse event, determines where the context menu spawns.
 	 */
 	showContexnu(event: Event | HTMLElement): this
+	getSaveCopy?(project?: boolean): OutlinerNode
 }
 
 /**
@@ -65,7 +67,6 @@ declare class OutlinerElement extends OutlinerNode {
 	getMesh(): THREE.Object3D | THREE.Mesh
 	static fromSave(data: any, keep_uuid?: boolean): OutlinerElement
 	static isParent: false
-	getSaveCopy?(project?: boolean): OutlinerElement
 }
 
 interface LocatorOptions {
