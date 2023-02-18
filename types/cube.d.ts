@@ -20,6 +20,7 @@ declare class Cube extends OutlinerElement {
 	constructor(options: Partial<CubeOptions>, uuid?: string)
 	name: string
 	uuid: string
+	color: any
 	autouv: 0 | 1 | 2
 	shade: boolean
 	mirror_uv: boolean

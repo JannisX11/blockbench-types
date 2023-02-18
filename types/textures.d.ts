@@ -126,6 +126,7 @@ declare class Texture {
 		callback: (instance: HTMLCanvasElement | any) => void | HTMLCanvasElement,
 		options: TextureEditOptions
 	): void
+	id: string
 	menu: Menu
 	uuid: string
 	selected?: boolean
