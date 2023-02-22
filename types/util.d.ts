@@ -156,3 +156,7 @@ declare namespace Reusable {
 	const euler1: THREE.Euler
 	const euler2: THREE.Euler
 }
+
+declare namespace Blockbench {
+	function addCSS(css: string): void
+}
