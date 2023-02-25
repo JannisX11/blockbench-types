@@ -234,7 +234,7 @@ declare namespace Blockbench {
 	/**
 	 * Opens the specified link in the browser or in a new tab
 	 */
-	export function openLink(link: URL): void
+	export function openLink(link: string): void
 
 	/**
 	 * Shows a system notification
