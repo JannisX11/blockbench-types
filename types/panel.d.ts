@@ -9,22 +9,24 @@ interface PanelOptions {
 	condition?: ConditionResolvable
 	display_condition?: ConditionResolvable
 	expand_button: boolean
-	toolbars: {
+	toolbars?: {
 		[id: string]: Toolbar
 	}
-	default_position: {
-		slot: string
-		float_position: [number, number]
-		float_size: [number, number]
-		height: number
-		folded: boolean
-	}
+	default_position?:
+		| {
+				slot: string
+				float_position: [number, number]
+				float_size: [number, number]
+				height: number
+				folded: boolean
+		  }
+		| number
 	component: Vue.Component
 	default_side: 'right' | 'left'
-	insert_before: string
-	insert_after: string
-	onResize(): void
-	onFold(): void
+	insert_before?: string
+	insert_after?: string
+	onResize?(): void
+	onFold?(): void
 }
 type PanelEvent = 'drag' | 'fold' | 'change_zindex' | 'move_to' | 'moved_to' | 'update'
 

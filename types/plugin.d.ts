@@ -30,7 +30,7 @@ interface PluginOptions {
 	/**
 	 * Set to true if the plugin must finish loading before a project is opened, i. e. because it adds a format
 	 */
-	await_loading?: string
+	await_loading?: boolean
 	/**
 	 * Runs when the plugin loads
 	 */

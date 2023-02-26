@@ -253,12 +253,43 @@ declare namespace Blockbench {
 	export function removeFlag(flag: string): void
 	export function hasFlag(flag: string): boolean
 
-	export function dispatchEvent(event_name: EventName, data: any): void
+	/**
+	 * Dispatches a Blockbench event.
+	 * If you're using TypeScript, You can call this with the type param <EventName> to get the default event names in Blockbench, or leave the param blank for custom events.
+	 * ```ts
+	 * Blockbench.dispatchEvent<EventName>(...)
+	 * ```
+	 */
+	export function dispatchEvent<E extends string>(event_name: E, data: any): void
 
-	export function addListener(event_names: EventName, callback: (data: any) => void): void
-	export function on(event_names: EventName, callback: (data: any) => void): void
+	/**
+	 * Adds a listener to a Blockbench event.
+	 * If you're using TypeScript, You can call this with the type param <EventName> to get the default event names in Blockbench, or leave the param blank for custom events.
+	 * ```ts
+	 * Blockbench.addListener<EventName>(...)
+	 * ```
+	 */
+	export function addListener<E extends string>(
+		event_names: E,
+		callback: (data: any) => void
+	): void
+	/**
+	 * Adds a listener to a Blockbench event.
+	 * If you're using TypeScript, You can call this with the type param <EventName> to get the default event names in Blockbench, or leave the param blank for custom events.
+	 * ```ts
+	 * Blockbench.on<EventName>(...)
+	 * ```
+	 */
+	export function on<E extends string>(event_names: E, callback: (data: any) => void): void
 
-	export function removeListener(event_names: EventName): void
+	/**
+	 * Removes a listener from a Blockbench event.
+	 * If you're using TypeScript, You can call this with the type param <EventName> to get the default event names in Blockbench, or leave the param blank for custom events.
+	 * ```ts
+	 * Blockbench.removeListener<EventName>(...)
+	 * ```
+	 */
+	export function removeListener<E extends string>(event_names: E): void
 
 	/**
 	 * Reads the content from the specified files. Desktop app only.

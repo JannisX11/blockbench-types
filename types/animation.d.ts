@@ -78,6 +78,7 @@ declare namespace Animator {
 	const motion_trail: THREE.Object3D
 	const motion_trail_lock: boolean
 	const particle_effects: any
+	const animations: _Animation[]
 	function showDefaultPose(no_matrix_update?: boolean): void
 	function resetParticles(): void
 	function showMotionTrail(target?: Group): void
