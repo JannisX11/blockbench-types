@@ -260,7 +260,7 @@ declare namespace Blockbench {
 	 * Blockbench.dispatchEvent<EventName>(...)
 	 * ```
 	 */
-	export function dispatchEvent<E extends string>(event_name: E, data: any): void
+	export function dispatchEvent<E extends string>(event_name: E, data?: any): void
 
 	/**
 	 * Adds a listener to a Blockbench event.
