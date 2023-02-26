@@ -98,10 +98,10 @@ declare class AnimationController extends AnimationItem {
     compileForBedrock(): object;
     save(): this | undefined;
     select(): this | undefined;
-    createUniqueName(references: AnimationController[]): any;
+    createUniqueName(references: AnimationController[]): string | boolean;
     rename(): this;
     add(undo: any): this;
-    remove(undo: any, remove_from_file?: boolean): this;
+    remove(undo?: boolean, remove_from_file?: boolean): this;
     propertiesDialog(): void;
     /**
      * Updates the preview of the controller, including updating the animations and switching states if preview mode is set to play

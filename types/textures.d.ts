@@ -80,7 +80,7 @@ declare class Texture {
      * Adds texture to the textures list and initializes it
      * @param undo If true, an undo point is created
      */
-    add(undo?: boolean): any;
+    add(undo?: boolean): Texture;
     /**
      * Removes the texture
      * @param no_update If true, the texture is silently removed. The interface is not updated, no undo point is created

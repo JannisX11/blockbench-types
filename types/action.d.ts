@@ -45,15 +45,35 @@ interface BarItemOptions extends KeybindItemOptions {
 declare class BarItem extends KeybindItem {
     constructor(id: string, options: BarItemOptions);
     conditionMet(): boolean;
-    addLabel(in_bar: any, action: any): void;
+    /**
+     * Adds a label to the HTML element of the bar item
+     * @param in_bar Set to true to generate an in-bar label, as opposed to a regular on-hover label
+     * @param action Provide the action to generate the label. This defaults to self and is only needed in special cases
+     */
+    addLabel(in_bar?: boolean, action?: any): void;
+    /**
+     * Gets a copy of the elements HTML node that is not yet in use.
+     */
     getNode(): HTMLElement;
+    /**
+     * Appends the bar item to a HTML element
+     */
     toElement(destination: HTMLElement): this;
     pushToolbar(bar: any): void;
 }
 
 interface ActionOptions extends BarItemOptions {
+    /**
+     * Function to run when user uses the action successfully
+     */
     click(event: Event): void
+    /**
+     * Icon color. Can be a CSS color string, or an axis letter to use an axis color.
+     */
     color?: string
+    /**
+     * ID of a setting that the action is slinked to
+     */
     linked_setting?: string
     children?: object[]
     /**
@@ -224,7 +244,7 @@ declare class NumSlider extends Widget {
     constructor(id: string, options: object);
     startInput(event: Event): void;
     setWidth(width: any): this;
-    getInterval(event: Event): any;
+    getInterval(event: Event): number;
     slide(clientX: any, event: Event): void;
     input(): void;
     stopInput(): void;
@@ -232,23 +252,23 @@ declare class NumSlider extends Widget {
     trigger(event: Event): boolean;
     setValue(value: number, trim: any): this;
     change(modify: any): void;
-    get(): any;
+    get(): number;
     update(): void;
 }
 declare class BarSlider extends Widget {
     constructor(id: string, options: object);
     change(event: Event): void;
-    set(value: any): void;
-    get(): any;
+    set(value: number): void;
+    get(): number;
 }
 declare class BarSelect extends Widget {
     constructor(id: string, options: object);
     open(event: Event): void;
     trigger(event: Event): boolean | undefined;
     change(event: Event): this;
-    getNameFor(key: any): any;
-    set(key: any): this;
-    get(): any;
+    getNameFor(key: string): string;
+    set(key: string): this;
+    get(): string;
 }
 declare class BarText extends Widget {
     constructor(id: string, options: object);

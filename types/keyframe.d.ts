@@ -20,15 +20,15 @@ declare class _Keyframe {
 
 
     extend(data: KeyframeOptions): this;
-    get(axis: axisLetter, data_point?: number): any;
-    calc(axis: axisLetter, data_point?: number): any;
+    get(axis: axisLetter, data_point?: number): number | string;
+    calc(axis: axisLetter, data_point?: number): number;
     set(axis: axisLetter, value: any, data_point?: number): this;
-    offset(axis: axisLetter, amount: any, data_point?: number): any;
+    offset(axis: axisLetter, amount: any, data_point?: number): void;
     flip(axis: axisLetter): this;
-    getLerp(other: any, axis: axisLetter, amount: any, allow_expression: any): any;
-    getCatmullromLerp(before_plus: _Keyframe, before: _Keyframe, after: _Keyframe, after_plus: _Keyframe, axis: axisLetter, alpha: number): any;
-    getArray(data_point?: number): any[];
-    getFixed(data_point?: number): any;
+    getLerp(other: any, axis: axisLetter, amount: any, allow_expression?: boolean): number;
+    getCatmullromLerp(before_plus: _Keyframe, before: _Keyframe, after: _Keyframe, after_plus: _Keyframe, axis: axisLetter, alpha: number): number;
+    getArray(data_point?: number): (number | string)[];
+    getFixed(data_point?: number, get_quaternion?: boolean): THREE.Vector3 | THREE.Euler | THREE.Quaternion;
     getTimecodeString(): string;
     compileBedrockKeyframe(): object;
     replaceOthers(save: any): void;

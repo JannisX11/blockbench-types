@@ -5,7 +5,7 @@ declare class AnimationItem {
 
 interface AnimationOptions {
     name?: string
-    loop?: string
+    loop?: 'once' | 'hold' | 'loop'
     override?: boolean
     anim_time_update?: string
     blend_weight?: string
@@ -16,7 +16,7 @@ interface AnimationOptions {
 declare class _Animation extends AnimationItem {
     constructor(data: AnimationOptions);
     extend(data: AnimationOptions): this;
-    getUndoCopy(options: any, save: any): {
+    getUndoCopy(options?: {}, save?: any): {
         uuid: any;
         name: any;
         loop: any;
@@ -35,16 +35,16 @@ declare class _Animation extends AnimationItem {
     rename(): this;
     togglePlayingState(state: any): any;
     showContextMenu(event: any): this;
-    getBoneAnimator(group: any): any;
+    getBoneAnimator(group: any): BoneAnimator;
     add(undo: any): this;
     remove(undo: any, remove_from_file?: boolean): this;
-    getMaxLength(): any;
+    getMaxLength(): number;
     setLoop(value: any, undo: any): void;
-    calculateSnappingFromKeyframes(): any;
+    calculateSnappingFromKeyframes(): number;
     propertiesDialog(): void;
 
     name: string
-    loop: string
+    loop: 'once' | 'hold' | 'loop'
     override: boolean
     anim_time_update: string
     blend_weight: string
