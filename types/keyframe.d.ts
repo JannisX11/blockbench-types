@@ -1,6 +1,6 @@
 /// <reference path="./blockbench.d.ts"/>
 
-declare class KeyframeDataPoint {
+declare class KeyframeDataPoint extends Object {
 	constructor(keyframe: _Keyframe)
 	extend(data: any): void
 	getUndoCopy(): {}

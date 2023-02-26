@@ -171,6 +171,10 @@ declare namespace Language {
 	function addTranslations(language: string, strings: { [key: string]: string }): void
 }
 
+interface Object {
+	properties: Record<string, Property>
+}
+
 declare const DisplayMode: any
 
 declare var LZUTF8: any

@@ -102,7 +102,7 @@ interface AddChannelOptions {
 	max_data_points?: number
 }
 declare class GeneralAnimator {
-	constructor(uuid: string, animation: _Animation)
+	constructor(uuid: string | null, animation: _Animation)
 	keyframes: Keyframe[]
 	select(): this
 	addToTimeline(): this
@@ -113,6 +113,11 @@ declare class GeneralAnimator {
 	scrollTo(): this
 
 	static addChannel(channel: string, options: AddChannelOptions): void
+	channels: any
+	muted: {
+		[channel: string]: boolean | undefined
+	};
+	[channel: string]: any
 }
 
 declare class BoneAnimator extends GeneralAnimator {
@@ -150,7 +155,7 @@ declare class EffectAnimator extends GeneralAnimator {
 	position: Keyframe[]
 	scale: Keyframe[]
 	pushKeyframe(keyframe: _Keyframe): this
-	displayFrame(in_loop: _Keyframe): this
+	displayFrame(in_loop: boolean): void
 	startPreviousSounds(): void
 }
 
