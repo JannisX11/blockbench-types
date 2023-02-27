@@ -2,14 +2,27 @@
 interface UndoAspects {
 	selection?: boolean
 	elements?: OutlinerElement[]
+	/**
+	 * Saves the entire outliner structure and hierarchy, including all groups. This is required when adding, or removing any elements, or changing their position in the outliner.
+	 */
 	outliner?: boolean
+	/**
+	 * Saves an individual group, but not it's children or hierarchy position
+	 */
 	group?: Group
+	/**
+	 * Textures to save
+	 */
 	textures?: Texture[]
 	texture_order?: boolean
+	/**
+	 * Save which texture is selected
+	 */
 	selected_texture?: boolean
 	settings?: {}
 	uv_mode?: boolean
 	animations?: _Animation[]
+	animation_controllers?: AnimationController[]
 	keyframes?: Keyframe[]
 	display_slots?: string[]
 	exploded_view?: boolean
@@ -59,20 +72,12 @@ declare class UndoSystem {
 	 * Starts an edit to the current project by saving the state of the provided aspects
 	 * @param aspects Aspects to save
 	 */
-	initEdit(aspects: UndoAspects): any
+	initEdit(aspects: UndoAspects): UndoEntry
 	/**
 	 * Finishes an edit by saving the state of the project after it was changed
 	 * @param action Description of the edit
 	 */
-	finishEdit(
-		action: string,
-		aspects?: UndoAspects
-	): {
-		before: any
-		post: any
-		action: any
-		time: number
-	}
+	finishEdit(action: string, aspects?: UndoAspects): UndoEntry
 	/**
 	 * Cancels an event before it was finished and reset the project to the state before
 	 */

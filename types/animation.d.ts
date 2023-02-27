@@ -8,7 +8,7 @@ declare class AnimationItem {
 
 interface AnimationOptions {
 	name?: string
-	loop?: string
+	loop?: 'once' | 'hold' | 'loop'
 	override?: boolean
 	anim_time_update?: string
 	blend_weight?: string
@@ -20,8 +20,8 @@ declare class _Animation extends AnimationItem {
 	constructor(data?: AnimationOptions)
 	extend(data?: AnimationOptions): this
 	getUndoCopy(
-		options: any,
-		save: any
+		options?: {},
+		save?: any
 	): {
 		uuid: any
 		name: any
@@ -41,17 +41,17 @@ declare class _Animation extends AnimationItem {
 	rename(): this
 	togglePlayingState(state: any): any
 	showContextMenu(event: any): this
-	getBoneAnimator(group: any): any
+	getBoneAnimator(group: any): BoneAnimator
 	add(undo?: boolean): this
 	remove(undo: boolean, remove_from_file?: boolean): this
-	getMaxLength(): any
+	getMaxLength(): number
 	setLoop(value: any, undo: any): void
-	calculateSnappingFromKeyframes(): any
+	calculateSnappingFromKeyframes(): number
 	propertiesDialog(): void
 
 	name: string
 	uuid: string
-	loop: string
+	loop: 'once' | 'hold' | 'loop'
 	override: boolean
 	anim_time_update: string
 	blend_weight: string

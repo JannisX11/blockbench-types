@@ -102,7 +102,7 @@ declare class AnimationController extends AnimationItem {
 	compileForBedrock(): any
 	save(): this | undefined
 	select(): this | undefined
-	createUniqueName(references: AnimationController[]): any
+	createUniqueName(references: AnimationController[]): string | boolean
 	rename(): this
 	add(undo?: boolean): this
 	remove(undo?: boolean, remove_from_file?: boolean): this

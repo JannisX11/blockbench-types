@@ -21,10 +21,25 @@ declare class Cube extends OutlinerElement {
 	name: string
 	uuid: string
 	color: any
+	/**
+	 * Auto UV setting, saved as an integer, where 0 means disabled, 1 means enabled, and 2 means relative auto UV (cube position affects UV)
+	 */
 	autouv: 0 | 1 | 2
+	/**
+	 * Enable or disable shading based on face normal
+	 */
 	shade: boolean
+	/**
+	 * UV mirror across the X axis when using Box UV
+	 */
 	mirror_uv: boolean
+	/**
+	 * Inflate adds an inflation value to all sides equally
+	 */
 	inflate: number
+	/**
+	 * Visibility of the cube in the viewport
+	 */
 	visibility: boolean
 	from: ArrayVector3
 	to: ArrayVector3
@@ -48,11 +63,20 @@ declare class Cube extends OutlinerElement {
 	rotationAxis(): string
 	getUndoCopy(aspects?: any): void
 	getSaveCopy(project?: boolean): Cube
+	/**
+	 * Rotate the cube around axis in 90 degree steps
+	 * @param axis Axis index
+	 * @param steps Number of steps
+	 * @param origin Rotation pivot
+	 */
 	roll(axis: number, steps: number, origin: ArrayVector3): void
 	flip(axis: number, center: number, skipUV?: boolean): void
+	/**
+	 * Transfer the origin to a new position, while updating from and to to keep the same visual position.
+	 */
 	transferOrigin(origin: ArrayVector3, update?: boolean): void
 	getWorldCenter(): THREE.Vector3
-	getGlobalVertexPositions(): void
+	getGlobalVertexPositions(): ArrayVector3[]
 	setUVMode(box_uv: boolean): void
 	setColor(color: number): void
 	applyTexture(texture: Texture, faces: true | undefined | CubeFaceDirection[]): void
