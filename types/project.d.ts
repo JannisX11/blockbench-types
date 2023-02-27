@@ -6,7 +6,7 @@ declare class ModelProject {
 	constructor(options: ModelProjectOptions)
 
 	static properties: {
-		[key: string]: Property
+		[key: string]: Property<any>
 	}
 
 	box_uv: boolean

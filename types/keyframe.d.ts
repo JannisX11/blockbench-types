@@ -4,6 +4,7 @@ declare class KeyframeDataPoint extends Object {
 	constructor(keyframe: _Keyframe)
 	extend(data: any): void
 	getUndoCopy(): {}
+	[key: string]: any
 }
 
 interface KeyframeOptions {}
@@ -11,12 +12,14 @@ type axisLetter = 'x' | 'y' | 'z'
 
 declare class _Keyframe {
 	constructor(options: KeyframeOptions, uuid: any)
-
+	static selected: _Keyframe[]
+	data_points: KeyframeDataPoint[]
 	animator: GeneralAnimator
 	bezier_left_time: ArrayVector3
 	bezier_right_time: ArrayVector3
 	bezier_left_value: ArrayVector3
 	bezier_right_value: ArrayVector3
+	channel: string
 
 	extend(data: KeyframeOptions): this
 	get(axis: axisLetter, data_point?: number): any

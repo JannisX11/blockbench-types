@@ -114,15 +114,27 @@ interface PropertyOptions {
 	reset?(instance: any): void
 	merge_validation?(value: any): boolean
 }
+
+interface IPropertyType {
+	string: string
+	molang: string
+	number: number
+	boolean: boolean
+	array: any[]
+	instance: any
+	vector: ArrayVector3
+	vector2: ArrayVector2
+}
+
 /**
  * Creates a new property on the specified target class
  */
-declare class Property extends Deletable {
-	constructor(target_class: any, type: string, name: string, options?: PropertyOptions)
+declare class Property<T extends keyof IPropertyType> extends Deletable {
+	constructor(target_class: any, type: T, name: string, options?: PropertyOptions)
 	class: any
 	name: string
-	type: string
-	default: any
+	type: T
+	default: IPropertyType[T]
 	export?: boolean
 
 	isString: boolean
@@ -133,14 +145,14 @@ declare class Property extends Deletable {
 	isVector: boolean
 	isVector2: boolean
 
-	merge_validation: undefined | ((value: any) => boolean)
+	merge_validation: undefined | ((value: IPropertyType[T]) => boolean)
 	condition: ConditionResolvable
 	exposed: boolean
 	label: any
-	merge(instance: any, data: any): void
-	reset(instance: any): void
-	getDefault(instance: any): any
-	copy(instance: any, target: any): void
+	merge(instance: IPropertyType[T], data: IPropertyType[T]): void
+	reset(instance: IPropertyType[T]): void
+	getDefault(instance: IPropertyType[T]): IPropertyType[T]
+	copy(instance: IPropertyType[T], target: IPropertyType[T]): void
 }
 
 declare function updateSelection(): void
@@ -172,7 +184,7 @@ declare namespace Language {
 }
 
 interface Object {
-	properties: Record<string, Property>
+	properties: Record<string, Property<any> | undefined>
 }
 
 declare const DisplayMode: any

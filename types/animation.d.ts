@@ -101,6 +101,12 @@ interface AddChannelOptions {
 	mutable?: boolean
 	max_data_points?: number
 }
+interface Channel {
+	name: string
+	transform: boolean
+	mutable: boolean
+	max_data_points: number
+}
 declare class GeneralAnimator {
 	constructor(uuid: string | null, animation: _Animation)
 	keyframes: Keyframe[]
@@ -113,7 +119,9 @@ declare class GeneralAnimator {
 	scrollTo(): this
 
 	static addChannel(channel: string, options: AddChannelOptions): void
-	channels: any
+	channels: {
+		[channel: string]: Channel
+	}
 	muted: {
 		[channel: string]: boolean | undefined
 	};
