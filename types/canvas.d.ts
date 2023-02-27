@@ -47,6 +47,9 @@ declare namespace Canvas {
 	const materials: {
 		[uuid: UUID]: THREE.Material
 	}
+	const emptyMaterials: {
+		[uuid: UUID]: THREE.Material
+	}
 	const meshes: {
 		[uuid: UUID]: THREE.Mesh
 	}
