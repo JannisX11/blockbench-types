@@ -39,6 +39,7 @@ declare class Panel {
 	folded: boolean
 	fold(state?: boolean): this
 	inside_vue: Vue.Component
+	vue: Vue.Component
 	/**
 	 * If the panel is floating, move it up to the front
 	 */

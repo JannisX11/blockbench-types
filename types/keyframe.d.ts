@@ -20,6 +20,8 @@ declare class _Keyframe {
 	bezier_left_value: ArrayVector3
 	bezier_right_value: ArrayVector3
 	channel: string
+	time: number
+	uuid: string
 
 	extend(data: KeyframeOptions): this
 	get(axis: axisLetter, data_point?: number): number | string

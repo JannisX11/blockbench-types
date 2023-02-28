@@ -136,6 +136,9 @@ declare class Texture {
 	source?: string
 	mode?: 'bitmap' | string
 	img: HTMLImageElement
+	width: number
+	height: number
+	currentFrame: number
 
 	getUndoCopy(): Texture
 

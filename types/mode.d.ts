@@ -28,6 +28,10 @@ declare class Mode extends KeybindItem {
 	/**Activates the mode */
 	trigger(): void
 
+	onSelect?(): void
+
+	onUnselect?(): void
+
 	static selected: Mode
 }
 
