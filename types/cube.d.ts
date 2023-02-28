@@ -92,6 +92,7 @@ declare class Cube extends OutlinerElement {
 
 	static all: Cube[]
 	static selected: Cube[]
+	static preview_controller: NodePreviewController
 }
 
 interface FaceOptions {

@@ -127,6 +127,7 @@ declare class Texture {
 		options: TextureEditOptions
 	): void
 	id: string
+	name: string
 	menu: Menu
 	uuid: string
 	selected?: boolean
@@ -134,6 +135,7 @@ declare class Texture {
 	relative_path?: string
 	source?: string
 	mode?: 'bitmap' | string
+	img: HTMLImageElement
 
 	getUndoCopy(): Texture
 

@@ -124,7 +124,7 @@ declare namespace Canvas {
 	 * Update all faces in the scene
 	 * @param texture Texture filter. If specified, only faces with this texture will be updated
 	 */
-	function updateAllFaces(texture: Texture): void
+	function updateAllFaces(texture?: Texture): void
 	/**
 	 * Update all UV maps in the scene
 	 */

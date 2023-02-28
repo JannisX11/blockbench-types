@@ -54,5 +54,9 @@ declare class Panel {
 	delete(): void
 }
 
+declare const Panels: {
+	[id: string]: Panel
+}
+
 declare function updateInterfacePanels(): void
 declare function setActivePanel(panel_id: string): void

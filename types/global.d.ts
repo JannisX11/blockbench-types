@@ -1,6 +1,13 @@
 /// <reference path="./blockbench.d.ts"/>
 
 declare global {
+	interface HTMLImageElement {
+		src: string
+		tex: THREE.Texture & {
+			magFilter: THREE.TextureFilter
+			minFilter: THREE.TextureFilter
+		}
+	}
 	interface Date {
 		/**
 		 * Returns a timestamp in the format 16:30
