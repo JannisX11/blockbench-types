@@ -21,7 +21,7 @@
 		"generate": "node ./scripts/generate_docs.js"
 	},
 	"homepage": "https://github.com/JannisX11/blockbench-types#readme",
-	"devDependencies": {
+	"dependencies": {
 		"@babel/types": "^7.20.7",
 		"@types/jquery": "^3.5.4",
 		"@types/prismjs": "^1.26.0",
