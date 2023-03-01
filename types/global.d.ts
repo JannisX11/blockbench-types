@@ -1,6 +1,9 @@
 /// <reference path="./blockbench.d.ts"/>
 
 declare global {
+	const scene: THREE.Scene
+	const Transformer: any
+	// const Transformer: THREE.TransformControls
 	interface HTMLImageElement {
 		src: string
 		tex: THREE.Texture & {

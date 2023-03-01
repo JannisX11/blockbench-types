@@ -67,6 +67,8 @@ declare class OutlinerElement extends OutlinerNode {
 	getMesh(): THREE.Object3D | THREE.Mesh
 	static fromSave(data: any, keep_uuid?: boolean): OutlinerElement
 	static isParent: false
+	static types: Record<string, typeof OutlinerElement>
+	static all: OutlinerElement[]
 }
 
 interface LocatorOptions {

@@ -63,9 +63,11 @@ declare class _Animation extends AnimationItem {
 	playing: boolean
 	saved: boolean
 
+	effects?: EffectAnimator
+
 	markers: TimelineMarker[]
 	animators: {
-		[id: string]: GeneralAnimator
+		[id: string]: GeneralAnimator | undefined
 	}
 	saved_name?: string
 	selected: boolean
@@ -79,13 +81,14 @@ declare namespace Animator {
 	const motion_trail_lock: boolean
 	const particle_effects: any
 	const animations: _Animation[]
+	const selected: _Animation | undefined
 	function showDefaultPose(no_matrix_update?: boolean): void
 	function resetParticles(): void
 	function showMotionTrail(target?: Group): void
 	/**
 	 * Updates the preview based on the current time
 	 */
-	function preview(): void
+	function preview(in_loop?: boolean): void
 	function loadParticleEmitter(path: string, content: string): void
 	/**
 	 * Import a Bedrock animation file
@@ -93,6 +96,7 @@ declare namespace Animator {
 	 * @param animation_filter List of names of animations to import
 	 */
 	function loadFile(file: any, animation_filter?: string[]): void
+	function resetLastValues(): void
 }
 
 interface AddChannelOptions {
@@ -142,7 +146,7 @@ declare class BoneAnimator extends GeneralAnimator {
 	displayPosition(): void
 	displayScale(): void
 	interpolate(): void
-	displayFrame(): void
+	displayFrame(multiplier: number): void
 }
 declare class NullObjectAnimator extends GeneralAnimator {
 	name: string
@@ -163,7 +167,7 @@ declare class EffectAnimator extends GeneralAnimator {
 	position: Keyframe[]
 	scale: Keyframe[]
 	pushKeyframe(keyframe: _Keyframe): this
-	displayFrame(in_loop: boolean): void
+	displayFrame(in_loop?: boolean): void
 	startPreviousSounds(): void
 }
 

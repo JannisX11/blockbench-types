@@ -15,7 +15,7 @@ declare namespace Timeline {
 	 * @param time Time in seconds
 	 * @param editing If true, don't update the timeline timecode, because it is currently edited by the user
 	 */
-	function setTime(time: number, editing: boolean): void
+	function setTime(time: number, editing?: boolean): void
 	/**
 	 * Reveal the specified time in the timeline by scrolling to it's position
 	 * @param time Time in seconds

@@ -36,6 +36,7 @@ declare class Group extends OutlinerNode {
 	isOpen: boolean
 	ik_enabled: boolean
 	ik_chain_length: number
+	mesh: THREE.Mesh
 
 	extend(options: Partial<GroupOptions>): this
 	selectChildren(event: Event): this
