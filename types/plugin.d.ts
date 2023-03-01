@@ -10,6 +10,10 @@ interface PluginOptions {
 	 * The about text appears when the user unfolds the plugin in the plugin browser. It can contain additional information and usage instructions
 	 */
 	about?: string
+	/**
+	 * The version of the plugin.
+	 */
+	version?: string
 	icon: string
 	/**
 	 * Plugin tags that will show up in the plugin store. You can provide up to 3 tags.
