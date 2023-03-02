@@ -59,6 +59,10 @@ interface DialogOptions {
 	 */
 	cancelIndex?: number
 	/**
+	 * Function to execute when the dialog is opened
+	 */
+	onOpen?(): void
+	/**
 	 *  Function to execute when the user confirms the dialog
 	 */
 	onConfirm?(formResult: any): void
