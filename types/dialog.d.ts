@@ -79,6 +79,7 @@ interface DialogOptions {
 	 */
 	lines?: (
 		| HTMLElement
+		| Comment
 		| {
 				label?: string
 				widget?: Widget | (() => Widget)
