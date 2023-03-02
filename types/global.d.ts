@@ -1,6 +1,8 @@
 /// <reference path="./blockbench.d.ts"/>
 
 declare global {
+	const THREE: typeof import('three')
+	const Prism: typeof import('prismjs')
 	const scene: THREE.Scene
 	const Transformer: any
 	// const Transformer: THREE.TransformControls
