@@ -5,6 +5,10 @@ declare global {
 	const Prism: typeof import('prismjs')
 	const scene: THREE.Scene
 	const Transformer: any
+
+	function rotateOnAxis(modify: OutlinerNode, axis: number, slider?: boolean): void
+	function afterRotateOnAxis(): void
+
 	// const Transformer: THREE.TransformControls
 	interface HTMLImageElement {
 		src: string
