@@ -63,10 +63,6 @@ interface DialogOptions {
 	 */
 	onOpen?(): void
 	/**
-	 * Function to execute when the dialog is closed
-	 */
-	onClose?(): void
-	/**
 	 *  Function to execute when the user confirms the dialog
 	 */
 	onConfirm?(formResult: any): void
@@ -188,10 +184,6 @@ declare class Dialog {
 	 * Function to execute when the dialog is opened
 	 */
 	onOpen?(): void
-	/**
-	 * Function to execute when the dialog is closed
-	 */
-	onClose?(): void
 	/**
 	 *  Function to execute when the user confirms the dialog
 	 */
