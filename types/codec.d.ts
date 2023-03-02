@@ -1,18 +1,18 @@
 /// <reference path="./blockbench.d.ts"/>
 interface CodecOptions {
 	name: string
-	load?(model: any, file: any, add?: boolean): void
-	compile?(options?: any): string | ArrayBuffer
+	load(model: any, file: FileResult, add?: boolean): void
+	compile(options?: any): string | ArrayBuffer
 	parse?(data: any, path: string, add?: boolean): void
-	export?(): void
+	export(): void
 	/**
 	 * Generate a file name to suggest when exporting
 	 */
-	fileName?(): string
-	startPath?(): string
-	write?(content: any, path: string): void
+	fileName(): string
+	startPath(): string
+	write(content: any, path: string): void
 	overwrite?(content: any, path: string, callback: (path: any) => void): void
-	afterDownload?(path: any): void
+	afterDownload(path: any): void
 	afterSave?(path: any): void
 
 	dispatchEvent?(event_name: string, data: any): void
