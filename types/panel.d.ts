@@ -21,7 +21,7 @@ interface PanelOptions {
 				folded: boolean
 		  }
 		| number
-	component: Vue.Component
+	component?: Vue.Component
 	default_side: 'right' | 'left'
 	insert_before?: string
 	insert_after?: string
