@@ -63,6 +63,10 @@ interface DialogOptions {
 	 */
 	onOpen?(): void
 	/**
+	 * Function to execute when the dialog is closed
+	 */
+	onClose?(): void
+	/**
 	 *  Function to execute when the user confirms the dialog
 	 */
 	onConfirm?(formResult: any): void
@@ -180,6 +184,30 @@ declare class Dialog {
 	getFormResult(): {
 		[key: string]: FormResultValue
 	}
+	/**
+	 * Function to execute when the dialog is opened
+	 */
+	onOpen?(): void
+	/**
+	 * Function to execute when the dialog is closed
+	 */
+	onClose?(): void
+	/**
+	 *  Function to execute when the user confirms the dialog
+	 */
+	onConfirm?(formResult: any): void
+	/**
+	 * Function to execute when the user cancels the dialog
+	 */
+	onCancel?(): void
+	/**
+	 * Triggered when the user presses a specific button
+	 */
+	onButton?(button_index: number, event?: Event): void
+	/**
+	 * Function to run when anything in the form is changed
+	 */
+	onFormChange?(form_result: { [key: string]: FormResultValue }): void
 	/**
 	 * Set the values of the dialog form inputs
 	 */
