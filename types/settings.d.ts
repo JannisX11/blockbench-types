@@ -24,6 +24,7 @@ interface SettingOptions {
 
 declare class Setting extends Deletable {
 	constructor(id: string, options: SettingOptions)
+	value: any
 }
 declare namespace Settings {
 	const structure: {}
