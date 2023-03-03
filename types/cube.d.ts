@@ -54,6 +54,7 @@ declare class Cube extends OutlinerElement {
 	 * UV position for box UV mode
 	 */
 	uv_offset: ArrayVector2
+	mesh: THREE.Mesh
 
 	extend(options: Partial<CubeOptions>): this
 	/**
