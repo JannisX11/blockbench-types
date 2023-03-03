@@ -190,3 +190,12 @@ interface Object {
 declare const DisplayMode: any
 
 declare var LZUTF8: any
+
+interface ToastNotificationOptions {
+	text: string
+	icon?: string
+	expire?: number
+	color?: string
+	click?: () => boolean
+}
+declare function showToastNotification(options: ToastNotificationOptions): Deletable
