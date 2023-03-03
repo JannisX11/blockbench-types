@@ -198,4 +198,6 @@ interface ToastNotificationOptions {
 	color?: string
 	click?: () => boolean
 }
-declare function showToastNotification(options: ToastNotificationOptions): Deletable
+declare namespace Blockbench {
+	function showToastNotification(options: ToastNotificationOptions): Deletable
+}
