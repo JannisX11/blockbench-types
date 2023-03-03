@@ -1,13 +1,13 @@
 /// <reference path="./blockbench.d.ts"/>
 
+declare namespace THREE {
+	class Mesh implements THREE.Mesh {
+		outline?: THREE.Mesh
+	}
+}
+
 declare global {
 	const THREE: typeof import('three')
-
-	namespace THREE {
-		interface Mesh {
-			outline?: THREE.Mesh
-		}
-	}
 
 	const Prism: typeof import('prismjs')
 	const scene: THREE.Scene
