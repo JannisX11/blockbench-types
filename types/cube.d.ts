@@ -93,6 +93,7 @@ declare class Cube extends OutlinerElement {
 
 	static all: Cube[]
 	static selected: Cube[]
+	preview_controller: NodePreviewController
 	static preview_controller: NodePreviewController
 }
 
