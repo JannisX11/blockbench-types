@@ -8,7 +8,7 @@ declare const elements: OutlinerNode[]
  * @private
  */
 declare class OutlinerNode {
-	constructor()
+	constructor(uuid: UUID)
 	uuid: UUID
 	export: boolean
 	locked: boolean
