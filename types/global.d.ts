@@ -1,5 +1,5 @@
 /// <reference path="./blockbench.d.ts"/>
-import * as fs from 'fs'
+import * as FileSystem from 'fs'
 
 declare namespace THREE {
 	class Mesh implements THREE.Mesh {
@@ -15,6 +15,7 @@ declare global {
 	const Transformer: any
 
 	const PathModule: typeof import('path')
+	const fs: typeof FileSystem
 
 	function rotateOnAxis(modify: OutlinerNode, axis: number, slider?: boolean): void
 	function afterRotateOnAxis(): void
