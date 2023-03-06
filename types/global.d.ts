@@ -13,7 +13,7 @@ declare global {
 	const scene: THREE.Scene
 	const Transformer: any
 
-	const pathlib: typeof import('path')
+	const PathModule: typeof import('path')
 
 	function rotateOnAxis(modify: OutlinerNode, axis: number, slider?: boolean): void
 	function afterRotateOnAxis(): void
