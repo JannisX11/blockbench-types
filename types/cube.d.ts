@@ -16,6 +16,7 @@ interface CubeOptions {
 	 */
 	uv_offset: ArrayVector2
 }
+
 declare class Cube extends OutlinerElement {
 	constructor(options: Partial<CubeOptions>, uuid?: string)
 	name: string
