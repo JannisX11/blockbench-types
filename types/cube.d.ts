@@ -103,7 +103,7 @@ interface FaceOptions {
 }
 declare class Face {
 	constructor()
-	texture: string | false | null
+	texture: UUID | false | null
 
 	getTexture(): Texture | null
 	/**
