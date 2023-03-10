@@ -5,6 +5,9 @@ declare namespace THREE {
 	class Mesh implements THREE.Mesh {
 		outline?: THREE.Mesh
 	}
+	class BufferGeometry implements THREE.BufferGeometry {
+		faces: string[]
+	}
 }
 
 declare global {
