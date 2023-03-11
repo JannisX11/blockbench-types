@@ -21,7 +21,7 @@ type RaycastResult = {
 	intersects?: any[]
 	face?: string
 	vertex: any
-	keyframe: Keyframe
+	keyframe: _Keyframe
 }
 
 declare class Preview extends Deletable {

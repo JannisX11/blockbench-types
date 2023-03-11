@@ -413,7 +413,7 @@ declare namespace Blockbench {
 	const AnimationItem: BlockbenchTypeAnimationItem
 	const Animation: BlockbenchTypeAnimation
 	const AnimationController: BlockbenchTypeAnimationController
-	const Keyframe: BlockbenchTypeKeyframe
+	const _Keyframe: BlockbenchTypeKeyframe
 	const KeyframeDataPoint: BlockbenchTypeKeyframeDataPoint
 	const BoneAnimator: BlockbenchTypeBoneAnimator
 	const NullObjectAnimator: BlockbenchTypeNullObjectAnimator

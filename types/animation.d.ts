@@ -112,12 +112,12 @@ interface Channel {
 }
 declare class GeneralAnimator {
 	constructor(uuid: string | null, animation: _Animation)
-	keyframes: Keyframe[]
+	keyframes: _Keyframe[]
 	select(): this
 	addToTimeline(): this
-	addKeyframe(data: KeyframeOptions, uuid: string): Keyframe
-	createKeyframe(): Keyframe
-	getOrMakeKeyframe(): { before: Keyframe; result: Keyframe }
+	addKeyframe(data: KeyframeOptions, uuid: string): _Keyframe
+	createKeyframe(): _Keyframe
+	getOrMakeKeyframe(): { before: _Keyframe; result: _Keyframe }
 	toggleMuted(channel: string): this
 	scrollTo(): this
 
@@ -134,9 +134,9 @@ declare class GeneralAnimator {
 declare class BoneAnimator extends GeneralAnimator {
 	name: string
 	uuid: string
-	rotations: Keyframe[]
-	position: Keyframe[]
-	scale: Keyframe[]
+	rotations: _Keyframe[]
+	position: _Keyframe[]
+	scale: _Keyframe[]
 	getGroup(): Group
 	fillValues(): void
 	pushKeyframe(): void
@@ -150,9 +150,9 @@ declare class BoneAnimator extends GeneralAnimator {
 declare class NullObjectAnimator extends GeneralAnimator {
 	name: string
 	uuid: string
-	rotations: Keyframe[]
-	position: Keyframe[]
-	scale: Keyframe[]
+	rotations: _Keyframe[]
+	position: _Keyframe[]
+	scale: _Keyframe[]
 	getElement(): NullObject
 	doRender(): void
 	displayPosition(): void
@@ -162,9 +162,9 @@ declare class NullObjectAnimator extends GeneralAnimator {
 declare class EffectAnimator extends GeneralAnimator {
 	name: string
 	uuid: string
-	rotations: Keyframe[]
-	position: Keyframe[]
-	scale: Keyframe[]
+	rotations: _Keyframe[]
+	position: _Keyframe[]
+	scale: _Keyframe[]
 	pushKeyframe(keyframe: _Keyframe): this
 	displayFrame(in_loop?: boolean): void
 	startPreviousSounds(): void

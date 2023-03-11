@@ -1,7 +1,7 @@
 /// <reference path="./blockbench.d.ts"/>
 declare namespace Timeline {
 	const animators: GeneralAnimator[]
-	const selected: Keyframe[]
+	const selected: _Keyframe[]
 	const playing_sounds: any[]
 	let playback_speed: number
 	/**
@@ -58,7 +58,7 @@ declare namespace Timeline {
 	 */
 	function pause(): void
 
-	let keyframes: Keyframe[]
+	let keyframes: _Keyframe[]
 	let menu: Menu
 	function showMenu(event: Event): void
 }

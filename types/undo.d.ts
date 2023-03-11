@@ -23,7 +23,7 @@ interface UndoAspects {
 	uv_mode?: boolean
 	animations?: _Animation[]
 	animation_controllers?: AnimationController[]
-	keyframes?: Keyframe[]
+	keyframes?: _Keyframe[]
 	display_slots?: string[]
 	exploded_view?: boolean
 }
@@ -86,7 +86,7 @@ declare class UndoSystem {
 	 * Add keyframes to the current edit that were indirectly removed by moving other keyframes to their position
 	 * @param keyframes
 	 */
-	addKeyframeCasualties(keyframes: Keyframe[]): void
+	addKeyframeCasualties(keyframes: _Keyframe[]): void
 	/**
 	 * Undoes the latest edit
 	 */
