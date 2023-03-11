@@ -1,17 +1,17 @@
 /// <reference path="./blockbench.d.ts"/>
 import * as FileSystem from 'fs'
 
-declare namespace THREE {
-	class Mesh implements THREE.Mesh {
-		outline?: THREE.Mesh
-	}
-	class BufferGeometry implements THREE.BufferGeometry {
-		faces: string[]
-	}
-}
-
 declare global {
 	const THREE: typeof import('three')
+
+	interface THREE {
+		Mesh: THREE.Mesh & {
+			outline?: THREE.Mesh
+		}
+		BufferGeometry: THREE.BufferGeometry & {
+			faces: string[]
+		}
+	}
 
 	const Prism: typeof import('prismjs')
 	const scene: THREE.Scene
