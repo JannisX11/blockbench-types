@@ -139,6 +139,7 @@ declare class Texture {
 	width: number
 	height: number
 	currentFrame: number
+	render_mode: string
 
 	getUndoCopy(): Texture
 

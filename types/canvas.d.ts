@@ -77,6 +77,7 @@ declare namespace Canvas {
 	const normalHelperMaterial: THREE.ShaderMaterial
 	const uvHelperMaterial: THREE.ShaderMaterial
 	const meshVertexMaterial: THREE.PointsMaterial
+	const transparentMaterial: THREE.MeshBasicMaterial
 	/**
 	 * The material used for the grids
 	 */

@@ -43,7 +43,7 @@ declare class OutlinerNode {
 	/**
 	 * Create a unique name for the group or element by adding a number at the end or increasing it.
 	 */
-	createUniqueName(): this
+	createUniqueName(others?: Group[]): this
 	/**
 	 * Checks of the group or element is a child of `group`.
 	 * @param max_levels The maximum number of generations that can be between the element and the group

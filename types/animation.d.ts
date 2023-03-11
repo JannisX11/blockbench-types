@@ -16,23 +16,22 @@ interface AnimationOptions {
 	snapping?: number
 }
 
+interface AnimationUndoCopy {
+	uuid: any
+	name: any
+	loop: any
+	override: any
+	anim_time_update: any
+	blend_weight: any
+	length: any
+	snapping: any
+	selected: any
+}
+
 declare class _Animation extends AnimationItem {
 	constructor(data?: AnimationOptions)
 	extend(data?: AnimationOptions): this
-	getUndoCopy(
-		options?: {},
-		save?: any
-	): {
-		uuid: any
-		name: any
-		loop: any
-		override: any
-		anim_time_update: any
-		blend_weight: any
-		length: any
-		snapping: any
-		selected: any
-	}
+	getUndoCopy(options?: {}, save?: any): AnimationUndoCopy
 	compileBedrockAnimation(): any
 	save(): this | undefined
 	select(): this | undefined
