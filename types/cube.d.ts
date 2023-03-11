@@ -55,7 +55,12 @@ declare class Cube extends OutlinerElement {
 	 * UV position for box UV mode
 	 */
 	uv_offset: ArrayVector2
-	mesh: THREE.Mesh & { outline: THREE.Mesh }
+	mesh: THREE.Mesh & {
+		outline: THREE.Mesh
+		geometry: THREE.BufferGeometry & {
+			faces: string[]
+		}
+	}
 
 	extend(options: Partial<CubeOptions>): this
 	/**

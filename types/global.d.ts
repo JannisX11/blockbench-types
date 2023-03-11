@@ -4,15 +4,6 @@ import * as FileSystem from 'fs'
 declare global {
 	const THREE: typeof import('three')
 
-	interface THREE {
-		Mesh: THREE.Mesh & {
-			outline?: THREE.Mesh
-		}
-		BufferGeometry: THREE.BufferGeometry & {
-			faces: string[]
-		}
-	}
-
 	const Prism: typeof import('prismjs')
 	const scene: THREE.Scene
 	const Transformer: any
