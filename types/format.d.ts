@@ -58,6 +58,7 @@ interface FormatOptions {
 	format_page?: FormatPage
 	onFormatPage?(): void
 	onStart?(): void
+	onSetup?(): void
 
 	box_uv?: boolean
 	optional_box_uv?: boolean
