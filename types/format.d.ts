@@ -111,6 +111,7 @@ declare class ModelFormat extends Deletable {
 	format_page?: FormatPage
 	onFormatPage?(): void
 	onStart?(): void
+	onSetup?(): void
 
 	box_uv: boolean
 	optional_box_uv: boolean
