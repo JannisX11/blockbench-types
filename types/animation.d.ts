@@ -61,6 +61,7 @@ declare class _Animation extends AnimationItem {
 	path: string
 	playing: boolean
 	saved: boolean
+	time: number
 
 	effects?: EffectAnimator
 
@@ -113,6 +114,10 @@ interface Channel {
 declare class GeneralAnimator {
 	constructor(uuid: string | null, animation: _Animation)
 	keyframes: _Keyframe[]
+	animation: _Animation
+	expanded: boolean
+	selected: boolean
+	uuid: string
 	select(): this
 	addToTimeline(): this
 	addKeyframe(data: KeyframeOptions, uuid: string): _Keyframe
