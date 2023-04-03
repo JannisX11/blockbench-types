@@ -9,10 +9,12 @@ declare const elements: OutlinerNode[]
  */
 declare class OutlinerNode {
 	constructor(uuid: UUID)
+	name: string
 	uuid: UUID
 	export: boolean
 	locked: boolean
 	parent: Group | 'root'
+	menu?: Menu
 	/**
 	 * Initializes the node. This should always be called when creating nodes that will be used in the outliner.
 	 */
@@ -43,7 +45,7 @@ declare class OutlinerNode {
 	/**
 	 * Create a unique name for the group or element by adding a number at the end or increasing it.
 	 */
-	createUniqueName(others?: Group[]): this
+	createUniqueName(others?: OutlinerNode[]): this
 	/**
 	 * Checks of the group or element is a child of `group`.
 	 * @param max_levels The maximum number of generations that can be between the element and the group
@@ -63,8 +65,7 @@ declare class OutlinerNode {
 declare class OutlinerElement extends OutlinerNode {
 	constructor()
 	selected: boolean
-	readonly mesh: THREE.Object3D | THREE.Mesh
-	getMesh(): THREE.Object3D | THREE.Mesh
+	mesh: THREE.Object3D | THREE.Mesh
 	static fromSave(data: any, keep_uuid?: boolean): OutlinerElement
 	static isParent: false
 	static types: Record<string, typeof OutlinerElement>
@@ -77,6 +78,7 @@ interface LocatorOptions {
 }
 declare class Locator extends OutlinerElement {
 	constructor(options: Partial<LocatorOptions>, uuid?: string)
+	name: string
 
 	extend(options: Partial<LocatorOptions>): void
 	flip(axis: number, center: number): this
@@ -133,6 +135,7 @@ declare namespace Outliner {
 	const root: OutlinerNode[]
 	const elements: OutlinerElement[]
 	const selected: OutlinerElement[]
+	let control_menu_group: MenuItem[]
 }
 
 declare const markerColors: {

@@ -26,9 +26,11 @@ declare class Setting extends Deletable {
 	constructor(id: string, options: SettingOptions)
 	value: any
 }
+declare type SettingItems = Record<string, { name: string; open: boolean; items: SettingItems }>
+
 declare namespace Settings {
-	const structure: {}
-	const stored: {}
+	const structure: Record<string, SettingItems>
+	const stored: Record<string, Setting>
 	/**
 	 * Opens the settings dialog
 	 * @param options

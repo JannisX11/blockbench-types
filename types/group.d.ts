@@ -23,6 +23,7 @@ declare class Group extends OutlinerNode {
 	constructor(options: Partial<GroupOptions>)
 	static selected: Group
 	static all: Group[]
+	static animator: BoneAnimator
 
 	name: string
 	children: OutlinerNode[]

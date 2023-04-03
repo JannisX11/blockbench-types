@@ -55,6 +55,7 @@ declare class Menu extends Deletable {
 	 * @param path Path pointing to the location. Use the ID of each level of the menu, or index within a level, or item ID, separated by a point. For example, `export.export_special_format` removes the action "Export Special Format" from the Export submenu.
 	 */
 	removeAction(path: string): void
+	structure: MenuItem[]
 }
 
 /**

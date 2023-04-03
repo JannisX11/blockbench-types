@@ -184,7 +184,7 @@ declare namespace Language {
 }
 
 interface Object {
-	properties: Record<string, Property<any> | undefined>
+	boneConfig: Record<string, Property<any> | undefined>
 }
 
 declare const DisplayMode: any

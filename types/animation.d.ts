@@ -35,7 +35,7 @@ declare class _Animation extends AnimationItem {
 	compileBedrockAnimation(): any
 	save(): this | undefined
 	select(): this | undefined
-	setLength(length: number): void
+	setLength(length?: number): void
 	createUniqueName(references: _Animation[]): any
 	rename(): this
 	togglePlayingState(state: any): any

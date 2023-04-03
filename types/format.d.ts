@@ -59,6 +59,7 @@ interface FormatOptions {
 	onFormatPage?(): void
 	onStart?(): void
 	onSetup?(): void
+	convertTo?(): void
 
 	box_uv?: boolean
 	optional_box_uv?: boolean

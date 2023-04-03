@@ -1,6 +1,7 @@
 /// <reference path="./blockbench.d.ts"/>
 
 declare class KeyframeDataPoint extends Object {
+	static properties: Record<string, Property<any>>
 	constructor(keyframe: _Keyframe)
 	extend(data: any): void
 	getUndoCopy(): {}
@@ -22,6 +23,7 @@ declare class _Keyframe {
 	channel: string
 	time: number
 	uuid: string
+	interpolation: 'linear' | 'catmullrom' | 'bezier' | 'step'
 
 	extend(data: KeyframeOptions): this
 	get(axis: axisLetter, data_point?: number): number | string

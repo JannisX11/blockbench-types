@@ -79,6 +79,7 @@ declare class ModelProject {
 	backgrounds: {
 		[key: string]: any
 	}
+	unhandled_root_fields: any
 
 	get model_3d(): THREE.Object3D
 	get materials(): {
