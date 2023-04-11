@@ -70,6 +70,7 @@ declare class OutlinerElement extends OutlinerNode {
 	static isParent: false
 	static types: Record<string, typeof OutlinerElement>
 	static all: OutlinerElement[]
+	static selected: OutlinerElement[]
 }
 
 interface LocatorOptions {

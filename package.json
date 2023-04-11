@@ -27,6 +27,7 @@
 		"@types/prismjs": "^1.26.0",
 		"@types/three": "^0.148.1",
 		"@types/tinycolor2": "^1.4.3",
+		"dompurify": "^3.0.1",
 		"prettier": "^2.8.3",
 		"prismjs": "^1.29.0",
 		"typedoc": "^0.23.24",
@@ -35,6 +36,7 @@
 		"wintersky": "^1.2.1"
 	},
 	"devDependencies": {
+		"@types/dompurify": "^3.0.1",
 		"@types/node": "^18.14.6"
 	}
 }

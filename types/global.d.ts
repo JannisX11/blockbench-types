@@ -8,6 +8,8 @@ declare global {
 	const scene: THREE.Scene
 	const Transformer: any
 
+	const DOMPurify: typeof import('dompurify')
+
 	const main_preview: Preview
 
 	function confirm(message: string, title: string): boolean
