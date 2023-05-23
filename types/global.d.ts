@@ -11,6 +11,7 @@ declare global {
 	const DOMPurify: typeof import('dompurify')
 
 	const main_preview: Preview
+	let open_interface: Dialog | undefined
 
 	function confirm(message: string, title: string): boolean
 

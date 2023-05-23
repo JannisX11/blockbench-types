@@ -12,6 +12,8 @@ interface TextureData {
 	saved?: boolean
 	keep_size?: boolean
 	source?: string
+	width?: number
+	height?: number
 }
 interface TextureEditOptions {
 	/**
@@ -43,6 +45,8 @@ declare class Texture {
 	readonly frameCount: number | undefined
 	readonly display_height: number
 	readonly ratio: number
+
+	canvas: HTMLCanvasElement
 
 	getErrorMessage(): string
 	extend(data: TextureData): this

@@ -233,7 +233,7 @@ interface NodePreviewControllerOptions {
 	updateHighlight?(element: OutlinerNode): void
 }
 declare class NodePreviewController {
-	constructor(type: typeof OutlinerNode, options: NodePreviewControllerOptions)
+	constructor(type: any, options: NodePreviewControllerOptions)
 	type: typeof OutlinerNode
 	events: {
 		[event_name: string]: ((data: any) => void)[]

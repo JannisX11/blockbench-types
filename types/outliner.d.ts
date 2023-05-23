@@ -8,6 +8,7 @@ declare const elements: OutlinerNode[]
  * @private
  */
 declare class OutlinerNode {
+	static properties: Record<string, Property<any>>
 	constructor(uuid: UUID)
 	name: string
 	uuid: UUID
@@ -57,13 +58,14 @@ declare class OutlinerNode {
 	 */
 	showContexnu(event: Event | HTMLElement): this
 	getSaveCopy?(project?: boolean): OutlinerNode
+	sanitizeName(): string
 }
 
 /**
  * @private
  */
 declare class OutlinerElement extends OutlinerNode {
-	constructor()
+	constructor(data: any, uuid: string)
 	selected: boolean
 	mesh: THREE.Object3D | THREE.Mesh
 	static fromSave(data: any, keep_uuid?: boolean): OutlinerElement
@@ -71,6 +73,7 @@ declare class OutlinerElement extends OutlinerNode {
 	static types: Record<string, typeof OutlinerElement>
 	static all: OutlinerElement[]
 	static selected: OutlinerElement[]
+	static registerType(constructor: any, id: string): void
 }
 
 interface LocatorOptions {
@@ -137,6 +140,14 @@ declare namespace Outliner {
 	const elements: OutlinerElement[]
 	const selected: OutlinerElement[]
 	let control_menu_group: MenuItem[]
+	const buttons: {
+		autouv: any
+		export: any
+		locked: any
+		mirror_uv: any
+		shade: any
+		visibility: any
+	}
 }
 
 declare const markerColors: {

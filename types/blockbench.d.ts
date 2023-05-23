@@ -8,6 +8,7 @@
 /// <reference types="./action" />
 /// <reference types="./animation" />
 /// <reference types="./animation_controller" />
+/// <reference types="./canvas_frame" />
 /// <reference types="./canvas" />
 /// <reference types="./codec" />
 /// <reference types="./cube" />

@@ -1,0 +1,14 @@
+declare class CanvasFrame {
+	canvas: HTMLCanvasElement
+	readonly width: number
+	readonly height: number
+
+	constructor(a: HTMLCanvasElement)
+	constructor(a: HTMLImageElement)
+	constructor(a: number, b: number)
+
+	createCanvas(width: number, height: number): void
+	loadFromUrl(url: string): Promise<void>
+	loadFromImg(img: HTMLImageElement): void
+	autoCrop(): void
+}
