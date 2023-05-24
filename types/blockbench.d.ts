@@ -35,6 +35,7 @@
 /// <reference types="./display_mode" />
 /// <reference types="./misc" />
 /// <reference types="./util" />
+/// <reference types="./canvas_frame" />
 
 
 	

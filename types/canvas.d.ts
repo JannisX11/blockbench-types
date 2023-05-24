@@ -38,6 +38,9 @@ interface UpdateViewOptions {
     selection?: boolean
 }
 
+/**
+ * A global namespace handling miscellaneous functionality related to the 3D preview
+ */
 declare namespace Canvas {
     const materials: {
         [uuid: UUID]: THREE.Material

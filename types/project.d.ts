@@ -2,6 +2,9 @@ interface ModelProjectOptions {
 	format: ModelFormat
 }
 
+/**
+ * A project instance. The tab bar can be used to switch between projects.
+ */
 declare class ModelProject {
 	constructor(options: ModelProjectOptions)
 
@@ -82,13 +85,19 @@ declare class ModelProject {
 	static all: ModelProject[]
 }
 
-declare const Project: ModelProject | null
+/**
+ * Global variable and shortcut to get the currently opened project. If no project is open, or the New Tab is open, this value is falsy.
+ */
+declare const Project: ModelProject | 0
 
 declare function setupProject(format: ModelFormat | string): boolean;
 declare function newProject(format: ModelFormat | string): boolean;
 declare function setProjectResolution(width: number, height: number, modify_uv?: boolean): void;
 declare function updateProjectResolution(): void;
 
+/**
+ * An edit session instance. Edit sessions can be attached to a project to collaborate on it with multiple users via P2P connections.
+ */
 declare class EditSession {
 	constructor()
 

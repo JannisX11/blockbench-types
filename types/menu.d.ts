@@ -22,6 +22,9 @@ interface MenuOptions {
     keep_open?: boolean
     searchable?: boolean
 }
+/**
+ * Use the Menu class to create a context menu. Menus can contain custom entries and hierarchy, or existing actions and tools.
+ */
 declare class Menu extends Deletable {
     constructor(id: string, template: MenuItem[] | ((context?: any) => MenuItem[]), options?: MenuOptions)
     constructor(template: MenuItem[] | ((context?: any) => MenuItem[]), options?: MenuOptions)

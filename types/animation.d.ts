@@ -27,6 +27,9 @@ declare class _Animation extends AnimationItem {
         snapping: any;
         selected: any;
     };
+    /**
+     * Compiles the JSON tree of the animation for the Minecraft Bedrock Edition animation format.
+     */
     compileBedrockAnimation(): object;
     save(): this | undefined;
     select(): this | undefined;
@@ -35,12 +38,25 @@ declare class _Animation extends AnimationItem {
     rename(): this;
     togglePlayingState(state: any): any;
     showContextMenu(event: any): this;
-    getBoneAnimator(group: any): BoneAnimator;
+    /**
+     * Returns (if necessary creates) the animator of a specific bone of the animation
+     */
+    getBoneAnimator(group: OutlinerNode): BoneAnimator;
+    /**
+     * Adds the animation to the current project and to the interface
+     * @param undo If true, the addition of the animation will be registered as an edit
+     */
     add(undo: any): this;
     remove(undo: any, remove_from_file?: boolean): this;
     getMaxLength(): number;
     setLoop(value: any, undo: any): void;
+    /**
+     * Calculate the snapping value that the animation should use, based on the time codes of the keyframes that it holds. Directly updates the value, but also returns it as a number (snaps per second)
+     */
     calculateSnappingFromKeyframes(): number;
+    /**
+     * Opens the properties dialog
+     */
     propertiesDialog(): void;
 
     name: string

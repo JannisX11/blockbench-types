@@ -1,3 +1,6 @@
+/**
+ * The validator in Blockbench provides feedback about the model and can detect issues in real time, based on a list of checks that can be added. This is a good way to ensure model files are valid, and to teach users about best practices.
+ */
 declare namespace Validator {
     const checks: ValidatorCheck[]
 
@@ -42,6 +45,38 @@ interface WarningOrError {
 		click(): void
 	}[]
 }
+
+/**
+ * A check for the validator. A check can be triggered by certain things, and updates the list of warnings and errors that can be displayed in the status bar.
+
+
+### Example:
+
+```javascript
+	new ValidatorCheck('special_cube_name_rule', {
+		update_triggers: ['update_selection'],
+		run() {
+			Cube.all.forEach(cube => {
+				if (cube.name == 'sphere') {
+					this.warn({
+						message: `The cube "${cube.name}" has an invalid names. Cubes may not be called "sphere".`,
+						buttons: [
+							{
+								name: 'Select Cube',
+								icon: 'fa-cube',
+								click() {
+									Validator.dialog.hide();
+									cube.select();
+								}
+							}
+						]
+					})
+				}
+			})
+		}
+	})
+```
+ */
 declare class ValidatorCheck extends Deletable {
 	constructor(id: string, options: ValidatorCheckOptions)
 

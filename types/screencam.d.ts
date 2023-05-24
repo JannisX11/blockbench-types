@@ -28,6 +28,9 @@ interface RecordTimelapseOptions {
 }
 type ScreenshotReturn = (dataURL: string) => void
 
+/**
+ * A global namespace handling screenshot and GIF recording utilities.
+ */
 declare namespace Screencam {
 	/**
 	 * Provided preview with anti aliasing disabled that can be used for screenshots

@@ -1,3 +1,5 @@
+type PanelSlot = 'left_bar' | 'right_bar' | 'top' | 'bottom' | 'float'
+
 interface PanelOptions {
 	id: string
 	name: string
@@ -12,7 +14,7 @@ interface PanelOptions {
 		[id: string]: Toolbar
 	}
 	default_position: {
-		slot: string
+		slot: PanelSlot
 		float_position: [number, number]
 		float_size: [number, number]
 		height: number
@@ -27,19 +29,22 @@ interface PanelOptions {
 }
 type PanelEvent = 'drag' | 'fold' | 'change_zindex' | 'move_to' | 'moved_to' | 'update'
 
+/**
+ * Panels are interface sections in Blockbench, that are always visible (in a specific format and mode), and can be added to the sidebars, above or below the 3D viewport, or used as free floating above the UI. Examples are the Outliner or the UV editor.
+ */
 declare class Panel {
 	constructor (id: string, options: PanelOptions)
 	constructor (options: PanelOptions)
 	isVisible(): boolean
 	isInSidebar(): boolean
-	slot: string
+	slot: PanelSlot
 	folded: boolean
 	fold(state?: boolean): this
 	/**
 	 * If the panel is floating, move it up to the front
 	 */
 	moveToFront(): this
-	moveTo(slot: string, ref_panel?: Panel, before?: boolean): this
+	moveTo(slot: PanelSlot, ref_panel?: Panel, before?: boolean): this
 	update(dragging?: boolean): this
 	dispatchEvent(event_name: PanelEvent, data?: any): void
 	/**
