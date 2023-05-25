@@ -76,9 +76,9 @@ interface ReadOptions {
 }
 type WriteType = 'buffer' | 'text' | 'zip' | 'image'
 interface WriteOptions {
-	content: string | ArrayBuffer
+	content?: string | ArrayBuffer
 	savetype?: WriteType | ((file: string) => WriteType)
-	custom_writer(content: string | ArrayBuffer, file_path: string): void
+	custom_writer?(content: string | ArrayBuffer, file_path: string): void
 }
 interface PickDirOptions {
 	/**Location where the file dialog starts off

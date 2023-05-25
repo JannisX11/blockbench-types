@@ -14,7 +14,7 @@ declare class OutlinerNode {
 	uuid: UUID
 	export: boolean
 	locked: boolean
-	parent: Group | 'root'
+	parent?: Group | 'root'
 	menu?: Menu
 	/**
 	 * Initializes the node. This should always be called when creating nodes that will be used in the outliner.
@@ -74,6 +74,8 @@ declare class OutlinerElement extends OutlinerNode {
 	static all: OutlinerElement[]
 	static selected: OutlinerElement[]
 	static registerType(constructor: any, id: string): void
+	select(event?: any, isOutlinerClick?: boolean): this | void
+	unselect(...args: any[]): this | void
 }
 
 interface LocatorOptions {

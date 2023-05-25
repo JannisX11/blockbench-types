@@ -61,4 +61,5 @@ declare namespace Timeline {
 	let keyframes: _Keyframe[]
 	let menu: Menu
 	function showMenu(event: Event): void
+	let selected_animator: GeneralAnimator | null
 }

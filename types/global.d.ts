@@ -18,6 +18,9 @@ declare global {
 	const PathModule: typeof import('path')
 	const fs: typeof FileSystem
 
+	let selected: OutlinerElement[]
+	const Toolbars: Record<string, Toolbar>
+
 	function rotateOnAxis(modify: OutlinerNode, axis: number, slider?: boolean): void
 	function afterRotateOnAxis(): void
 

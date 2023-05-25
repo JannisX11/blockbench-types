@@ -160,3 +160,4 @@ declare namespace Reusable {
 declare namespace Blockbench {
 	function addCSS(css: string): void
 }
+declare function getCurrentGroup(): Group

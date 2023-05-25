@@ -1,7 +1,8 @@
 declare class CanvasFrame {
-	canvas: HTMLCanvasElement
 	readonly width: number
 	readonly height: number
+	canvas: HTMLCanvasElement
+	ctx: CanvasRenderingContext2D
 
 	constructor(a: HTMLCanvasElement)
 	constructor(a: HTMLImageElement)

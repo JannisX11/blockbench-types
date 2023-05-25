@@ -23,7 +23,7 @@ interface MenuOptions {
 	keep_open?: boolean
 	searchable?: boolean
 }
-declare class Menu extends Deletable {
+declare class Menu {
 	/**
 	 * Creates a new context menu
 	 */
@@ -49,7 +49,7 @@ declare class Menu extends Deletable {
 	 * @param action Action to add
 	 * @param path Path pointing to the location. Use the ID of each level of the menu, or index within a level, separated by a point. For example, `export.0` places the action at the top position of the Export submenu.
 	 */
-	addAction(action: Action, path?: string): void
+	addAction(action: Action, path?: string | number): void
 	/**
 	 *
 	 * @param path Path pointing to the location. Use the ID of each level of the menu, or index within a level, or item ID, separated by a point. For example, `export.export_special_format` removes the action "Export Special Format" from the Export submenu.
