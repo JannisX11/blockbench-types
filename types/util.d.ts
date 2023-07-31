@@ -54,6 +54,9 @@ declare function getAxisLetter(axisNumber: number): string
 declare function getAxisNumber(axisLetter: string): number
 
 
+/**
+ * Reusable data types that can be used by anything, but should not be used to store data between function calls. Can be used to save memory on frequent function calls.
+ */
 declare namespace Reusable {
 	const vec1: THREE.Vector3
 	const vec2: THREE.Vector3
@@ -67,4 +70,16 @@ declare namespace Reusable {
 	const quat2: THREE.Quaternion
 	const euler1: THREE.Euler
 	const euler2: THREE.Euler
+}
+
+/**
+ * Merge the value under a certain key from one object into another
+ */
+declare namespace Merge {
+	function number(target: object, source: object, key: string|number): void
+	function string(target: object, source: object, key: string|number, validate?: ((value) => boolean)): void
+	function molang(target: object, source: object, key: string|number): void
+	function boolean(target: object, source: object, key: string|number, validate?: ((value) => boolean)): void
+	function arrayVector(target: object, source: object, key: string|number, validate?: ((value) => boolean)): void
+	function arrayVector2(target: object, source: object, key: string|number, validate?: ((value) => boolean)): void
 }

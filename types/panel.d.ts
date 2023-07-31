@@ -12,7 +12,7 @@ interface PanelOptions {
 	expand_button: boolean
 	toolbars: {
 		[id: string]: Toolbar
-	}
+	} | Toolbar[]
 	default_position: {
 		slot: PanelSlot
 		float_position: [number, number]
@@ -39,6 +39,9 @@ declare class Panel {
 	isInSidebar(): boolean
 	slot: PanelSlot
 	folded: boolean
+	inside_vue: Vue
+
+
 	fold(state?: boolean): this
 	/**
 	 * If the panel is floating, move it up to the front
@@ -51,6 +54,13 @@ declare class Panel {
 	 * Add an event listener
 	 */
 	on(event_name: PanelEvent, callback: (data?) => void): void
+	/**
+	 * Adds a single-use event listener
+	 */
+	once(event_name: PanelEvent, callback: (data?) => void): void
+	/**
+	 * Removes an event listener
+	 */
 	removeListener(event_name: PanelEvent, callback: (data?) => void): void
 	delete(): void
 }

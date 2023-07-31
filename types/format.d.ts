@@ -56,6 +56,7 @@ interface FormatOptions {
 	bone_rig?: boolean
 	centered_grid?: boolean
 	rotate_cubes?: boolean
+	stretch_cubes?: boolean
 	integer_size?: boolean
 	meshes?: boolean
 	texture_meshes?: boolean
@@ -108,6 +109,7 @@ declare class ModelFormat extends Deletable {
 	bone_rig: boolean
 	centered_grid: boolean
 	rotate_cubes: boolean
+	stretch_cubes: boolean
 	integer_size: boolean
 	meshes: boolean
 	texture_meshes: boolean

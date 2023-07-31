@@ -1,5 +1,5 @@
 /// <reference types="vue" />
-/// <reference types="three" />
+/// <reference types="@types/three" />
 /// <reference types="@types/tinycolor2" />
 /// <reference types="@types/jquery" />
 /// <reference types="wintersky" />
@@ -59,7 +59,7 @@ type WriteType = 'buffer' | 'text' | 'zip' | 'image'
 interface WriteOptions {
 	content: string | ArrayBuffer
 	savetype?: WriteType | ((file: string) => WriteType)
-	custom_writer(content: string | ArrayBuffer, file_path: string): void
+	custom_writer?(content: string | ArrayBuffer, file_path: string): void
 }
 interface PickDirOptions {
 	/**Location where the file dialog starts off
@@ -205,9 +205,13 @@ declare namespace Blockbench {
 	/**
 	 * Opens a message box
 	 */
-	export function showMessageBox(options: MessageBoxOptions, callback: (buttonID: number | string) => void): void
+	export function showMessageBox(options: MessageBoxOptions, callback: (button: number | string, checkbox_results: {[key: string]: boolean} | undefined, event: Event) => void): void
 
 	export function textPrompt(title: string, value: string, callback: (value: string) => void): void
+	/**
+	 * todo
+	 */
+	export function showToastMessage(): Deletable
 	/**
 	 * Opens the specified link in the browser or in a new tab
 	 */
@@ -233,8 +237,17 @@ declare namespace Blockbench {
 	export function dispatchEvent(event_name: EventName, data: object): void
 
 	export function addListener(event_names: EventName, callback: (data: object) => void): void
+	/**
+	 * Adds an event listener
+	 */
 	export function on(event_names: EventName, callback: (data: object) => void): void
-
+	/**
+	 * Adds a single-use event listener
+	 */
+	export function once(event_names: EventName, callback: (data: object) => void): void
+	/**
+	 * Removes an event listener
+	 */
 	export function removeListener(event_names: EventName): void
 
 
@@ -274,6 +287,22 @@ declare namespace Blockbench {
 	export function _export(options: ExportOptions, callback?: (file_path: string) => void): any;
 	export { _export as export };
 
+
+	interface FindFileFromContentOptions {
+		read_file?: boolean
+		json?: boolean
+		recursive?: boolean
+		filter_regex?: RegExp
+		priority_regex?: RegExp
+	}
+	type CheckFileCallback = (path: string, content: (string|object)) => any
+	/**
+	 * Find a file in a directory, based on content. Optimized by prioritizing files with certain names.
+	 * @param base_directories Base directories to search in
+	 * @param options Options
+	 * @param check_file Function that runs on every file to check if the file is a match. If the function returns anything truthy, that result is returned by the main function.
+	 */
+	export function findFileFromContent(base_directories: string[], options: FindFileFromContentOptions, check_file: CheckFileCallback): false | any
 
 
 	/**

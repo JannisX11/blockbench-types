@@ -1,5 +1,5 @@
 interface DialogFormElement {
-	type: 'text' | 'number' | 'range' | 'checkbox' | 'select' | 'radio' | 'textarea' | 'vector' | 'color' | 'file' | 'folder' | 'save' | 'info' | 'buttons'
+	type: 'text' | 'number' | 'range' | 'checkbox' | 'select' | 'inline_select' | 'radio' | 'textarea' | 'vector' | 'color' | 'file' | 'folder' | 'save' | 'info' | 'buttons'
 	label?: string
 	description?: string
 	nocolon?: boolean

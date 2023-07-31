@@ -1,11 +1,26 @@
+interface KeyframeDataPointData {
+    [key: string]: any
+}
 declare class KeyframeDataPoint {
     constructor(keyframe: _Keyframe);
-    extend(data: any): void;
-    getUndoCopy(): {};
+    extend(data: KeyframeDataPointData): void;
+    getUndoCopy(): {
+        [key: string]: any
+    };
 }
 
 interface KeyframeOptions {
-
+    channel?: string
+    data_points: {}[]
+    time: number
+    color: number
+    uniform: boolean
+    interpolation: 'linear' | 'catmullrom' | 'bezier' | 'step' | string
+    bezier_linked: boolean
+    bezier_left_time: ArrayVector3
+    bezier_left_value: ArrayVector3
+    bezier_right_time: ArrayVector3
+    bezier_right_value: ArrayVector3
 }
 type axisLetter = 'x' | 'y' | 'z'
 
@@ -13,6 +28,14 @@ declare class _Keyframe {
     constructor(options: KeyframeOptions, uuid: any);
 
     animator: GeneralAnimator;
+
+    channel: string
+    data_points: KeyframeDataPoint[]
+    time: number
+    color: number
+    uniform: boolean
+    interpolation: 'linear' | 'catmullrom' | 'bezier' | 'step' | string
+    bezier_linked: boolean
     bezier_left_time: ArrayVector3;
     bezier_right_time: ArrayVector3;
     bezier_left_value: ArrayVector3;

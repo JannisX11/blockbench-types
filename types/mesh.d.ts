@@ -71,10 +71,15 @@ declare class Mesh extends OutlinerElement {
 
 	static all: Mesh[]
 	static selected: Mesh[]
+	/**Check if any elements of the type are in the project */
+	static hasAny: () => boolean
+	/**Check if any elements of the type are currently selected */
+	static hasSelected: () => boolean
 }
 
 interface MeshFaceOptions extends FaceOptions {
-
+	vertices: string[]
+	uv: {[vkey: string]: ArrayVector2}
 }
 declare class MeshFace extends Face {
 	constructor(mesh: Mesh, data: MeshFaceOptions)

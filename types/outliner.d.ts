@@ -9,6 +9,7 @@ type ArrayVector2 = [number, number]
 declare class OutlinerNode {
 	constructor ()
 	uuid: UUID
+	name: string
 	export: boolean
 	locked: boolean
 	parent: Group | 'root'
@@ -53,6 +54,10 @@ declare class OutlinerNode {
 	 * @param event Mouse event, determines where the context menu spawns.
 	 */
 	showContexnu(event: Event | HTMLElement): this
+
+	static uuids: {
+		[uuid: UUID]: OutlinerNode
+	}
 }
 
 /**
@@ -81,6 +86,10 @@ declare class Locator extends OutlinerElement {
 
 	static all: Locator[]
 	static selected: Locator[]
+	/**Check if any elements of the type are in the project */
+	static hasAny: () => boolean
+	/**Check if any elements of the type are currently selected */
+	static hasSelected: () => boolean
 }
 
 
@@ -103,6 +112,10 @@ declare class NullObject extends OutlinerElement {
 
 	static all: NullObject[]
 	static selected: NullObject[]
+	/**Check if any elements of the type are in the project */
+	static hasAny: () => boolean
+	/**Check if any elements of the type are currently selected */
+	static hasSelected: () => boolean
 }
 
 

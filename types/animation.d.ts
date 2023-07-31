@@ -158,9 +158,9 @@ declare class NullObjectAnimator extends GeneralAnimator {
 declare class EffectAnimator extends GeneralAnimator {
     name: string
     uuid: string
-    rotations: Keyframe[]
-    position: Keyframe[]
-    scale: Keyframe[]
+    particle: Keyframe[]
+    sound: Keyframe[]
+    timeline: Keyframe[]
     pushKeyframe(keyframe): this
     displayFrame(in_loop): this
     startPreviousSounds(): void

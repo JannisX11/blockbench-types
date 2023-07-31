@@ -29,12 +29,16 @@ type EventName = 'remove_animation'
 	| 'reset_project'
 	| 'close_project'
 	| 'saved_state_changed'
+	| 'save_model_action'
 	| 'add_cube'
 	| 'add_mesh'
 	| 'add_group'
 	| 'add_texture_mesh'
 	| 'group_elements'
 	| 'update_selection'
+	| 'compile_bedrock_animations'
+	| 'load_animation'
+	| 'load_animation_controller'
 	| 'update_keyframe_selection'
 	| 'select_all'
 	| 'added_to_selection'
@@ -98,10 +102,20 @@ interface MessageBoxOptions {
 	commands?: {
 		[id: string]: string | {text: string}
 	}
+	/**
+	 * Adds checkboxes to the bottom of the message box
+	 */
+	checkboxes: {
+		[id: string]: string | {
+			value?: boolean
+			condition: ConditionResolvable
+			text: string
+		}
+	}
 }
 
 
-
+type PropertyType = 'string' | 'number' | 'enum' | 'molang' | 'boolean' | 'array' | 'instance' | 'vector' | 'vector2'
 interface PropertyOptions {
 	default?: any
 	condition?: ConditionResolvable
@@ -111,6 +125,10 @@ interface PropertyOptions {
 	 * Options used for select types
 	 */
 	options?: object
+	/**
+	 * Enum possible values
+	 */
+	values: string[]
 	merge?: (instance: any, data: object) => void
 	reset?: (instance: any) => void
 	merge_validation?: (value: any) => boolean
@@ -119,20 +137,23 @@ interface PropertyOptions {
  * Creates a new property on the specified target class
  */
 declare class Property extends Deletable {
-    constructor(target_class: any, type: string, name: string, options?: PropertyOptions);
+    constructor(target_class: any, type: PropertyType, name: string, options?: PropertyOptions);
     class: any;
     name: string;
-    type: string;
+    type: PropertyType;
 	default: any;
 	
     isString: boolean;
+    isEnum: boolean;
     isMolang: boolean;
     isNumber: boolean;
     isBoolean: boolean;
     isArray: boolean;
     isVector: boolean;
 	isVector2: boolean;
+	isInstance: boolean;
 	
+	enum_values?: string[]
     merge_validation: undefined | ((value: any) => boolean);
     condition: ConditionResolvable;
     exposed: boolean;

@@ -233,7 +233,17 @@ declare class NodePreviewController {
         [event_name: string]: ((data) => void)[]
     }
     dispatchEvent(event_name: string, data: object)
+	/**
+	 * Adds an event listener
+	 */
     on(event_name: string, cb: (data) => void)
+	/**
+	 * Adds a single-use event listener
+	 */
+    once(event_name: string, cb: (data) => void)
+	/**
+	 * Removes an event listener
+	 */
     removeListener(event_name: string, cb: (data) => void)
 
     setup(element: OutlinerNode): void

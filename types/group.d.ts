@@ -23,6 +23,8 @@ declare class Group extends OutlinerNode {
 	constructor (options: Partial<GroupOptions>)
 	static selected: Group
 	static all: Group[]
+	/**Check if any groups are in the project */
+	static hasAny: () => boolean
 
 	name: string
 	children: OutlinerNode[]

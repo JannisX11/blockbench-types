@@ -55,11 +55,11 @@ type UndoEntry = {
 }
 interface AmendEditForm {
     condition?: ConditionResolvable
-    type?: 'number'
+    type?: 'number' | 'checkbox'
     label: string
     interval_type: 'position' | 'rotation'
     getInterval?: (Event) => number
-    value?: number | string,
+    value?: number | string | 'boolean',
     min?: number,
     max?: number,
     step?: number,

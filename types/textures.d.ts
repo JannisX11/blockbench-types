@@ -47,6 +47,52 @@ declare class Texture {
     readonly display_height: number;
     readonly ratio: number;
 
+    path: string
+    name: string
+    /** Relative path to the file's directory, used by some formats such as Java Block/Item*/
+    folder: string
+    namespace: string
+    /** Texture ID or key, used by some formats. By default this is a number that increases with every texture that is added */
+    id: string
+    /** Whether the texture is used for the models particle system. Used by some formats such as Java Block/Item */
+    particle: boolean
+    render_mode: 'default' | 'emissive' | 'additive' | 'layered' | string
+    render_sides: 'auto' | 'front' | 'double' | string
+
+    /** Texture animation frame time */
+    frame_time: number
+    frame_order_type: 'custom' | 'loop' | 'backwards' | 'back_and_forth'
+    /** Custom frame order */
+    frame_order: string
+    /** Interpolate between frames */
+    frame_interpolate: boolean
+
+    /** HTML-style source of the texture's displayed data. Can be a path (desktop app only), or a base64 data URL */
+    source: string
+    selected: boolean
+    show_icon: boolean
+    error: number
+    /** Whether the texture is visible. Used for layered textures mode */
+    visible: boolean
+    /** Whether the texture canvas is displayed in the UV/2D editor, for live feedback */
+    display_canvas: boolean
+    width: number
+    height: number
+    currentFrame: number
+    saved: boolean
+    /** Whether the latest version of the texture is currently loaded from and linked to a file on disk, or held in memory as bitmap data */
+    mode: 'link' | 'bitmap'
+    uuid: UUID
+
+    /**
+     * The texture's associated canvas. Note: This may not always be up to date with the texture data
+     */
+    canvas: HTMLCanvasElement
+    /**
+     * Texture image element
+     */
+    img: HTMLImageElement
+
     getErrorMessage(): string;
     extend(data: TextureData): this;
     /**

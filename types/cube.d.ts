@@ -80,11 +80,14 @@ declare class Cube extends OutlinerElement {
 
 	static all: Cube[]
 	static selected: Cube[]
+	/**Check if any elements of the type are in the project */
+	static hasAny: () => boolean
+	/**Check if any elements of the type are currently selected */
+	static hasSelected: () => boolean
 }
 
 interface FaceOptions {
 	texture?: Texture
-
 }
 declare class Face {
 	constructor()

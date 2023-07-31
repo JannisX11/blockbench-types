@@ -25,6 +25,15 @@ interface CodecOptions {
 		type: 'json' | 'text'
 		condition?: ConditionResolvable
 	}
+	/**
+	 * List of export option inputs, based on the Dialog form API
+	 */
+	export_options?: {
+		[key: string]: DialogFormElement
+	}
+	/**
+	 * Default action that is used to export to the codec
+	 */
 	export_action?: Action
 }
 
@@ -80,11 +89,26 @@ declare class Codec extends Deletable {
 	afterSave?(path): void
 
 	/**
+	 * Return the stored export option values of the current project
+	 */
+	getExportOptions(): {[key: string]: any}
+	/**
+	 * Prompt the user to enter their preferred export settings into the dialog
+	 */
+	promptExportOptions(): Promise<({[key: string]: any} | null)>
+
+	/**
 	 * Adds an event listener to the codec
 	 * @param event_name The event type to listen for
 	 * @param callback 
 	 */
 	on(event_name: string, callback: (data: object) => void): void
+	/**
+	 * Adds a single-use event listener to the codec
+	 * @param event_name The event type to listen for
+	 * @param callback 
+	 */
+	once(event_name: string, callback: (data: object) => void): void
 	/**
 	 * Removes an event listener from the codec
 	 * @param event_name 
@@ -109,6 +133,13 @@ declare class Codec extends Deletable {
 	 * If available, the action that is used to export files using this codec
 	 */
 	export_action?: Action
+
+	/**
+	 * List of export option inputs
+	 */
+	export_options: {
+		[key: string]: DialogFormElement
+	}
 
 	/**
 	 * Get a list of all possible extensions of all codecs
