@@ -5,6 +5,7 @@ declare class AnimationItem {
 
 interface AnimationOptions {
     name?: string
+    path?: string
     loop?: 'once' | 'hold' | 'loop'
     override?: boolean
     anim_time_update?: string
@@ -34,7 +35,7 @@ declare class _Animation extends AnimationItem {
     save(): this | undefined;
     select(): this | undefined;
     setLength(length: number): void;
-    createUniqueName(references: Animation[]): any;
+    createUniqueName(references: _Animation[]): any;
     rename(): this;
     togglePlayingState(state: any): any;
     showContextMenu(event: any): this;
@@ -46,7 +47,7 @@ declare class _Animation extends AnimationItem {
      * Adds the animation to the current project and to the interface
      * @param undo If true, the addition of the animation will be registered as an edit
      */
-    add(undo: any): this;
+    add(undo?: any): this;
     remove(undo: any, remove_from_file?: boolean): this;
     getMaxLength(): number;
     setLoop(value: any, undo: any): void;
@@ -86,6 +87,7 @@ declare class _Animation extends AnimationItem {
 declare namespace Animator {
     const open: boolean
     const MolangParser: object
+    const possible_channels: unknown[];
     const motion_trail: THREE.Object3D
     const motion_trail_lock: boolean
     const particle_effects: object
@@ -114,13 +116,13 @@ interface AddChannelOptions {
     max_data_points?: number
 }
 declare class GeneralAnimator {
-    constructor(uuid: string, animation: Animation)
-    keyframes: Keyframe[]
+    constructor(uuid: string, animation: _Animation, name: string)
+    keyframes: _Keyframe[]
     select(): this
     addToTimeline(): this
-    addKeyframe(data: KeyframeOptions, uuid: string): Keyframe
-    createKeyframe(): Keyframe
-    getOrMakeKeyframe(): {before: Keyframe, result: Keyframe}
+    addKeyframe(data: KeyframeOptions, uuid?: string): _Keyframe
+    createKeyframe(): _Keyframe
+    getOrMakeKeyframe(): {before: _Keyframe, result: _Keyframe}
     toggleMuted(channel: string): this
     scrollTo(): this
 
@@ -130,9 +132,9 @@ declare class GeneralAnimator {
 declare class BoneAnimator extends GeneralAnimator {
     name: string
     uuid: string
-    rotations: Keyframe[]
-    position: Keyframe[]
-    scale: Keyframe[]
+    rotations: _Keyframe[]
+    position: _Keyframe[]
+    scale: _Keyframe[]
     getGroup(): Group
     fillValues(): void
     pushKeyframe(): void
@@ -146,9 +148,9 @@ declare class BoneAnimator extends GeneralAnimator {
 declare class NullObjectAnimator extends GeneralAnimator {
     name: string
     uuid: string
-    rotations: Keyframe[]
-    position: Keyframe[]
-    scale: Keyframe[]
+    rotations: _Keyframe[]
+    position: _Keyframe[]
+    scale: _Keyframe[]
     getElement(): NullObject
     doRender(): void
     displayPosition(): void
@@ -156,11 +158,12 @@ declare class NullObjectAnimator extends GeneralAnimator {
     displayFrame(): void
 }
 declare class EffectAnimator extends GeneralAnimator {
+    constructor(animation: _Animation)
     name: string
     uuid: string
-    particle: Keyframe[]
-    sound: Keyframe[]
-    timeline: Keyframe[]
+    particle: _Keyframe[]
+    sound: _Keyframe[]
+    timeline: _Keyframe[]
     pushKeyframe(keyframe): this
     displayFrame(in_loop): this
     startPreviousSounds(): void

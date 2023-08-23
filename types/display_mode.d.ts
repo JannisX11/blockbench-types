@@ -1,3 +1,7 @@
+declare const DisplayMode: {
+	slots: string[]
+}
+
 interface DisplaySlotOptions {
 	rotation?: ArrayVector3
 	translation?: ArrayVector3

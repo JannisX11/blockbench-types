@@ -13,14 +13,14 @@ interface KeyframeOptions {
     channel?: string
     data_points: {}[]
     time: number
-    color: number
-    uniform: boolean
-    interpolation: 'linear' | 'catmullrom' | 'bezier' | 'step' | string
-    bezier_linked: boolean
-    bezier_left_time: ArrayVector3
-    bezier_left_value: ArrayVector3
-    bezier_right_time: ArrayVector3
-    bezier_right_value: ArrayVector3
+    color?: number
+    uniform?: boolean
+    interpolation?: 'linear' | 'catmullrom' | 'bezier' | 'step' | string
+    bezier_linked?: boolean
+    bezier_left_time?: ArrayVector3
+    bezier_left_value?: ArrayVector3
+    bezier_right_time?: ArrayVector3
+    bezier_right_value?: ArrayVector3
 }
 type axisLetter = 'x' | 'y' | 'z'
 
@@ -66,3 +66,5 @@ declare class _Keyframe {
         data_points: object[];
     };
 }
+
+declare function updateKeyframeSelection(): void;

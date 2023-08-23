@@ -15,6 +15,7 @@ declare class ModelProject {
 	uuid: UUID
 	selected: boolean
 	model_identifier: string
+	parent: string
 	/**
 	 * When set to true, the project tab can no longer be selected or unselected
 	 */
@@ -56,7 +57,7 @@ declare class ModelProject {
 	textures: Texture[]
 	selected_texture: Texture | null;
 	outliner: OutlinerNode[]
-	animations: Animation[]
+	animations: _Animation[]
 	timeline_animators: []
 	display_settings: {
 		[slot: string]: {
@@ -64,8 +65,12 @@ declare class ModelProject {
 			rotation: [number, number, number]
 			scale: [number, number, number]
 			mirror: [boolean, boolean, boolean]
+			export(): void;
 		}
 	};
+	ambientocclusion: boolean;
+	front_gui_light: boolean;
+	overrides: any;
 
 	get model_3d(): THREE.Object3D;
     get materials(): {

@@ -35,7 +35,9 @@
 /// <reference types="./display_mode" />
 /// <reference types="./misc" />
 /// <reference types="./util" />
+/// <reference types="./math_util" />
 /// <reference types="./canvas_frame" />
+/// <reference types="./io" />
 
 
 	
@@ -248,7 +250,7 @@ declare namespace Blockbench {
 	/**
 	 * Removes an event listener
 	 */
-	export function removeListener(event_names: EventName): void
+	export function removeListener(event_names: EventName, callback: (data: object) => void): void
 
 
 

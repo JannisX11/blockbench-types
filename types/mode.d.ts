@@ -31,4 +31,5 @@ declare namespace Modes {
 	const options: {
 		[id: string]: Mode
 	}
+	const selected: Mode;
 }
