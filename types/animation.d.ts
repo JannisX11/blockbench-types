@@ -117,6 +117,7 @@ interface AddChannelOptions {
 }
 declare class GeneralAnimator {
     constructor(uuid: string, animation: _Animation, name: string)
+    uuid: string
     keyframes: _Keyframe[]
     select(): this
     addToTimeline(): this
