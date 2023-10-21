@@ -20,7 +20,7 @@ type RaycastResult = {
     intersects?: object[]
     face?: string
     vertex: any
-    keyframe: Keyframe
+    keyframe: _Keyframe
 }
 
 /**

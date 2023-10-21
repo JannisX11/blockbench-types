@@ -9,6 +9,7 @@ interface DialogFormElement {
 	/** Add buttons to allow copying and sharing the text or link */
 	share_text?: boolean
 	value?: any
+	default?: any
 	placeholder?: string
 	text?: string
 	editable_range_label?: boolean
@@ -97,6 +98,7 @@ interface DialogOptions {
 	 * Unless set to false, clicking on the darkened area outside of the dialog will cancel the dialog.
 	 */
 	cancel_on_click_outside?: boolean
+	width?: number
 }
 
 declare class Dialog {

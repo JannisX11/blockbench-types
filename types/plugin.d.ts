@@ -29,7 +29,7 @@ interface PluginOptions {
 	/**
 	 * Set to true if the plugin must finish loading before a project is opened, i. e. because it adds a format
 	 */
-	await_loading?: string
+	await_loading?: boolean
 	/**
 	 * Use the new repository format where plugin, iron, and about are stored in a separate folder
 	 */
