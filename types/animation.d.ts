@@ -3,11 +3,12 @@
 declare class AnimationItem {
 	static all: AnimationItem[]
 	static selected: AnimationItem | null
-	getUndoCopy?(options?: any, save?: any): any
+	getUndoCopy?(options?: any, save?: any): AnimationOptions
 }
 
 interface AnimationOptions {
 	name?: string
+	uuid?: string
 	loop?: 'once' | 'hold' | 'loop'
 	override?: boolean
 	anim_time_update?: string

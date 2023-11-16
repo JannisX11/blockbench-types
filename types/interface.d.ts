@@ -81,7 +81,7 @@ declare namespace Interface {
 			options: {
 				value?: string
 				default?: string
-				options: { key: string; value: string }
+				options: { [key: string]: string }
 				onChange?(): void
 			}
 		): HTMLElement

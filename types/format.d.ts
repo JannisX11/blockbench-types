@@ -58,7 +58,7 @@ interface FormatOptions {
 	format_page?: FormatPage
 	onFormatPage?(): void
 	onStart?(): void
-	onSetup?(): void
+	onSetup?(project: ModelProject, newModel?: boolean): void
 	convertTo?(): void
 
 	box_uv?: boolean
@@ -89,6 +89,7 @@ interface FormatOptions {
 	display_mode?: boolean
 	animation_mode?: boolean
 	pose_mode?: boolean
+	animation_controllers?: boolean
 
 	cube_size_limiter?: CubeSizeLimiter
 

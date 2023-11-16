@@ -67,7 +67,7 @@ interface ActionOptions extends BarItemOptions {
 	/**
 	 * Function to run when user uses the action successfully
 	 */
-	click(event: Event): void
+	click(event?: Event): void
 	/**
 	 * Icon color. Can be a CSS color string, or an axis letter to use an axis color.
 	 */
@@ -87,6 +87,7 @@ interface ActionOptions extends BarItemOptions {
  */
 declare class Action extends BarItem {
 	constructor(id: string, options: ActionOptions)
+	condition?(): boolean
 	/**
 	 * Trigger to run or select the action. This is the equivalent of clicking or using a keybind to trigger it. Also checks if the condition is met.
 	 */

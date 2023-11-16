@@ -24,6 +24,7 @@ declare class _Keyframe {
 	time: number
 	uuid: string
 	interpolation: 'linear' | 'catmullrom' | 'bezier' | 'step'
+	cooldown?: boolean
 
 	extend(data: KeyframeOptions): this
 	get(axis: axisLetter, data_point?: number): number | string

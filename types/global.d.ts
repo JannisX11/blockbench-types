@@ -73,6 +73,7 @@ declare global {
 		areMultiples(number1: number, number2: number): boolean
 		getNextPower(num: number, min: number): number
 		snapToValues(number: number, snap_points: number[], epsilon: number): number
+		clamp(number: number, min: number, max: number): number
 	}
 	interface Array<T> {
 		remove(item: any): boolean

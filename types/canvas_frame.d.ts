@@ -10,6 +10,6 @@ declare class CanvasFrame {
 
 	createCanvas(width: number, height: number): void
 	loadFromUrl(url: string): Promise<void>
-	loadFromImg(img: HTMLImageElement): void
+	loadFromImage(img: HTMLImageElement): void
 	autoCrop(): void
 }

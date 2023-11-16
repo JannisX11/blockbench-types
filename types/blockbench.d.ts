@@ -27,6 +27,7 @@
 /// <reference types="./mesh" />
 /// <reference types="./misc" />
 /// <reference types="./mode" />
+/// <reference types="./molang" />
 /// <reference types="./outliner" />
 /// <reference types="./painter" />
 /// <reference types="./panel" />

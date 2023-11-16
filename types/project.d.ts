@@ -103,7 +103,7 @@ declare class ModelProject {
 
 declare const Project: ModelProject | null
 
-declare function setupProject(format: ModelFormat | string): boolean
+declare function setupProject(format: ModelFormat | string, uuid?: string): boolean
 declare function newProject(format: ModelFormat | string): boolean
 declare function setProjectResolution(width: number, height: number, modify_uv?: boolean): void
 declare function updateProjectResolution(): void

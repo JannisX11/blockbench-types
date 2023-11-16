@@ -81,6 +81,7 @@ declare class AnimationControllerState {
 
 interface AnimationControllerOptions {
 	name?: string
+	uuid?: string
 	path?: string
 	initial_state?: string
 }
