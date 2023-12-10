@@ -8,10 +8,22 @@ interface DialogFormElement {
 	readonly?: boolean
 	/** Add buttons to allow copying and sharing the text or link */
 	share_text?: boolean
+	/**
+	 * The default value
+	 */
 	value?: any
+	/**
+	 * The default selected option for 'select', 'inline_select' and 'radio' types. Alias for 'value'
+	 */
 	default?: any
 	placeholder?: string
+	/**
+	 * When using 'text' type, the text to display. Markdown is supported
+	 */
 	text?: string
+	/**
+	 * When using 'range' type, allow users to modify the numeric input
+	 */
 	editable_range_label?: boolean
 	colorpicker?: any
 	min?: number
@@ -20,6 +32,14 @@ interface DialogFormElement {
 	height?: number
 	options?: object
 	buttons?: string[]
+	/**
+	 * Allow users to toggle the entire option on or off
+	 */
+	toggle_enabled?: boolean
+	/**
+	 * Set whether the setting is toggled on or off by default. Requires 'toggle_enabled' field to be set to true
+	 */
+	toggle_default?: boolean
 	click?: (button_index: number) => void
 }
 

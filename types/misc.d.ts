@@ -100,7 +100,7 @@ interface MessageBoxOptions {
 	 * Display a list of actions to do in the dialog. When clicked, the message box closes with the string ID of the command as first argument.
 	 */
 	commands?: {
-		[id: string]: string | {text: string}
+		[id: string]: string | {text: string, icon?: IconString, condition?: ConditionResolvable}
 	}
 	/**
 	 * Adds checkboxes to the bottom of the message box

@@ -5,6 +5,7 @@
 /// <reference types="wintersky" />
 
 /// <reference types="./textures" />
+/// <reference types="./texture_layers" />
 /// <reference types="./action" />
 /// <reference types="./animation" />
 /// <reference types="./animation_controller" />
@@ -32,6 +33,7 @@
 /// <reference types="./painter" />
 /// <reference types="./screencam" />
 /// <reference types="./validator" />
+/// <reference types="./shared_actions" />
 /// <reference types="./display_mode" />
 /// <reference types="./misc" />
 /// <reference types="./util" />
@@ -192,6 +194,12 @@ declare namespace Blockbench {
 	export function showStatusMessage(message: string, time?: number): void
 
 	export function setStatusBarText(text?: string): void
+
+	/**
+	 * Display a tooltip displaying a custom text that appears next to and follows the mouse cursor
+	 * @param text The text to display. Line breaks are supported. Leave empty to hide the tooltip.
+	 */
+	export function setCursorTooltip(text?: string): void
 	/**
 	 * Set the value of a progress bar
 	 * 

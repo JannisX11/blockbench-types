@@ -16,6 +16,7 @@ async function main() {
 		entryPoints: [
 			"./types/blockbench.d.ts",
 			"./types/textures.d.ts",
+			"./types/texture_layers.d.ts",
 			"./types/action.d.ts",
 			"./types/animation.d.ts",
 			"./types/animation_controller.d.ts",
@@ -43,6 +44,7 @@ async function main() {
 			"./types/painter.d.ts",
 			"./types/screencam.d.ts",
 			"./types/validator.d.ts",
+			"./types/shared_actions.d.ts",
 			"./types/display_mode.d.ts",
 			"./types/misc.d.ts",
 			"./types/util.d.ts"

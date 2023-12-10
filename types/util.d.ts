@@ -83,3 +83,20 @@ declare namespace Merge {
 	function arrayVector(target: object, source: object, key: string|number, validate?: ((value) => boolean)): void
 	function arrayVector2(target: object, source: object, key: string|number, validate?: ((value) => boolean)): void
 }
+
+declare class Rectangle {
+	constructor(start_x: number, start_y: number, width: number, height: number)
+    start_x: number
+    start_y: number
+    width: number
+    height: number
+	readonly start: ArrayVector2
+	readonly w: number
+	readonly h: number
+	end_x: number
+	end_y: number
+	readonly area: number
+	fromCoords(x1: number, y1: number, x2: number, y2: number): void
+	fromUnorderedCoords(x1: number, y1: number, x2: number, y2: number): void
+	expandTo(x: number, y: number): void
+}
