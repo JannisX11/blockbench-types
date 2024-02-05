@@ -160,6 +160,9 @@ declare class Dialog {
 	sidebar: DialogSidebar | null
 	content_vue: Vue | null
 
+	confirmIndex: number
+	cancelIndex: number
+
 	show(): this
 	hide(): this
 	/**

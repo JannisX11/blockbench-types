@@ -21,12 +21,21 @@ declare interface KeybindKeys {
  */
 declare class Keybind {
 	constructor(keys: KeybindKeys)
+	key: number
+	ctrl?: boolean
+	shift?: boolean
+	alt?: boolean
+	/**
+	 * Get the name of the bound key
+	 */
+	getCode(): string
 }
 interface KeybindItemOptions {
 	keybind?: Keybind
 }
 declare class KeybindItem extends Deletable {
 	constructor(id: string, options: KeybindItemOptions)
+	keybind: Keybind
 }
 
 declare class MenuSeparator {
@@ -367,7 +376,7 @@ declare namespace ActionControl {
  */
 declare namespace Keybinds {
 	const actions: BarItem[]
-	const stored: Record<string, {key: number, ctrl: boolean, shift: boolean}>
+	const stored: Record<string, { key: number; ctrl: boolean; shift: boolean }>
 	const extra: Record<string, KeybindItem>
 	const structure: any
 	function save(): void
