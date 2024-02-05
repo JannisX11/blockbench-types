@@ -63,6 +63,11 @@ declare class Menu {
  */
 declare class BarMenu extends Menu {
 	constructor(id: string, structure: MenuItem[], condition?: ConditionResolvable)
+	type: 'bar_menu'
+	id: string
+	condition?: ConditionResolvable
+	name: string
+	structure: MenuItem[]
 	/**
 	 * Visually highlights an action within the menu, until the user opens the menu
 	 */

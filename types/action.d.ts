@@ -312,6 +312,9 @@ declare class BarText extends Widget {
 	update(): this
 	trigger(event: Event): boolean
 }
+interface ColorPickerOptions {
+	onChange?: () => void
+}
 declare class ColorPicker extends Widget {
 	constructor(id: string, options: any)
 	change(color: any): void
@@ -364,9 +367,9 @@ declare namespace ActionControl {
  */
 declare namespace Keybinds {
 	const actions: BarItem[]
-	const stored: {}
-	const extra: {}
-	const structure: {}
+	const stored: Record<string, {key: number, ctrl: boolean, shift: boolean}>
+	const extra: Record<string, KeybindItem>
+	const structure: any
 	function save(): void
 	function reset(): void
 }
