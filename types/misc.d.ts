@@ -121,6 +121,7 @@ interface IPropertyType {
 	number: number
 	boolean: boolean
 	array: any[]
+	object: any
 	instance: any
 	vector: ArrayVector3
 	vector2: ArrayVector2

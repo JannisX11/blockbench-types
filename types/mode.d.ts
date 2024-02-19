@@ -38,5 +38,11 @@ declare class Mode extends KeybindItem {
 declare namespace Modes {
 	const options: {
 		[id: string]: Mode
+		animate: Mode
+		display: Mode
+		edit: Mode
+		paint: Mode
+		pose: Mode
 	}
+	let selected: Mode | false | undefined
 }

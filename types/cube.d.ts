@@ -108,9 +108,9 @@ interface FaceOptions {
 }
 declare class Face {
 	constructor()
-	texture: UUID | false | null
+	texture: UUID | false | undefined
 
-	getTexture(): Texture | null
+	getTexture(): Texture | undefined
 	/**
 	 * Returns a 2D rectangle around the UV face
 	 */
