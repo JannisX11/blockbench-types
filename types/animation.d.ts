@@ -77,7 +77,7 @@ declare class _Animation extends AnimationItem {
 
 declare namespace Animator {
 	const open: boolean
-	const MolangParser: any
+	const MolangParser: Molang
 	const motion_trail: THREE.Object3D
 	const motion_trail_lock: boolean
 	const particle_effects: any
