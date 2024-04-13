@@ -98,6 +98,7 @@ declare namespace Animator {
 	 */
 	function loadFile(file: any, animation_filter?: string[]): void
 	function resetLastValues(): void
+	function autocompleteMolang(text: string, position: number, type: string): void
 }
 
 interface AddChannelOptions {
