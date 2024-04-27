@@ -42,7 +42,7 @@ declare class OutlinerNode {
 	/**
 	 * Saves the changed name of the element by creating an undo point and making the name unique if necessary.
 	 */
-	saveName(): this
+	saveName(save?: boolean): this
 	/**
 	 * Create a unique name for the group or element by adding a number at the end or increasing it.
 	 */

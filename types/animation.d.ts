@@ -1,8 +1,8 @@
 /// <reference path="./blockbench.d.ts"/>
 
 declare class AnimationItem {
-	static all: AnimationItem[]
-	static selected: AnimationItem | null
+	static all: _Animation[]
+	static selected: _Animation | null
 	getUndoCopy?(options?: any, save?: any): AnimationOptions
 }
 
@@ -75,6 +75,12 @@ declare class _Animation extends AnimationItem {
 	type: string
 }
 
+interface MolangAutoCompletionItem {
+	text: string
+	label: string | undefined
+	overlap: number
+}
+
 declare namespace Animator {
 	const open: boolean
 	const MolangParser: Molang
@@ -98,7 +104,11 @@ declare namespace Animator {
 	 */
 	function loadFile(file: any, animation_filter?: string[]): void
 	function resetLastValues(): void
-	function autocompleteMolang(text: string, position: number, type: string): void
+	function autocompleteMolang(
+		text: string,
+		position: number,
+		type: string
+	): MolangAutoCompletionItem[]
 }
 
 interface AddChannelOptions {

@@ -96,10 +96,6 @@ declare class UndoSystem {
 	 */
 	redo(remote?: boolean): void
 	/**
-	 * Redoes the latest edit
-	 */
-	redo(remote?: boolean): void
-	/**
 	 * Provides a menu to amend the latest edit with slightly changed values
 	 */
 	amendEdit(form: AmendEditForm, callback: (values: any, form: any) => void): void
@@ -115,6 +111,7 @@ declare class UndoSystem {
 	history: UndoEntry[]
 	index: number
 }
+
 /**
  * Blockbench's undo system of the current project to register edits to the project and switch between them
 

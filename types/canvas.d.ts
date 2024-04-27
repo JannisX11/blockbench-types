@@ -69,6 +69,8 @@ declare namespace Canvas {
 	 */
 	const outlineMaterial: THREE.LineBasicMaterial
 	const meshOutlineMaterial: THREE.LineBasicMaterial
+	const onionSkinEarlierMaterial: THREE.LineBasicMaterial
+	const onionSkinLaterMaterial: THREE.LineBasicMaterial
 	/**
 	 * The material used for the wireframe view
 	 */

@@ -101,7 +101,7 @@ declare class ModelProject {
 	static all: ModelProject[]
 }
 
-declare const Project: ModelProject | null
+declare let Project: ModelProject | null
 
 declare function setupProject(format: ModelFormat | string, uuid?: string): boolean
 declare function newProject(format: ModelFormat | string): boolean

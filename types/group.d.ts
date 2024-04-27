@@ -39,6 +39,8 @@ declare class Group extends OutlinerNode {
 	ik_chain_length: number
 	mesh: THREE.Mesh
 
+	static preview_controller: NodePreviewController
+
 	extend(options: Partial<GroupOptions>): this
 	selectChildren(event: Event): this
 	selectLow(highlight: boolean): this

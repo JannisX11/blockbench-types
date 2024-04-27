@@ -84,3 +84,5 @@ declare class Preview extends Deletable {
 	 */
 	static selected: Preview
 }
+
+declare function animate(): void
