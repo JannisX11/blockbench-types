@@ -1,1 +1,1 @@
-	declare function guid(): string;
+declare function guid(): string

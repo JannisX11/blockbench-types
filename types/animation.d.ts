@@ -9,7 +9,7 @@ declare class AnimationItem {
 interface AnimationOptions {
 	name?: string
 	uuid?: string
-    path?: string
+	path?: string
 	loop?: 'once' | 'hold' | 'loop'
 	override?: boolean
 	anim_time_update?: string
@@ -34,9 +34,9 @@ declare class _Animation extends AnimationItem {
 	constructor(data?: AnimationOptions)
 	extend(data?: AnimationOptions): this
 	getUndoCopy(options?: {}, save?: any): AnimationUndoCopy
-    /**
-     * Compiles the JSON tree of the animation for the Minecraft Bedrock Edition animation format.
-     */
+	/**
+	 * Compiles the JSON tree of the animation for the Minecraft Bedrock Edition animation format.
+	 */
 	compileBedrockAnimation(): any
 	save(): this | undefined
 	select(): this | undefined
@@ -45,25 +45,25 @@ declare class _Animation extends AnimationItem {
 	rename(): this
 	togglePlayingState(state: any): any
 	showContextMenu(event: any): this
-    /**
-     * Returns (if necessary creates) the animator of a specific bone of the animation
-     */
+	/**
+	 * Returns (if necessary creates) the animator of a specific bone of the animation
+	 */
 	getBoneAnimator(group: any): BoneAnimator
-    /**
-     * Adds the animation to the current project and to the interface
-     * @param undo If true, the addition of the animation will be registered as an edit
-     */
+	/**
+	 * Adds the animation to the current project and to the interface
+	 * @param undo If true, the addition of the animation will be registered as an edit
+	 */
 	add(undo?: boolean): this
 	remove(undo: boolean, remove_from_file?: boolean): this
 	getMaxLength(): number
 	setLoop(value: any, undo: any): void
-    /**
-     * Calculate the snapping value that the animation should use, based on the time codes of the keyframes that it holds. Directly updates the value, but also returns it as a number (snaps per second)
-     */
+	/**
+	 * Calculate the snapping value that the animation should use, based on the time codes of the keyframes that it holds. Directly updates the value, but also returns it as a number (snaps per second)
+	 */
 	calculateSnappingFromKeyframes(): number
-    /**
-     * Opens the properties dialog
-     */
+	/**
+	 * Opens the properties dialog
+	 */
 	propertiesDialog(): void
 
 	name: string
@@ -101,7 +101,7 @@ interface MolangAutoCompletionItem {
 declare namespace Animator {
 	const open: boolean
 	const MolangParser: Molang
-    const possible_channels: unknown[];
+	const possible_channels: unknown[]
 	const motion_trail: THREE.Object3D
 	const motion_trail_lock: boolean
 	const particle_effects: any
@@ -143,7 +143,7 @@ interface Channel {
 }
 declare class GeneralAnimator {
 	constructor(uuid: string | null, animation: _Animation, name: string)
-    uuid: string
+	uuid: string
 	keyframes: _Keyframe[]
 	animation: _Animation
 	expanded: boolean
