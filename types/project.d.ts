@@ -110,7 +110,7 @@ declare class ModelProject {
 /**
  * Global variable and shortcut to get the currently opened project. If no project is open, or the New Tab is open, this value is falsy.
  */
-declare let Project: ModelProject | 0
+declare let Project: ModelProject | null | undefined
 
 declare function setupProject(format: ModelFormat | string, uuid?: string): boolean
 declare function newProject(format: ModelFormat | string): boolean
