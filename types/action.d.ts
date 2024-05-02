@@ -41,7 +41,17 @@ declare class KeybindItem extends Deletable {
 declare class MenuSeparator {
 	constructor()
 }
-type ActionEventName = 'delete' | 'use' | 'used' | 'trigger' | 'get_node' | 'select' | 'change' | 'changed' | 'update' | 'open'
+type ActionEventName =
+	| 'delete'
+	| 'use'
+	| 'used'
+	| 'trigger'
+	| 'get_node'
+	| 'select'
+	| 'change'
+	| 'changed'
+	| 'update'
+	| 'open'
 interface BarItemOptions extends KeybindItemOptions {
 	name?: string
 	description?: string
@@ -54,25 +64,26 @@ interface BarItemOptions extends KeybindItemOptions {
  * Anything that can go into a toolbar, including actions, tools, toggles, widgets etc.
  */
 declare class BarItem extends KeybindItem {
-    constructor(id: string, options: BarItemOptions);
-    conditionMet(): boolean;
-    /**
-     * Adds a label to the HTML element of the bar item
-     * @param in_bar Set to true to generate an in-bar label, as opposed to a regular on-hover label
-     * @param action Provide the action to generate the label. This defaults to self and is only needed in special cases
-     */
-    addLabel(in_bar?: boolean, action?: any): void;
-    /**
-     * Gets a copy of the elements HTML node that is not yet in use.
-     */
-    getNode(): HTMLElement;
-    /**
-     * Appends the bar item to a HTML element
-     */
-    toElement(destination: HTMLElement): this;
-    pushToolbar(bar: any): void;
+	constructor(id: string, options: BarItemOptions)
+	id: string
+	conditionMet(): boolean
+	/**
+	 * Adds a label to the HTML element of the bar item
+	 * @param in_bar Set to true to generate an in-bar label, as opposed to a regular on-hover label
+	 * @param action Provide the action to generate the label. This defaults to self and is only needed in special cases
+	 */
+	addLabel(in_bar?: boolean, action?: any): void
+	/**
+	 * Gets a copy of the elements HTML node that is not yet in use.
+	 */
+	getNode(): HTMLElement
+	/**
+	 * Appends the bar item to a HTML element
+	 */
+	toElement(destination: HTMLElement): this
+	pushToolbar(bar: any): void
 
-    /**
+	/**
 	 * Adds an event listener to the item
 	 * @param event_name The event type to listen for
 	 * @param callback
@@ -134,6 +145,13 @@ interface ActionOptions extends BarItemOptions {
  */
 declare class Action extends BarItem {
 	constructor(id: string, options: ActionOptions)
+	nodes: HTMLElement[]
+	/**
+	 * Provide a menu that belongs to the action, and gets displayed as a small arrow next to it in toolbars.
+	 */
+	side_menu?: Menu
+	click: ActionOptions['click']
+
 	condition?(): boolean
 	/**
 	 * Trigger to run or select the action. This is the equivalent of clicking or using a keybind to trigger it. Also checks if the condition is met.
@@ -143,12 +161,6 @@ declare class Action extends BarItem {
 	/** Change the icon of the action */
 	setIcon(icon: IconString): void
 	toggleLinkedSetting(change: any): void
-	nodes: HTMLElement[]
-	/**
-	 * Provide a menu that belongs to the action, and gets displayed as a small arrow next to it in toolbars.
-	 */
-	side_menu?: Menu
-	click: ActionOptions['click']
 }
 interface ToggleOptions extends ActionOptions {
 	/**
@@ -371,43 +383,43 @@ declare class ColorPicker extends Widget {
 	get(): any
 }
 interface ToolbarOptions {
-    id: string
-    name?: string
-    /**
-     * If true, the toolbar will display a label abovee
-     */
-    label?: boolean
-    condition?: ConditionResolvable
-    /**
-     * If true, the toolbar will only take as much width as needed
-     */
-    narrow?: boolean
-    vertical?: boolean
-    /**
-     * Default content of the toolbar. Separators are available, where _ = separator, + = spaces, # = line break
-     */
-    children: ('_' | '+' | '#' | string | BarItem)[]
+	id: string
+	name?: string
+	/**
+	 * If true, the toolbar will display a label abovee
+	 */
+	label?: boolean
+	condition?: ConditionResolvable
+	/**
+	 * If true, the toolbar will only take as much width as needed
+	 */
+	narrow?: boolean
+	vertical?: boolean
+	/**
+	 * Default content of the toolbar. Separators are available, where _ = separator, + = spaces, # = line break
+	 */
+	children: ('_' | '+' | '#' | string | BarItem)[]
 }
 interface ToolbarOptions {
-    id: string
-    name?: string
-    /**
-     * If true, the toolbar will display a label abovee
-     */
-    label?: boolean
-    condition?: ConditionResolvable
-    /**
-     * If true, the toolbar will only take as much width as needed
-     */
-    narrow?: boolean
-    vertical?: boolean
-    /**
-     * Default content of the toolbar. Separators are available, where _ = separator, + = spaces, # = line break
-     */
-    children: ('_' | '+' | '#' | string | BarItem)[]
+	id: string
+	name?: string
+	/**
+	 * If true, the toolbar will display a label abovee
+	 */
+	label?: boolean
+	condition?: ConditionResolvable
+	/**
+	 * If true, the toolbar will only take as much width as needed
+	 */
+	narrow?: boolean
+	vertical?: boolean
+	/**
+	 * Default content of the toolbar. Separators are available, where _ = separator, + = spaces, # = line break
+	 */
+	children: ('_' | '+' | '#' | string | BarItem)[]
 }
 declare class Toolbar {
-    constructor(id: string, data: ToolbarOptions);
+	constructor(id: string, data: ToolbarOptions)
 	constructor(data: ToolbarOptions)
 	build(data: any, force: any): this
 	contextmenu(event: Event): void
