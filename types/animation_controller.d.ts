@@ -86,6 +86,9 @@ interface AnimationControllerOptions {
 	initial_state?: string
 }
 
+/**
+ * Animation Controllers are state machines used for Minecraft: Bedrock Edition models to control and blend between animations.
+ */
 declare class AnimationController extends AnimationItem {
 	constructor(data?: AnimationControllerOptions)
 	name: string
@@ -105,6 +108,10 @@ declare class AnimationController extends AnimationItem {
 	select(): this | undefined
 	createUniqueName(references: AnimationController[]): string | boolean
 	rename(): this
+    /**
+     * Adds the animation controller to the current project and to the interface
+     * @param undo If true, the addition of the animation controller will be registered as an edit
+     */
 	add(undo?: boolean): this
 	remove(undo?: boolean, remove_from_file?: boolean): this
 	propertiesDialog(): void

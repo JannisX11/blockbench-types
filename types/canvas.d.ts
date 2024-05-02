@@ -43,6 +43,9 @@ interface UpdateViewOptions {
 	selection?: boolean
 }
 
+/**
+ * A global namespace handling miscellaneous functionality related to the 3D preview
+ */
 declare namespace Canvas {
 	const materials: {
 		[uuid: UUID]: THREE.Material
@@ -235,13 +238,23 @@ interface NodePreviewControllerOptions {
 	updateHighlight?(element: OutlinerNode): void
 }
 declare class NodePreviewController {
-	constructor(type: any, options: NodePreviewControllerOptions)
+	constructor(type: typeof OutlinerNode, options: NodePreviewControllerOptions)
 	type: typeof OutlinerNode
 	events: {
 		[event_name: string]: ((data: any) => void)[]
 	}
-	dispatchEvent(event_name: string, data: any): void
+	dispatchEvent(event_name: string, data: Record<string, any>): void
+	/**
+	 * Adds an event listener
+	 */
 	on(event_name: string, cb: (data: any) => void): void
+	/**
+	 * Adds a single-use event listener
+	 */
+	once(event_name: string, cb: (data: any) => void): void
+	/**
+	 * Removes an event listener
+	 */
 	removeListener(event_name: string, cb: (data: any) => void): void
 
 	setup(element: OutlinerNode): void

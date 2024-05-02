@@ -2,6 +2,9 @@
 interface ModelProjectOptions {
 	format: ModelFormat
 }
+/**
+ * A project instance. The tab bar can be used to switch between projects.
+ */
 declare class ModelProject {
 	constructor(options: ModelProjectOptions)
 
@@ -16,6 +19,7 @@ declare class ModelProject {
 	uuid: UUID
 	selected: boolean
 	model_identifier: string
+	parent: string
 	/**
 	 * When set to true, the project tab can no longer be selected or unselected
 	 */
@@ -80,6 +84,8 @@ declare class ModelProject {
 		[key: string]: any
 	}
 	unhandled_root_fields: any
+	ambientocclusion: boolean
+	front_gui_light: boolean
 
 	get model_3d(): THREE.Object3D
 	get materials(): {
@@ -101,13 +107,19 @@ declare class ModelProject {
 	static all: ModelProject[]
 }
 
-declare let Project: ModelProject | null
+/**
+ * Global variable and shortcut to get the currently opened project. If no project is open, or the New Tab is open, this value is falsy.
+ */
+declare let Project: ModelProject | 0
 
 declare function setupProject(format: ModelFormat | string, uuid?: string): boolean
 declare function newProject(format: ModelFormat | string): boolean
 declare function setProjectResolution(width: number, height: number, modify_uv?: boolean): void
 declare function updateProjectResolution(): void
 
+/**
+ * An edit session instance. Edit sessions can be attached to a project to collaborate on it with multiple users via P2P connections.
+ */
 declare class EditSession {
 	constructor()
 

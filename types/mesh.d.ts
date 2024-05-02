@@ -5,7 +5,23 @@ type OccupationMatrix = {
 	}
 }
 type MeshEdge = [string, string]
-interface MeshFaceOptions extends FaceOptions {}
+
+type MeshSeamValue = 'auto' | 'divide' | 'join'
+interface MeshOptions {
+	name?: string
+	color?: number
+	visibility?: boolean
+	rotation?: ArrayVector3
+	origin?: ArrayVector3
+	vertices?: {
+		[vkey: string]: ArrayVector3
+	}
+}
+
+interface MeshFaceOptions extends FaceOptions {
+	vertices: string[]
+	uv: { [vkey: string]: ArrayVector2 }
+}
 declare class MeshFace extends Face {
 	constructor(mesh: Mesh, data: MeshFaceOptions)
 	/**
@@ -73,7 +89,6 @@ declare class MeshFace extends Face {
 	getCenter(): ArrayVector3
 }
 
-type MeshSeamValue = 'auto' | 'divide' | 'join'
 interface MeshOptions {
 	name?: string
 	color?: number
@@ -144,6 +159,10 @@ declare class Mesh extends OutlinerElement {
 
 	static all: Mesh[]
 	static selected: Mesh[]
+	/**Check if any elements of the type are in the project */
+	static hasAny: () => boolean
+	/**Check if any elements of the type are currently selected */
+	static hasSelected: () => boolean
 }
 
 interface MeshFaceOptions extends FaceOptions {}

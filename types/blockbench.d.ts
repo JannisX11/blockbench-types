@@ -1,10 +1,11 @@
 /// <reference types="vue" />
-/// <reference types="three" />
+/// <reference types="@types/three" />
 /// <reference types="@types/tinycolor2" />
 /// <reference types="@types/prismjs" />
 /// <reference types="@types/jquery" />
 /// <reference types="wintersky" />
 
+/// <reference types="./texture_layers" />
 /// <reference types="./action" />
 /// <reference types="./animation" />
 /// <reference types="./animation_controller" />
@@ -43,6 +44,13 @@
 /// <reference types="./util" />
 /// <reference types="./uveditor" />
 /// <reference types="./validator" />
+/// <reference types="./shared_actions" />
+/// <reference types="./display_mode" />
+/// <reference types="./misc" />
+/// <reference types="./util" />
+/// <reference types="./math_util" />
+/// <reference types="./canvas_frame" />
+/// <reference types="./io" />
 /// <reference types="./vue" />
 
 /**
@@ -209,6 +217,12 @@ declare namespace Blockbench {
 	export function showStatusMessage(message: string, time?: number): void
 
 	export function setStatusBarText(text?: string): void
+
+	/**
+	 * Display a tooltip displaying a custom text that appears next to and follows the mouse cursor
+	 * @param text The text to display. Line breaks are supported. Leave empty to hide the tooltip.
+	 */
+	export function setCursorTooltip(text?: string): void
 	/**
 	 * Set the value of a progress bar
 	 *
@@ -226,7 +240,11 @@ declare namespace Blockbench {
 	 */
 	export function showMessageBox(
 		options: MessageBoxOptions,
-		callback?: (buttonID: number | string) => void
+		callback?: (
+			button: number | string,
+			checkbox_results: { [key: string]: boolean } | undefined,
+			event: Event
+		) => void
 	): void
 
 	export function textPrompt(
@@ -234,6 +252,10 @@ declare namespace Blockbench {
 		value: string,
 		callback: (value: string) => void
 	): void
+	/**
+	 * todo
+	 */
+	export function showToastMessage(): Deletable
 	/**
 	 * Opens the specified link in the browser or in a new tab
 	 */
@@ -324,6 +346,25 @@ declare namespace Blockbench {
 	 * Pick a directory. Desktop app only.
 	 */
 	export function pickDirectory(options: PickDirOptions): any
+	interface FindFileFromContentOptions {
+		read_file?: boolean
+		json?: boolean
+		recursive?: boolean
+		filter_regex?: RegExp
+		priority_regex?: RegExp
+	}
+	type CheckFileCallback = (path: string, content: string | object) => any
+	/**
+	 * Find a file in a directory, based on content. Optimized by prioritizing files with certain names.
+	 * @param base_directories Base directories to search in
+	 * @param options Options
+	 * @param check_file Function that runs on every file to check if the file is a match. If the function returns anything truthy, that result is returned by the main function.
+	 */
+	export function findFileFromContent(
+		base_directories: string[],
+		options: FindFileFromContentOptions,
+		check_file: CheckFileCallback
+	): false | any
 
 	/**
 	 * Adds a drag handler that handles dragging and dropping files into Blockbench

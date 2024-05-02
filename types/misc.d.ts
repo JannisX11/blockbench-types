@@ -30,12 +30,16 @@ type EventName =
 	| 'reset_project'
 	| 'close_project'
 	| 'saved_state_changed'
+	| 'save_model_action'
 	| 'add_cube'
 	| 'add_mesh'
 	| 'add_group'
 	| 'add_texture_mesh'
 	| 'group_elements'
 	| 'update_selection'
+	| 'compile_bedrock_animations'
+	| 'load_animation'
+	| 'load_animation_controller'
 	| 'update_keyframe_selection'
 	| 'select_all'
 	| 'added_to_selection'
@@ -97,7 +101,19 @@ interface MessageBoxOptions {
 	 * Display a list of actions to do in the dialog. When clicked, the message box closes with the string ID of the command as first argument.
 	 */
 	commands?: {
-		[id: string]: string | { text: string }
+		[id: string]: string | { text: string; icon?: IconString; condition?: ConditionResolvable }
+	}
+	/**
+	 * Adds checkboxes to the bottom of the message box
+	 */
+	checkboxes: {
+		[id: string]:
+			| string
+			| {
+					value?: boolean
+					condition: ConditionResolvable
+					text: string
+			  }
 	}
 }
 
@@ -110,6 +126,10 @@ interface PropertyOptions {
 	 * Options used for select types
 	 */
 	options?: any
+	/**
+	 * Enum possible values
+	 */
+	values: string[]
 	merge?(instance: any, data: any): void
 	reset?(instance: any): void
 	merge_validation?(value: any): boolean
@@ -139,13 +159,16 @@ declare class Property<T extends keyof IPropertyType> extends Deletable {
 	export?: boolean
 
 	isString: boolean
+	isEnum: boolean
 	isMolang: boolean
 	isNumber: boolean
 	isBoolean: boolean
 	isArray: boolean
 	isVector: boolean
 	isVector2: boolean
+	isInstance: boolean
 
+	enum_values?: string[]
 	merge_validation: undefined | ((value: IPropertyType[T]) => boolean)
 	condition: ConditionResolvable
 	exposed: boolean
@@ -187,8 +210,6 @@ declare namespace Language {
 interface Object {
 	boneConfig: Record<string, Property<any> | undefined>
 }
-
-declare const DisplayMode: any
 
 declare var LZUTF8: any
 

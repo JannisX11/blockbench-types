@@ -55,11 +55,17 @@ declare global {
 		 * Rounds the input number to N digits
 		 */
 		roundTo(number: number, digits: number): number
+		/**
+		 * Test if the number is between two other numbers
+		 */
 		isBetween(number: number, limit1: number, limit2: number): boolean
 		/**
 		 * Checks if the absolute difference between a and b is smaller than epsilon
 		 */
 		epsilon(a: number, b: number, epsilon: number): boolean
+		/**
+		 * Take a rotation value in degrees, and trim it to a value between -180 and 180, while keeping the same angle
+		 */
 		trimDeg(degrees: number): number
 		isPowerOfTwo(number: number): boolean
 		/***
@@ -71,9 +77,30 @@ declare global {
 		 */
 		randomab(a: number, b: number): number
 		areMultiples(number1: number, number2: number): boolean
+		/**
+		 * Return the next highest power of n
+		 * @param num Power
+		 * @param min Value that the result should be equal to or higher than
+		 */
 		getNextPower(num: number, min: number): number
+		/**
+		 * Snap the value to the closest number in a list of 1 or more snap points
+		 */
 		snapToValues(number: number, snap_points: number[], epsilon: number): number
-		clamp(number: number, min: number, max: number): number
+		/**
+		 * Get the lerp alpha value of m, between points a and b
+		 */
+		getLerp: (a: number, b: number, m: number) => number
+		/**
+		 * Lerp between a and b using the 0-1 alpha value
+		 */
+		lerp: (a: number, b: number, alpha: number) => number
+		/**
+		 * Return a random integer
+		 */
+		randomInteger: (a: number, b: number) => number
+		hermiteBlend: (input: number) => number
+		clamp: (number: number, min: number, max: number) => number
 	}
 	interface Array<T> {
 		remove(item: any): boolean

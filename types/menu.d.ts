@@ -23,6 +23,9 @@ interface MenuOptions {
 	keep_open?: boolean
 	searchable?: boolean
 }
+/**
+ * Use the Menu class to create a context menu. Menus can contain custom entries and hierarchy, or existing actions and tools.
+ */
 declare class Menu {
 	/**
 	 * Creates a new context menu
@@ -92,12 +95,12 @@ declare namespace MenuBar {
 	/**
 	 * Adds an action to the menu structure
 	 * @param action Action to add
-	 * @param path Path pointing to the location. Use the ID of each level of the menu, or index within a level, separated by a point. For example, `file.export.0` places the action at the top position of the Export submenu in the File menu.
+	 * @param path Path pointing to the location. Use the ID of each level of the menu, or index or group within a level, separated by a point. For example, `file.export.0` places the action at the top position of the Export submenu in the File menu.
 	 */
 	function addAction(action: Action, path?: string): void
 	/**
 	 *
-	 * @param path Path pointing to the location. Use the ID of each level of the menu, or index within a level, or item ID, separated by a point. For example, `export.export_special_format` removes the action "Export Special Format" from the Export submenu.
+	 * @param path Path pointing to the location. Use the ID of each level of the menu, or index or group within a level, or item ID, separated by a point. For example, `export.export_special_format` removes the action "Export Special Format" from the Export submenu.
 	 */
 	function removeAction(path: string): void
 	/**

@@ -41,6 +41,7 @@ declare class KeybindItem extends Deletable {
 declare class MenuSeparator {
 	constructor()
 }
+type ActionEventName = 'delete' | 'use' | 'used' | 'trigger' | 'get_node' | 'select' | 'change' | 'changed' | 'update' | 'open'
 interface BarItemOptions extends KeybindItemOptions {
 	name?: string
 	description?: string
@@ -53,6 +54,43 @@ interface BarItemOptions extends KeybindItemOptions {
  * Anything that can go into a toolbar, including actions, tools, toggles, widgets etc.
  */
 declare class BarItem extends KeybindItem {
+    constructor(id: string, options: BarItemOptions);
+    conditionMet(): boolean;
+    /**
+     * Adds a label to the HTML element of the bar item
+     * @param in_bar Set to true to generate an in-bar label, as opposed to a regular on-hover label
+     * @param action Provide the action to generate the label. This defaults to self and is only needed in special cases
+     */
+    addLabel(in_bar?: boolean, action?: any): void;
+    /**
+     * Gets a copy of the elements HTML node that is not yet in use.
+     */
+    getNode(): HTMLElement;
+    /**
+     * Appends the bar item to a HTML element
+     */
+    toElement(destination: HTMLElement): this;
+    pushToolbar(bar: any): void;
+
+    /**
+	 * Adds an event listener to the item
+	 * @param event_name The event type to listen for
+	 * @param callback
+	 */
+	on(event_name: ActionEventName, callback: (data: object) => void): void
+	/**
+	 * Adds a single-use event listener to the item
+	 * @param event_name The event type to listen for
+	 * @param callback
+	 */
+	once(event_name: ActionEventName, callback: (data: object) => void): void
+	/**
+	 * Removes an event listener from the item
+	 * @param event_name
+	 * @param callback
+	 */
+	removeListener(event_name: ActionEventName, callback: (data: object) => void): void
+	dispatchEvent(data: object): void
 	constructor(id: string, options: BarItemOptions)
 	conditionMet(): boolean
 	/**
@@ -275,7 +313,7 @@ interface ToolOptions extends ActionOptions {
 	brush?: BrushOptions
 }
 /**
- * A tool, such as mvoe tool, vertex snap tool, or paint brush
+ * A tool, such as move tool, vertex snap tool, or paint brush
  */
 declare class Tool extends Action {
 	constructor(id: string, options: ToolOptions)
@@ -332,8 +370,45 @@ declare class ColorPicker extends Widget {
 	set(color: any): this
 	get(): any
 }
+interface ToolbarOptions {
+    id: string
+    name?: string
+    /**
+     * If true, the toolbar will display a label abovee
+     */
+    label?: boolean
+    condition?: ConditionResolvable
+    /**
+     * If true, the toolbar will only take as much width as needed
+     */
+    narrow?: boolean
+    vertical?: boolean
+    /**
+     * Default content of the toolbar. Separators are available, where _ = separator, + = spaces, # = line break
+     */
+    children: ('_' | '+' | '#' | string | BarItem)[]
+}
+interface ToolbarOptions {
+    id: string
+    name?: string
+    /**
+     * If true, the toolbar will display a label abovee
+     */
+    label?: boolean
+    condition?: ConditionResolvable
+    /**
+     * If true, the toolbar will only take as much width as needed
+     */
+    narrow?: boolean
+    vertical?: boolean
+    /**
+     * Default content of the toolbar. Separators are available, where _ = separator, + = spaces, # = line break
+     */
+    children: ('_' | '+' | '#' | string | BarItem)[]
+}
 declare class Toolbar {
-	constructor(data: any)
+    constructor(id: string, data: ToolbarOptions);
+	constructor(data: ToolbarOptions)
 	build(data: any, force: any): this
 	contextmenu(event: Event): void
 	editMenu(): this

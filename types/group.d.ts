@@ -24,6 +24,8 @@ declare class Group extends OutlinerNode {
 	static selected: Group
 	static all: Group[]
 	static animator: BoneAnimator
+	/**Check if any groups are in the project */
+	static hasAny: () => boolean
 
 	name: string
 	children: OutlinerNode[]

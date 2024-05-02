@@ -36,6 +36,10 @@ interface PluginOptions {
 	 */
 	await_loading?: boolean
 	/**
+	 * Use the new repository format where plugin, iron, and about are stored in a separate folder
+	 */
+	new_repository_format?: boolean
+	/**
 	 * Runs when the plugin loads
 	 */
 	onload?(): void

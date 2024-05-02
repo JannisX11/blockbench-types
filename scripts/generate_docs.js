@@ -16,6 +16,7 @@ async function main() {
 		entryPoints: [
 			'./types/blockbench.d.ts',
 			'./types/textures.d.ts',
+			"./types/texture_layers.d.ts",
 			'./types/action.d.ts',
 			'./types/animation.d.ts',
 			'./types/animation_controller.d.ts',
@@ -43,6 +44,7 @@ async function main() {
 			'./types/painter.d.ts',
 			'./types/screencam.d.ts',
 			'./types/validator.d.ts',
+			"./types/shared_actions.d.ts",
 			'./types/display_mode.d.ts',
 			'./types/misc.d.ts',
 			'./types/util.d.ts',
@@ -69,17 +71,17 @@ async function main() {
 
 		'Vue.Component': '[Vue.Component](https://v2.vuejs.org/v2/guide/components.html)',
 
-		'THREE.Vector3': '[THREE.Vector3](https://threejs.org/docs/index.html#api/en/math/Vector3)',
-		'THREE.Euler': '[THREE.Euler](https://threejs.org/docs/index.html#api/en/math/Euler)',
-		'THREE.Quaternion':
+		'Vector3': '[THREE.Vector3](https://threejs.org/docs/index.html#api/en/math/Vector3)',
+		'Euler': '[THREE.Euler](https://threejs.org/docs/index.html#api/en/math/Euler)',
+		'Quaternion':
 			'[THREE.Quaternion](https://threejs.org/docs/index.html#api/en/math/Quaternion)',
-		'THREE.Object3D':
+		'Object3D':
 			'[THREE.Object3D](https://threejs.org/docs/index.html#api/en/core/Object3D)',
-		'THREE.PerspectiveCamera':
+		'PerspectiveCamera':
 			'[THREE.PerspectiveCamera](https://threejs.org/docs/index.html#api/en/cameras/PerspectiveCamera)',
-		'THREE.OrthographicCamera':
+		'OrthographicCamera':
 			'[THREE.OrthographicCamera](https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera)',
-		'THREE.WebGLRenderer':
+		'WebGLRenderer':
 			'[THREE.WebGLRenderer](https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer)',
 
 		HTMLElement: '[HTMLElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement)',

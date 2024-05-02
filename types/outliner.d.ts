@@ -59,6 +59,10 @@ declare class OutlinerNode {
 	showContexnu(event: Event | HTMLElement): this
 	getSaveCopy?(project?: boolean): OutlinerNode
 	sanitizeName(): string
+
+	static uuids: {
+		[uuid: UUID]: OutlinerNode
+	}
 }
 
 /**
@@ -92,6 +96,10 @@ declare class Locator extends OutlinerElement {
 
 	static all: Locator[]
 	static selected: Locator[]
+	/**Check if any elements of the type are in the project */
+	static hasAny: () => boolean
+	/**Check if any elements of the type are currently selected */
+	static hasSelected: () => boolean
 }
 
 interface NullObjectOptions {
@@ -112,6 +120,10 @@ declare class NullObject extends OutlinerElement {
 
 	static all: NullObject[]
 	static selected: NullObject[]
+	/**Check if any elements of the type are in the project */
+	static hasAny: () => boolean
+	/**Check if any elements of the type are currently selected */
+	static hasSelected: () => boolean
 }
 
 interface TextureMeshOptions {

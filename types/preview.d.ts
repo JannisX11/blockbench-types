@@ -24,6 +24,9 @@ type RaycastResult = {
 	keyframe: _Keyframe
 }
 
+/**
+ * Previews are 3D viewports, that can either be used as a viewport for the user, or as an offscreen view to record media.
+ */
 declare class Preview extends Deletable {
 	constructor(options: PreviewOptions)
 

@@ -1,5 +1,7 @@
 /// <reference path="./blockbench.d.ts"/>
-
+/**
+ * A global namespace containing various functionality for Blockbench's 2D and 3D paint tools and texture editor
+ */
 declare namespace Painter {
 	const currentPixel: ArrayVector2
 	const brushChanges: boolean

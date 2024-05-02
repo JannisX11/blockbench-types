@@ -1,14 +1,31 @@
 /// <reference path="./blockbench.d.ts"/>
 
+interface KeyframeDataPointData {
+	[key: string]: any
+}
 declare class KeyframeDataPoint extends Object {
 	static properties: Record<string, Property<any>>
 	constructor(keyframe: _Keyframe)
-	extend(data: any): void
-	getUndoCopy(): {}
+	extend(data: KeyframeDataPointData): void
+	getUndoCopy(): {
+		[key: string]: any
+	}
 	[key: string]: any
 }
 
-interface KeyframeOptions {}
+interface KeyframeOptions {
+	channel?: string
+	data_points: {}[]
+	time: number
+	color?: number
+	uniform?: boolean
+	interpolation?: 'linear' | 'catmullrom' | 'bezier' | 'step' | string
+	bezier_linked?: boolean
+	bezier_left_time?: ArrayVector3
+	bezier_left_value?: ArrayVector3
+	bezier_right_time?: ArrayVector3
+	bezier_right_value?: ArrayVector3
+}
 type axisLetter = 'x' | 'y' | 'z'
 
 declare class _Keyframe {
@@ -16,15 +33,16 @@ declare class _Keyframe {
 	static selected: _Keyframe[]
 	data_points: KeyframeDataPoint[]
 	animator: GeneralAnimator
-	bezier_left_time: ArrayVector3
-	bezier_right_time: ArrayVector3
-	bezier_left_value: ArrayVector3
-	bezier_right_value: ArrayVector3
 	channel: string
 	time: number
 	uuid: string
 	interpolation: 'linear' | 'catmullrom' | 'bezier' | 'step'
 	cooldown?: boolean
+	bezier_linked: boolean
+	bezier_left_time: ArrayVector3
+	bezier_right_time: ArrayVector3
+	bezier_left_value: ArrayVector3
+	bezier_right_value: ArrayVector3
 
 	extend(data: KeyframeOptions): this
 	get(axis: axisLetter, data_point?: number): number | string
@@ -57,6 +75,6 @@ declare class _Keyframe {
 	getUndoCopy(save: any): {
 		animator: any
 		channel?: string | null
-		data_points: any[]
+		data_points: KeyframeDataPoint[]
 	}
 }
