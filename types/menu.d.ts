@@ -16,7 +16,7 @@ interface CustomMenuItem {
 	children?: MenuItem[] | (() => MenuItem[])
 	click?(context?: any, event?: Event): void
 }
-type MenuItem = CustomMenuItem | Action | BarSelect | string
+type MenuItem = CustomMenuItem | Action | BarSelect | MenuSeparator | string
 interface MenuOptions {
 	onOpen?(position: MouseEvent | HTMLElement, context?: any): void
 	onClose?(): void
