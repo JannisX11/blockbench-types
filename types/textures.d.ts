@@ -14,6 +14,7 @@ interface TextureData {
 	source?: string
 	width?: number
 	height?: number
+	standalone?: boolean
 }
 interface TextureEditOptions {
 	/**
