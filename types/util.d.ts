@@ -70,6 +70,79 @@ declare function bbuid(l: any): string
 declare function trimFloatNumber(value: number): string
 declare function getAxisLetter(axisNumber: number): string
 declare function getAxisNumber(axisLetter: string): number
+declare function limitNumber(number: any, min: any, max: any): any
+declare function highestInObject(obj: any, inverse: any): string
+declare function getRectangle(
+	a: any,
+	b: any,
+	c: any,
+	d: any
+): {
+	ax: any
+	ay: any
+	bx: any
+	by: any
+	x: number
+	w: number
+	y: number
+	h: number
+}
+declare function doRectanglesOverlap(rect1: any, rect2: any): boolean
+declare function omitKeys(obj: any, keys: any, dual_level?: boolean): {}
+declare function get(options: any, name: any, defaultValue: any): any
+declare function getKeyByValue(any: any, value: any): any
+declare function onVueSetup(func: any): void
+declare function capitalizeFirstLetter(string: any): any
+declare function autoStringify(any: any): string
+declare function pluralS(arr: any): '' | 's'
+declare function pathToName(path: string, extension: boolean): string | ''
+declare function pathToExtension(path: string): string | ''
+declare function intToRGBA(int: any): {
+	r: number
+	g: number
+	b: number
+	a: number
+}
+declare function getAverageRGB(
+	imgEl: any,
+	blockSize: any
+): {
+	r: number
+	g: number
+	b: number
+}
+declare function stringifyLargeInt(int: any): any
+declare function intersectLines(p1: any, p2: any, p3: any, p4: any): boolean
+declare function pointInRectangle(point: any, rect_start: any, rect_end: any): boolean
+declare function lineIntersectsReactangle(p1: any, p2: any, rect_start: any, rect_end: any): boolean
+declare function cameraTargetToRotation(position: any, target: any): any[]
+declare function cameraRotationToTarget(position: any, rotation: any): any
+
+/**
+ *
+ * @param condition Input condition. Can be undefined, a boolean, a function or a condition any
+ * @param context
+ * Reusable data types that can be used by anything, but should not be used to store data between function calls. Can be used to save memory on frequent function calls.
+ */
+declare function Condition(condition: (() => boolean) | undefined | boolean, context: any): boolean
+declare namespace Condition {
+	function mutuallyExclusive(a: any, b: any): boolean
+}
+declare function asyncLoop(o: any): void
+declare namespace Objector {
+	function equalKeys(obj: any, ref: any): boolean
+	function keyLength(obj: any): number
+}
+declare namespace Merge {
+	export function number(obj: any, source: any, index?: any): void
+	export function string(obj: any, source: any, index?: any, validate?: boolean): void
+	export function molang(obj: any, source: any, index?: any): void
+	export function boolean(obj: any, source: any, index?: any, validate?: boolean): void
+	export function _function(obj: any, source: any, index?: any, validate?: boolean): void
+	export { _function as function }
+	export function arrayVector(obj: any, source: any, index?: any, validate?: boolean): void
+	export function arrayVector2(obj: any, source: any, index?: any, validate?: boolean): void
+}
 
 /**
  * Reusable data types that can be used by anything, but should not be used to store data between function calls. Can be used to save memory on frequent function calls.

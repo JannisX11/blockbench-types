@@ -1,5 +1,4 @@
 /// <reference path="./blockbench.d.ts"/>
-import * as FileSystem from 'fs'
 
 declare global {
 	const THREE: typeof import('three')
@@ -7,7 +6,6 @@ declare global {
 	const Prism: typeof import('prismjs')
 	const scene: THREE.Scene
 	const Transformer: any
-
 	const DOMPurify: typeof import('dompurify')
 
 	const main_preview: Preview
@@ -16,7 +14,9 @@ declare global {
 	function confirm(message: string, title: string): boolean
 
 	const PathModule: typeof import('path')
-	const fs: typeof FileSystem
+	const fs: typeof import('fs')
+
+	const tinycolor: typeof import('tinycolor2')
 
 	let selected: OutlinerElement[]
 	const Toolbars: Record<string, Toolbar>

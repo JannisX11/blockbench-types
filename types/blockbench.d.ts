@@ -1,6 +1,5 @@
 /// <reference types="vue" />
 /// <reference types="@types/three" />
-/// <reference types="@types/tinycolor2" />
 /// <reference types="@types/prismjs" />
 /// <reference types="@types/jquery" />
 /// <reference types="wintersky" />

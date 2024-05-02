@@ -106,7 +106,7 @@ interface MessageBoxOptions {
 	/**
 	 * Adds checkboxes to the bottom of the message box
 	 */
-	checkboxes: {
+	checkboxes?: {
 		[id: string]:
 			| string
 			| {
@@ -129,7 +129,7 @@ interface PropertyOptions {
 	/**
 	 * Enum possible values
 	 */
-	values: string[]
+	values?: string[]
 	merge?(instance: any, data: any): void
 	reset?(instance: any): void
 	merge_validation?(value: any): boolean

@@ -143,6 +143,8 @@ declare class Codec extends Deletable {
 		[key: string]: DialogFormElement
 	}
 
+	format: ModelFormat
+
 	/**
 	 * Get a list of all possible extensions of all codecs
 	 */

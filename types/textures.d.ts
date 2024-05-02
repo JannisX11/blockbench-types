@@ -132,8 +132,8 @@ declare class Texture {
 	 * Get the UV height of the texture if the format uses per texture UV size, otherwise get the project texture height
 	 */
 	getUVHeight(): number
-	getUndoCopy(bitmap?: boolean): object
-	getSaveCopy(bitmap?: boolean): object
+	getUndoCopy(bitmap?: boolean): any
+	getSaveCopy(bitmap?: boolean): any
 	/**
 	 * Start listening for changes to the linked file. Desktop only
 	 */
