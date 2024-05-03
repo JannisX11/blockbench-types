@@ -91,6 +91,7 @@ interface FormatOptions {
 	animation_mode?: boolean
 	pose_mode?: boolean
 	animation_controllers?: boolean
+	render_sides?: 'front'
 
 	cube_size_limiter?: CubeSizeLimiter
 

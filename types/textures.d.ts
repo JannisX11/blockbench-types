@@ -50,7 +50,7 @@ declare class Texture {
 	readonly display_height: number
 	readonly ratio: number
 
-	path: string
+	path?: string
 	name: string
 	/** Relative path to the file's directory, used by some formats such as Java Block/Item*/
 	folder: string
@@ -72,7 +72,7 @@ declare class Texture {
 
 	/** HTML-style source of the texture's displayed data. Can be a path (desktop app only), or a base64 data URL */
 	source: string
-	selected: boolean
+	selected?: boolean
 	show_icon: boolean
 	error: number
 	/** Whether the texture is visible. Used for layered textures mode */
