@@ -79,6 +79,7 @@ declare class BBPlugin {
 	about: string
 	icon: string
 	variant: 'both' | 'desktop' | 'web'
+	version: string
 	min_version: string
 	max_version: string
 	tags: string[]
