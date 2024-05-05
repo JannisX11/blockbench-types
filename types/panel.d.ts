@@ -1,3 +1,5 @@
+/// <reference path="./blockbench.d.ts"/>
+/// <reference path="./vue.d.ts"/>
 type PanelSlot = 'left_bar' | 'right_bar' | 'top' | 'bottom' | 'float'
 
 interface PanelOptions {
@@ -10,22 +12,26 @@ interface PanelOptions {
 	condition?: ConditionResolvable
 	display_condition?: ConditionResolvable
 	expand_button: boolean
-	toolbars: {
-		[id: string]: Toolbar
-	} | Toolbar[]
-	default_position: {
-		slot: PanelSlot
-		float_position: [number, number]
-		float_size: [number, number]
-		height: number
-		folded: boolean
-	}
-	component: Vue.Component
+	toolbars?:
+		| {
+				[id: string]: Toolbar
+		  }
+		| Toolbar[]
+	default_position?:
+		| {
+				slot: PanelSlot
+				float_position: [number, number]
+				float_size: [number, number]
+				height: number
+				folded: boolean
+		  }
+		| number
+	component?: Vue.Component
 	default_side: 'right' | 'left'
-	insert_before: string
-	insert_after: string
-	onResize(): void
-	onFold(): void
+	insert_before?: string
+	insert_after?: string
+	onResize?(): void
+	onFold?(): void
 }
 type PanelEvent = 'drag' | 'fold' | 'change_zindex' | 'move_to' | 'moved_to' | 'update'
 
@@ -33,16 +39,17 @@ type PanelEvent = 'drag' | 'fold' | 'change_zindex' | 'move_to' | 'moved_to' | '
  * Panels are interface sections in Blockbench, that are always visible (in a specific format and mode), and can be added to the sidebars, above or below the 3D viewport, or used as free floating above the UI. Examples are the Outliner or the UV editor.
  */
 declare class Panel {
-	constructor (id: string, options: PanelOptions)
-	constructor (options: PanelOptions)
+	constructor(id: string, options: PanelOptions)
+	constructor(options: PanelOptions)
 	isVisible(): boolean
 	isInSidebar(): boolean
 	slot: PanelSlot
 	folded: boolean
 	inside_vue: Vue
 
-
 	fold(state?: boolean): this
+	vue: Vue.Component
+	menu: Menu
 	/**
 	 * If the panel is floating, move it up to the front
 	 */
@@ -53,16 +60,20 @@ declare class Panel {
 	/**
 	 * Add an event listener
 	 */
-	on(event_name: PanelEvent, callback: (data?) => void): void
+	on(event_name: PanelEvent, callback: (data?: any) => void): void
 	/**
 	 * Adds a single-use event listener
 	 */
-	once(event_name: PanelEvent, callback: (data?) => void): void
+	once(event_name: PanelEvent, callback: (data?: any) => void): void
 	/**
 	 * Removes an event listener
 	 */
-	removeListener(event_name: PanelEvent, callback: (data?) => void): void
+	removeListener(event_name: PanelEvent, callback: (data?: any) => void): void
 	delete(): void
+}
+
+declare const Panels: {
+	[id: string]: Panel
 }
 
 declare function updateInterfacePanels(): void

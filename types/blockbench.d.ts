@@ -1,37 +1,47 @@
 /// <reference types="vue" />
 /// <reference types="@types/three" />
-/// <reference types="@types/tinycolor2" />
+/// <reference types="@types/prismjs" />
 /// <reference types="@types/jquery" />
 /// <reference types="wintersky" />
 
-/// <reference types="./textures" />
 /// <reference types="./texture_layers" />
 /// <reference types="./action" />
 /// <reference types="./animation" />
 /// <reference types="./animation_controller" />
+/// <reference types="./canvas_frame" />
 /// <reference types="./canvas" />
 /// <reference types="./codec" />
+/// <reference types="./cube" />
+/// <reference types="./desktop" />
+/// <reference types="./dialog" />
+/// <reference types="./display_mode" />
+/// <reference types="./file_system" />
 /// <reference types="./format" />
 /// <reference types="./global" />
+/// <reference types="./group" />
+/// <reference types="./index" />
 /// <reference types="./interface" />
-/// <reference types="./dialog" />
-/// <reference types="./panel" />
 /// <reference types="./keyframe" />
 /// <reference types="./legacy" />
 /// <reference types="./menu" />
-/// <reference types="./outliner" />
-/// <reference types="./group" />
-/// <reference types="./cube" />
 /// <reference types="./mesh" />
+/// <reference types="./misc" />
+/// <reference types="./mode" />
+/// <reference types="./molang" />
+/// <reference types="./outliner" />
+/// <reference types="./painter" />
+/// <reference types="./panel" />
 /// <reference types="./plugin" />
 /// <reference types="./preview" />
+/// <reference types="./preview_scene" />
 /// <reference types="./project" />
-/// <reference types="./mode" />
+/// <reference types="./screencam" />
 /// <reference types="./settings" />
+/// <reference types="./textures" />
 /// <reference types="./timeline" />
 /// <reference types="./undo" />
-/// <reference types="./painter" />
-/// <reference types="./screencam" />
+/// <reference types="./util" />
+/// <reference types="./uveditor" />
 /// <reference types="./validator" />
 /// <reference types="./shared_actions" />
 /// <reference types="./display_mode" />
@@ -40,19 +50,32 @@
 /// <reference types="./math_util" />
 /// <reference types="./canvas_frame" />
 /// <reference types="./io" />
+/// <reference types="./vue" />
 
-
-	
 /**
  * The resource identifier group, used to allow the file dialog (open and save) to remember where it was last used
  */
-type ResourceID = string | 'texture' | 'minecraft_skin' | 'dev_plugin' | 'animation' | 'animation_particle' | 'animation_audio' | 'theme' | 'model' | 'gltf' | 'obj' | 'preview_background' | 'screenshot' | 'palette'
-
+type ResourceID =
+	| string
+	| 'texture'
+	| 'minecraft_skin'
+	| 'dev_plugin'
+	| 'animation'
+	| 'animation_particle'
+	| 'animation_audio'
+	| 'theme'
+	| 'model'
+	| 'gltf'
+	| 'obj'
+	| 'preview_background'
+	| 'screenshot'
+	| 'palette'
 
 interface FileResult {
 	name: string
 	path: string
 	content: string | ArrayBuffer
+	no_file?: boolean
 }
 type ReadType = 'buffer' | 'binary' | 'text' | 'image'
 interface ReadOptions {
@@ -61,7 +84,7 @@ interface ReadOptions {
 }
 type WriteType = 'buffer' | 'text' | 'zip' | 'image'
 interface WriteOptions {
-	content: string | ArrayBuffer
+	content?: string | ArrayBuffer
 	savetype?: WriteType | ((file: string) => WriteType)
 	custom_writer?(content: string | ArrayBuffer, file_path: string): void
 }
@@ -95,27 +118,27 @@ interface ImportOptions extends ReadOptions {
 	/** Title of the file picker window
 	 */
 	title?: string
-	/** 
+	/**
 	 */
 }
 interface ExportOptions extends WriteOptions {
-	/** 
+	/**
 	 * Name of the file type
 	 */
 	type: string
-	/** 
+	/**
 	 * File extensions
 	 */
 	extensions: string[]
-	/** 
+	/**
 	 * Suggested file name
 	 */
 	name?: string
-	/** 
+	/**
 	 * Location where the file dialog starts
 	 */
 	startpath?: string
-	/** 
+	/**
 	 * The resource identifier group, used to allow the file dialog (open and save) to remember where it was last used
 	 */
 	resource_id?: string
@@ -139,7 +162,6 @@ interface DragHandlerOptions extends ReadOptions {
 	propagate?: boolean
 }
 
-
 declare namespace Blockbench {
 	export const platform: 'web' | 'win32' | 'darwin' | 'linux'
 	/**
@@ -149,7 +171,7 @@ declare namespace Blockbench {
 	/**
 	 * URL queries when opened as web app using a link that contained queries
 	 */
-	export const queries: {[key: string]: string} | undefined
+	export const queries: { [key: string]: string } | undefined
 	/**
 	 * Time when Blockbench was opened
 	 */
@@ -161,32 +183,32 @@ declare namespace Blockbench {
 	export function reload(): void
 	/**
 	 * checks if Blockbench is newer than the specified version
-	 * 
+	 *
 	 * @param version
 	 * semver string
 	 */
 	export function isNewerThan(version: string): boolean
 	/**
 	 * checks if Blockbench is older than the specified version
-	 * 
+	 *
 	 * @param version
 	 * semver string
 	 */
 	export function isOlderThan(version: string): boolean
 	/**
 	 * Resolves an icon string as a HTML element
-	 * @param icon 
+	 * @param icon
 	 * Material Icons, Fontawesome or custom icon string
-	 * @param color 
+	 * @param color
 	 * CSS color
 	 */
 	export function getIconNode(icon: IconString, color?: string): HTMLElement
 	/**
 	 * Shows a passing message in the middle of the screen
-	 * 
-	 * @param message 
+	 *
+	 * @param message
 	 * Message
-	 * @param time 
+	 * @param time
 	 * Time in miliseconds that the message stays up
 	 */
 	export function showQuickMessage(message: string, time?: number): void
@@ -202,10 +224,10 @@ declare namespace Blockbench {
 	export function setCursorTooltip(text?: string): void
 	/**
 	 * Set the value of a progress bar
-	 * 
-	 * @param progress 
+	 *
+	 * @param progress
 	 * Progress of the bar between 0 and 1
-	 * @param time 
+	 * @param time
 	 * Time over which the bar is animated, in miliseconds
 	 * @param bar
 	 * ID of the bar element. If omitted, the main status bar will be selected
@@ -215,9 +237,20 @@ declare namespace Blockbench {
 	/**
 	 * Opens a message box
 	 */
-	export function showMessageBox(options: MessageBoxOptions, callback: (button: number | string, checkbox_results: {[key: string]: boolean} | undefined, event: Event) => void): void
+	export function showMessageBox(
+		options: MessageBoxOptions,
+		callback?: (
+			button: number | string,
+			checkbox_results: { [key: string]: boolean } | undefined,
+			event: Event
+		) => void
+	): void
 
-	export function textPrompt(title: string, value: string, callback: (value: string) => void): void
+	export function textPrompt(
+		title: string,
+		value: string,
+		callback: (value: string) => void
+	): void
 	/**
 	 * todo
 	 */
@@ -225,7 +258,7 @@ declare namespace Blockbench {
 	/**
 	 * Opens the specified link in the browser or in a new tab
 	 */
-	export function openLink(link: URL): void
+	export function openLink(link: string): void
 
 	/**
 	 * Shows a system notification
@@ -244,60 +277,74 @@ declare namespace Blockbench {
 	export function removeFlag(flag: string): void
 	export function hasFlag(flag: string): boolean
 
-	export function dispatchEvent(event_name: EventName, data: object): void
-
-	export function addListener(event_names: EventName, callback: (data: object) => void): void
 	/**
-	 * Adds an event listener
+	 * Dispatches a Blockbench event.
+	 * If you're using TypeScript, You can call this with the type param <EventName> to get the default event names in Blockbench, or leave the param blank for custom events.
+	 * ```ts
+	 * Blockbench.dispatchEvent<EventName>(...)
+	 * ```
 	 */
-	export function on(event_names: EventName, callback: (data: object) => void): void
+	export function dispatchEvent<E extends string>(event_name: E, data?: any): void
+
 	/**
-	 * Adds a single-use event listener
+	 * Adds a listener to a Blockbench event.
+	 * If you're using TypeScript, You can call this with the type param <EventName> to get the default event names in Blockbench, or leave the param blank for custom events.
+	 * ```ts
+	 * Blockbench.addListener<EventName>(...)
+	 * ```
 	 */
-	export function once(event_names: EventName, callback: (data: object) => void): void
+	export function addListener<E extends string>(
+		event_names: E,
+		callback: (data: any) => void
+	): void
 	/**
-	 * Removes an event listener
+	 * Adds a listener to a Blockbench event.
+	 * If you're using TypeScript, You can call this with the type param <EventName> to get the default event names in Blockbench, or leave the param blank for custom events.
+	 * ```ts
+	 * Blockbench.on<EventName>(...)
+	 * ```
 	 */
-	export function removeListener(event_names: EventName, callback: (data: object) => void): void
+	export function on<E extends string>(event_names: E, callback: (data: any) => void): void
 
-
-
+	/**
+	 * Removes a listener from a Blockbench event.
+	 * If you're using TypeScript, You can call this with the type param <EventName> to get the default event names in Blockbench, or leave the param blank for custom events.
+	 * ```ts
+	 * Blockbench.removeListener<EventName>(...)
+	 * ```
+	 */
+	export function removeListener<E extends string>(event_names: E): void
 
 	/**
 	 * Reads the content from the specified files. Desktop app only.
 	 */
-	export function read(files: string[], options?: ReadOptions, callback?: (files: FileResult[]) => void): void
+	export function read(
+		files: string[],
+		options?: ReadOptions,
+		callback?: (files: FileResult[]) => void
+	): void
 	/**
 	 * Reads the content from the specified files. Desktop app only.
 	 */
-	export function readFile(files: string[], options?: ReadOptions, callback?: (files: FileResult[]) => void): void
+	export function readFile(
+		files: string[],
+		options?: ReadOptions,
+		callback?: (files: FileResult[]) => void
+	): void
 
-
-
-	
 	/**
 	 * Writes a file to the file system. Desktop app only.
 	 */
-	export function writeFile(file_path: string, options: WriteOptions, callback?: (file_path: string) => void): void
-
-
+	export function writeFile(
+		file_path: string,
+		options: WriteOptions,
+		callback?: (file_path: string) => void
+	): void
 
 	/**
 	 * Pick a directory. Desktop app only.
 	 */
-	export function pickDirectory(options: PickDirOptions)
-
-
-
-	export function _import(options: ImportOptions, callback?: (files: FileResult[]) => void): any;
-	export { _import as import };
-
-
-
-	export function _export(options: ExportOptions, callback?: (file_path: string) => void): any;
-	export { _export as export };
-
-
+	export function pickDirectory(options: PickDirOptions): any
 	interface FindFileFromContentOptions {
 		read_file?: boolean
 		json?: boolean
@@ -305,23 +352,29 @@ declare namespace Blockbench {
 		filter_regex?: RegExp
 		priority_regex?: RegExp
 	}
-	type CheckFileCallback = (path: string, content: (string|object)) => any
+	type CheckFileCallback = (path: string, content: string | object) => any
 	/**
 	 * Find a file in a directory, based on content. Optimized by prioritizing files with certain names.
 	 * @param base_directories Base directories to search in
 	 * @param options Options
 	 * @param check_file Function that runs on every file to check if the file is a match. If the function returns anything truthy, that result is returned by the main function.
 	 */
-	export function findFileFromContent(base_directories: string[], options: FindFileFromContentOptions, check_file: CheckFileCallback): false | any
-
+	export function findFileFromContent(
+		base_directories: string[],
+		options: FindFileFromContentOptions,
+		check_file: CheckFileCallback
+	): false | any
 
 	/**
 	 * Adds a drag handler that handles dragging and dropping files into Blockbench
 	 */
-	export function addDragHandler(id: string, options: DragHandlerOptions, callback?: () => void): Deletable
-	
-	export function removeDragHandler(id: string): void
+	export function addDragHandler(
+		id: string,
+		options: DragHandlerOptions,
+		callback?: () => void
+	): Deletable
 
+	export function removeDragHandler(id: string): void
 }
 
 type BlockbenchTypeOutliner = typeof Outliner

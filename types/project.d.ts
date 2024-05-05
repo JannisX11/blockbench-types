@@ -1,12 +1,16 @@
+/// <reference path="./blockbench.d.ts"/>
 interface ModelProjectOptions {
 	format: ModelFormat
 }
-
 /**
  * A project instance. The tab bar can be used to switch between projects.
  */
 declare class ModelProject {
 	constructor(options: ModelProjectOptions)
+
+	static properties: {
+		[key: string]: Property<any>
+	}
 
 	box_uv: boolean
 	texture_width: number
@@ -52,10 +56,10 @@ declare class ModelProject {
 			edges: string[]
 			faces: string[]
 		}
-	};
-	selected_faces: []
+	}
+	selected_faces: any[]
 	textures: Texture[]
-	selected_texture: Texture | null;
+	selected_texture: Texture | null
 	outliner: OutlinerNode[]
 	animations: _Animation[]
 	timeline_animators: []
@@ -65,40 +69,53 @@ declare class ModelProject {
 			rotation: [number, number, number]
 			scale: [number, number, number]
 			mirror: [boolean, boolean, boolean]
-			export(): void;
+			export?(...args: any[]): any
 		}
-	};
-	ambientocclusion: boolean;
-	front_gui_light: boolean;
-	overrides: any;
+	}
+	overrides?: any
+	exploded_view: boolean
+	tool: string
+	uv_viewport: {
+		zoom: number
+		offset: [number, number]
+		[key: string]: any
+	}
+	backgrounds: {
+		[key: string]: any
+	}
+	unhandled_root_fields: any
+	ambientocclusion: boolean
+	front_gui_light: boolean
 
-	get model_3d(): THREE.Object3D;
-    get materials(): {
+	get model_3d(): THREE.Object3D
+	get materials(): {
 		[uuid: UUID]: THREE.ShaderMaterial
-	};
-    get nodes_3d(): {
+	}
+	get nodes_3d(): {
 		[uuid: UUID]: THREE.Object3D
-	};
+	}
 
-    getDisplayName(): string;
-    openSettings(): void;
-    whenNextOpen(callback: () => void): void;
-    select(): boolean;
-    unselect(): void;
-    close(force: any): Promise<boolean>;
+	getDisplayName(): string
+	openSettings(): void
+	whenNextOpen(callback: () => void): void
+	select(): boolean
+	unselect(): void
+	close(force: any): Promise<boolean>
 
+	saveEditorState(): void
+	loadEditorState(): void
 	static all: ModelProject[]
 }
 
 /**
  * Global variable and shortcut to get the currently opened project. If no project is open, or the New Tab is open, this value is falsy.
  */
-declare const Project: ModelProject | 0
+declare let Project: ModelProject | null | undefined
 
-declare function setupProject(format: ModelFormat | string): boolean;
-declare function newProject(format: ModelFormat | string): boolean;
-declare function setProjectResolution(width: number, height: number, modify_uv?: boolean): void;
-declare function updateProjectResolution(): void;
+declare function setupProject(format: ModelFormat | string, uuid?: string): boolean
+declare function newProject(format: ModelFormat | string): boolean
+declare function setProjectResolution(width: number, height: number, modify_uv?: boolean): void
+declare function updateProjectResolution(): void
 
 /**
  * An edit session instance. Edit sessions can be attached to a project to collaborate on it with multiple users via P2P connections.
@@ -116,22 +133,22 @@ declare class EditSession {
 
 	updateClientCound(): void
 	start(username?: string): void
-	join(username: string, token: string)
+	join(username: string, token: string): void
 	quit(): void
 	setState(active: boolean): void
-	copyToken(): void;
-    initNewModel(force?: boolean): void;
-    initConnection(conn: any): void;
-    sendAll(type: string, data: any): void;
-    sendEdit(entry: UndoEntry): void;
-    receiveData(tag: object): void;
-    processData(tag: object): void;
-    catchUp(): void;
+	copyToken(): void
+	initNewModel(force?: boolean): void
+	initConnection(conn: any): void
+	sendAll(type: string, data: any): void
+	sendEdit(entry: UndoEntry): void
+	receiveData(tag: any): void
+	processData(tag: any): void
+	catchUp(): void
 	/**
 	 * Send a chat message
 	 * @param text Text to send. If omitted, the current text in the chat panel input is sent
 	 */
-    sendChat(text?: string): void;
-    addChatMessage(message: any): any;
-    processChatMessage(data: any): void;
+	sendChat(text?: string): void
+	addChatMessage(message: any): any
+	processChatMessage(data: any): void
 }

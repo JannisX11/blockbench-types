@@ -1,8 +1,9 @@
+/// <reference path="./blockbench.d.ts"/>
 /**
  * The validator in Blockbench provides feedback about the model and can detect issues in real time, based on a list of checks that can be added. This is a good way to ensure model files are valid, and to teach users about best practices.
  */
 declare namespace Validator {
-    const checks: ValidatorCheck[]
+	const checks: ValidatorCheck[]
 
 	const warnings: WarningOrError[]
 	const errors: WarningOrError[]
@@ -19,7 +20,7 @@ declare namespace Validator {
 	/**
 	 * Cached trigger IDs
 	 */
-    const triggers: EventName[]
+	const triggers: EventName[]
 	/**
 	 * Update the cached triggers list
 	 */

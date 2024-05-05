@@ -1,4 +1,4 @@
-
+/// <reference path="./blockbench.d.ts"/>
 
 declare class Deletable {
 	delete(): void
@@ -10,7 +10,8 @@ type UUID = string
  */
 declare const isApp: boolean
 
-type EventName = 'remove_animation'
+type EventName =
+	| 'remove_animation'
 	| 'display_animation_frame'
 	| 'before_closing'
 	| 'create_session'
@@ -79,43 +80,43 @@ type EventName = 'remove_animation'
 	| 'select_preview_scene'
 	| 'unselect_preview_scene'
 
-type IconString = string;
+type IconString = string
 
 interface MessageBoxOptions {
 	/**
 	 * Index of the confirm button within the buttons array
 	 */
-	confirm: number
+	confirm?: number
 	/**
 	 * Index of the cancel button within the buttons array
 	 */
-	cancel: number
-	buttons: string[]
+	cancel?: number
+	buttons?: string[]
 	translateKey?: string
 	title?: string
 	message?: string
 	icon?: string
-	width: number
+	width?: number
 	/**
 	 * Display a list of actions to do in the dialog. When clicked, the message box closes with the string ID of the command as first argument.
 	 */
 	commands?: {
-		[id: string]: string | {text: string, icon?: IconString, condition?: ConditionResolvable}
+		[id: string]: string | { text: string; icon?: IconString; condition?: ConditionResolvable }
 	}
 	/**
 	 * Adds checkboxes to the bottom of the message box
 	 */
-	checkboxes: {
-		[id: string]: string | {
-			value?: boolean
-			condition: ConditionResolvable
-			text: string
-		}
+	checkboxes?: {
+		[id: string]:
+			| string
+			| {
+					value?: boolean
+					condition: ConditionResolvable
+					text: string
+			  }
 	}
 }
 
-
-type PropertyType = 'string' | 'number' | 'enum' | 'molang' | 'boolean' | 'array' | 'instance' | 'vector' | 'vector2'
 interface PropertyOptions {
 	default?: any
 	condition?: ConditionResolvable
@@ -124,44 +125,58 @@ interface PropertyOptions {
 	/**
 	 * Options used for select types
 	 */
-	options?: object
+	options?: any
 	/**
 	 * Enum possible values
 	 */
-	values: string[]
-	merge?: (instance: any, data: object) => void
-	reset?: (instance: any) => void
-	merge_validation?: (value: any) => boolean
+	values?: string[]
+	merge?(instance: any, data: any): void
+	reset?(instance: any): void
+	merge_validation?(value: any): boolean
 }
+
+interface IPropertyType {
+	string: string
+	molang: string
+	number: number
+	boolean: boolean
+	array: any[]
+	object: any
+	instance: any
+	vector: ArrayVector3
+	vector2: ArrayVector2
+}
+
 /**
  * Creates a new property on the specified target class
  */
-declare class Property extends Deletable {
-    constructor(target_class: any, type: PropertyType, name: string, options?: PropertyOptions);
-    class: any;
-    name: string;
-    type: PropertyType;
-	default: any;
-	
-    isString: boolean;
-    isEnum: boolean;
-    isMolang: boolean;
-    isNumber: boolean;
-    isBoolean: boolean;
-    isArray: boolean;
-    isVector: boolean;
-	isVector2: boolean;
-	isInstance: boolean;
-	
+declare class Property<T extends keyof IPropertyType> extends Deletable {
+	constructor(target_class: any, type: T, name: string, options?: PropertyOptions)
+	class: any
+	name: string
+	type: T
+	default: IPropertyType[T]
+	export?: boolean
+
+	isString: boolean
+	isEnum: boolean
+	isMolang: boolean
+	isNumber: boolean
+	isBoolean: boolean
+	isArray: boolean
+	isVector: boolean
+	isVector2: boolean
+	isInstance: boolean
+
 	enum_values?: string[]
-    merge_validation: undefined | ((value: any) => boolean);
-    condition: ConditionResolvable;
-    exposed: boolean;
-    label: any;
-	merge(instance: any, data: object): void
-	reset(instance: any): void
-    getDefault(instance: any): any;
-    copy(instance: any, target: any): void;
+	merge_validation: undefined | ((value: IPropertyType[T]) => boolean)
+	condition: ConditionResolvable
+	exposed: boolean
+	label: any
+	merge(instance: IPropertyType[T], data: IPropertyType[T]): void
+	reset(instance: IPropertyType[T]): void
+	getDefault(instance: IPropertyType[T]): IPropertyType[T]
+	copy(instance: IPropertyType[T], target: IPropertyType[T]): void
 }
 
 declare function updateSelection(): void
@@ -189,5 +204,24 @@ declare namespace Language {
 	 * @param language Two letter language code, e. G. 'en'
 	 * @param strings Object listing the translation keys and values
 	 */
-	function addTranslations(language: string, strings: {[key: string]: string})
+	function addTranslations(language: string, strings: { [key: string]: string }): void
 }
+
+interface Object {
+	boneConfig: Record<string, Property<any> | undefined>
+}
+
+declare var LZUTF8: any
+
+interface ToastNotificationOptions {
+	text: string
+	icon?: string
+	expire?: number
+	color?: string
+	click?: () => boolean
+}
+declare namespace Blockbench {
+	function showToastNotification(options: ToastNotificationOptions): Deletable
+}
+
+declare function unselectAllElements(): void

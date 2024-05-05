@@ -1,7 +1,23 @@
+/// <reference path="./blockbench.d.ts"/>
+
 interface DialogFormElement {
-	type: 'text' | 'number' | 'range' | 'checkbox' | 'select' | 'inline_select' | 'radio' | 'textarea' | 'vector' | 'color' | 'file' | 'folder' | 'save' | 'info' | 'buttons'
 	label?: string
 	description?: string
+	type:
+		| 'text'
+		| 'number'
+		| 'range'
+		| 'checkbox'
+		| 'select'
+		| 'radio'
+		| 'textarea'
+		| 'vector'
+		| 'color'
+		| 'file'
+		| 'folder'
+		| 'save'
+		| 'info'
+		| 'buttons'
 	nocolon?: boolean
 	full_width?: boolean
 	/** Set the input to read-only */
@@ -30,7 +46,7 @@ interface DialogFormElement {
 	max?: number
 	step?: number
 	height?: number
-	options?: object
+	options?: any
 	buttons?: string[]
 	/**
 	 * Allow users to toggle the entire option on or off
@@ -40,16 +56,16 @@ interface DialogFormElement {
 	 * Set whether the setting is toggled on or off by default. Requires 'toggle_enabled' field to be set to true
 	 */
 	toggle_default?: boolean
-	click?: (button_index: number) => void
+	click?(button_index: number): void
 }
 
-type FormResultValue = string|number|boolean|[]
+type FormResultValue = string | number | boolean | []
 
 interface ActionInterface {
 	name: string
 	description?: string
-	icon: string,
-	click: (event: Event) => void
+	icon: string
+	click(event: Event): void
 	condition: ConditionResolvable
 }
 interface DialogOptions {
@@ -64,9 +80,13 @@ interface DialogOptions {
 	 */
 	cancelIndex?: number
 	/**
+	 * Function to execute when the dialog is opened
+	 */
+	onOpen?(): void
+	/**
 	 *  Function to execute when the user confirms the dialog
 	 */
-	onConfirm?: (formResult: object) => void
+	onConfirm?(formResult: any): void
 	/**
 	 * Function to execute when the user cancels the dialog
 	 */
@@ -74,15 +94,24 @@ interface DialogOptions {
 	/**
 	 * Triggered when the user presses a specific button
 	 */
-	onButton?: (button_index: number, event?: Event) => void
+	onButton?(button_index: number, event?: Event): void
 	/**
 	 * Function to run when anything in the form is changed
 	 */
-	onFormChange?: (form_result: {[key: string]: FormResultValue}) => void
+	onFormChange?(form_result: { [key: string]: FormResultValue }): void
 	/**
-	 * Array of HTML object strings for each line of content in the dialog.
+	 * Array of HTML any strings for each line of content in the dialog.
 	 */
-	lines?: (HTMLElement | {label?: string, widget?: Widget|(() => Widget), nocolon?: boolean} | string)[]
+	lines?: (
+		| HTMLElement
+		| Comment
+		| {
+				label?: string
+				widget?: Widget | (() => Widget)
+				nocolon?: boolean
+		  }
+		| string
+	)[]
 	/**
 	 * Creates a form in the dialog
 	 */
@@ -121,6 +150,28 @@ interface DialogOptions {
 	width?: number
 }
 
+interface DialogSidebarOptions {
+	pages?: {
+		[key: string]: string | { label: string; icon: IconString; color?: string }
+	}
+	page?: string
+	actions?: (Action | ActionInterface | string)[]
+	onPageSwitch?(page: string): void
+}
+declare class DialogSidebar {
+	constructor(options: DialogSidebarOptions)
+
+	pages: {
+		[key: string]: string
+	}
+	page: string
+	actions: (Action | string)[]
+	onPageSwitch(page: string): void
+	build(): void
+	toggle(state?: boolean): void
+	setPage(page: string): void
+}
+
 declare class Dialog {
 	constructor(id: string, options: DialogOptions)
 	constructor(options: DialogOptions)
@@ -130,6 +181,8 @@ declare class Dialog {
 	sidebar: DialogSidebar | null
 	content_vue: Vue | null
 
+	confirmIndex: number
+	cancelIndex: number
 
 	show(): this
 	hide(): this
@@ -152,11 +205,31 @@ declare class Dialog {
 		[key: string]: FormResultValue
 	}
 	/**
+	 * Function to execute when the dialog is opened
+	 */
+	onOpen?(): void
+	/**
+	 *  Function to execute when the user confirms the dialog
+	 */
+	onConfirm?(formResult: any): void
+	/**
+	 * Function to execute when the user cancels the dialog
+	 */
+	onCancel?(): void
+	/**
+	 * Triggered when the user presses a specific button
+	 */
+	onButton?(button_index: number, event?: Event): void
+	/**
+	 * Function to run when anything in the form is changed
+	 */
+	onFormChange?(form_result: { [key: string]: FormResultValue }): void
+	/**
 	 * Set the values of the dialog form inputs
 	 */
-	setFormValues(values: {[key: string]: FormResultValue}): void
+	setFormValues(values: { [key: string]: FormResultValue }): void
 	/**
-	 * Delete the dialog object, causing it to be re-build from scratch on next open
+	 * Delete the dialog any, causing it to be re-build from scratch on next open
 	 */
 	delete(): void
 
@@ -180,7 +253,7 @@ interface ShapelessDialogOptions {
 	/**
 	 *  Function to execute when the user confirms the dialog
 	 */
-	onConfirm?: (formResult: object) => void
+	onConfirm?(formResult: any): void
 	/**
 	 * Function to execute when the user cancels the dialog
 	 */
@@ -188,7 +261,7 @@ interface ShapelessDialogOptions {
 	/**
 	 * Triggered when the user presses a specific button
 	 */
-	onClose?: (button_index: number, event?: Event) => void
+	onClose?(button_index: number, event?: Event): void
 	/**
 	 * Vue component
 	 */
@@ -199,11 +272,10 @@ interface ShapelessDialogOptions {
 	cancel_on_click_outside?: boolean
 }
 declare class ShapelessDialog extends Dialog {
-	constructor (id: string, options: ShapelessDialogOptions)
+	constructor(id: string, options: ShapelessDialogOptions)
 
 	id: string
 	component: Vue.Component
-
 
 	show(): this
 	hide(): this
@@ -228,31 +300,18 @@ declare class ShapelessDialog extends Dialog {
 	/**
 	 * Set the values of the dialog form inputs
 	 */
-	setFormValues(values: {[key: string]: FormResultValue}): void
+	setFormValues(values: { [key: string]: FormResultValue }): void
 	/**
-	 * Delete the dialog object, causing it to be re-build from scratch on next open
+	 * Delete the dialog any, causing it to be re-build from scratch on next open
 	 */
 	delete(): void
 }
 
 interface DialogSidebarOptions {
 	pages?: {
-		[key: string]: string | {label: string, icon: IconString, color?: string}
+		[key: string]: string | { label: string; icon: IconString; color?: string }
 	}
 	page?: string
-	actions?: (Action|ActionInterface|string)[],
-	onPageSwitch?: (page: string) => void
-}
-declare class DialogSidebar {
-	constructor(options: DialogSidebarOptions)
-
-	pages: {
-		[key: string]: string
-	}
-	page: string
-	actions: (Action|string)[]
-	onPageSwitch(page: string): void
-	build(): void
-	toggle(state?: boolean): void
-	setPage(page: string): void
+	actions?: (Action | ActionInterface | string)[]
+	onPageSwitch?(page: string): void
 }

@@ -1,3 +1,5 @@
+/// <reference path="./blockbench.d.ts"/>
+
 interface ModeOptions {
 	name: string
 	default_tool?: string
@@ -16,6 +18,8 @@ interface ModeOptions {
 }
 declare class Mode extends KeybindItem {
 	constructor(id: string, options: ModeOptions)
+	id: string
+	name: string
 
 	/**Selects the mode */
 	select(): void
@@ -24,12 +28,21 @@ declare class Mode extends KeybindItem {
 	/**Activates the mode */
 	trigger(): void
 
+	onSelect?(): void
+
+	onUnselect?(): void
+
 	static selected: Mode
 }
 
 declare namespace Modes {
 	const options: {
 		[id: string]: Mode
+		animate: Mode
+		display: Mode
+		edit: Mode
+		paint: Mode
+		pose: Mode
 	}
-	const selected: Mode;
+	let selected: Mode | false | undefined
 }

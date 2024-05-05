@@ -13,7 +13,7 @@ declare class CanvasFrame {
 
 	createCanvas(width: number, height: number): void
 	loadFromUrl(url: string): Promise<void>
-	loadFromImg(img: HTMLImageElement): void
+	loadFromImage(img: HTMLImageElement): void
 	/**
 	 * Crop the image to only pixels that have an alpha value
 	 */

@@ -1,3 +1,4 @@
+/// <reference path="./blockbench.d.ts"/>
 interface CubeOptions {
 	name: string
 	autouv: 0 | 1 | 2
@@ -15,8 +16,12 @@ interface CubeOptions {
 	 */
 	uv_offset: ArrayVector2
 }
+
 declare class Cube extends OutlinerElement {
-	constructor (options: Partial<CubeOptions>, uuid?: string)
+	constructor(options: Partial<CubeOptions>, uuid?: string)
+	name: string
+	uuid: string
+	color: any
 	/**
 	 * Auto UV setting, saved as an integer, where 0 means disabled, 1 means enabled, and 2 means relative auto UV (cube position affects UV)
 	 */
@@ -44,19 +49,27 @@ declare class Cube extends OutlinerElement {
 	faces: {
 		[fkey: string]: CubeFace
 	}
+	rescale?: boolean
+	rotation_axis: 'x' | 'y' | 'z'
 	/**
 	 * UV position for box UV mode
 	 */
 	uv_offset: ArrayVector2
+	mesh: THREE.Mesh & {
+		outline: THREE.Mesh
+		geometry: THREE.BufferGeometry & {
+			faces: string[]
+		}
+	}
 
 	extend(options: Partial<CubeOptions>): this
 	/**
 	 * Calculates and returns the size of a cube across a certain axis. If the axis argument is omitted, it returns all sizes as an array vector.
 	 */
 	size(axis?: number, floored?: boolean): number | ArrayVector3
-	rotationAxis(): void
-	getUndoCopy(aspects?: object): void
-	getSaveCopy(project?: boolean): void
+	rotationAxis(): string
+	getUndoCopy(aspects?: any): void
+	getSaveCopy(project?: boolean): Cube
 	/**
 	 * Rotate the cube around axis in 90 degree steps
 	 * @param axis Axis index
@@ -76,7 +89,13 @@ declare class Cube extends OutlinerElement {
 	applyTexture(texture: Texture, faces: true | undefined | CubeFaceDirection[]): void
 	mapAutoUV(): void
 	moveVector(offset: ArrayVector3, axis: number, update?: boolean): void
-	resize(value: number, axis: number, negative: boolean, allow_negative?: boolean, bidirectional?: boolean): void
+	resize(
+		value: number,
+		axis: number,
+		negative: boolean,
+		allow_negative?: boolean,
+		bidirectional?: boolean
+	): void
 
 	static all: Cube[]
 	static selected: Cube[]
@@ -84,6 +103,8 @@ declare class Cube extends OutlinerElement {
 	static hasAny: () => boolean
 	/**Check if any elements of the type are currently selected */
 	static hasSelected: () => boolean
+	preview_controller: NodePreviewController
+	static preview_controller: NodePreviewController
 }
 
 interface FaceOptions {
@@ -91,18 +112,18 @@ interface FaceOptions {
 }
 declare class Face {
 	constructor()
-	texture: string | false | null
+	texture: UUID | false | undefined
 
-	getTexture(): Texture | null
+	getTexture(): Texture | undefined
 	/**
 	 * Returns a 2D rectangle around the UV face
 	 */
-	getBoundingRect(): object
+	getBoundingRect(): any
 	reset(): void
 	/**
 	 * Returns a save copy of the face, ready for serialization. Set project to true to save for a bbmodel project file
 	 */
-	getSaveCopy(project?: boolean): object
+	getSaveCopy(project?: boolean): any
 	/**
 	 * Get a copy for undo tracking
 	 */
@@ -129,7 +150,7 @@ declare class CubeFace extends Face {
 	cullface: CubeFaceDirection | ''
 	material_name: string
 	enabled: boolean
-	
-	extend(data: CubeFaceOptions)
+
+	extend(data: CubeFaceOptions): void
 	getVertexIndices(): [number, number, number, number]
 }

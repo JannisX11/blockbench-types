@@ -20,9 +20,10 @@ interface GroupOptions {
 }
 
 declare class Group extends OutlinerNode {
-	constructor (options: Partial<GroupOptions>)
+	constructor(options: Partial<GroupOptions>)
 	static selected: Group
 	static all: Group[]
+	static animator: BoneAnimator
 	/**Check if any groups are in the project */
 	static hasAny: () => boolean
 
@@ -38,11 +39,15 @@ declare class Group extends OutlinerNode {
 	isOpen: boolean
 	ik_enabled: boolean
 	ik_chain_length: number
+	mesh: THREE.Mesh
+
+	static preview_controller: NodePreviewController
 
 	extend(options: Partial<GroupOptions>): this
 	selectChildren(event: Event): this
 	selectLow(highlight: boolean): this
-	unselect(): this
+	select(event?: any, isOutlinerClick?: boolean): this | void
+	unselect(): this | void
 	matchesSelection(): boolean
 	/**
 	 * Opens the group and all of its ancestor groups.
@@ -69,8 +74,8 @@ declare class Group extends OutlinerNode {
 	 * Duplicate the group
 	 */
 	duplicate(): Group
-	getSaveCopy(): object
+	getSaveCopy(): any
 	getChildlessCopy(): Group
-	compile(undo: boolean): object
-	forEachChild(callback: (object: OutlinerNode) => void, type?: any, for_self?: boolean)
+	compile(undo: boolean): any
+	forEachChild(callback: (any: OutlinerNode) => void, type?: any, for_self?: boolean): void
 }

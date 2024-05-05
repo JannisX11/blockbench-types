@@ -1,35 +1,43 @@
 {
-  "name": "blockbench-types",
-  "version": "4.9.0",
-  "description": "Blockbench typescript types",
-  "main": "",
-  "types": "types/blockbench.d.ts",
-  "typeScriptVersion": "3.2",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/JannisX11/blockbench-types.git"
-  },
-  "keywords": [
-    "blockbench"
-  ],
-  "author": "JannisX11",
-  "bugs": {
-    "url": "https://github.com/JannisX11/blockbench-types/issues"
-  },
-  "homepage": "https://github.com/JannisX11/blockbench-types#readme",
-  "scripts": {
-    "generate": "node ./scripts/generate_docs.js"
-  },
-  "dependencies": {
-    "@types/jquery": "^3.5.4",
-    "@types/three": "^0.155.0",
-    "@types/tinycolor2": "^1.4.3",
-    "three": "^0.129.0",
-    "typescript": "^4.9.5",
-    "vue": "^2.6.14",
-    "wintersky": "^1.2.1"
-  },
-  "devDependencies": {
-    "typedoc": "^0.23.24"
-  }
+	"name": "blockbench-types",
+	"version": "4.9.0",
+	"description": "Blockbench typescript types",
+	"main": "",
+	"types": "types/index.d.ts",
+	"typeScriptVersion": "3.2",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/JannisX11/blockbench-types.git"
+	},
+	"keywords": [
+		"blockbench"
+	],
+	"author": "JannisX11",
+	"bugs": {
+		"url": "https://github.com/JannisX11/blockbench-types/issues"
+	},
+	"scripts": {
+		"lint": "prettier -w .",
+		"generate": "node ./scripts/generate_docs.js"
+	},
+	"homepage": "https://github.com/JannisX11/blockbench-types#readme",
+	"dependencies": {
+		"@babel/types": "^7.20.7",
+		"@types/jquery": "^3.5.4",
+		"@types/prismjs": "^1.26.0",
+		"@types/three": "^0.129.2",
+		"@types/tinycolor2": "^1.4.6",
+		"dompurify": "^3.0.1",
+		"electron": "^30.0.2",
+		"prismjs": "^1.29.0",
+		"tinycolor2": "^1.6.0",
+		"typescript": "^4.9.5",
+		"vue": "^3.2.45",
+		"wintersky": "^1.2.1"
+	},
+	"devDependencies": {
+		"@types/node": "^18.14.6",
+		"prettier": "^2.8.3",
+		"typedoc": "^0.23.24"
+	}
 }

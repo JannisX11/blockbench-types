@@ -27,7 +27,7 @@
  * 
  */
 declare namespace SharedActions {
-    const checks: {
+	const checks: {
 		[id: SharedActionID]: SharedActionHandler
 	}
 
@@ -52,19 +52,29 @@ declare namespace SharedActions {
 	 * @param context Optional context variable
 	 * @param force Force the specified handler to run and ignore its condition
 	 */
-	function runSpecific(action_id: SharedActionID, subject: string, event?: Event, context?: any, force?: boolean): boolean
+	function runSpecific(
+		action_id: SharedActionID,
+		subject: string,
+		event?: Event,
+		context?: any,
+		force?: boolean
+	): boolean
 	/**
 	 * Check if there is an active and available handler in the current situation for a shared action
-	 * @param action_id 
+	 * @param action_id
 	 */
 	function condition(action_id: SharedActionID): boolean
 	/**
 	 * Find the active handler in the current situation for a shared action
-	 * @param action_id 
-	 * @param event 
-	 * @param context 
+	 * @param action_id
+	 * @param event
+	 * @param context
 	 */
-	function find(action_id: SharedActionID, event?: Event, context?: any): SharedActionHandler | null
+	function find(
+		action_id: SharedActionID,
+		event?: Event,
+		context?: any
+	): SharedActionHandler | null
 }
 
 interface SharedActionHandler {
@@ -74,5 +84,11 @@ interface SharedActionHandler {
 	run: (event?: Event, context?: any) => void
 }
 
-type SharedActionID = string | 'rename' | 'delete' | 'duplicate' | 'select_all' | 'unselect_all' | 'invert_selection'
-
+type SharedActionID =
+	| string
+	| 'rename'
+	| 'delete'
+	| 'duplicate'
+	| 'select_all'
+	| 'unselect_all'
+	| 'invert_selection'

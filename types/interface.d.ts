@@ -1,3 +1,5 @@
+/// <reference path="./blockbench.d.ts"/>
+
 interface ResizeLineOptions {
 	condition?: ConditionResolvable
 	horizontal?: boolean
@@ -16,11 +18,15 @@ declare class ResizeLine {
 	set(): void
 	node: HTMLElement
 	update(): void
-	setPosition(data: {top?: number, bottom?: number, left?: number, right?: number}): void
+	setPosition(data: { top?: number; bottom?: number; left?: number; right?: number }): void
 }
 
 declare namespace Interface {
-	function createElement(type: keyof HTMLElementTagNameMap, attributes?: {}, content?: string | HTMLElement | HTMLElement[]): HTMLElement
+	function createElement(
+		type: keyof HTMLElementTagNameMap,
+		attributes?: {},
+		content?: string | HTMLElement | HTMLElement[]
+	): HTMLElement
 
 	const data: {
 		left_bar_width: number
@@ -50,12 +56,12 @@ declare namespace Interface {
 	}
 	const status_bar: {
 		menu: Menu
-		vue: Vue
+		vue: Vue.Component
 	}
 	const Panels: {
-		(key: string): Panel
+		[key: string]: Panel
 	}
-	function toggleSidebar(side, status): void
+	function toggleSidebar(side: any, status: any): void
 
 	const text_edit_menu: Menu
 
@@ -70,12 +76,15 @@ declare namespace Interface {
 	const left_bar: HTMLElement
 
 	namespace CustomElements {
-		function SelectInput(id: string, options: {
-			value?: string
-			default?: string
-			options: {key: string, value: string}
-			onChange?(): void
-		}): HTMLElement
-		const ResizeLine;
+		function SelectInput(
+			id: string,
+			options: {
+				value?: string
+				default?: string
+				options: { [key: string]: string }
+				onChange?(): void
+			}
+		): HTMLElement
+		const ResizeLine: any
 	}
 }

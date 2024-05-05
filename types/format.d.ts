@@ -1,31 +1,44 @@
+/// <reference path="./blockbench.d.ts"/>
+
 interface FormatPage {
 	component?: Vue.Component
-	content?: ({
-		type: 'image' | 'h2' | 'h3' | 'h4' | 'text' | 'label' | 'image' | ''
-		text?: string
-		source?: string
-		width?: number
-		height?: number
-	} | string)[]
+	content?: (
+		| {
+				type: 'image' | 'h2' | 'h3' | 'h4' | 'text' | 'label' | 'image' | ''
+				text?: string
+				source?: string
+				width?: number
+				height?: number
+		  }
+		| string
+	)[]
 	button_text?: string
 }
 interface CubeSizeLimiter {
 	/**
 	 * Test whether the cube with the optionally provided values violates the size restrictions
 	 */
-	test: (cube: Cube, values?: {from: ArrayVector3, to: ArrayVector3, inflate: number}) => boolean
+	test: (
+		cube: Cube,
+		values?: { from: ArrayVector3; to: ArrayVector3; inflate: number }
+	) => boolean
 	/**
 	 * Move the cube back into the restructions
 	 */
-	move: (cube: Cube, values?: {from: ArrayVector3, to: ArrayVector3, inflate: number}) => void
+	move(cube: Cube, values?: { from: ArrayVector3; to: ArrayVector3; inflate: number }): void
 	/**
 	 * Clamp the cube to fit into the restrictions. When an axis and direction is provided, clamp the element on that side to prevent wandering.
 	 */
-	clamp: (cube: Cube, values?: {from: ArrayVector3, to: ArrayVector3, inflate: number}, axis?: number, direction?: boolean | null) => void
+	clamp: (
+		cube: Cube,
+		values?: { from: ArrayVector3; to: ArrayVector3; inflate: number },
+		axis?: number,
+		direction?: boolean | null
+	) => void
 	/**
 	 * Set to true to tell Blockbench to check and adjust the cube limit after rotating a cube
 	 */
-	rotation_affected?: boolean,
+	rotation_affected?: boolean
 	/**
 	 * Optionally set the coordinate limits of cubes in local space
 	 */
@@ -45,6 +58,8 @@ interface FormatOptions {
 	format_page?: FormatPage
 	onFormatPage?(): void
 	onStart?(): void
+	onSetup?(project: ModelProject, newModel?: boolean): void
+	convertTo?(): void
 
 	box_uv?: boolean
 	optional_box_uv?: boolean
@@ -62,6 +77,7 @@ interface FormatOptions {
 	texture_meshes?: boolean
 	locators?: boolean
 	rotation_limit?: boolean
+	rotation_snap?: boolean
 	uv_rotation?: boolean
 	java_face_properties?: boolean
 	select_texture_for_particles?: boolean
@@ -74,6 +90,8 @@ interface FormatOptions {
 	display_mode?: boolean
 	animation_mode?: boolean
 	pose_mode?: boolean
+	animation_controllers?: boolean
+	render_sides?: 'front'
 
 	cube_size_limiter?: CubeSizeLimiter
 
@@ -98,6 +116,7 @@ declare class ModelFormat extends Deletable {
 	format_page?: FormatPage
 	onFormatPage?(): void
 	onStart?(): void
+	onSetup?(): void
 
 	box_uv: boolean
 	optional_box_uv: boolean
@@ -115,6 +134,7 @@ declare class ModelFormat extends Deletable {
 	texture_meshes: boolean
 	locators: boolean
 	rotation_limit: boolean
+	rotation_snap: boolean
 	uv_rotation: boolean
 	java_face_properties: boolean
 	select_texture_for_particles: boolean
@@ -127,6 +147,8 @@ declare class ModelFormat extends Deletable {
 	display_mode: boolean
 	animation_mode: boolean
 	pose_mode: boolean
+
+	codec?: Codec
 
 	cube_size_limiter?: CubeSizeLimiter
 	/**
@@ -147,7 +169,9 @@ declare class ModelFormat extends Deletable {
  * The current format
  */
 declare const Format: ModelFormat
-
+declare const Formats: {
+	[id: string]: ModelFormat
+}
 
 interface ModelLoaderOptions {
 	id?: string
