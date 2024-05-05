@@ -67,7 +67,7 @@ declare class _Keyframe {
 	getTimecodeString(): string
 	compileBedrockKeyframe(): any
 	replaceOthers(save: any): void
-	select(event: any): this
+	select(event?: any): this
 	callPlayhead(): this
 	showContextMenu(event: Event): this
 	remove(): void

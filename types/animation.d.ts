@@ -46,9 +46,9 @@ declare class _Animation extends AnimationItem {
 	togglePlayingState(state: any): any
 	showContextMenu(event: any): this
 	/**
-	 * Returns (if necessary creates) the animator of a specific bone of the animation
+	 * Returns (if necessary creates) the animator of a specific outliner node of this animation
 	 */
-	getBoneAnimator(group: any): BoneAnimator
+	getBoneAnimator(node?: OutlinerNode): BoneAnimator
 	/**
 	 * Adds the animation to the current project and to the interface
 	 * @param undo If true, the addition of the animation will be registered as an edit
@@ -179,8 +179,8 @@ declare class BoneAnimator extends GeneralAnimator {
 	displayRotation(): void
 	displayPosition(): void
 	displayScale(): void
-	interpolate(): void
-	displayFrame(multiplier: number): void
+	interpolate(channel: string, allow_expression?: boolean, axis?: string): ArrayVector3
+	displayFrame(multiplier?: number): void
 }
 declare class NullObjectAnimator extends GeneralAnimator {
 	name: string

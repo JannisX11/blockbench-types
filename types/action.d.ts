@@ -329,6 +329,7 @@ interface ToolOptions extends ActionOptions {
  */
 declare class Tool extends Action {
 	constructor(id: string, options: ToolOptions)
+	animation_channel: string
 	select(): this | undefined
 	trigger(event: Event): boolean
 }

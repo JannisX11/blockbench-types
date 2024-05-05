@@ -69,6 +69,7 @@ declare class OutlinerNode {
  * @private
  */
 declare class OutlinerElement extends OutlinerNode {
+	static animator?: BoneAnimator
 	constructor(data: any, uuid: string)
 	selected: boolean
 	mesh: THREE.Object3D | THREE.Mesh

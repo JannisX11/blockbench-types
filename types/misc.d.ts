@@ -223,3 +223,5 @@ interface ToastNotificationOptions {
 declare namespace Blockbench {
 	function showToastNotification(options: ToastNotificationOptions): Deletable
 }
+
+declare function unselectAllElements(): void
