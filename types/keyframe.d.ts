@@ -36,6 +36,8 @@ declare class _Keyframe {
 	channel: string
 	time: number
 	uuid: string
+	color: number
+	uniform: boolean
 	interpolation: 'linear' | 'catmullrom' | 'bezier' | 'step'
 	cooldown?: boolean
 	bezier_linked: boolean
@@ -78,3 +80,5 @@ declare class _Keyframe {
 		data_points: KeyframeDataPoint[]
 	}
 }
+
+declare function updateKeyframeSelection(): void

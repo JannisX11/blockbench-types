@@ -26,7 +26,7 @@ interface MenuOptions {
 /**
  * Use the Menu class to create a context menu. Menus can contain custom entries and hierarchy, or existing actions and tools.
  */
-declare class Menu {
+declare class Menu extends Deletable {
 	/**
 	 * Creates a new context menu
 	 */

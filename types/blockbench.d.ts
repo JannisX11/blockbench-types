@@ -268,7 +268,7 @@ declare namespace Blockbench {
 	 */
 	export function notification(title: string, text: string, icon?: string): void
 	/**
-	 * Adds custom CSS code to Blockbench, globally. Returns an any that is deletable
+	 * Adds custom CSS code to Blockbench, globally. Returns an object that is deletable
 	 * @param css CSS string
 	 */
 	export function addCSS(css: string): Deletable
