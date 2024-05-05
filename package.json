@@ -18,11 +18,13 @@
 	},
 	"scripts": {
 		"lint": "prettier -w .",
-		"generate": "node ./scripts/generate_docs.js"
+		"generate": "node ./scripts/generate_docs.js",
+		"generate-wiki": "node ./scripts/generate_docs.js --out \"../../blockbench.net/content/api/\""
 	},
 	"homepage": "https://github.com/JannisX11/blockbench-types#readme",
 	"dependencies": {
 		"@babel/types": "^7.20.7",
+		"@types/dompurify": "^3.0.5",
 		"@types/jquery": "^3.5.4",
 		"@types/prismjs": "^1.26.0",
 		"@types/three": "^0.129.2",

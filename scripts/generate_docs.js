@@ -2,8 +2,16 @@ const TypeDoc = require('typedoc')
 const fs = require('fs')
 const PathModule = require('path')
 
-//const out_path = '../docs/';
-const out_path = '../generated/'
+function getArg(key) {
+	let index = process.argv.indexOf('--'+key);
+	console.log(index)
+	if (index > 1) {
+		return process.argv[index+1];
+	}
+}
+
+const out_path = getArg('out') || '../generated/';
+console.log(out_path)
 
 async function main() {
 	const app = new TypeDoc.Application()
