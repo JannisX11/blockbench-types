@@ -48,11 +48,14 @@ type EventName =
 	| 'canvas_click'
 	| 'change_texture_path'
 	| 'add_texture'
+	| 'update_texture_selection'
+	| 'init_edit'
 	| 'finish_edit'
 	| 'finished_edit'
 	| 'undo'
 	| 'redo'
 	| 'load_undo_save'
+	| 'create_undo_save'
 	| 'change_color'
 	| 'select_mode'
 	| 'unselect_mode'
@@ -79,6 +82,31 @@ type EventName =
 	| 'edit_animation_properties'
 	| 'select_preview_scene'
 	| 'unselect_preview_scene'
+	| 'compile_bedrock_animation_controller_state'
+	| 'select_animation_controller_state'
+	| 'add_animation_controller_animation'
+	| 'add_animation_controller_transition'
+	| 'add_animation_controller_particle'
+	| 'add_animation_controller_sound'
+	| 'compile_bedrock_animation_controller'
+	| 'add_animation_controller'
+	| 'edit_animation_controller_properties'
+	| 'timeline_play'
+	| 'timeline_pause'
+	| 'unselect_interface'
+	| 'reset_layout'
+	| 'update_pressed_modifier_keys'
+	| 'open_bar_menu'
+	| 'unselect_all'
+	| 'quick_save_model'
+	| 'save_editor_state'
+	| 'load_editor_state'
+	| 'select_no_project'
+	| 'flip_node_name'
+	| 'update_scene_shading'
+	| 'edit_layer_properties'
+	| 'select_texture'
+	| 'compile_texture_mcmeta'
 
 type IconString = string
 
@@ -101,7 +129,12 @@ interface MessageBoxOptions {
 	 * Display a list of actions to do in the dialog. When clicked, the message box closes with the string ID of the command as first argument.
 	 */
 	commands?: {
-		[id: string]: string | { text: string; icon?: IconString; condition?: ConditionResolvable }
+		[id: string]: string | {
+			text: string
+			icon?: IconString
+			condition?: ConditionResolvable
+			description?: string
+		}
 	}
 	/**
 	 * Adds checkboxes to the bottom of the message box

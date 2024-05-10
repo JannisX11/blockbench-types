@@ -39,6 +39,12 @@ declare class Group extends OutlinerNode {
 	isOpen: boolean
 	ik_enabled: boolean
 	ik_chain_length: number
+	texture?: string
+	skin_original_origin?: ArrayVector3
+	bedrock_binding?: string
+	cem_animations?: any[]
+	cem_attach?: boolean
+	cem_scale?: number
 	mesh: THREE.Mesh
 
 	static preview_controller: NodePreviewController

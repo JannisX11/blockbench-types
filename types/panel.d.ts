@@ -7,10 +7,20 @@ interface PanelOptions {
 	name: string
 	icon: string
 	menu?: any
+	/**
+	 * If true, the panel can automatically become smaller or larger than its initial size in the sidebar
+	 */
 	growable?: boolean
+	/**
+	 * When true, the height of the panel can be adjusted in the sidebar
+	 */
+	resizable?: true
 	selection_only?: boolean
 	condition?: ConditionResolvable
 	display_condition?: ConditionResolvable
+	/**
+	 * Adds a button to the panel that allows users to pop-out and expand the panel on click
+	 */
 	expand_button: boolean
 	toolbars?:
 		| {
@@ -28,7 +38,13 @@ interface PanelOptions {
 		| number
 	component?: Vue.Component
 	default_side: 'right' | 'left'
+	/**
+	 * Identifier of another panel to insert this one above
+	 */
 	insert_before?: string
+	/**
+	 * Identifier of another panel to insert this one below
+	 */
 	insert_after?: string
 	onResize?(): void
 	onFold?(): void
@@ -46,6 +62,7 @@ declare class Panel {
 	slot: PanelSlot
 	folded: boolean
 	inside_vue: Vue
+	resizable: boolean
 
 	fold(state?: boolean): this
 	vue: Vue.Component

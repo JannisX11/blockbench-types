@@ -22,6 +22,7 @@ interface MenuOptions {
 	onClose?(): void
 	keep_open?: boolean
 	searchable?: boolean
+	class?: string
 }
 /**
  * Use the Menu class to create a context menu. Menus can contain custom entries and hierarchy, or existing actions and tools.

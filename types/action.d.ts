@@ -401,24 +401,6 @@ interface ToolbarOptions {
 	 */
 	children: ('_' | '+' | '#' | string | BarItem)[]
 }
-interface ToolbarOptions {
-	id: string
-	name?: string
-	/**
-	 * If true, the toolbar will display a label abovee
-	 */
-	label?: boolean
-	condition?: ConditionResolvable
-	/**
-	 * If true, the toolbar will only take as much width as needed
-	 */
-	narrow?: boolean
-	vertical?: boolean
-	/**
-	 * Default content of the toolbar. Separators are available, where _ = separator, + = spaces, # = line break
-	 */
-	children: ('_' | '+' | '#' | string | BarItem)[]
-}
 declare class Toolbar {
 	constructor(id: string, data: ToolbarOptions)
 	constructor(data: ToolbarOptions)

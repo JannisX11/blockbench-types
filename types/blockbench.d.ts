@@ -497,3 +497,10 @@ declare namespace Blockbench {
 	const Reusable: BlockbenchTypeReusable
 	const Texture: BlockbenchTypeTexture
 }
+
+declare const NativeGlobals: {
+	Animation: {
+		new (effect?: AnimationEffect | null | undefined, timeline?: AnimationTimeline | null | undefined): Animation;
+		prototype: Animation;
+	};
+};

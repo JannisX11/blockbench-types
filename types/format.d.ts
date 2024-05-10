@@ -64,7 +64,11 @@ interface FormatOptions {
 	box_uv?: boolean
 	optional_box_uv?: boolean
 	single_texture?: boolean
+	single_texture_default?: boolean
+	per_group_texture?: boolean
+	per_texture_uv_size?: boolean
 	model_identifier?: boolean
+	legacy_editable_file_name?: boolean
 	parent_model_id?: boolean
 	vertex_color_ambient_occlusion?: boolean
 	animated_textures?: boolean
@@ -81,6 +85,7 @@ interface FormatOptions {
 	uv_rotation?: boolean
 	java_face_properties?: boolean
 	select_texture_for_particles?: boolean
+	texture_mcmeta?: boolean
 	bone_binding_expression?: boolean
 	animation_files?: boolean
 	texture_folder?: boolean
@@ -121,7 +126,11 @@ declare class ModelFormat extends Deletable {
 	box_uv: boolean
 	optional_box_uv: boolean
 	single_texture: boolean
+	single_texture_default?: boolean
+	per_group_texture?: boolean
+	per_texture_uv_size?: boolean
 	model_identifier: boolean
+	legacy_editable_file_name?: boolean
 	parent_model_id: boolean
 	vertex_color_ambient_occlusion: boolean
 	animated_textures: boolean
@@ -138,6 +147,7 @@ declare class ModelFormat extends Deletable {
 	uv_rotation: boolean
 	java_face_properties: boolean
 	select_texture_for_particles: boolean
+	texture_mcmeta: boolean
 	bone_binding_expression: boolean
 	animation_files: boolean
 	texture_folder: boolean

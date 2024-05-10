@@ -1,13 +1,11 @@
-/// <reference path="./blockbench.d.ts"/>
 
-import { StringLiteral } from "typescript"
 
 interface DialogFormElement {
 	label?: string
 	/**
 	 * Detailed description of the field, available behind the questionmark icon or on mouse hover
 	 */
-	description?: StringLiteral
+	description?: string
 	type:
 		| 'text'
 		| 'number'
@@ -192,6 +190,10 @@ interface DialogOptions {
 			condition?: ConditionResolvable
 		}
 	}
+	/**
+	 * Select on which axes the dialog can be resized. None by default
+	 */
+	resizable?: 'x' | 'y' | 'xy' | boolean
 }
 
 interface DialogSidebarOptions {

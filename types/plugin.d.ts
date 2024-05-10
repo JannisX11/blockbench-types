@@ -40,6 +40,17 @@ interface PluginOptions {
 	 */
 	new_repository_format?: boolean
 	/**
+	 * Can be used to specify which features a plugin adds. This allows Blockbench to be aware of and suggest even plugins that are not installed.
+	 */
+	contributes?: {
+		formats: string[]
+	}
+	has_changelog?: boolean
+	/**
+	 * In combination with a "Deprecated" tag, this can be used to provide context on why a plugin is deprecated
+	 */
+	deprecation_note?: string
+	/**
 	 * Runs when the plugin loads
 	 */
 	onload?(): void
@@ -83,6 +94,17 @@ declare class BBPlugin {
 	min_version: string
 	max_version: string
 	tags: string[]
+	/**
+	 * Can be used to specify which features a plugin adds. This allows Blockbench to be aware of and suggest even plugins that are not installed.
+	 */
+	contributes?: {
+		formats: string[]
+	}
+	has_changelog: boolean
+	/**
+	 * In combination with a "Deprecated" tag, this can be used to provide context on why a plugin is deprecated
+	 */
+	deprecation_note?: string
 	onload(): void
 	onunload(): void
 	oninstall(): void
