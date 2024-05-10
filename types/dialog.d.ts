@@ -1,8 +1,13 @@
 /// <reference path="./blockbench.d.ts"/>
 
+import { StringLiteral } from "typescript"
+
 interface DialogFormElement {
 	label?: string
-	description?: string
+	/**
+	 * Detailed description of the field, available behind the questionmark icon or on mouse hover
+	 */
+	description?: StringLiteral
 	type:
 		| 'text'
 		| 'number'
@@ -18,7 +23,13 @@ interface DialogFormElement {
 		| 'save'
 		| 'info'
 		| 'buttons'
+	/**
+	 * If true, the label will be displayed without colon at the end
+	 */
 	nocolon?: boolean
+	/**
+	 * Stretch the input field across the whole width of the form
+	 */
 	full_width?: boolean
 	/** Set the input to read-only */
 	readonly?: boolean
@@ -42,11 +53,30 @@ interface DialogFormElement {
 	 */
 	editable_range_label?: boolean
 	colorpicker?: any
+	/**
+	 * On numeric inputs, the minimum possible value
+	 */
 	min?: number
+	/**
+	 * On numeric inputs, the maximum possible value
+	 */
 	max?: number
+	/**
+	 * The step in which the value can be increased / decreased
+	 */
 	step?: number
+	/**
+	 * If enabled, the value is forced to multiples of the "step" value. This can be used to create integer-only inputs etc.
+	 */
+	force_step?: boolean
+	/**
+	 * The height of the input on textareas, in pixels
+	 */
 	height?: number
-	options?: any
+	/**
+	 * Available options on select or inline_select inputs
+	 */
+	options?: {[key: string]: string | {name: string}}
 	buttons?: string[]
 	/**
 	 * Allow users to toggle the entire option on or off
@@ -56,7 +86,11 @@ interface DialogFormElement {
 	 * Set whether the setting is toggled on or off by default. Requires 'toggle_enabled' field to be set to true
 	 */
 	toggle_default?: boolean
-	click?(button_index: number): void
+	/**
+	 * Runs when any of the buttons is pressed
+	 * @param button_index Index of the clicked button in the buttons list
+	 */
+	click?: (button_index: number) => void
 }
 
 type FormResultValue = string | number | boolean | []
@@ -70,7 +104,12 @@ interface ActionInterface {
 }
 interface DialogOptions {
 	title: string
-	id: string
+	id?: string
+	width?: number
+	/**
+	 * Unless set to false, clicking on the darkened area outside of the dialog will cancel the dialog.
+	 */
+	cancel_on_click_outside?: boolean
 	/**
 	 * Default button to press to confirm the dialog. Defaults to the first button.
 	 */
@@ -144,10 +183,15 @@ interface DialogOptions {
 	 */
 	buttons?: string[]
 	/**
-	 * Unless set to false, clicking on the darkened area outside of the dialog will cancel the dialog.
+	 * A list of keyboard shortcuts that only work inside the dialog
 	 */
-	cancel_on_click_outside?: boolean
-	width?: number
+	keyboard_actions?: {
+		[id: string]: {
+			keybind: Keybind
+			run: (event: KeyboardEvent) => void
+			condition?: ConditionResolvable
+		}
+	}
 }
 
 interface DialogSidebarOptions {
