@@ -1,5 +1,5 @@
 /// <reference path="./blockbench.d.ts"/>
-/// <reference path="./vue.d.ts"/>
+
 type PanelSlot = 'left_bar' | 'right_bar' | 'top' | 'bottom' | 'float'
 
 interface PanelOptions {
