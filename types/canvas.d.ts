@@ -225,6 +225,16 @@ declare namespace TickUpdates {
 }
 
 interface NodePreviewControllerOptions {
+	/**
+	 * NOTE: This option is just for type checking and should not be set in the options object. It should be set inside of the setup function via `this.mesh`
+	 *
+	 * ```
+	 * setup(element) {
+	 *    this.mesh = new THREE.Mesh()
+	 * }
+	 * ```
+	 */
+	mesh?: THREE.Object3D | THREE.Mesh
 	setup?(element: OutlinerNode): void
 	remove?(element: OutlinerNode): void
 	updateAll?(element: OutlinerNode): void
