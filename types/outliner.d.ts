@@ -77,7 +77,7 @@ declare class OutlinerElement extends OutlinerNode {
 	static isParent: false
 	static types: Record<string, typeof OutlinerElement>
 	static all: OutlinerElement[]
-	static selected: OutlinerElement[]
+	static selected: OutlinerElement[] | false
 	static registerType(constructor: any, id: string): void
 	select(event?: any, isOutlinerClick?: boolean): this | void
 	unselect(...args: any[]): this | void

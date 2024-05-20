@@ -215,13 +215,13 @@ declare namespace Canvas {
  * Marks a specific aspect of the interface to be updated in the next tick. Useful to avoid an update function getting called multiple times in the same task.
  */
 declare namespace TickUpdates {
-	const outliner: undefined | true
-	const selection: undefined | true
-	const main_uv: undefined | true
-	const texture_list: undefined | true
-	const keyframes: undefined | true
-	const keyframe_selection: undefined | true
-	const keybind_conflicts: undefined | true
+	let outliner: undefined | true
+	let selection: undefined | true
+	let main_uv: undefined | true
+	let texture_list: undefined | true
+	let keyframes: undefined | true
+	let keyframe_selection: undefined | true
+	let keybind_conflicts: undefined | true
 }
 
 interface NodePreviewControllerOptions {
@@ -238,7 +238,7 @@ interface NodePreviewControllerOptions {
 	updateHighlight?(element: OutlinerNode): void
 }
 declare class NodePreviewController {
-	constructor(type: typeof OutlinerNode, options: NodePreviewControllerOptions)
+	constructor(type: typeof OutlinerElement, options: NodePreviewControllerOptions)
 	type: typeof OutlinerNode
 	events: {
 		[event_name: string]: ((data: any) => void)[]

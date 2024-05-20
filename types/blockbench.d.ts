@@ -1,5 +1,5 @@
 /// <reference types="vue" />
-/// <reference types="@types/three" />
+/// <reference types="./three.d.ts" />
 /// <reference types="@types/prismjs" />
 /// <reference types="@types/jquery" />
 /// <reference types="wintersky" />
@@ -500,7 +500,10 @@ declare namespace Blockbench {
 
 declare const NativeGlobals: {
 	Animation: {
-		new (effect?: AnimationEffect | null | undefined, timeline?: AnimationTimeline | null | undefined): Animation;
-		prototype: Animation;
-	};
-};
+		new (
+			effect?: AnimationEffect | null | undefined,
+			timeline?: AnimationTimeline | null | undefined
+		): Animation
+		prototype: Animation
+	}
+}

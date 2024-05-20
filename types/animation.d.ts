@@ -16,6 +16,7 @@ interface AnimationOptions {
 	blend_weight?: string
 	length?: number
 	snapping?: number
+	animators?: any
 }
 
 interface AnimationUndoCopy {

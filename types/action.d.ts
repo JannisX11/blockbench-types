@@ -66,6 +66,8 @@ interface BarItemOptions extends KeybindItemOptions {
 declare class BarItem extends KeybindItem {
 	constructor(id: string, options: BarItemOptions)
 	id: string
+	node: HTMLElement
+	nodes: HTMLElement[]
 	conditionMet(): boolean
 	/**
 	 * Adds a label to the HTML element of the bar item
@@ -101,7 +103,6 @@ declare class BarItem extends KeybindItem {
 	 * @param callback
 	 */
 	removeListener(event_name: ActionEventName, callback: (data: object) => void): void
-	dispatchEvent(data: object): void
 	constructor(id: string, options: BarItemOptions)
 	conditionMet(): boolean
 	/**
@@ -119,6 +120,8 @@ declare class BarItem extends KeybindItem {
 	 */
 	toElement(destination: HTMLElement): this
 	pushToolbar(bar: any): void
+
+	dispatchEvent<T = EventName>(event: T, ...args: any[]): void
 }
 
 interface ActionOptions extends BarItemOptions {
@@ -324,6 +327,7 @@ interface ToolOptions extends ActionOptions {
 	paintTool?: boolean
 	brush?: BrushOptions
 }
+interface WidgetOptions extends BarItemOptions {}
 /**
  * A tool, such as move tool, vertex snap tool, or paint brush
  */
@@ -334,10 +338,21 @@ declare class Tool extends Action {
 	trigger(event: Event): boolean
 }
 declare class Widget extends BarItem {
-	constructor(id: string, options: any)
+	constructor(id: string, options: WidgetOptions)
+}
+type NumSliderOptions = WidgetOptions & {
+	settings?: {
+		default?: number
+		min?: number
+		max?: number
+		interval?: number
+		step?: number
+	}
+	change?(value: (n: number) => number): void
+	get?(): number
 }
 declare class NumSlider extends Widget {
-	constructor(id: string, options: any)
+	constructor(id: string, options: NumSliderOptions)
 	startInput(event: Event): void
 	setWidth(width: any): this
 	getInterval(event: Event): number
@@ -346,19 +361,19 @@ declare class NumSlider extends Widget {
 	stopInput(): void
 	arrow(difference: any, event: Event): void
 	trigger(event: Event): boolean
-	setValue(value: number, trim: any): this
-	change(modify: any): void
+	setValue(value: number, trim?: any): this
+	change(modify: (n: number) => number): void
 	get(): number
 	update(): void
 }
 declare class BarSlider extends Widget {
-	constructor(id: string, options: any)
+	constructor(id: string, options: NumSliderOptions)
 	change(event: Event): void
 	set(value: number): void
 	get(): number
 }
 declare class BarSelect extends Widget {
-	constructor(id: string, options: any)
+	constructor(id: string, options: WidgetOptions)
 	open(event: Event): void
 	trigger(event: Event): boolean | undefined
 	change(event: Event): this
@@ -367,7 +382,12 @@ declare class BarSelect extends Widget {
 	get(): string
 }
 declare class BarText extends Widget {
-	constructor(id: string, options: any)
+	constructor(
+		id: string,
+		options: WidgetOptions & {
+			text: string
+		}
+	)
 	set(text: any): this
 	update(): this
 	trigger(event: Event): boolean
@@ -376,7 +396,7 @@ interface ColorPickerOptions {
 	onChange?: () => void
 }
 declare class ColorPicker extends Widget {
-	constructor(id: string, options: any)
+	constructor(id: string, options: WidgetOptions)
 	change(color: any): void
 	hide(): void
 	confirm(): void
@@ -413,6 +433,7 @@ declare class Toolbar {
 	toPlace(place: any): this
 	save(): this
 	reset(): this
+	condition(): boolean
 }
 declare namespace BARS {
 	const stored: {}
