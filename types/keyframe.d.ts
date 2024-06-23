@@ -45,6 +45,9 @@ declare class _Keyframe {
 	bezier_right_time: ArrayVector3
 	bezier_left_value: ArrayVector3
 	bezier_right_value: ArrayVector3
+	selected: boolean
+	transform: boolean
+	has_expressions: boolean
 
 	extend(data: KeyframeOptions): this
 	get(axis: axisLetter, data_point?: number): number | string
@@ -52,7 +55,7 @@ declare class _Keyframe {
 	set(axis: axisLetter, value: any, data_point?: number): this
 	offset(axis: axisLetter, amount: any, data_point?: number): void
 	flip(axis: axisLetter): this
-	getLerp(other: any, axis: axisLetter, amount: any, allow_expression?: boolean): number
+	getLerp(other: _Keyframe, axis: axisLetter, amount: number, allow_expression?: boolean): number
 	getCatmullromLerp(
 		before_plus: _Keyframe,
 		before: _Keyframe,

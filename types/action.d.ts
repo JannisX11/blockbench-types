@@ -55,7 +55,7 @@ type ActionEventName =
 interface BarItemOptions extends KeybindItemOptions {
 	name?: string
 	description?: string
-	icon: string
+	icon?: string
 	condition?: ConditionResolvable
 	category?: string
 	keybind?: Keybind
@@ -179,11 +179,14 @@ interface ToggleOptions extends ActionOptions {
  * A toggle is a type of action that can be on or off. The state is not persistent between restarts by default.
  */
 declare class Toggle extends Action {
+	value: boolean
 	constructor(id: string, options: ToggleOptions)
 	/**
 	 * Updates the state of the toggle in the UI
 	 */
 	updateEnabledState(): void
+	set(value: boolean): this
+	setIcon(icon: IconString): void
 }
 
 type RGBAColor = { r: number; g: number; b: number; a: number }
@@ -327,7 +330,9 @@ interface ToolOptions extends ActionOptions {
 	paintTool?: boolean
 	brush?: BrushOptions
 }
-interface WidgetOptions extends BarItemOptions {}
+interface WidgetOptions extends BarItemOptions {
+	id?: string
+}
 /**
  * A tool, such as move tool, vertex snap tool, or paint brush
  */
@@ -372,14 +377,19 @@ declare class BarSlider extends Widget {
 	set(value: number): void
 	get(): number
 }
-declare class BarSelect extends Widget {
-	constructor(id: string, options: WidgetOptions)
+interface BarSelectOptions<T> extends WidgetOptions {
+	value?: T
+	options: Record<string, T>
+}
+declare class BarSelect<T> extends Widget {
+	constructor(id: string, options: BarSelectOptions<T>)
 	open(event: Event): void
 	trigger(event: Event): boolean | undefined
 	change(event: Event): this
 	getNameFor(key: string): string
 	set(key: string): this
 	get(): string
+	value: T
 }
 declare class BarText extends Widget {
 	constructor(
@@ -392,16 +402,21 @@ declare class BarText extends Widget {
 	update(): this
 	trigger(event: Event): boolean
 }
-interface ColorPickerOptions {
-	onChange?: () => void
+interface ColorPickerOptions extends WidgetOptions {
+	value?: string
+	palette?: boolean
+	onChange?: (color: tinycolor.Instance) => void
 }
 declare class ColorPicker extends Widget {
-	constructor(id: string, options: WidgetOptions)
-	change(color: any): void
+	value: tinycolor.Instance
+	jq: JQuery
+	constructor(options: ColorPickerOptions)
+	constructor(id: string, options: ColorPickerOptions)
+	change(color: tinycolor.Instance): void
 	hide(): void
 	confirm(): void
 	set(color: any): this
-	get(): any
+	get(): tinycolor.Instance
 }
 interface ToolbarOptions {
 	id: string

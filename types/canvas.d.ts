@@ -93,7 +93,7 @@ declare namespace Canvas {
 	const global_light_color: THREE.Color
 	const global_light_side: number
 
-	const face_order: string[]
+	const face_order: ['east', 'west', 'up', 'down', 'south', 'north']
 
 	/**
 	 * Raycast on the currently selected preview
@@ -245,7 +245,7 @@ interface NodePreviewControllerOptions {
 	updateUV?(element: OutlinerNode): void
 	updateFaces?(element: OutlinerNode): void
 	updatePaintingGrid?(element: OutlinerNode): void
-	updateHighlight?(element: OutlinerNode): void
+	updateHighlight?(element: OutlinerNode, ...args: any[]): void
 }
 declare class NodePreviewController {
 	constructor(type: typeof OutlinerElement, options: NodePreviewControllerOptions)
@@ -253,6 +253,7 @@ declare class NodePreviewController {
 	events: {
 		[event_name: string]: ((data: any) => void)[]
 	}
+	mesh: THREE.Object3D | THREE.Mesh
 	dispatchEvent(event_name: string, data: Record<string, any>): void
 	/**
 	 * Adds an event listener
@@ -277,5 +278,5 @@ declare class NodePreviewController {
 	updateUV(instance: OutlinerNode): void
 	updateFaces(instance: OutlinerNode): void
 	updatePaintingGrid(instance: OutlinerNode): void
-	updateHighlight(instance: OutlinerNode): void
+	updateHighlight(instance: OutlinerNode, ...args: any[]): void
 }

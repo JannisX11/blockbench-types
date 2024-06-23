@@ -260,6 +260,8 @@ declare namespace Blockbench {
 }
 
 declare function unselectAllElements(): void
+declare function updateCubeHighlights(hover_cube: Cube, force_off: boolean): void
+declare function getRescalingFactor(angle: number): number
 
 declare const Pressing: {
 	shift: boolean
@@ -271,3 +273,5 @@ declare const Pressing: {
 		alt: boolean
 	}
 }
+
+declare function isStringNumber(value: any): boolean

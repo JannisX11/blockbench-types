@@ -1,5 +1,11 @@
 /// <reference path="./blockbench.d.ts"/>
-interface CubeOptions {
+type CardinalDirection = 'north' | 'south' | 'east' | 'west' | 'up' | 'down'
+interface ICubeFace {
+	uv: [number, number, number, number]
+	texture: Texture
+}
+
+interface ICubeOptions {
 	name: string
 	autouv: 0 | 1 | 2
 	shade: boolean
@@ -11,14 +17,16 @@ interface CubeOptions {
 	to: ArrayVector3
 	rotation: ArrayVector3
 	origin: ArrayVector3
+	box_uv: boolean
 	/**
 	 * UV position for box UV mode
 	 */
 	uv_offset: ArrayVector2
+	faces: Record<CardinalDirection, ICubeFace>
 }
 
 declare class Cube extends OutlinerElement {
-	constructor(options: Partial<CubeOptions>, uuid?: string)
+	constructor(options: Partial<ICubeOptions>, uuid?: string)
 	name: string
 	uuid: string
 	color: any
@@ -62,7 +70,7 @@ declare class Cube extends OutlinerElement {
 		}
 	}
 
-	extend(options: Partial<CubeOptions>): this
+	extend(options: Partial<ICubeOptions>): this
 	/**
 	 * Calculates and returns the size of a cube across a certain axis. If the axis argument is omitted, it returns all sizes as an array vector.
 	 */

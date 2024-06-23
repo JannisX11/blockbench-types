@@ -8,6 +8,7 @@ declare module 'three' {
 		fix_position?: three.Vector3
 		no_export?: boolean
 		isElement?: boolean
+		isGroup?: boolean
 	}
 }
 

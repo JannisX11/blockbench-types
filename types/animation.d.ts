@@ -177,10 +177,10 @@ declare class BoneAnimator extends GeneralAnimator {
 	fillValues(): void
 	pushKeyframe(): void
 	doRender(): boolean
-	displayRotation(): void
-	displayPosition(): void
-	displayScale(): void
-	interpolate(channel: string, allow_expression?: boolean, axis?: string): ArrayVector3
+	displayRotation(arr?: ArrayVector3 | ArrayVector4, multiplier?: number): void
+	displayPosition(arr?: ArrayVector3, multiplier?: number): this
+	displayScale(arr?: ArrayVector3, multiplier?: number): void
+	interpolate(channel: string, allow_expression?: boolean, axis?: string): ArrayVector3 | false
 	displayFrame(multiplier?: number): void
 }
 declare class NullObjectAnimator extends GeneralAnimator {
@@ -191,7 +191,6 @@ declare class NullObjectAnimator extends GeneralAnimator {
 	scale: _Keyframe[]
 	getElement(): NullObject
 	doRender(): void
-	displayPosition(): void
 	displayIK(): void
 	displayFrame(): void
 }
