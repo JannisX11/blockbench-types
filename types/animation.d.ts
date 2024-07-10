@@ -86,7 +86,7 @@ declare class _Animation extends AnimationItem {
 
 	markers: TimelineMarker[]
 	animators: {
-		[id: string]: GeneralAnimator | undefined
+		[id: string]: GeneralAnimator
 	}
 	saved_name?: string
 	selected: boolean

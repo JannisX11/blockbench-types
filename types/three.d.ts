@@ -11,7 +11,3 @@ declare module 'three' {
 		isGroup?: boolean
 	}
 }
-
-declare global {
-	const THREE: typeof THREE
-}
