@@ -313,7 +313,10 @@ declare namespace Blockbench {
 	 * Blockbench.removeListener<EventName>(...)
 	 * ```
 	 */
-	export function removeListener<E extends string>(event_names: E): void
+	export function removeListener<E extends string>(
+		event_names: E,
+		callback: (data: any) => void
+	): void
 
 	/**
 	 * Reads the content from the specified files. Desktop app only.
