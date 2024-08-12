@@ -152,7 +152,7 @@ declare namespace Canvas {
 	/**
 	 * Update positions and shapes of the selected elements
 	 */
-	function updatePositions(y: number): void
+	function updatePositions(y?: number): void
 	/**
 	 * Update the faces of all selected elements (material, UV map)
 	 */
