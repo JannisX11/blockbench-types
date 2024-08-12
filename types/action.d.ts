@@ -385,7 +385,7 @@ declare class BarSelect<T> extends Widget {
 	constructor(id: string, options: BarSelectOptions<T>)
 	open(event: Event): void
 	trigger(event: Event): boolean | undefined
-	change(event: Event): this
+	change(value: T, event: Event): this
 	getNameFor(key: string): string
 	set(key: string): this
 	get(): string
