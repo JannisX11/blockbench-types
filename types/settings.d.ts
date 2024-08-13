@@ -5,7 +5,7 @@ declare const settings: {
 
 interface SettingOptions {
 	name: string
-	type?: 'number' | 'string' | 'boolean' | 'password' | 'select' | 'click'
+	type?: 'number' | 'text' | 'toggle' | 'password' | 'select' | 'click'
 	value: boolean | number | string
 	condition?: ConditionResolvable
 	category: string
