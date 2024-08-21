@@ -272,8 +272,16 @@ declare class Dialog {
 	onFormChange?(form_result: { [key: string]: FormResultValue }): void
 	/**
 	 * Set the values of the dialog form inputs
+	 * @param values The values to set, by form input key
+	 * @param update Whether to update the dialog (call onFormChange) after setting the values. Default is true. Set to false when called from onFormChange
 	 */
-	setFormValues(values: { [key: string]: FormResultValue }): void
+	setFormValues(values: { [key: string]: FormResultValue }, update: boolean): void
+	/**
+	 * Set whether the dialog form inputs are toggled on or off. See "toggle_enabled"
+	 * @param values 
+	 * @param update Whether to update the dialog (call onFormChange) after setting the values. Default is true. Set to false when called from onFormChange
+	 */
+	setFormToggles(values: { [key: string]: boolean }, update: boolean): void
 	/**
 	 * Delete the dialog any, causing it to be re-build from scratch on next open
 	 */
