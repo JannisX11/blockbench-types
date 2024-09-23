@@ -173,6 +173,15 @@ interface DialogOptions {
 	 */
 	title_menu?: Menu
 	/**
+	 * Display a progress bar in the dialog
+	 */
+	progress_bar?: {
+		/**
+		 * A progress value between 0 and 1
+		 */
+		progress?: number
+	}
+	/**
 	 * If true, the dialog will only have one button to close it
 	 */
 	singleButton?: boolean
@@ -226,6 +235,21 @@ declare class Dialog {
 	component: Vue.Component
 	sidebar: DialogSidebar | null
 	content_vue: Vue | null
+	progress_bar?: {
+		/**
+		 * The current progress
+		 */
+		progress?: number
+		/**
+		 * Set the progress displayed in the progress bar
+		 * @param value A progress value between 0 and 1
+		 */
+		setProgress(value: number): void
+		/**
+		 * The progress bar HTML node
+		 */
+		node?: HTMLDivElement
+	}
 
 	confirmIndex: number
 	cancelIndex: number

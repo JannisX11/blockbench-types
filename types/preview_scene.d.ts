@@ -81,12 +81,22 @@ interface PreviewSceneOptions {
 declare class PreviewScene extends Deletable {
 	constructor(id: string, options: PreviewSceneOptions)
 
-	static scenes: {
-		(id: string): PreviewScene
-	}
+	/**
+	 * All preview scenes, listed by ID
+	 */
+	static scenes: Record<string, PreviewScene>
+	/**
+	 * The currently active scene
+	 */
 	static active: PreviewScene | null
-	select_options: {
-		(id: string): string
+	/**
+	 * The URL to the source repository that scenes are pulled from
+	 */
+	static source_repository: string
+	static menu_categories: {
+		[category_id: string]: {
+			[id: string]: string
+		}
 	}
 
 	id: string

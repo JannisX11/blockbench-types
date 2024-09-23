@@ -96,7 +96,10 @@ interface FormatOptions {
 	animation_mode?: boolean
 	pose_mode?: boolean
 	animation_controllers?: boolean
-	render_sides?: 'front'
+	box_uv_float_size: boolean
+	java_cube_shading_properties: boolean
+	cullfaces: boolean
+	render_sides?: 'front' | 'double' | 'back' | (() => ('front' | 'double' | 'back'))
 
 	cube_size_limiter?: CubeSizeLimiter
 
@@ -157,6 +160,12 @@ declare class ModelFormat extends Deletable {
 	display_mode: boolean
 	animation_mode: boolean
 	pose_mode: boolean
+	box_uv_float_size: boolean
+	java_cube_shading_properties: boolean
+	cullfaces: boolean
+	animation_controllers: boolean
+	render_sides: 'front' | 'double' | 'back' | (() => ('front' | 'double' | 'back'))
+	
 
 	codec?: Codec
 
