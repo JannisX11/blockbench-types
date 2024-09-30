@@ -152,7 +152,7 @@ declare class CubeFace extends Face {
 	cube: Cube
 	direction: CubeFaceDirection
 	uv: [number, number, number, number]
-	readonly uv_size: ArrayVector2
+	uv_size: ArrayVector2
 	rotation: number
 	tint: number
 	cullface: CubeFaceDirection | ''
