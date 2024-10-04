@@ -171,6 +171,15 @@ interface DialogOptions {
 	 */
 	title_menu?: Menu
 	/**
+	 * Display a progress bar in the dialog
+	 */
+	progress_bar?: {
+		/**
+		 * A progress value between 0 and 1
+		 */
+		progress?: number
+	}
+	/**
 	 * If true, the dialog will only have one button to close it
 	 */
 	singleButton?: boolean
@@ -225,6 +234,21 @@ declare class Dialog {
 	component: Vue.Component
 	sidebar: DialogSidebar | null
 	content_vue: Vue | null
+	progress_bar?: {
+		/**
+		 * The current progress
+		 */
+		progress?: number
+		/**
+		 * Set the progress displayed in the progress bar
+		 * @param value A progress value between 0 and 1
+		 */
+		setProgress(value: number): void
+		/**
+		 * The progress bar HTML node
+		 */
+		node?: HTMLDivElement
+	}
 
 	confirmIndex: number
 	cancelIndex: number
@@ -271,8 +295,16 @@ declare class Dialog {
 	onFormChange?(form_result: { [key: string]: FormResultValue }): void
 	/**
 	 * Set the values of the dialog form inputs
+	 * @param values The values to set, by form input key
+	 * @param update Whether to update the dialog (call onFormChange) after setting the values. Default is true. Set to false when called from onFormChange
 	 */
-	setFormValues(values: { [key: string]: FormResultValue }): void
+	setFormValues(values: { [key: string]: FormResultValue }, update: boolean): void
+	/**
+	 * Set whether the dialog form inputs are toggled on or off. See "toggle_enabled"
+	 * @param values 
+	 * @param update Whether to update the dialog (call onFormChange) after setting the values. Default is true. Set to false when called from onFormChange
+	 */
+	setFormToggles(values: { [key: string]: boolean }, update: boolean): void
 	/**
 	 * Delete the dialog any, causing it to be re-build from scratch on next open
 	 */

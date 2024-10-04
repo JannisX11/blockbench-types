@@ -7,6 +7,8 @@ interface DisplaySlotOptions {
 	rotation?: ArrayVector3
 	translation?: ArrayVector3
 	scale?: ArrayVector3
+	rotation_pivot?: ArrayVector3
+	scale_pivot?: ArrayVector3
 	mirror?: [boolean, boolean, boolean]
 }
 
@@ -18,6 +20,8 @@ declare class DisplaySlot {
 	rotation: ArrayVector3
 	translation: ArrayVector3
 	scale: ArrayVector3
+	rotation_pivot: ArrayVector3
+	scale_pivot: ArrayVector3
 	mirror: [boolean, boolean, boolean]
 	/**
 	 * Reset slot to default values
@@ -28,6 +32,8 @@ declare class DisplaySlot {
 		rotation: ArrayVector3
 		translation: ArrayVector3
 		scale: ArrayVector3
+		rotation_pivot: ArrayVector3
+		scale_pivot: ArrayVector3
 		mirror: [boolean, boolean, boolean]
 	}
 	/**
@@ -38,6 +44,8 @@ declare class DisplaySlot {
 				rotation: ArrayVector3
 				translation: ArrayVector3
 				scale: ArrayVector3
+				rotation_pivot?: ArrayVector3
+				scale_pivot?: ArrayVector3
 		  }
 		| undefined
 	/**

@@ -120,8 +120,8 @@ declare class UndoSystem {
 ```javascript
 Undo.initEdit({elements: []});
 
-var new_cube = new Cube({name: 'kevin'}).init();
-var other_cube = new Cube({name: 'lars'}).init();
+let new_cube = new Cube({name: 'kevin'}).init();
+let other_cube = new Cube({name: 'lars'}).init();
 
 Undo.finishEdit('add new cubes', {elements: [new_cube, other_cube]});
 ```

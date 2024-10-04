@@ -114,7 +114,7 @@ declare function getAverageRGB(
 declare function stringifyLargeInt(int: any): any
 declare function intersectLines(p1: any, p2: any, p3: any, p4: any): boolean
 declare function pointInRectangle(point: any, rect_start: any, rect_end: any): boolean
-declare function lineIntersectsReactangle(p1: any, p2: any, rect_start: any, rect_end: any): boolean
+declare function lineIntersectsRectangle(p1: any, p2: any, rect_start: any, rect_end: any): boolean
 declare function cameraTargetToRotation(position: any, target: any): any[]
 declare function cameraRotationToTarget(position: any, rotation: any): any
 

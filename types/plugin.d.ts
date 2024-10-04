@@ -50,6 +50,18 @@ interface PluginOptions {
 	 * In combination with a "Deprecated" tag, this can be used to provide context on why a plugin is deprecated
 	 */
 	deprecation_note?: string
+	/*
+	 * Link to the plugin's website
+	 */
+	website?: string
+	/*
+	 * Link to the repository that contains the source for the plugin
+	 */
+	repository?: string
+	/*
+	 * Link to where users can report issues with the plugin
+	 */
+	bug_tracker?: string
 	/**
 	 * Runs when the plugin loads
 	 */
@@ -105,6 +117,18 @@ declare class BBPlugin {
 	 * In combination with a "Deprecated" tag, this can be used to provide context on why a plugin is deprecated
 	 */
 	deprecation_note?: string
+	website?: string
+	/*
+	 * Link to the plugin's website
+	 */
+	repository?: string
+	/*
+	 * Link to the repository that contains the source for the plugin
+	 */
+	bug_tracker?: string
+	/*
+	 * Link to where users can report issues with the plugin
+	 */
 	onload(): void
 	onunload(): void
 	oninstall(): void
