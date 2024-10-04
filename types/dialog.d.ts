@@ -1,5 +1,3 @@
-
-
 interface DialogFormElement {
 	label?: string
 	/**
@@ -74,7 +72,7 @@ interface DialogFormElement {
 	/**
 	 * Available options on select or inline_select inputs
 	 */
-	options?: {[key: string]: string | {name: string}}
+	options?: { [key: string]: string | { name: string } }
 	buttons?: string[]
 	/**
 	 * Allow users to toggle the entire option on or off
@@ -221,6 +219,7 @@ declare class DialogSidebar {
 	}
 	page: string
 	actions: (Action | string)[]
+	page_menu: Record<string, HTMLElement>
 	onPageSwitch(page: string): void
 	build(): void
 	toggle(state?: boolean): void
@@ -310,6 +309,8 @@ declare class Dialog {
 	 * Delete the dialog any, causing it to be re-build from scratch on next open
 	 */
 	delete(): void
+
+	onPageSwitch(page: string): void
 
 	/**
 	 * Currently opened dialog

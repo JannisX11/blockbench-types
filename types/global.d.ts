@@ -1,14 +1,14 @@
 /// <reference path="./blockbench.d.ts"/>
 
 declare global {
-	const THREE: typeof import('three')
-
 	const Prism: typeof import('prismjs')
 	const scene: THREE.Scene
 	const Transformer: any
 	const DOMPurify: typeof import('dompurify')
 	const electron: typeof import('electron')
 	const { clipboard, shell, nativeImage, ipcRenderer, dialog }: typeof electron
+
+	let framespersecond: number
 
 	const main_preview: Preview
 	let open_interface: Dialog | undefined
@@ -134,15 +134,24 @@ declare global {
 
 		V3_set(x: number, y: number, z: number): this
 		V3_set(values: ArrayVector3): this
+		V3_set(value: THREE.Vector3): this
 		V3_add(x: number, y: number, z: number): this
 		V3_add(values: ArrayVector3): this
+		V3_add(value: THREE.Vector3): this
 		V3_subtract(x: number, y: number, z: number): this
 		V3_subtract(values: ArrayVector3): this
+		V3_subtract(value: THREE.Vector3): this
 		V3_multiply(x: number, y: number, z: number): this
 		V3_multiply(values: ArrayVector3): this
+		V3_multiply(value: THREE.Vector3): this
 		V3_divide(x: number, y: number, z: number): this
 		V3_divide(values: ArrayVector3): this
+		V3_divide(value: THREE.Vector3): this
 		V3_toThree(): THREE.Vector3
+	}
+
+	interface Event {
+		shiftKey?: boolean
 	}
 }
 

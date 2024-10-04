@@ -45,7 +45,7 @@ interface TextureEditOptions {
  * A texture combines the functionality of material, texture, and image, in one. Textures can be linked to files on the local hard drive, or hold the information in RAM.
  */
 declare class Texture {
-	constructor(data: TextureData, uuid?: string)
+	constructor(data?: TextureData, uuid?: string)
 	readonly frameCount: number | undefined
 	readonly display_height: number
 	readonly ratio: number

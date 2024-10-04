@@ -45,4 +45,10 @@ declare namespace Modes {
 		pose: Mode
 	}
 	let selected: Mode | false | undefined
+
+	let animate: boolean | undefined
+	let display: boolean | undefined
+	let edit: boolean | undefined
+	let paint: boolean | undefined
+	let pose: boolean | undefined
 }
