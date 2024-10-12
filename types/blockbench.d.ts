@@ -50,7 +50,6 @@
 /// <reference types="./math_util" />
 /// <reference types="./canvas_frame" />
 /// <reference types="./io" />
-/// <reference types="./vue" />
 
 /**
  * The resource identifier group, used to allow the file dialog (open and save) to remember where it was last used
