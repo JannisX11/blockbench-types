@@ -15,8 +15,8 @@ interface PreviewOptions {
 }
 
 type RaycastResult = {
-	type?: 'keyframe' | 'vertex' | 'cube'
-	event?: Event
+	type: 'element' | 'keyframe' | 'vertex' | 'cube' | 'line'
+	event: Event
 	cube?: Cube
 	intersects?: any[]
 	face?: string

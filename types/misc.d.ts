@@ -10,6 +10,8 @@ type UUID = string
  */
 declare const isApp: boolean
 
+declare const VuePrismEditor: Vue.Component
+
 type EventName =
 	| 'remove_animation'
 	| 'display_animation_frame'

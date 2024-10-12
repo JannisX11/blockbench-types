@@ -1,9 +1,5 @@
 /// <reference path="./blockbench.d.ts"/>
 type CardinalDirection = 'north' | 'south' | 'east' | 'west' | 'up' | 'down'
-interface ICubeFace {
-	uv: [number, number, number, number]
-	texture: Texture
-}
 
 interface ICubeOptions {
 	name: string
@@ -22,7 +18,7 @@ interface ICubeOptions {
 	 * UV position for box UV mode
 	 */
 	uv_offset: ArrayVector2
-	faces: Record<CardinalDirection, ICubeFace>
+	faces: Partial<Record<CardinalDirection, CubeFaceOptions>>
 }
 
 declare class Cube extends OutlinerElement {
@@ -152,7 +148,7 @@ declare class CubeFace extends Face {
 	cube: Cube
 	direction: CubeFaceDirection
 	uv: [number, number, number, number]
-	uv_size: ArrayVector2
+	uv_size: readonly [number, number]
 	rotation: number
 	tint: number
 	cullface: CubeFaceDirection | ''
