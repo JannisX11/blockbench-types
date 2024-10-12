@@ -1,5 +1,5 @@
 /// <reference types="vue" />
-/// <reference types="@types/three" />
+/// <reference types="./three.d.ts" />
 /// <reference types="@types/prismjs" />
 /// <reference types="@types/jquery" />
 /// <reference types="wintersky" />
@@ -312,7 +312,10 @@ declare namespace Blockbench {
 	 * Blockbench.removeListener<EventName>(...)
 	 * ```
 	 */
-	export function removeListener<E extends string>(event_names: E): void
+	export function removeListener<E extends string>(
+		event_names: E,
+		callback: (data: any) => void
+	): void
 
 	/**
 	 * Reads the content from the specified files. Desktop app only.
@@ -499,7 +502,10 @@ declare namespace Blockbench {
 
 declare const NativeGlobals: {
 	Animation: {
-		new (effect?: AnimationEffect | null | undefined, timeline?: AnimationTimeline | null | undefined): Animation;
-		prototype: Animation;
-	};
-};
+		new (
+			effect?: AnimationEffect | null | undefined,
+			timeline?: AnimationTimeline | null | undefined
+		): Animation
+		prototype: Animation
+	}
+}

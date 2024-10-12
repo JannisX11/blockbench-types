@@ -96,9 +96,9 @@ interface FormatOptions {
 	animation_mode?: boolean
 	pose_mode?: boolean
 	animation_controllers?: boolean
-	box_uv_float_size: boolean
-	java_cube_shading_properties: boolean
-	cullfaces: boolean
+	box_uv_float_size?: boolean
+	java_cube_shading_properties?: boolean
+	cullfaces?: boolean
 	render_sides?: 'front' | 'double' | 'back' | (() => ('front' | 'double' | 'back'))
 
 	cube_size_limiter?: CubeSizeLimiter

@@ -93,7 +93,7 @@ declare namespace Canvas {
 	const global_light_color: THREE.Color
 	const global_light_side: number
 
-	const face_order: string[]
+	const face_order: ['east', 'west', 'up', 'down', 'south', 'north']
 
 	/**
 	 * Raycast on the currently selected preview
@@ -152,7 +152,7 @@ declare namespace Canvas {
 	/**
 	 * Update positions and shapes of the selected elements
 	 */
-	function updatePositions(y: number): void
+	function updatePositions(y?: number): void
 	/**
 	 * Update the faces of all selected elements (material, UV map)
 	 */
@@ -215,16 +215,26 @@ declare namespace Canvas {
  * Marks a specific aspect of the interface to be updated in the next tick. Useful to avoid an update function getting called multiple times in the same task.
  */
 declare namespace TickUpdates {
-	const outliner: undefined | true
-	const selection: undefined | true
-	const main_uv: undefined | true
-	const texture_list: undefined | true
-	const keyframes: undefined | true
-	const keyframe_selection: undefined | true
-	const keybind_conflicts: undefined | true
+	let outliner: undefined | true
+	let selection: undefined | true
+	let main_uv: undefined | true
+	let texture_list: undefined | true
+	let keyframes: undefined | true
+	let keyframe_selection: undefined | true
+	let keybind_conflicts: undefined | true
 }
 
 interface NodePreviewControllerOptions {
+	/**
+	 * NOTE: This option is just for type checking and should not be set in the options object. It should be set inside of the setup function via `this.mesh`
+	 *
+	 * ```
+	 * setup(element) {
+	 *    this.mesh = new THREE.Mesh()
+	 * }
+	 * ```
+	 */
+	mesh?: THREE.Object3D | THREE.Mesh
 	setup?(element: OutlinerNode): void
 	remove?(element: OutlinerNode): void
 	updateAll?(element: OutlinerNode): void
@@ -235,14 +245,15 @@ interface NodePreviewControllerOptions {
 	updateUV?(element: OutlinerNode): void
 	updateFaces?(element: OutlinerNode): void
 	updatePaintingGrid?(element: OutlinerNode): void
-	updateHighlight?(element: OutlinerNode): void
+	updateHighlight?(element: OutlinerNode, ...args: any[]): void
 }
 declare class NodePreviewController {
-	constructor(type: typeof OutlinerNode, options: NodePreviewControllerOptions)
+	constructor(type: typeof OutlinerElement | typeof OutlinerNode, options: NodePreviewControllerOptions)
 	type: typeof OutlinerNode
 	events: {
 		[event_name: string]: ((data: any) => void)[]
 	}
+	mesh: THREE.Object3D | THREE.Mesh
 	dispatchEvent(event_name: string, data: Record<string, any>): void
 	/**
 	 * Adds an event listener
@@ -267,5 +278,5 @@ declare class NodePreviewController {
 	updateUV(instance: OutlinerNode): void
 	updateFaces(instance: OutlinerNode): void
 	updatePaintingGrid(instance: OutlinerNode): void
-	updateHighlight(instance: OutlinerNode): void
+	updateHighlight(instance: OutlinerNode, ...args: any[]): void
 }

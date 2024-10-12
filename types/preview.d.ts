@@ -15,13 +15,14 @@ interface PreviewOptions {
 }
 
 type RaycastResult = {
-	type: 'keyframe' | 'vertex' | 'cube'
+	type: 'element' | 'keyframe' | 'vertex' | 'cube' | 'line'
 	event: Event
 	cube?: Cube
 	intersects?: any[]
 	face?: string
-	vertex: any
-	keyframe: _Keyframe
+	vertex?: any
+	keyframe?: _Keyframe
+	element?: OutlinerElement
 }
 
 /**
@@ -58,6 +59,8 @@ declare class Preview extends Deletable {
 		lock: boolean
 	}
 	raycaster: THREE.Raycaster
+
+	mouse: THREE.Vector2
 
 	raycast(event: MouseEvent): false | RaycastResult
 	render(): void

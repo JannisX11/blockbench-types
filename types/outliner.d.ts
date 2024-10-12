@@ -16,6 +16,7 @@ declare class OutlinerNode {
 	locked: boolean
 	parent?: Group | 'root'
 	menu?: Menu
+
 	/**
 	 * Initializes the node. This should always be called when creating nodes that will be used in the outliner.
 	 */
@@ -57,7 +58,7 @@ declare class OutlinerNode {
 	 * @param event Mouse event, determines where the context menu spawns.
 	 */
 	showContexnu(event: Event | HTMLElement): this
-	getSaveCopy?(project?: boolean): OutlinerNode
+	getSaveCopy?(project?: boolean): Record<string, any>
 	sanitizeName(): string
 
 	static uuids: {
@@ -70,6 +71,7 @@ declare class OutlinerNode {
  */
 declare class OutlinerElement extends OutlinerNode {
 	static animator?: BoneAnimator
+
 	constructor(data: any, uuid: string)
 	selected: boolean
 	mesh: THREE.Object3D | THREE.Mesh
@@ -77,7 +79,7 @@ declare class OutlinerElement extends OutlinerNode {
 	static isParent: false
 	static types: Record<string, typeof OutlinerElement>
 	static all: OutlinerElement[]
-	static selected: OutlinerElement[]
+	static selected: OutlinerElement[] | false
 	static registerType(constructor: any, id: string): void
 	select(event?: any, isOutlinerClick?: boolean): this | void
 	unselect(...args: any[]): this | void
@@ -173,4 +175,4 @@ declare const markerColors: {
 
 declare function compileGroups(undo: boolean, lut?: { [index: number]: number }): any[]
 
-declare function parseGroups(array: any[], import_reference?: any, startIndex?: number): void
+declare function parseGroups(array: any[], import_reference?: Group, startIndex?: number): void

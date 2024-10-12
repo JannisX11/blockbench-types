@@ -10,6 +10,8 @@ type UUID = string
  */
 declare const isApp: boolean
 
+declare const VuePrismEditor: Vue.Component
+
 type EventName =
 	| 'remove_animation'
 	| 'display_animation_frame'
@@ -129,12 +131,14 @@ interface MessageBoxOptions {
 	 * Display a list of actions to do in the dialog. When clicked, the message box closes with the string ID of the command as first argument.
 	 */
 	commands?: {
-		[id: string]: string | {
-			text: string
-			icon?: IconString
-			condition?: ConditionResolvable
-			description?: string
-		}
+		[id: string]:
+			| string
+			| {
+					text: string
+					icon?: IconString
+					condition?: ConditionResolvable
+					description?: string
+			  }
 	}
 	/**
 	 * Adds checkboxes to the bottom of the message box
@@ -258,3 +262,18 @@ declare namespace Blockbench {
 }
 
 declare function unselectAllElements(): void
+declare function updateCubeHighlights(hover_cube: Cube, force_off: boolean): void
+declare function getRescalingFactor(angle: number): number
+
+declare const Pressing: {
+	shift: boolean
+	ctrl: boolean
+	alt: boolean
+	overrides: {
+		shift: boolean
+		ctrl: boolean
+		alt: boolean
+	}
+}
+
+declare function isStringNumber(value: any): boolean

@@ -9,7 +9,8 @@
 		"rootDir": ".",
 		"strict": true,
 		"noImplicitAny": true,
-		"esModuleInterop": true
+		"esModuleInterop": true,
+		"allowUmdGlobalAccess": true
 	},
 	"exclude": ["./node_modules/**/*"]
 }
