@@ -18,7 +18,7 @@ interface ICubeOptions {
 	 * UV position for box UV mode
 	 */
 	uv_offset: ArrayVector2
-	faces: Partial<Record<CardinalDirection, CubeFaceOptions>>
+	faces: Record<CardinalDirection, CubeFaceOptions>
 }
 
 declare class Cube extends OutlinerElement {
