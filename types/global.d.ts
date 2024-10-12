@@ -132,7 +132,7 @@ declare global {
 
 		V3_set(x: number, y: number, z: number): this
 		V3_set(values: ArrayVector3): this
-		//V3_set(value: THREE.Vector3): this
+		V3_set(value: THREE.Vector3): this
 		V3_add(x: number, y: number, z: number): this
 		V3_add(values: ArrayVector3): this
 		V3_add(value: THREE.Vector3): this
