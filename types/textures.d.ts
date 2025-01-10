@@ -150,6 +150,8 @@ declare class Texture {
 	 * Texture image element
 	 */
 	img: HTMLImageElement
+	get material(): THREE.ShaderMaterial
+	set material(value: THREE.ShaderMaterial)
 
 	relative_path?: string
 	readonly material: THREE.ShaderMaterial
