@@ -84,7 +84,7 @@ declare namespace Interface {
 					value?: string
 					default?: string
 					options: { [key: string]: string }
-					onChange?(value: string): void
+					onChange?(value: any): void
 				}
 			)
 		}

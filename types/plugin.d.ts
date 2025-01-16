@@ -97,6 +97,8 @@ declare class BBPlugin {
 	disabled: boolean
 	title: string
 	author: string
+	id: string
+	disabled: boolean
 	/**
 	 * Description text in the plugin browser
 	 */
@@ -144,6 +146,17 @@ declare class BBPlugin {
 	onuninstall(): void
 
 	static register(id: string, options: PluginOptions): BBPlugin
+
+	hasImageIcon(): boolean
+	getIcon(): string
+
+	toggleDisabled(): void
+}
+
+declare class Plugins {
+	static all: BBPlugin[]
+	static installed: BBPlugin[]
+	static dialog: Dialog
 }
 
 type PluginInstalledData = {
