@@ -21,7 +21,22 @@ interface GroupOptions {
 
 declare class Group extends OutlinerNode {
 	constructor(options: Partial<GroupOptions> | string)
+	/**
+	 * Returns the first selected group. Depretated, use Group.multi_selected. In the future this will return an array of selected groups instead.
+	 * @deprecated
+	 */
 	static selected: Group
+	/**
+	 * The group that's the first in the list of selected groups
+	 */
+	static first_selected: Group
+	/**
+	 * The list of selected groups. Note that this only includes directly selected groups, not groups that are selected because the parent is selected
+	 */
+	static multi_selected: Group
+	/**
+	 * All groups in the current project
+	 */
 	static all: Group[]
 	static animator: BoneAnimator
 	/**Check if any groups are in the project */

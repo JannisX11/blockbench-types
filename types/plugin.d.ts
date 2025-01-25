@@ -62,6 +62,10 @@ interface PluginOptions {
 	 * Link to where users can report issues with the plugin
 	 */
 	bug_tracker?: string
+	/*
+	 * List of secondary contributors to the plugin, excluding the main author(s)
+	 */
+	contributors?: string[]
 	/**
 	 * Runs when the plugin loads
 	 */
@@ -117,18 +121,22 @@ declare class BBPlugin {
 	 * In combination with a "Deprecated" tag, this can be used to provide context on why a plugin is deprecated
 	 */
 	deprecation_note?: string
-	website?: string
 	/*
 	 * Link to the plugin's website
 	 */
-	repository?: string
+	website?: string
 	/*
 	 * Link to the repository that contains the source for the plugin
 	 */
-	bug_tracker?: string
+	repository?: string
 	/*
 	 * Link to where users can report issues with the plugin
 	 */
+	bug_tracker?: string
+	/*
+	 * List of secondary contributors to the plugin, excluding the main author(s)
+	 */
+	contributors: string[]
 	onload(): void
 	onunload(): void
 	oninstall(): void

@@ -152,18 +152,43 @@ declare class TextureMesh extends OutlinerElement {
 	static selected: TextureMesh[]
 }
 
+/**
+ * Toggle in the outliner
+ */
+interface OutlinerToggle {
+	id: string
+	title: string
+	icon: IconString
+	icon_off?: IconString
+	icon_alt?: IconString
+	condition?: ConditionResolvable
+	/**
+	 * If true, the toggle will only be visible when "Toggle More Options" is enabled
+	 */
+	advanced_option?: boolean
+	/**
+	 * Override the visibility and still show the toggle under certain conditions, even if more options are disabled
+	 */
+	visibilityException?: (node: OutlinerNode) => boolean
+	/**
+	 * It's complicated, check the source code
+	 */
+	getState?: (node: OutlinerNode) => boolean | 'alt'
+}
+
 declare namespace Outliner {
 	const root: OutlinerNode[]
 	const elements: OutlinerElement[]
 	const selected: OutlinerElement[]
 	let control_menu_group: MenuItem[]
 	const buttons: {
-		autouv: any
-		export: any
-		locked: any
-		mirror_uv: any
-		shade: any
-		visibility: any
+		autouv: OutlinerToggle
+		export: OutlinerToggle
+		locked: OutlinerToggle
+		mirror_uv: OutlinerToggle
+		shade: OutlinerToggle
+		visibility: OutlinerToggle
+		[id: string]: OutlinerToggle
 	}
 }
 

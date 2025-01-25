@@ -35,8 +35,10 @@ declare class MeshFace extends Face {
 	extend(data: MeshFaceOptions): void
 	/**
 	 * Returns the face normal in mesh space as calculated from the vertex positions
+	 * @param normalize If true, the values will be normalized.
+	 * @param alt_tri On quads, if true, this will return the normal of the second tri instead of the first
 	 */
-	getNormal(normalize: boolean): ArrayVector3
+	getNormal(normalize: boolean, alt_tri?: boolean): ArrayVector3
 	/**
 	 * Calculates which pixels the UV face occupies, and returns them as a map
 	 */

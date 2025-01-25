@@ -88,9 +88,6 @@ declare class ModelProject {
 	front_gui_light: boolean
 
 	get model_3d(): THREE.Object3D
-	get materials(): {
-		[uuid: UUID]: THREE.ShaderMaterial
-	}
 	get nodes_3d(): {
 		[uuid: UUID]: THREE.Object3D
 	}

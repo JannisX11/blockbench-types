@@ -120,6 +120,7 @@ declare class Texture {
 	img: HTMLImageElement
 
 	relative_path?: string
+	readonly material: THREE.ShaderMaterial
 
 	getErrorMessage(): string
 	extend(data: TextureData): this
@@ -174,7 +175,18 @@ declare class Texture {
 	 * Reloads the texture. Only works in the desktop app
 	 */
 	reloadTexture(): void
-	getMaterial(): THREE.MeshLambertMaterial
+	/**
+	 * Get the material that the texture displays. When previewing PBR, this will return the shared PBR material
+	 */
+	getMaterial(): THREE.ShaderMaterial | THREE.MeshStandardMaterial
+	/**
+	 * Get the texture's own material
+	 */
+	getOwnMaterial(): THREE.ShaderMaterial
+	/**
+	 * Selects the texture
+	 * @param event Click event during selection
+	 */
 	select(event?: Event): this
 	/**
 	 * Adds texture to the textures list and initializes it
