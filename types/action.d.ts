@@ -11,31 +11,114 @@ declare interface KeybindKeys {
 	 * Main key, can be a numeric keycode or a lower case character
 	 */
 	key: number | string
-	ctrl?: boolean | null
-	shift?: boolean | null
-	alt?: boolean | null
-	meta?: boolean | null
+	ctrl?: boolean
+	shift?: boolean
+	alt?: boolean
+	meta?: boolean
 }
+type VariationModifier = 'always' | 'ctrl' | 'shift' | 'alt' | 'meta' | 'unless_ctrl' | 'unless_shift' | 'unless_alt'
+type ModifierKey = 'ctrl' | 'shift' | 'alt' | 'meta'
 /**
  * A customizable keybind
  */
 declare class Keybind {
-	constructor(keys: KeybindKeys)
+	/**
+	 * Create a keybind
+	 * @param {object} keys Set up the default keys that need to be pressed
+	 * @param {number|string} keys.key Main key. Check keycode.info to find out the numeric value, or simply use letters for letter keys
+	 * @param {boolean} keys.ctrl Control key. On MacOS this automatically works for Cmd
+	 * @param {boolean} keys.shift Shift key
+	 * @param {boolean} keys.alt Alt key
+	 * @param {boolean} keys.meta Meta key
+	 */
+	constructor(keys: KeybindKeys, variations?: Record<string, VariationModifier>)
 	key: number
 	ctrl?: boolean
 	shift?: boolean
 	alt?: boolean
+	variations?: {
+		[key: string]: {name: string, description?: string}
+	}
+	set(keys: KeybindKeys): this;
+	/**
+	 * Unassign the assigned key
+	 */
+	clear(): this;
+	/**
+	 * Save any changes to local storage
+	 * @param save Save all keybinding changes to local storage. Set to fales if updating multiple at once
+	 */
+	save(save?: false): this;
+	/**
+	 * Assign an action to the keybind
+	 * @param id ID of the action
+	 * @param sub_id sub keybind ID
+	 */
+	setAction(id: string, sub_id?: string): this | undefined;
+	/**
+	 * Get display text showing the keybind
+	 * @param formatted If true, the return string will include HTML formatting
+	 */
+	getText(formatted?: boolean): string;
 	/**
 	 * Get the name of the bound key
 	 */
-	getCode(): string
+	getCode(key: string): string
+	/**
+	 * Check if a key is assigned
+	 */
+	hasKey(): boolean;
+	/**
+	 * Test if the keybind would be triggered by the event
+	 */
+	isTriggered(event: Event): boolean;
+	/**
+	 * Test which variation would be triggered by the event. Returns the ID of the variation if triggered
+	 * @param event The event to test
+	 */
+	additionalModifierTriggered(event: Event): string | undefined;
+	/**
+	 * Test if a variation would be triggered by the event
+	 * @param event The event to test
+	 * @param variation The variation to test againts
+	 */
+	additionalModifierTriggered(event: Event, variation: string): boolean;
+	/**
+	 * Open a UI to let the user record a new key combination
+	 */
+	record(): this;
+	/**
+	 * Stop recording a new key combination
+	 */
+	stopRecording(): this;
+	/**
+	 * Returns the label of the keybinding
+	 */
+	toString(): string;
+
+	/**
+	 * Load an included keymap by ID
+	 * @param id 
+	 * @param from_start_screen 
+	 */
+	static loadKeymap(id: string, from_start_screen?: boolean): void | true
+	/**
+	 * Check if two KeybindItems are mutually exclusive, so only one can be available at the time. This is only the case if they each have a ConditionResolvable that is structured to support this
+	 */
+	static no_overlap(k1: KeybindItem, k2: KeybindItem): boolean
 }
 interface KeybindItemOptions {
 	keybind?: Keybind
+	variations?: {
+		[key: string]: {name: string, description?: string}
+	}
 }
 declare class KeybindItem extends Deletable {
 	constructor(id: string, options: KeybindItemOptions)
 	keybind: Keybind
+	variations?: {
+		[key: string]: {name: string, description?: string}
+	}
 }
 
 declare class MenuSeparator {
@@ -142,6 +225,14 @@ interface ActionOptions extends BarItemOptions {
 	 * Show the full label in toolbars
 	 */
 	label?: boolean
+	/**
+	 * Provide a menu that belongs to the action, and gets displayed as a small arrow next to it in toolbars.
+	 */
+	side_menu?: Menu
+	/**
+	 * Provide a window with additional configutation related to the action
+	 */
+	tool_config?: ToolConfig
 }
 /**
  * Actions can be triggered to run something, they can be added to menus, toolbars, assigned a keybinding, or run via Action Control
@@ -152,7 +243,11 @@ declare class Action extends BarItem {
 	/**
 	 * Provide a menu that belongs to the action, and gets displayed as a small arrow next to it in toolbars.
 	 */
-	side_menu?: Menu
+	side_menu?: Menu | ToolConfig
+	/**
+	 * Provide a window with additional configutation related to the action
+	 */
+	tool_config?: ToolConfig
 	click: ActionOptions['click']
 
 	condition?(): boolean

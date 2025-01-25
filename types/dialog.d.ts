@@ -1,4 +1,4 @@
-interface DialogFormElement {
+interface FormElement {
 	label?: string
 	/**
 	 * Detailed description of the field, available behind the questionmark icon or on mouse hover
@@ -17,7 +17,10 @@ interface DialogFormElement {
 		| 'file'
 		| 'folder'
 		| 'save'
+		| 'inline_select'
+		| 'inline_multi_select'
 		| 'info'
+		| 'num_slider'
 		| 'buttons'
 	/**
 	 * If true, the label will be displayed without colon at the end
@@ -73,7 +76,20 @@ interface DialogFormElement {
 	 * Available options on select or inline_select inputs
 	 */
 	options?: { [key: string]: string | { name: string } }
+	/**
+	 * List of buttons for the button type
+	 */
 	buttons?: string[]
+
+	/**
+	 * Function to get the interval value for a num_slider based on the input event
+	 * @returns Interval value
+	 */
+	getInterval?: (event: Event) => number
+	/**
+	 * For num_sliders, the sliding interval mode
+	 */
+	interval_type?: 'position' | 'rotation'
 	/**
 	 * Allow users to toggle the entire option on or off
 	 */
@@ -90,6 +106,40 @@ interface DialogFormElement {
 }
 
 type FormResultValue = string | number | boolean | []
+
+declare class InputForm {
+	constructor(form_config: {[formElement: string]: '_' | FormElement})
+	form_config: {[formElement: string]: '_' | FormElement}
+	form_data: {[formElement: string]: {}}
+	node: HTMLDivElement
+	max_label_width: number
+	uses_wide_inputs: boolean
+	/**
+	 * Set the values of some or all form inputs
+	 * @param values The values to set
+	 * @param update Set to false to prevent triggering an update
+	 */
+	setValues(values: Record<string, FormResultValue>, update?: boolean): void
+	/**
+	 * Set the values of some or all form input toggles
+	 * @param values The toggle values to set
+	 * @param update Set to false to prevent triggering an update
+	 */
+	setToggles(values: Record<string, boolean>, update?: boolean): void
+	/**
+	 * Get the form result values
+	 */
+	getResult(): Record<string, FormResultValue>
+	/**
+	 * Register that the values have been changed. This should generally only be used internally
+	 * @param initial Indicate that the change is for the initial setup of the form, prevents dispatching a change event
+	 */
+	updateValues(initial: boolean): Record<string, FormResultValue>
+	/**
+	 * Returns the default value of a given form input
+	 */
+	static getDefaultValue(input_config: FormElement): FormResultValue
+}
 
 interface ActionInterface {
 	name: string
@@ -151,7 +201,7 @@ interface DialogOptions {
 	 * Creates a form in the dialog
 	 */
 	form?: {
-		[formElement: string]: '_' | DialogFormElement
+		[formElement: string]: '_' | FormElement
 	}
 	/**
 	 * Vue component
@@ -234,6 +284,7 @@ declare class Dialog {
 	component: Vue.Component
 	sidebar: DialogSidebar | null
 	content_vue: Vue | null
+	form: InputForm | null
 	progress_bar?: {
 		/**
 		 * The current progress
@@ -384,6 +435,30 @@ declare class ShapelessDialog extends Dialog {
 	 * Delete the dialog any, causing it to be re-build from scratch on next open
 	 */
 	delete(): void
+}
+
+interface ToolConfigOptions extends DialogOptions {}
+
+declare class ToolConfig extends Dialog {
+	constructor(id: string, options: ToolConfigOptions)
+
+	options: {
+		[key: string]: FormResultValue
+	}
+	/**
+	 * Change and save a number of options in the config
+	 * @param options Options to set
+	 */
+	changeOptions(options: Record<string, FormResultValue>): void
+	/**
+	 * Save any changes in local storage
+	 */
+	save(): void
+	/**
+	 * Open the config menu
+	 * @param anchor Optional element to anchor the menu to
+	 */
+	show(anchor?: HTMLElement): this
 }
 
 interface DialogSidebarOptions {

@@ -1,6 +1,6 @@
 /// <reference path="./blockbench.d.ts"/>
 
-type PanelSlot = 'left_bar' | 'right_bar' | 'top' | 'bottom' | 'float'
+type PanelSlot = 'left_bar' | 'right_bar' | 'top' | 'bottom' | 'float' | 'hidden'
 
 interface PanelOptions {
 	id: string

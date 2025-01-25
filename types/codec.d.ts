@@ -14,6 +14,8 @@ interface CodecOptions {
 	overwrite?(content: any, path: string, callback: (path: any) => void): void
 	afterDownload?(path: any): void
 	afterSave?(path: any): void
+	exportCollection?(collection: Collection): void
+	writeCollection?(collection: Collection): void
 
 	dispatchEvent?(event_name: string, data: any): void
 
@@ -89,6 +91,8 @@ declare class Codec extends Deletable {
 	overwrite(content: any, path: string, callback: (path: string) => void): void
 	afterDownload(path: string): void
 	afterSave(path: string): void
+	exportCollection(collection: Collection): void
+	writeCollection(collection: Collection): void
 
 	/**
 	 * Return the stored export option values of the current project

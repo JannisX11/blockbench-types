@@ -29,6 +29,7 @@
 /// <reference types="./mode" />
 /// <reference types="./molang" />
 /// <reference types="./outliner" />
+/// <reference types="./collection" />
 /// <reference types="./painter" />
 /// <reference types="./panel" />
 /// <reference types="./plugin" />
