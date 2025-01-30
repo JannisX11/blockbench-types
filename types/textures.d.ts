@@ -3,13 +3,44 @@
 interface TextureData {
 	path?: string
 	name?: string
+	/** 
+	 * Relative path to the file's directory, used by some formats such as Java Block/Item
+	 * */
 	folder?: string
 	namespace?: string
+	/**
+	 * Texture ID or key, used by some formats. By default this is a number that increases with every texture that is added
+	 * */
 	id?: string
+	/**
+	 * Whether the texture is used for the models particle system. Used by some formats such as Java Block/Item
+	 * */
 	particle?: boolean
 	visible?: boolean
-	mode?: string
+	render_mode?: 'default' | 'emissive' | 'additive' | 'layered' | string
+	render_sides?: 'auto' | 'front' | 'double' | string
+	pbr_channel?: 'color' | 'normal' | 'height' | 'mer'
+
+	/**
+	 * Texture animation frame time
+	 * */
+	frame_time?: number
+	frame_order_type?: 'custom' | 'loop' | 'backwards' | 'back_and_forth'
+	/**
+	 * Custom frame order
+	 * */
+	frame_order?: string
+	/**
+	 * Interpolate between frames
+	 * */
+	frame_interpolate?: boolean
+	/**
+	 * Whether the texture is saved
+	 */
 	saved?: boolean
+	/**
+	 * Flag to indicate that the texture was manually resized, and on load it should not try to automatically adjust UV size
+	 */
 	keep_size?: boolean
 	source?: string
 	width?: number
@@ -61,6 +92,7 @@ declare class Texture {
 	particle: boolean
 	render_mode: 'default' | 'emissive' | 'additive' | 'layered' | string
 	render_sides: 'auto' | 'front' | 'double' | string
+	pbr_channel: 'color' | 'normal' | 'height' | 'mer'
 
 	/** Texture animation frame time */
 	frame_time: number

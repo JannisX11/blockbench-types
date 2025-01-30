@@ -27,6 +27,9 @@ interface UndoAspects {
 	display_slots?: string[]
 	exploded_view?: boolean
 }
+interface UndoSelectionAspects {
+	texture_selection?: boolean
+}
 type UndoSave = {
 	aspects: UndoAspects
 	selection?: []
@@ -47,24 +50,63 @@ type UndoSave = {
 	keyframes?: {}
 	display_slots?: {}
 	exploded_views?: boolean
+	/**
+	 * Load the undo save
+	 */
+	load(reference: UndoSave, mode?: 'session'): void
+	/**
+	 * Add a texture to an undo edit during the edit
+	 */
+	addTexture(texture: Texture): void
+	/**
+	 * Add a texture to an undo edit during the edit
+	 */
+	addTextureOrLayer(texture: Texture): void
+	/**
+	 * Add elements to an undo edit during the edit
+	 */
+	addElements(elements: OutlinerElement[], aspects?: UndoAspects): void
+}
+type UndoSelectionSave = {
+	aspects: UndoSelectionAspects
+	elements: string[]
+	groups: string[]
+	geometry: {
+		[uuid: string]: {
+			faces: string[]
+			edges: string[]
+			vertices: string[]
+		}
+	}
+	mode: string
+	mesh_selection_mode: string
+	texture: string
+	texture_selection?: Int8Array | boolean
+	animation_item?: string
+	timeline?: {}
+	graph_editor_channel?: string
+	graph_editor_axis?: string
+	graph_editor_open?: boolean
+	/**
+	 * Load the selection save
+	 */
+	load(): void
+	/**
+	 * Test whether the selection save matches another selection
+	 * @param other Selection save to test against
+	 */
+	matches(other: UndoSelectionSave): boolean
 }
 type UndoEntry = {
-	before: UndoSave
-	post: UndoSave
+	before?: UndoSave
+	post?: UndoSave
+	selection_before?: UndoSelectionSave
+	selection_post?: UndoSelectionSave
 	action: string
+	type: 'original' | 'edit' | 'selection'
 	time: number
 }
-interface AmendEditForm {
-	condition?: ConditionResolvable
-	type?: 'number' | 'checkbox'
-	label: string
-	interval_type: 'position' | 'rotation'
-	getInterval?(event: Event): number
-	value?: number | string | 'boolean'
-	min?: number
-	max?: number
-	step?: number
-}
+
 
 declare class UndoSystem {
 	constructor()
@@ -90,6 +132,24 @@ declare class UndoSystem {
 	/**
 	 * Undoes the latest edit
 	 */
+	/**
+	 * Starts a selection change in the current project
+	 * @param aspects Aspects to save
+	 */
+	initSelection(aspects: UndoSelectionAspects): UndoEntry
+	/**
+	 * Finishes a selection change in the current project
+	 * @param action Description of the edit
+	 */
+	finishSelection(action: string, aspects?: UndoSelectionAspects): UndoEntry
+	/**
+	 * Cancel the selection changes
+	 * @param revert_changes If true, the already tracked selection changes will be reverted to the state before initSelection
+	 */
+	cancelSelection(revert_changes?: boolean): void
+	/**
+	 * Cancels an event before it was finished and reset the project to the state before
+	 */
 	undo(remote?: boolean): void
 	/**
 	 * Redoes the latest edit
@@ -98,7 +158,11 @@ declare class UndoSystem {
 	/**
 	 * Provides a menu to amend the latest edit with slightly changed values
 	 */
-	amendEdit(form: AmendEditForm, callback: (values: any, form: any) => void): void
+	amendEdit(form: InputFormConfig, callback: (values: any, form: any) => void): void
+	/**
+	 * Closes the amend edit menu
+	 */
+	closeAmendEditMenu(): void
 
 	/**
 	 * Loads a specific undo save
@@ -123,11 +187,8 @@ Undo.initEdit({elements: []});
 let new_cube = new Cube({name: 'kevin'}).init();
 let other_cube = new Cube({name: 'lars'}).init();
 
-Undo.finishEdit('add new cubes', {elements: [new_cube, other_cube]});
+Undo.finishEdit('Add new cubes', {elements: [new_cube, other_cube]});
 ```
  */
 declare let Undo: UndoSystem
-interface CompileJSONOptions {
-	small?: boolean
-}
-declare function compileJSON(json: any, options?: CompileJSONOptions): string | ArrayBuffer
+

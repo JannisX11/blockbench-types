@@ -93,7 +93,8 @@ declare class BBPlugin {
 	extend(options: PluginOptions): this
 
 	installed: boolean
-	expanded: boolean
+	id: string
+	disabled: boolean
 	title: string
 	author: string
 	/**
@@ -143,4 +144,34 @@ declare class BBPlugin {
 	onuninstall(): void
 
 	static register(id: string, options: PluginOptions): BBPlugin
+}
+
+type PluginInstalledData = {
+	id: string
+	version: string
+	source: 'store' | 'file' | 'url'
+	path?: string
+	disabled?: boolean
+}
+declare namespace Plugins {
+	/**
+	 * All loaded plugins, including plugins from the store that are not installed
+	 */
+	const all: BBPlugin[]
+	/**
+	 * Data about which plugins are installed
+	 */
+	const installed: PluginInstalledData[]
+	/**
+	 * The plugins window
+	 */
+	const dialog: Dialog
+	/**
+	 * The currently used path to the plugin API
+	 */
+	const api_path: string
+	/**
+	 * Dev reload all side-loaded plugins
+	 */
+	function devReload(): void
 }

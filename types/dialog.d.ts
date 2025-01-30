@@ -107,9 +107,13 @@ interface FormElement {
 
 type FormResultValue = string | number | boolean | []
 
+type InputFormConfig = {
+	[formElement: string]: '_' | FormElement
+}
+
 declare class InputForm {
-	constructor(form_config: {[formElement: string]: '_' | FormElement})
-	form_config: {[formElement: string]: '_' | FormElement}
+	constructor(form_config: InputFormConfig)
+	form_config: InputFormConfig
 	form_data: {[formElement: string]: {}}
 	node: HTMLDivElement
 	max_label_width: number
@@ -200,9 +204,7 @@ interface DialogOptions {
 	/**
 	 * Creates a form in the dialog
 	 */
-	form?: {
-		[formElement: string]: '_' | FormElement
-	}
+	form?: InputFormConfig
 	/**
 	 * Vue component
 	 */

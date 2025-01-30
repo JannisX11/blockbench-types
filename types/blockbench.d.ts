@@ -1,10 +1,10 @@
 /// <reference types="vue" />
-/// <reference types="./three.d.ts" />
+/// <reference types="./three" />
 /// <reference types="@types/prismjs" />
-/// <reference types="@types/jquery" />
 /// <reference types="wintersky" />
 
 /// <reference types="./texture_layers" />
+/// <reference types="./texture_group" />
 /// <reference types="./action" />
 /// <reference types="./animation" />
 /// <reference types="./animation_controller" />
@@ -393,6 +393,7 @@ type BlockbenchTypeFace = typeof Face
 type BlockbenchTypeCubeFace = typeof CubeFace
 type BlockbenchTypeMeshFace = typeof MeshFace
 type BlockbenchTypeNodePreviewController = typeof NodePreviewController
+type BlockbenchTypeCollection = typeof Collection
 type BlockbenchTypeAnimator = typeof Animator
 type BlockbenchTypeTimeline = typeof Timeline
 type BlockbenchTypeAnimationItem = typeof AnimationItem
@@ -453,6 +454,7 @@ declare namespace Blockbench {
 	const CubeFace: BlockbenchTypeCubeFace
 	const MeshFace: BlockbenchTypeMeshFace
 	const NodePreviewController: BlockbenchTypeNodePreviewController
+	const Collection: BlockbenchTypeCollection
 	const Animator: BlockbenchTypeAnimator
 	const Timeline: BlockbenchTypeTimeline
 	const AnimationItem: BlockbenchTypeAnimationItem

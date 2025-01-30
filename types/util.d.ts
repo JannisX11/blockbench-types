@@ -215,3 +215,18 @@ declare class Rectangle {
 	fromUnorderedCoords(x1: number, y1: number, x2: number, y2: number): void
 	expandTo(x: number, y: number): void
 }
+
+interface CompileJSONOptions {
+	/**
+	 * Character or string used for indentation
+	 */
+	indentation?: string
+	/**
+	 * If true, compile everything in one line and without spaces
+	 */
+	small?: boolean
+}
+/**
+ * Blockbench's JSON compilation / stringify implementation
+ */
+declare function compileJSON(json: any, options?: CompileJSONOptions): string

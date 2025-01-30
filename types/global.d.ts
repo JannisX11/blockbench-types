@@ -4,7 +4,6 @@ declare global {
 	const Prism: typeof import('prismjs')
 	const scene: THREE.Scene
 	const Transformer: any
-	const DOMPurify: typeof import('dompurify')
 	const electron: typeof import('electron')
 	const { clipboard, shell, nativeImage, ipcRenderer, dialog }: typeof electron
 

@@ -504,7 +504,6 @@ interface ColorPickerOptions extends WidgetOptions {
 }
 declare class ColorPicker extends Widget {
 	value: tinycolor.Instance
-	jq: JQuery
 	constructor(options: ColorPickerOptions)
 	constructor(id: string, options: ColorPickerOptions)
 	change(color: tinycolor.Instance): void

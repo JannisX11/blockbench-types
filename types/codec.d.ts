@@ -33,7 +33,7 @@ interface CodecOptions {
 	 * List of export option inputs, based on the Dialog form API
 	 */
 	export_options?: {
-		[key: string]: DialogFormElement
+		[key: string]: FormElement
 	}
 	/**
 	 * Default action that is used to export to the codec
@@ -144,7 +144,7 @@ declare class Codec extends Deletable {
 	 * List of export option inputs
 	 */
 	export_options: {
-		[key: string]: DialogFormElement
+		[key: string]: FormElement
 	}
 
 	format: ModelFormat
