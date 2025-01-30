@@ -136,7 +136,7 @@ declare class UndoSystem {
 	 * Starts a selection change in the current project
 	 * @param aspects Aspects to save
 	 */
-	initSelection(aspects: UndoSelectionAspects): UndoEntry
+	initSelection(aspects?: UndoSelectionAspects): UndoEntry
 	/**
 	 * Finishes a selection change in the current project
 	 * @param action Description of the edit
