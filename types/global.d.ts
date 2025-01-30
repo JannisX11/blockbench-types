@@ -16,6 +16,7 @@ declare global {
 	const fs: typeof import('fs')
 
 	const tinycolor: typeof import('tinycolor2')
+	const DOMPurify: typeof import('dompurify')
 
 	let selected: OutlinerElement[]
 	const Toolbars: Record<string, Toolbar>

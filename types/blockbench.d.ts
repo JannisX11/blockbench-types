@@ -1,6 +1,7 @@
 /// <reference types="vue" />
-/// <reference types="./three" />
+/// <reference types="./three.d.ts" />
 /// <reference types="@types/prismjs" />
+/// <reference types="@types/jquery" />
 /// <reference types="wintersky" />
 
 /// <reference types="./texture_layers" />
