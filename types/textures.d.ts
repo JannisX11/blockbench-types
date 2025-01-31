@@ -132,9 +132,9 @@ declare global {
 		saved: boolean
 		/**
 		 * Whether the latest version of the texture is currently loaded from and linked to a file on disk, or held in memory as bitmap data
-		 * @deprecated Use texture.internal instead
+		 * @deprecated Use {@link Texture.internal} instead
 		 */
-		mode: 'link' | 'bitmap'
+		mode: never
 		/**
 		 * If true, the texture is loaded internally. If false, the texture is loaded directly from a file
 		 */
