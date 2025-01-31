@@ -87,13 +87,6 @@ declare global {
 		readonly display_height: number
 		readonly ratio: number
 		static selected?: Texture
-		readonly _static: {
-			properties: {
-				material: ShaderMaterial
-				selection: IntMatrix
-				watcher?: FSWatcher
-			}
-		}
 
 		path?: string
 		name: string
