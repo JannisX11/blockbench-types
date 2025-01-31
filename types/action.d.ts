@@ -71,7 +71,7 @@ declare class Keybind {
 	/**
 	 * Get the name of the bound key
 	 */
-	getCode(key: string): string
+	getCode(key?: string): string
 	/**
 	 * Check if a key is assigned
 	 */
