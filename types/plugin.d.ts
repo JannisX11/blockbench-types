@@ -97,8 +97,6 @@ declare class BBPlugin {
 	disabled: boolean
 	title: string
 	author: string
-	id: string
-	disabled: boolean
 	/**
 	 * Description text in the plugin browser
 	 */
@@ -151,12 +149,6 @@ declare class BBPlugin {
 	getIcon(): string
 
 	toggleDisabled(): void
-}
-
-declare class Plugins {
-	static all: BBPlugin[]
-	static installed: BBPlugin[]
-	static dialog: Dialog
 }
 
 type PluginInstalledData = {
