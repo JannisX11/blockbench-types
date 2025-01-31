@@ -122,7 +122,7 @@ declare class KeybindItem extends Deletable {
 }
 
 declare class MenuSeparator {
-	constructor()
+	constructor(name?: string)
 }
 type ActionEventName =
 	| 'delete'
