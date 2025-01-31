@@ -537,7 +537,7 @@ declare class Toolbar {
 	build(data: any, force: any): this
 	contextmenu(event: Event): void
 	editMenu(): this
-	add(action: any, position: any): this
+	add(action: any, position?: number): this
 	remove(action: any): this
 	update(): this
 	toPlace(place: any): this
