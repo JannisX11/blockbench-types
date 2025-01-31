@@ -1,6 +1,7 @@
 /// <reference path="./blockbench.d.ts"/>
 
 interface TextureGroupData {
+	uuid?: string
 	name?: string
 	is_material?: boolean
 	material_config?: TextureGroupMaterialConfigData
