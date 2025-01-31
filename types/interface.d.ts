@@ -76,17 +76,18 @@ declare namespace Interface {
 	const left_bar: HTMLElement
 
 	namespace CustomElements {
-		class SelectInput {
+		class SelectInput<T extends Record<string, string>> {
 			node: HTMLElement
 			constructor(
 				id: string,
 				options: {
-					value?: string
-					default?: string
-					options: { [key: string]: string }
-					onChange?(value: any): void
+					value?: T[keyof T]
+					default?: T[keyof T]
+					options: T
+					onChange?(value: T[keyof T]): void
 				}
 			)
+			set(value: T[keyof T]): void
 		}
 		const ResizeLine: any
 	}
