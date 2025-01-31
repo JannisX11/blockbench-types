@@ -16,7 +16,15 @@ declare interface KeybindKeys {
 	alt?: boolean
 	meta?: boolean
 }
-type VariationModifier = 'always' | 'ctrl' | 'shift' | 'alt' | 'meta' | 'unless_ctrl' | 'unless_shift' | 'unless_alt'
+type VariationModifier =
+	| 'always'
+	| 'ctrl'
+	| 'shift'
+	| 'alt'
+	| 'meta'
+	| 'unless_ctrl'
+	| 'unless_shift'
+	| 'unless_alt'
 type ModifierKey = 'ctrl' | 'shift' | 'alt' | 'meta'
 /**
  * A customizable keybind
@@ -37,29 +45,29 @@ declare class Keybind {
 	shift?: boolean
 	alt?: boolean
 	variations?: {
-		[key: string]: {name: string, description?: string}
+		[key: string]: { name: string; description?: string }
 	}
-	set(keys: KeybindKeys): this;
+	set(keys: KeybindKeys): this
 	/**
 	 * Unassign the assigned key
 	 */
-	clear(): this;
+	clear(): this
 	/**
 	 * Save any changes to local storage
 	 * @param save Save all keybinding changes to local storage. Set to fales if updating multiple at once
 	 */
-	save(save?: false): this;
+	save(save?: false): this
 	/**
 	 * Assign an action to the keybind
 	 * @param id ID of the action
 	 * @param sub_id sub keybind ID
 	 */
-	setAction(id: string, sub_id?: string): this | undefined;
+	setAction(id: string, sub_id?: string): this | undefined
 	/**
 	 * Get display text showing the keybind
 	 * @param formatted If true, the return string will include HTML formatting
 	 */
-	getText(formatted?: boolean): string;
+	getText(formatted?: boolean): string
 	/**
 	 * Get the name of the bound key
 	 */
@@ -67,39 +75,39 @@ declare class Keybind {
 	/**
 	 * Check if a key is assigned
 	 */
-	hasKey(): boolean;
+	hasKey(): boolean
 	/**
 	 * Test if the keybind would be triggered by the event
 	 */
-	isTriggered(event: Event): boolean;
+	isTriggered(event: Event): boolean
 	/**
 	 * Test which variation would be triggered by the event. Returns the ID of the variation if triggered
 	 * @param event The event to test
 	 */
-	additionalModifierTriggered(event: Event): string | undefined;
+	additionalModifierTriggered(event: Event): string | undefined
 	/**
 	 * Test if a variation would be triggered by the event
 	 * @param event The event to test
 	 * @param variation The variation to test againts
 	 */
-	additionalModifierTriggered(event: Event, variation: string): boolean;
+	additionalModifierTriggered(event: Event, variation: string): boolean
 	/**
 	 * Open a UI to let the user record a new key combination
 	 */
-	record(): this;
+	record(): this
 	/**
 	 * Stop recording a new key combination
 	 */
-	stopRecording(): this;
+	stopRecording(): this
 	/**
 	 * Returns the label of the keybinding
 	 */
-	toString(): string;
+	toString(): string
 
 	/**
 	 * Load an included keymap by ID
-	 * @param id 
-	 * @param from_start_screen 
+	 * @param id
+	 * @param from_start_screen
 	 */
 	static loadKeymap(id: string, from_start_screen?: boolean): void | true
 	/**
@@ -110,14 +118,14 @@ declare class Keybind {
 interface KeybindItemOptions {
 	keybind?: Keybind
 	variations?: {
-		[key: string]: {name: string, description?: string}
+		[key: string]: { name: string; description?: string }
 	}
 }
 declare class KeybindItem extends Deletable {
 	constructor(id: string, options: KeybindItemOptions)
 	keybind: Keybind
 	variations?: {
-		[key: string]: {name: string, description?: string}
+		[key: string]: { name: string; description?: string }
 	}
 }
 

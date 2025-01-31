@@ -220,7 +220,7 @@ interface FormatOptions {
 	/**
 	 * Set the default render sides for textures
 	 */
-	render_sides: 'front' | 'double' | 'back' | (() => ('front' | 'double' | 'back'))
+	render_sides: 'front' | 'double' | 'back' | (() => 'front' | 'double' | 'back')
 
 	/**
 	 * Options to limit the size of cubes
@@ -250,8 +250,6 @@ declare class ModelFormat extends Deletable implements FormatOptions {
 	onFormatPage?(): void
 	onStart?(): void
 	onSetup?(): void
-
-	
 
 	codec?: Codec
 

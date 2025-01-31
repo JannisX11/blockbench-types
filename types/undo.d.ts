@@ -107,7 +107,6 @@ type UndoEntry = {
 	time: number
 }
 
-
 declare class UndoSystem {
 	constructor()
 	/**
@@ -191,4 +190,3 @@ Undo.finishEdit('Add new cubes', {elements: [new_cube, other_cube]});
 ```
  */
 declare let Undo: UndoSystem
-
