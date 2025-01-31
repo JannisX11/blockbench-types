@@ -1,6 +1,6 @@
 /// <reference path="./blockbench.d.ts"/>
 
-interface TextureGroupData {
+interface TextureGroupOptions {
 	name?: string
 	is_material?: boolean
 	material_config?: TextureGroupMaterialConfigData
@@ -12,7 +12,7 @@ interface TextureGroupData {
 declare class TextureGroup {
 	static all: TextureGroup[]
 
-	constructor(data?: TextureGroupData, uuid?: string)
+	constructor(data?: TextureGroupOptions, uuid?: string)
 	uuid: string
 	name: string
 	folded: boolean
@@ -25,7 +25,7 @@ declare class TextureGroup {
 	 */
 	material_config: TextureGroupMaterialConfig
 	get material(): THREE.MeshStandardMaterial
-	extend(data: TextureGroupData): this
+	extend(data: TextureGroupOptions): this
 	add(): this
 	select(): this
 	remove(): void
