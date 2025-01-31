@@ -68,7 +68,7 @@ declare class Collection {
 	/**
 	 * Get all collections
 	 */
-	static all(): Collection[]
+	static all: Collection[]
 	/**
 	 * Get selected collections
 	 */
