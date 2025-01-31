@@ -1,6 +1,7 @@
 /// <reference path="./blockbench.d.ts"/>
 
 interface TextureGroupOptions {
+	uuid?: string
 	name?: string
 	is_material?: boolean
 	material_config?: TextureGroupMaterialConfigData
@@ -12,7 +13,7 @@ interface TextureGroupOptions {
 declare class TextureGroup {
 	static all: TextureGroup[]
 
-	constructor(data?: TextureGroupOptions, uuid?: string)
+	constructor(data?: Omit<TextureGroupOptions, 'uuid'>, uuid?: string)
 	uuid: string
 	name: string
 	folded: boolean
@@ -32,15 +33,8 @@ declare class TextureGroup {
 	showContextMenu(event: Event): void
 	rename(): this
 	getTextures(): Texture[]
-	getUndoCopy(): {
-		uuid: string
-		index: number
-		material_config: {}
-	}
-	getSaveCopy(): {
-		uuid: string
-		material_config: {}
-	}
+	getUndoCopy(): Required<TextureGroupOptions>
+	getSaveCopy(): Omit<TextureGroupOptions, 'is_material' | 'uuid'>
 	updateMaterial(): void
 	getMaterial(): THREE.MeshStandardMaterial
 }
