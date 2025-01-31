@@ -11,6 +11,8 @@ interface TextureGroupData {
  * A way to group textures. Texture groups can also be used to represent materials in enabled formats
  */
 declare class TextureGroup {
+	static all: TextureGroup[]
+
 	constructor(data?: TextureGroupData, uuid?: string)
 	uuid: string
 	name: string
