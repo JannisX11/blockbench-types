@@ -144,6 +144,11 @@ declare class BBPlugin {
 	onuninstall(): void
 
 	static register(id: string, options: PluginOptions): BBPlugin
+
+	hasImageIcon(): boolean
+	getIcon(): string
+
+	toggleDisabled(): void
 }
 
 type PluginInstalledData = {

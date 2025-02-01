@@ -277,3 +277,6 @@ declare const Pressing: {
 }
 
 declare function isStringNumber(value: any): boolean
+
+declare function marked(text: string): string
+declare function pureMarked(text: string): string

@@ -1,8 +1,8 @@
 /**
  * Shared Actions is a system in Blockbench to allow actions (including in toolbars, menus, via action control, or keybinding) to run different code in different cases, such as in different modes or different panels.
  * As an example, the "Duplicate" action runs code to duplicate elements when used in the outliner, and duplicates textures when used in the textures panel.
- * 
- * 
+ *
+ *
  * Handlers can be added for existing actions like this:
 
 ### Example:
@@ -24,12 +24,14 @@
 		}
 	})
 ```
- * 
+ *
  */
 declare namespace SharedActions {
 	const checks: {
 		[id: SharedActionID]: SharedActionHandler
 	}
+
+	const actions: Record<string, Array<SharedActionHandler>>
 
 	/**
 	 * Add a new handler to a shared action

@@ -3,14 +3,14 @@ const fs = require('fs')
 const PathModule = require('path')
 
 function getArg(key) {
-	let index = process.argv.indexOf('--'+key);
+	let index = process.argv.indexOf('--' + key)
 	console.log(index)
 	if (index > 1) {
-		return process.argv[index+1];
+		return process.argv[index + 1]
 	}
 }
 
-const out_path = getArg('out') || '../generated/';
+const out_path = getArg('out') || '../generated/'
 console.log(out_path)
 
 async function main() {
