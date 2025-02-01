@@ -58,7 +58,7 @@ declare class OutlinerNode {
 	 * @param event Mouse event, determines where the context menu spawns.
 	 */
 	showContexnu(event: Event | HTMLElement): this
-	getSaveCopy?(project?: boolean): Record<string, any>
+	getSaveCopy?(...args: any[]): Record<string, any>
 	sanitizeName(): string
 
 	static uuids: {
