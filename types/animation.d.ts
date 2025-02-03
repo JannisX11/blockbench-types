@@ -91,6 +91,8 @@ declare class _Animation extends AnimationItem {
 	saved_name?: string
 	selected: boolean
 	type: string
+	menu: Menu
+	file_menu: Menu
 }
 
 interface MolangAutoCompletionItem {
@@ -122,6 +124,7 @@ declare namespace Animator {
 	 * @param animation_filter List of names of animations to import
 	 */
 	function loadFile(file: any, animation_filter?: string[]): void
+	function exportAnimationFile(path: string): void
 	function resetLastValues(): void
 	function autocompleteMolang(
 		text: string,
