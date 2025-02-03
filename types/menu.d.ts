@@ -93,6 +93,7 @@ declare namespace MenuBar {
 		help: Menu
 		[id: string]: Menu
 	}
+	const structure: MenuItem[]
 	/**
 	 * Adds an action to the menu structure
 	 * @param action Action to add
