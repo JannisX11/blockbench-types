@@ -268,6 +268,10 @@ declare global {
 		 */
 		trigger(event?: Event): boolean
 		updateKeybindingLabel(): this
+		/**
+		 * Change the name of the action
+		 */
+		setName(name: string): void
 		/** Change the icon of the action */
 		setIcon(icon: IconString): void
 		toggleLinkedSetting(change: any): void
