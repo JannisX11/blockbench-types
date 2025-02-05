@@ -83,27 +83,26 @@ async function main() {
 
 		Vector3: '[THREE.Vector3](https://threejs.org/docs/index.html#api/en/math/Vector3)',
 		Euler: '[THREE.Euler](https://threejs.org/docs/index.html#api/en/math/Euler)',
-		Quaternion:
-			'[THREE.Quaternion](https://threejs.org/docs/index.html#api/en/math/Quaternion)',
+		Quaternion: '[THREE.Quaternion](https://threejs.org/docs/index.html#api/en/math/Quaternion)',
 		Object3D: '[THREE.Object3D](https://threejs.org/docs/index.html#api/en/core/Object3D)',
-		PerspectiveCamera:
-			'[THREE.PerspectiveCamera](https://threejs.org/docs/index.html#api/en/cameras/PerspectiveCamera)',
-		OrthographicCamera:
-			'[THREE.OrthographicCamera](https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera)',
-		WebGLRenderer:
-			'[THREE.WebGLRenderer](https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer)',
+		PerspectiveCamera: '[THREE.PerspectiveCamera](https://threejs.org/docs/index.html#api/en/cameras/PerspectiveCamera)',
+		OrthographicCamera: '[THREE.OrthographicCamera](https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera)',
+		WebGLRenderer: '[THREE.WebGLRenderer](https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer)',
+		Scene: '[THREE.Scene](https://threejs.org/docs/index.html?q=scene#api/en/scenes/Scene)',
+		LineBasicMaterial: '[THREE.LineBasicMaterial](https://threejs.org/docs/index.html?q=LineBasicMaterial#api/en/materials/LineBasicMaterial)',
+		MeshBasicMaterial: '[THREE.MeshBasicMaterial](https://threejs.org/docs/index.html?q=MeshBasicMaterial#api/en/materials/MeshBasicMaterial)',
+		MeshStandardMaterial: '[THREE.MeshStandardMaterial](https://threejs.org/docs/index.html?q=MeshStandardMaterial#api/en/materials/MeshStandardMaterial)',
+		ShaderMaterial: '[THREE.ShaderMaterial](https://threejs.org/docs/index.html?q=ShaderMaterial#api/en/materials/ShaderMaterial)',
+		PointsMaterial: '[THREE.PointsMaterial](https://threejs.org/docs/index.html?q=PointsMaterial#api/en/materials/PointsMaterial)',
+		Color: '[THREE.Color](https://threejs.org/docs/index.html?q=color#api/en/math/Color)',
 
 		HTMLElement: '[HTMLElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement)',
-		HTMLCanvasElement:
-			'[HTMLCanvasElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement)',
-		HTMLAudioElement:
-			'[HTMLAudioElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement)',
-		CanvasRenderingContext2D:
-			'[CanvasRenderingContext2D](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D)',
+		HTMLCanvasElement: '[HTMLCanvasElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement)',
+		HTMLAudioElement: '[HTMLAudioElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement)',
+		CanvasRenderingContext2D: '[CanvasRenderingContext2D](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D)',
 		Date: '[Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)',
 		Event: '[Event](https://developer.mozilla.org/en-US/docs/Web/API/Event)',
-		PointerEvent:
-			'[PointerEvent](https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent)',
+		PointerEvent: '[PointerEvent](https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent)',
 	}
 	let top_level_references = {}
 	let top_level_hidden_references = {}

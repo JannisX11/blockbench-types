@@ -10,7 +10,8 @@
 		"strict": true,
 		"noImplicitAny": true,
 		"esModuleInterop": true,
-		"allowUmdGlobalAccess": true
+		"allowUmdGlobalAccess": true,
+		"skipLibCheck": true
 	},
 	"exclude": ["./node_modules/**/*"]
 }

@@ -1,5 +1,5 @@
 /// <reference types="vue" />
-/// <reference types="./three.d.ts" />
+/// <reference types="./three" />
 /// <reference types="@types/prismjs" />
 /// <reference types="@types/jquery" />
 /// <reference types="wintersky" />
@@ -504,6 +504,9 @@ declare namespace Blockbench {
 	const Texture: BlockbenchTypeTexture
 }
 
+/**
+ * Provides access to global Javascript/DOM variables that are overwritten by Blockbench's own variables
+ */
 declare const NativeGlobals: {
 	Animation: {
 		new (

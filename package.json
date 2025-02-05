@@ -1,6 +1,6 @@
 {
 	"name": "blockbench-types",
-	"version": "4.12.2",
+	"version": "4.12.1",
 	"description": "Blockbench typescript types",
 	"main": "",
 	"types": "types/index.d.ts",
@@ -25,7 +25,7 @@
 	"dependencies": {
 		"@babel/types": "^7.20.7",
 		"@types/dompurify": "^3.0.5",
-		"@types/jquery": "^3.5.4",
+		"@types/jquery": "^3.5.32",
 		"@types/prismjs": "^1.26.0",
 		"@types/three": "^0.129.2",
 		"@types/tinycolor2": "^1.4.6",
