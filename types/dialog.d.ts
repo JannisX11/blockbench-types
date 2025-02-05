@@ -114,7 +114,7 @@ type InputFormConfig = {
 declare class InputForm {
 	constructor(form_config: InputFormConfig)
 	form_config: InputFormConfig
-	form_data: {[formElement: string]: {}}
+	form_data: { [formElement: string]: {} }
 	node: HTMLDivElement
 	max_label_width: number
 	uses_wide_inputs: boolean
@@ -354,7 +354,7 @@ declare class Dialog {
 	setFormValues(values: { [key: string]: FormResultValue }, update: boolean): void
 	/**
 	 * Set whether the dialog form inputs are toggled on or off. See "toggle_enabled"
-	 * @param values 
+	 * @param values
 	 * @param update Whether to update the dialog (call onFormChange) after setting the values. Default is true. Set to false when called from onFormChange
 	 */
 	setFormToggles(values: { [key: string]: boolean }, update: boolean): void

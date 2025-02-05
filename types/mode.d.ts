@@ -1,9 +1,12 @@
 /// <reference path="./blockbench.d.ts"/>
 
 interface ModeOptions {
+	id: string
 	name: string
+	icon?: string
 	default_tool?: string
 	selectElements?: boolean
+	category?: string
 	/**
 	 * Hide certain types of nodes in the outliner, like cubes and meshes in animation mode
 	 */
@@ -18,6 +21,7 @@ interface ModeOptions {
 }
 declare class Mode extends KeybindItem {
 	constructor(id: string, options: ModeOptions)
+	constructor(options: ModeOptions)
 	id: string
 	name: string
 

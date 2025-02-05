@@ -2,27 +2,27 @@
 type CardinalDirection = 'north' | 'south' | 'east' | 'west' | 'up' | 'down'
 
 interface ICubeOptions {
-	name: string
-	autouv: 0 | 1 | 2
-	shade: boolean
-	mirror_uv: boolean
-	inflate: number
-	color: number
-	visibility: boolean
-	from: ArrayVector3
-	to: ArrayVector3
-	rotation: ArrayVector3
-	origin: ArrayVector3
-	box_uv: boolean
+	name?: string
+	autouv?: 0 | 1 | 2
+	shade?: boolean
+	mirror_uv?: boolean
+	inflate?: number
+	color?: number
+	visibility?: boolean
+	from?: ArrayVector3
+	to?: ArrayVector3
+	rotation?: ArrayVector3
+	origin?: ArrayVector3
+	box_uv?: boolean
 	/**
 	 * UV position for box UV mode
 	 */
-	uv_offset: ArrayVector2
-	faces: Partial<Record<CardinalDirection, CubeFaceOptions>>
+	uv_offset?: ArrayVector2
+	faces?: Partial<Record<CardinalDirection, CubeFaceOptions>>
 }
 
 declare class Cube extends OutlinerElement {
-	constructor(options: Partial<ICubeOptions>, uuid?: string)
+	constructor(options: ICubeOptions, uuid?: string)
 	name: string
 	uuid: string
 	color: any
@@ -66,7 +66,7 @@ declare class Cube extends OutlinerElement {
 		}
 	}
 
-	extend(options: Partial<ICubeOptions>): this
+	extend(options: ICubeOptions): this
 	/**
 	 * Calculates and returns the size of a cube across a certain axis. If the axis argument is omitted, it returns all sizes as an array vector.
 	 */

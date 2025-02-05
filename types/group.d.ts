@@ -22,18 +22,20 @@ interface GroupOptions {
 declare class Group extends OutlinerNode {
 	constructor(options: Partial<GroupOptions> | string)
 	/**
-	 * Returns the first selected group. Depretated, use Group.multi_selected. In the future this will return an array of selected groups instead.
-	 * @deprecated
+	 * Returns the first selected group.
+	 * In the future this will return an array of selected groups instead.
+	 * @deprecated Use {@link Group.multi_selected} instead!
 	 */
-	static selected: Group
+	static selected: Group | undefined
 	/**
-	 * The group that's the first in the list of selected groups
+	 * The first group in {@link Group.multi_selected}
 	 */
-	static first_selected: Group
+	static first_selected: Group | undefined
 	/**
-	 * The list of selected groups. Note that this only includes directly selected groups, not groups that are selected because the parent is selected
+	 * A list of directly selected groups.
+	 * @Note This only includes directly selected groups, not groups that are selected because the parent is selected
 	 */
-	static multi_selected: Group
+	static multi_selected: Group[]
 	/**
 	 * All groups in the current project
 	 */

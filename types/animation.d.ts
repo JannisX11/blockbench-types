@@ -31,6 +31,27 @@ interface AnimationUndoCopy {
 	selected: any
 }
 
+/**
+ *
+ * ⚠️ This will not provide correct type information! ⚠️
+ *
+ * Use {@link Blockbench.Animation} instead for TypeScript support.
+ *
+ * Blockbench overwrites libdom's {@link Animation} type with its own `Animation` Class, but TypeScript doesn't include a way to overwrite UMD global types.
+ * To get around this, we changed the name of this class type declaration to `_Animation` and use that in the type definitions.
+ */
+interface Animation {}
+
+/**
+ * ⚠️ THIS IS TYPE ONLY ⚠️
+ *
+ * **It does not exist** in Blockbench at Run-time. Use {@link Blockbench.Animation} instead.
+ *
+ * Blockbench overwrites libdom's {@link Animation} type with its own `Animation` Class, but TypeScript doesn't include a way to overwrite UMD global types.
+ * To get around this, we changed the name of this class type declaration to `_Animation` and use that in the type definitions.
+ *
+ * @deprecated
+ */
 declare class _Animation extends AnimationItem {
 	constructor(data?: AnimationOptions)
 	extend(data?: AnimationOptions): this
@@ -91,6 +112,8 @@ declare class _Animation extends AnimationItem {
 	saved_name?: string
 	selected: boolean
 	type: string
+	menu: Menu
+	file_menu: Menu
 }
 
 interface MolangAutoCompletionItem {
@@ -122,6 +145,7 @@ declare namespace Animator {
 	 * @param animation_filter List of names of animations to import
 	 */
 	function loadFile(file: any, animation_filter?: string[]): void
+	function exportAnimationFile(path: string): void
 	function resetLastValues(): void
 	function autocompleteMolang(
 		text: string,
