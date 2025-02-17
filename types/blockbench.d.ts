@@ -47,9 +47,7 @@
 /// <reference types="./texture_group" />
 /// <reference types="./texture_layers" />
 /// <reference types="./textures" />
-// The `.d.ts` suffix here is important!
-// TypeScript attempts to load the `three` library directly unless we include the file extension.
-/// <reference types="./three.d.ts" />
+/// <reference types="./threejs" />
 /// <reference types="./timeline" />
 /// <reference types="./undo" />
 /// <reference types="./util" />
