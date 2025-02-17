@@ -1,9 +1,8 @@
 /// <reference path="./blockbench.d.ts"/>
 
 declare global {
-	// const Prism: typeof import('prismjs')
 	const scene: THREE.Scene
-	const Transformer: any
+	const Transformer: THREE.TransformControls
 	const electron: typeof import('electron')
 	const { clipboard, shell, nativeImage, ipcRenderer, dialog }: typeof electron
 
@@ -15,7 +14,6 @@ declare global {
 	const PathModule: typeof import('path')
 	const fs: typeof import('fs')
 
-	const DOMPurify: typeof import('dompurify')
 	// Hides the "Prefer imports over UMD globals" warning
 	namespace DOMPurify {}
 
@@ -154,5 +152,5 @@ declare global {
 	}
 }
 
-export { }
-
+// Force TypeScript to recognize the file as a module
+export {}

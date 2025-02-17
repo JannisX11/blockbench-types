@@ -81,6 +81,8 @@ declare class Preview extends Deletable {
 	showContextMenu(event: Event | HTMLElement): this
 	loadBackground(): void
 
+	calculateControlScale(): number
+
 	/**
 	 * List of all previews
 	 */
