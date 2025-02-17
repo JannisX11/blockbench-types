@@ -164,7 +164,7 @@ declare namespace Canvas {
 	/**
 	 * Update the hierarchy and position of all bones
 	 */
-	function updateAllBones(): void
+	function updateAllBones(bones?: Group[]): void
 	/**
 	 * Update the position of the origin / pivot point gizmo
 	 */
