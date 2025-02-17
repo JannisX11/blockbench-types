@@ -45,7 +45,9 @@
 /// <reference types="./texture_group" />
 /// <reference types="./texture_layers" />
 /// <reference types="./textures" />
-/// <reference types="./three" />
+// The `.d.ts` suffix here is important!
+// For whatever reason, TypeScript doesn't recognize the file without it, and doesn't apply the type modifications.
+/// <reference types="./three.d.ts" />
 /// <reference types="./timeline" />
 /// <reference types="./undo" />
 /// <reference types="./util" />
