@@ -1,43 +1,44 @@
 /// <reference path="./blockbench.d.ts"/>
 
-type StateAnimationInput =
-	| string
-	| {
-			[key: string]: string
-	  }
-	| {
-			uuid: string
-			key?: string
-			animation?: string
-			blend_value?: number
-	  }
-type StateAnimation = {
-	uuid: string
-	key: string
-	animation: string
-	blend_value: number
-}
-
-interface AnimationControllerStateOptions {
-	name?: string
-	animations?: StateAnimationInput[]
-	transitions?: any[]
-	sounds?: any[]
-	particles?: any[]
-	on_entry?: string
-	on_exit?: string
-	blend_transition?: number
-	blend_via_shortest_path?: boolean
-}
-
-interface AnimationControllerOptions {
-	name?: string
-	uuid?: string
-	path?: string
-	initial_state?: string
-}
-
 declare global {
+	type StateAnimationInput =
+		| string
+		| {
+				[key: string]: string
+		  }
+		| {
+				uuid: string
+				key?: string
+				animation?: string
+				blend_value?: number
+		  }
+
+	type StateAnimation = {
+		uuid: string
+		key: string
+		animation: string
+		blend_value: number
+	}
+
+	interface AnimationControllerStateOptions {
+		name?: string
+		animations?: StateAnimationInput[]
+		transitions?: any[]
+		sounds?: any[]
+		particles?: any[]
+		on_entry?: string
+		on_exit?: string
+		blend_transition?: number
+		blend_via_shortest_path?: boolean
+	}
+
+	interface AnimationControllerOptions {
+		name?: string
+		uuid?: string
+		path?: string
+		initial_state?: string
+	}
+
 	class AnimationControllerState {
 		constructor(controller: AnimationController, options?: AnimationControllerStateOptions)
 		controller: AnimationController
