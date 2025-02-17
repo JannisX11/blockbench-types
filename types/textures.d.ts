@@ -1,8 +1,5 @@
 /// <reference path="./blockbench.d.ts"/>
 
-import type { FSWatcher } from 'fs'
-import type { ShaderMaterial } from 'three'
-
 declare global {
 	interface TextureData {
 		path?: string
@@ -472,3 +469,6 @@ declare global {
 		function updateButton(): void
 	}
 }
+
+// Force TypeScript to recognize the file as a module
+export {}
