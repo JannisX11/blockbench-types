@@ -15,6 +15,8 @@ declare global {
 	const PathModule: typeof import('path')
 	const fs: typeof import('fs')
 
+	const DOMPurify: typeof import('dompurify')
+
 	let selected: OutlinerElement[]
 	const Toolbars: Record<string, Toolbar>
 
