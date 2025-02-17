@@ -14,8 +14,9 @@ declare global {
 	const PathModule: typeof import('path')
 	const fs: typeof import('fs')
 
-	// Hides the "Prefer imports over UMD globals" warning
+	// Hide the "Prefer imports over UMD globals" warning for these
 	namespace DOMPurify {}
+	namespace tinycolor {}
 
 	let selected: OutlinerElement[]
 	const Toolbars: Record<string, Toolbar>

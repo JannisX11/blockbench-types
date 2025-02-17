@@ -3,6 +3,7 @@
 /// <reference types="@types/jquery" />
 /// <reference types="wintersky" />
 /// <reference types="dompurify" />
+/// <reference types="tinycolor2" />
 
 /// <reference types="./action" />
 /// <reference types="./animation_controller" />
