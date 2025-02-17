@@ -18,7 +18,7 @@
 	},
 	"scripts": {
 		"lint": "prettier -w .",
-		"generate": "node ./scripts/generate_docs.js",
+		"generate": "npx node-modules-vscode-problems-patch && node ./scripts/generate_docs.js",
 		"generate-wiki": "node ./scripts/generate_docs.js --out \"../../blockbench.net/content/api/\""
 	},
 	"homepage": "https://github.com/JannisX11/blockbench-types#readme",
@@ -39,6 +39,7 @@
 	},
 	"devDependencies": {
 		"@types/node": "^18.14.6",
+		"node-modules-vscode-problems-patch": "^1.0.8",
 		"prettier": "^2.8.3",
 		"typedoc": "^0.23.24"
 	}
