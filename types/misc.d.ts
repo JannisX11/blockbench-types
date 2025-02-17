@@ -245,7 +245,7 @@ declare namespace Language {
 }
 
 interface Object {
-	boneConfig: Record<string, Property<any> | undefined>
+	properties: Record<string, Property<any> | undefined>
 }
 
 declare var LZUTF8: any
