@@ -1,53 +1,55 @@
 /// <reference path="./blockbench.d.ts"/>
-/**
- * The validator in Blockbench provides feedback about the model and can detect issues in real time, based on a list of checks that can be added. This is a good way to ensure model files are valid, and to teach users about best practices.
- */
-declare namespace Validator {
-	const checks: ValidatorCheck[]
 
-	const warnings: WarningOrError[]
-	const errors: WarningOrError[]
+declare global {
 	/**
-	 * Run the validator
-	 * @param trigger ID of the Blockbench event that triggered the call
+	 * The validator in Blockbench provides feedback about the model and can detect issues in real time, based on a list of checks that can be added. This is a good way to ensure model files are valid, and to teach users about best practices.
 	 */
-	function validate(trigger?: EventName): void
-	/**
-	 * Opens the Validator dialog
-	 */
-	function openDialog(): void
+	namespace Validator {
+		const checks: ValidatorCheck[]
+
+		const warnings: WarningOrError[]
+		const errors: WarningOrError[]
+		/**
+		 * Run the validator
+		 * @param trigger ID of the Blockbench event that triggered the call
+		 */
+		function validate(trigger?: EventName): void
+		/**
+		 * Opens the Validator dialog
+		 */
+		function openDialog(): void
+
+		/**
+		 * Cached trigger IDs
+		 */
+		const triggers: EventName[]
+		/**
+		 * Update the cached triggers list
+		 */
+		function updateCashedTriggers(): void
+	}
+
+	interface ValidatorCheckOptions {
+		/**
+		 * Function that runs when the validator check runs
+		 */
+		run(): void
+		/**
+		 * Names of events that automatically trigger this check
+		 */
+		update_triggers?: EventName[]
+		condition?: ConditionResolvable
+	}
+	interface WarningOrError {
+		message: string
+		buttons?: {
+			name: string
+			icon: IconString
+			click(): void
+		}[]
+	}
 
 	/**
-	 * Cached trigger IDs
-	 */
-	const triggers: EventName[]
-	/**
-	 * Update the cached triggers list
-	 */
-	function updateCashedTriggers(): void
-}
-
-interface ValidatorCheckOptions {
-	/**
-	 * Function that runs when the validator check runs
-	 */
-	run(): void
-	/**
-	 * Names of events that automatically trigger this check
-	 */
-	update_triggers?: EventName[]
-	condition?: ConditionResolvable
-}
-interface WarningOrError {
-	message: string
-	buttons?: {
-		name: string
-		icon: IconString
-		click(): void
-	}[]
-}
-
-/**
  * A check for the validator. A check can be triggered by certain things, and updates the list of warnings and errors that can be displayed in the status bar.
 
 
@@ -78,19 +80,22 @@ interface WarningOrError {
 	})
 ```
  */
-declare class ValidatorCheck extends Deletable {
-	constructor(id: string, options: ValidatorCheckOptions)
+	class ValidatorCheck extends Deletable {
+		constructor(id: string, options: ValidatorCheckOptions)
 
-	/**
-	 * Manually run this check
-	 */
-	update(): void
-	/**
-	 * Throw a warning. This is intended to be used inside the run() method
-	 */
-	warn(...warnings: WarningOrError[]): void
-	/**
-	 * Throw an error. This is intended to be used inside the run() method
-	 */
-	fail(...warnings: WarningOrError[]): void
+		/**
+		 * Manually run this check
+		 */
+		update(): void
+		/**
+		 * Throw a warning. This is intended to be used inside the run() method
+		 */
+		warn(...warnings: WarningOrError[]): void
+		/**
+		 * Throw an error. This is intended to be used inside the run() method
+		 */
+		fail(...warnings: WarningOrError[]): void
+	}
 }
+
+export {}
