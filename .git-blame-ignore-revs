@@ -1,0 +1,2 @@
+# Switch to using `declare global {...} export {}` over `declare ...` for global declarations
+29542c2befcd8f0075c43fbba9e593c4918e0315

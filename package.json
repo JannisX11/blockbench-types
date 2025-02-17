@@ -19,7 +19,8 @@
 	"scripts": {
 		"lint": "prettier -w .",
 		"generate": "npx node-modules-vscode-problems-patch && node ./scripts/generate_docs.js",
-		"generate-wiki": "node ./scripts/generate_docs.js --out \"../../blockbench.net/content/api/\""
+		"generate-wiki": "node ./scripts/generate_docs.js --out \"../../blockbench.net/content/api/\"",
+		"update-ignored-revs": "git config blame.ignoreRevsFile .git-blame-ignore-revs"
 	},
 	"homepage": "https://github.com/JannisX11/blockbench-types#readme",
 	"dependencies": {
