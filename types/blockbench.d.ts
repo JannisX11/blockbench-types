@@ -2,6 +2,7 @@
 /// <reference types="@types/prismjs" />
 /// <reference types="@types/jquery" />
 /// <reference types="wintersky" />
+/// <reference types="dompurify" />
 
 /// <reference types="./action" />
 /// <reference types="./animation_controller" />

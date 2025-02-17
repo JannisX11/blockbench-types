@@ -16,6 +16,8 @@ declare global {
 	const fs: typeof import('fs')
 
 	const DOMPurify: typeof import('dompurify')
+	// Hides the "Prefer imports over UMD globals" warning
+	namespace DOMPurify {}
 
 	let selected: OutlinerElement[]
 	const Toolbars: Record<string, Toolbar>
