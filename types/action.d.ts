@@ -3,8 +3,6 @@
  */
 /// <reference path="./blockbench.d.ts"/>
 
-import tinycolor from 'tinycolor2'
-
 declare global {
 	const BarItems: {
 		[id: string]: BarItem
@@ -604,3 +602,6 @@ declare global {
 	}
 	const Toolbox: _ToolToolbar
 }
+
+// Force TypeScript to recognize the file as a module
+export {}

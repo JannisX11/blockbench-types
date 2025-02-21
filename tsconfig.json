@@ -1,5 +1,6 @@
 {
 	"include": ["./types/**/*"],
+	"exclude": ["**/node_modules/**"],
 	"compilerOptions": {
 		"module": "commonjs",
 		"target": "ES2020",
@@ -10,8 +11,6 @@
 		"strict": true,
 		"noImplicitAny": true,
 		"esModuleInterop": true,
-		"allowUmdGlobalAccess": true,
-		"skipLibCheck": true
-	},
-	"exclude": ["./node_modules/**/*"]
+		"allowUmdGlobalAccess": true
+	}
 }
