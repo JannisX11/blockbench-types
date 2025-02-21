@@ -35,12 +35,11 @@ declare global {
 	function Condition(condition: ConditionResolvable): boolean
 
 	/**
-	 * Wrapper for anys that tells the custom JSON exporter to write in one line
+	 * Wrapper for Objects that tells the custom JSON exporter to write in one line
+	 *
+	 * This is actually a class called `oneLiner`, but using some ✨ type magic ✨ it's typed as a function that returns the same value as the input to make it easier to use.
 	 */
-	class oneLiner {
-		constructor(data?: any)
-		[key: string]: any
-	}
+	const oneLiner: new <T>(data?: T) => T
 
 	/**
 	 * If the input event is a touch event, convert touch event to a compatible mouse event
