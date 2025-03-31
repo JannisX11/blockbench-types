@@ -64,6 +64,7 @@ declare class Panel {
 	inside_vue: Vue
 	resizable: boolean
 	fixed_height?: boolean
+	condition?: ConditionResolvable
 
 	fold(state?: boolean): this
 	vue: Vue.Component

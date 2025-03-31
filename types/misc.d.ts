@@ -127,6 +127,8 @@ interface MessageBoxOptions {
 	message?: string
 	icon?: string
 	width?: number
+	cancelIndex?: number
+	confirmIndex?: number
 	/**
 	 * Display a list of actions to do in the dialog. When clicked, the message box closes with the string ID of the command as first argument.
 	 */
@@ -233,7 +235,7 @@ declare namespace Language {
 		[key: string]: string
 	}
 	/**
-	 * Two letter code indicating the currently selected language
+	 * Language code indicating the currently selected language
 	 */
 	const code: string
 	/**

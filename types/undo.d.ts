@@ -7,9 +7,14 @@ interface UndoAspects {
 	 */
 	outliner?: boolean
 	/**
+	 * Save individual groups, but not their children or hierarchy position
+	 */
+	groups?: Group[]
+	/**
 	 * Saves an individual group, but not it's children or hierarchy position
 	 */
 	group?: Group
+	collections: Collection[]
 	/**
 	 * Textures to save
 	 */
@@ -37,6 +42,8 @@ type UndoSave = {
 	elements?: {}
 	outliner?: []
 	group?: {}
+	groups?: {}[]
+	collections: {}[]
 	textures?: {}
 	texture_order?: UUID[]
 	selected_texture?: UUID | null

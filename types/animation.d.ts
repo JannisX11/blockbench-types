@@ -131,6 +131,8 @@ declare namespace Animator {
 	const particle_effects: any
 	const animations: _Animation[]
 	const selected: _Animation | undefined
+	function join(): void
+	function leave(): void
 	function showDefaultPose(no_matrix_update?: boolean): void
 	function resetParticles(): void
 	function showMotionTrail(target?: Group): void

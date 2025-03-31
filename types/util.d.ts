@@ -2,7 +2,8 @@
 type ConditionResolvable =
 	| undefined
 	| boolean
-	| ((context: any) => boolean)
+	| any
+	| ((context: any) => any)
 	| Partial<{
 			modes: string[]
 			formats: string[]
@@ -95,7 +96,7 @@ declare function onVueSetup(func: any): void
 declare function capitalizeFirstLetter(string: any): any
 declare function autoStringify(any: any): string
 declare function pluralS(arr: any): '' | 's'
-declare function pathToName(path: string, extension: boolean): string | ''
+declare function pathToName(path: string, extension: boolean = false): string | ''
 declare function pathToExtension(path: string): string | ''
 declare function intToRGBA(int: any): {
 	r: number

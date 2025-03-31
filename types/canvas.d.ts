@@ -215,6 +215,7 @@ declare namespace Canvas {
  * Marks a specific aspect of the interface to be updated in the next tick. Useful to avoid an update function getting called multiple times in the same task.
  */
 declare namespace TickUpdates {
+	let interface: undefined | true
 	let outliner: undefined | true
 	let selection: undefined | true
 	let main_uv: undefined | true

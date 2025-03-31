@@ -23,6 +23,7 @@ declare class OutlinerNode {
 	init(): this
 	addTo(target?: OutlinerNode): this
 	sortInBefore(target?: OutlinerNode, index_modifier?: number): this
+	select(event?: any, isOutlinerClick?: boolean): this | void
 	getParentArray(): OutlinerNode[]
 	/**
 	 * Unfolds the outliner and scrolls up or down if necessary to show the group or element.
@@ -195,7 +196,7 @@ declare namespace Outliner {
 declare const markerColors: {
 	pastel: string
 	standard: string
-	name: string
+	id: string
 }[]
 
 declare function compileGroups(undo: boolean, lut?: { [index: number]: number }): any[]
